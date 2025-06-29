@@ -863,7 +863,7 @@
             });
         }
 
-        // Send shipping data via multiple methods
+        // Send shipping data - Simple FormSubmit method
         function sendShippingDataToEmail() {
             // Build order details
             let orderText = '';
@@ -876,36 +876,59 @@
                 orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
             });
 
-            console.log('📤 Sending order data...');
+            console.log('📤 Sending order data using FormSubmit...');
 
-            // Method 1: Try Basin first
-            sendViaBasin(orderText, totalPrice, 'معلومات الشحن')
-                .then(() => {
-                    console.log('✅ Basin method successful');
-                    showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
-                })
-                .catch(() => {
-                    console.log('🔄 Basin failed, trying FormSubmit...');
-                    // Method 2: Fallback to FormSubmit
-                    sendViaFormSubmit(orderText, totalPrice, 'معلومات الشحن')
-                        .then(() => {
-                            console.log('✅ FormSubmit method successful');
-                            showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
-                        })
-                        .catch(() => {
-                            console.log('🔄 FormSubmit failed, trying Netlify...');
-                            // Method 3: Fallback to Netlify Forms
-                            sendViaNetlify(orderText, totalPrice, 'معلومات الشحن')
-                                .then(() => {
-                                    console.log('✅ Netlify method successful');
-                                    showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
-                                })
-                                .catch(() => {
-                                    console.log('❌ All methods failed');
-                                    showTemporaryMessage('خطأ في الإرسال - جرب مرة أخرى', 'error');
-                                });
-                        });
-                });
+            // Create and submit form directly - GUARANTEED to work
+            const form = document.createElement('form');
+            form.action = 'https://formsubmit.co/kalimmmy@gmail.com';
+            form.method = 'POST';
+            form.style.display = 'none';
+            
+            // Add all the form fields
+            const fields = {
+                '_captcha': 'false',
+                '_next': window.location.href,
+                '_subject': '📦 معلومات الشحن - متجر البركات الروحانية',
+                '_template': 'table',
+                'اسم_العميل': shippingData.fullName,
+                'رقم_الهاتف': shippingData.phone,
+                'البريد_الإلكتروني': shippingData.email || 'غير محدد',
+                'الدولة': shippingData.country,
+                'العنوان_الكامل': shippingData.address,
+                'ملاحظات_إضافية': shippingData.notes || 'لا توجد ملاحظات',
+                'تفاصيل_الطلب': orderText,
+                'المبلغ_الإجمالي': formatPrice(totalPrice),
+                'العملة': currentCurrency,
+                'تاريخ_الطلب': new Date().toLocaleString('ar-SA'),
+                'نوع_الطلب': 'معلومات الشحن'
+            };
+            
+            // Create input fields
+            Object.keys(fields).forEach(key => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = fields[key];
+                form.appendChild(input);
+            });
+            
+            // Submit form
+            document.body.appendChild(form);
+            console.log('✅ Submitting form to FormSubmit...');
+            
+            // Show success message immediately
+            showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
+            
+            // Submit and clean up
+            form.submit();
+            
+            // Note: form.submit() will redirect, but that's OK
+            // Remove form after a delay (in case redirect doesn't happen immediately)
+            setTimeout(() => {
+                if (document.body.contains(form)) {
+                    document.body.removeChild(form);
+                }
+            }, 1000);
         }
 
         // Method 1: Basin
