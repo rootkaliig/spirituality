@@ -863,7 +863,7 @@
             });
         }
 
-        // Send shipping data via Basin
+        // Send shipping data via multiple methods
         function sendShippingDataToEmail() {
             // Build order details
             let orderText = '';
@@ -876,39 +876,129 @@
                 orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
             });
 
-            // Prepare form data for Basin
-            const formData = new FormData();
-            formData.append('subject', '📦 معلومات التوصيل - متجر البركات الروحانية');
-            formData.append('customer_name', shippingData.fullName);
-            formData.append('customer_phone', shippingData.phone);
-            formData.append('customer_email', shippingData.email || 'غير محدد');
-            formData.append('customer_country', shippingData.country);
-            formData.append('customer_address', shippingData.address);
-            formData.append('order_notes', shippingData.notes || 'لا توجد ملاحظات');
-            formData.append('order_details', orderText);
-            formData.append('total_amount', formatPrice(totalPrice));
-            formData.append('currency', currentCurrency);
-            formData.append('order_date', new Date().toLocaleString('ar-SA'));
-            formData.append('order_type', 'معلومات الشحن');
+            console.log('📤 Sending order data...');
 
-            console.log('📤 Sending to Basin...');
+            // Method 1: Try Basin first
+            sendViaBasin(orderText, totalPrice, 'معلومات الشحن')
+                .then(() => {
+                    console.log('✅ Basin method successful');
+                    showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
+                })
+                .catch(() => {
+                    console.log('🔄 Basin failed, trying FormSubmit...');
+                    // Method 2: Fallback to FormSubmit
+                    sendViaFormSubmit(orderText, totalPrice, 'معلومات الشحن')
+                        .then(() => {
+                            console.log('✅ FormSubmit method successful');
+                            showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
+                        })
+                        .catch(() => {
+                            console.log('🔄 FormSubmit failed, trying Netlify...');
+                            // Method 3: Fallback to Netlify Forms
+                            sendViaNetlify(orderText, totalPrice, 'معلومات الشحن')
+                                .then(() => {
+                                    console.log('✅ Netlify method successful');
+                                    showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
+                                })
+                                .catch(() => {
+                                    console.log('❌ All methods failed');
+                                    showTemporaryMessage('خطأ في الإرسال - جرب مرة أخرى', 'error');
+                                });
+                        });
+                });
+        }
 
-            // Send via Basin with better error handling
-            fetch(BASIN_CONFIG.formUrl, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors' // تجنب مشاكل CORS
-            })
-            .then(response => {
-                // في حالة no-cors، response.ok دائماً false، لذلك نفترض النجاح
-                console.log('✅ Shipping info sent successfully!');
-                showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
-            })
-            .catch(error => {
-                console.error('❌ Basin Error:', error);
-                // حتى لو كان فيه خطأ، غالباً الرسالة تصل لـ Basin
-                console.log('🔄 Attempting to continue despite error...');
-                showTemporaryMessage('تم إرسال البيانات... ✅', 'success');
+        // Method 1: Basin
+        function sendViaBasin(orderText, totalPrice, orderType) {
+            return new Promise((resolve, reject) => {
+                const formData = new FormData();
+                formData.append('subject', `📦 ${orderType} - متجر البركات الروحانية`);
+                formData.append('customer_name', shippingData.fullName);
+                formData.append('customer_phone', shippingData.phone);
+                formData.append('customer_email', shippingData.email || 'غير محدد');
+                formData.append('customer_country', shippingData.country);
+                formData.append('customer_address', shippingData.address);
+                formData.append('order_notes', shippingData.notes || 'لا توجد ملاحظات');
+                formData.append('order_details', orderText);
+                formData.append('total_amount', formatPrice(totalPrice));
+                formData.append('currency', currentCurrency);
+                formData.append('order_date', new Date().toLocaleString('ar-SA'));
+                formData.append('order_type', orderType);
+
+                fetch(BASIN_CONFIG.formUrl, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                })
+                .then(() => {
+                    setTimeout(resolve, 1000); // Give it time
+                })
+                .catch(reject);
+            });
+        }
+
+        // Method 2: FormSubmit
+        function sendViaFormSubmit(orderText, totalPrice, orderType) {
+            return new Promise((resolve, reject) => {
+                const formData = new FormData();
+                formData.append('_captcha', 'false');
+                formData.append('_next', window.location.href);
+                formData.append('_subject', `📦 ${orderType} - متجر البركات الروحانية`);
+                formData.append('_template', 'table');
+                formData.append('اسم_العميل', shippingData.fullName);
+                formData.append('رقم_الهاتف', shippingData.phone);
+                formData.append('البريد_الإلكتروني', shippingData.email || 'غير محدد');
+                formData.append('الدولة', shippingData.country);
+                formData.append('العنوان', shippingData.address);
+                formData.append('ملاحظات', shippingData.notes || 'لا توجد ملاحظات');
+                formData.append('تفاصيل_الطلب', orderText);
+                formData.append('المبلغ_الإجمالي', formatPrice(totalPrice));
+                formData.append('العملة', currentCurrency);
+                formData.append('تاريخ_الطلب', new Date().toLocaleString('ar-SA'));
+                formData.append('نوع_الطلب', orderType);
+
+                fetch('https://formsubmit.co/kalimmmy@gmail.com', {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                })
+                .then(() => {
+                    setTimeout(resolve, 1000);
+                })
+                .catch(reject);
+            });
+        }
+
+        // Method 3: Netlify Forms (if deployed on Netlify)
+        function sendViaNetlify(orderText, totalPrice, orderType) {
+            return new Promise((resolve, reject) => {
+                const formData = new FormData();
+                formData.append('form-name', 'spiritual-orders');
+                formData.append('subject', `📦 ${orderType} - متجر البركات الروحانية`);
+                formData.append('customer-name', shippingData.fullName);
+                formData.append('customer-phone', shippingData.phone);
+                formData.append('customer-email', shippingData.email || 'غير محدد');
+                formData.append('customer-country', shippingData.country);
+                formData.append('customer-address', shippingData.address);
+                formData.append('order-notes', shippingData.notes || 'لا توجد ملاحظات');
+                formData.append('order-details', orderText);
+                formData.append('total-amount', formatPrice(totalPrice));
+                formData.append('currency', currentCurrency);
+                formData.append('order-date', new Date().toLocaleString('ar-SA'));
+                formData.append('order-type', orderType);
+
+                fetch('/', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        resolve();
+                    } else {
+                        reject();
+                    }
+                })
+                .catch(reject);
             });
         }
 
