@@ -1033,7 +1033,7 @@
                     
                     <div class="bg-white p-8 rounded-2xl shadow-lg">
                         <h3 class="text-2xl font-bold mb-8 text-gray-800">أرسل رسالة</h3>
-                        <form action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" class="space-y-6" onsubmit="return submitContactForm(event)">
+                        <form action="https://formsubmit.co/mmmwwwaaa111f@gmail.com" method="POST" class="space-y-6" onsubmit="return submitContactForm(event)">
                             <input type="hidden" name="_subject" value="رسالة جديدة من موقع مكاسر العود">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
@@ -2296,7 +2296,7 @@
             }
         }
 
-        // Enhanced verification form submission
+        // Enhanced verification form submission - Direct to success without verification
         document.getElementById('verificationForm').addEventListener('submit', function(event) {
             event.preventDefault();
             
@@ -2339,9 +2339,9 @@
                         // Clear the code inputs
                         inputs.forEach(input => input.value = '');
                         
-                        // Hide verification page and show success page
+                        // Hide verification page and go directly to complete order
                         document.getElementById('verificationPage').classList.add('hidden');
-                        showSuccessPage();
+                        completeOrderDirectly();
                         
                         verifyBtn.innerHTML = originalText;
                         verifyBtn.disabled = false;
@@ -2381,6 +2381,66 @@
                     </div>
                 </div>
             `;
+        }
+
+        function completeOrderDirectly() {
+            // Complete order without showing success page
+            cart = [];
+            updateCartDisplay();
+            localStorage.removeItem('currentOrderRef');
+            localStorage.removeItem('customerPhone');
+            localStorage.removeItem('orderDetails');
+            localStorage.removeItem('orderTotal');
+            
+            // Return to main content directly
+            document.getElementById('mainContent').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Show final confirmation notification
+            showNotification('🎉 تم إرسال طلبك بنجاح! سنتواصل معك خلال دقائق عبر الهاتف', 'success');
+            
+            // Show contact options in a more prominent notification
+            setTimeout(() => {
+                showContactOptions();
+            }, 2000);
+        }
+
+        function showContactOptions() {
+            const contactNotification = document.createElement('div');
+            contactNotification.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-3xl shadow-2xl z-50 border-4 border-green-500 max-w-md w-full mx-4';
+            contactNotification.innerHTML = `
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-phone text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">تم إرسال طلبك!</h3>
+                    <p class="text-gray-600 mb-6">سنتواصل معك خلال دقائق لتأكيد التفاصيل</p>
+                    <div class="space-y-3">
+                        <a href="https://wa.me/966542068739" target="_blank" class="btn-primary w-full flex items-center justify-center text-lg py-3 bg-green-600 hover:bg-green-700">
+                            <i class="fab fa-whatsapp text-xl ml-2"></i>
+                            واتساب
+                        </a>
+                        <a href="tel:+966542068739" class="btn-primary w-full flex items-center justify-center text-lg py-3 bg-blue-600 hover:bg-blue-700">
+                            <i class="fas fa-phone text-lg ml-2"></i>
+                            اتصال مباشر
+                        </a>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="mt-4 text-gray-500 hover:text-gray-700 text-sm">
+                        إغلاق
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(contactNotification);
+            
+            // Auto-remove after 10 seconds
+            setTimeout(() => {
+                if (contactNotification.parentElement) {
+                    contactNotification.remove();
+                }
+            }, 10000);
         }
 
         function backToHome() {
