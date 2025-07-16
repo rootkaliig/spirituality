@@ -46,6 +46,111 @@
         body {
             font-family: 'Tajawal', Arial, sans-serif;
             overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffecd2, #fcb69f);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating Particles */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            border-radius: 50%;
+            animation: float-up 20s infinite linear;
+            opacity: 0.6;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Website Logo */
+        .website-logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: logoFloat 3s ease-in-out infinite;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .website-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Enhanced Glass Effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(55, 65, 81, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Advanced Scroll Animations */
@@ -420,9 +525,11 @@
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border-radius: 16px;
-            background: white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.08);
         }
 
         .product-card::before {
@@ -432,7 +539,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transition: left 0.8s ease;
             z-index: 2;
         }
@@ -441,14 +548,183 @@
             left: 100%;
         }
 
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+            border-radius: 26px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background-size: 400% 400%;
+            animation: gradientBG 3s ease infinite;
+        }
+
+        .product-card:hover::after {
+            opacity: 0.8;
+        }
+
         .product-card:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 35px 60px rgba(236, 72, 153, 0.2);
+            transform: translateY(-15px) scale(1.04);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.2), 0 15px 30px rgba(0,0,0,0.15);
         }
 
         .dark .product-card {
-            background: #374151;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: rgba(55, 65, 81, 0.95);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Enhanced Product Image Container */
+        .product-image-container {
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 20px 20px 0 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .product-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover .product-image-container::before {
+            transform: translateX(100%);
+        }
+
+        /* Magical Sparkle Effect */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #FFD700, #FFA500);
+            border-radius: 50%;
+            animation: sparkle-magical 2s infinite;
+            box-shadow: 0 0 15px #FFD700, 0 0 30px #FFA500;
+        }
+
+        @keyframes sparkle-magical {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5) rotate(180deg); 
+            }
+        }
+
+        .sparkle:nth-child(1) { 
+            top: 15%; left: 15%; 
+            animation-delay: 0s; 
+            animation-duration: 1.5s;
+        }
+        .sparkle:nth-child(2) { 
+            top: 85%; left: 85%; 
+            animation-delay: 0.5s; 
+            animation-duration: 2s;
+        }
+        .sparkle:nth-child(3) { 
+            top: 30%; left: 80%; 
+            animation-delay: 1s; 
+            animation-duration: 1.8s;
+        }
+        .sparkle:nth-child(4) { 
+            top: 80%; left: 20%; 
+            animation-delay: 1.5s; 
+            animation-duration: 2.2s;
+        }
+        .sparkle:nth-child(5) { 
+            top: 50%; left: 50%; 
+            animation-delay: 2s; 
+            animation-duration: 1.6s;
+        }
+
+        /* Enhanced Discount Badge */
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: pulse-discount 2s infinite;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+            z-index: 3;
+        }
+
+        @keyframes pulse-discount {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4); 
+            }
+            50% { 
+                transform: scale(1.1); 
+                box-shadow: 0 12px 30px rgba(255, 107, 107, 0.6); 
+            }
+        }
+
+        /* Floating Product Animation */
+        .floating-product {
+            animation: float-product 6s ease-in-out infinite;
+        }
+
+        @keyframes float-product {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-8px) rotate(0.5deg); }
+            66% { transform: translateY(-4px) rotate(-0.5deg); }
+        }
+
+        /* Enhanced Button Styles */
+        .enhanced-product-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .enhanced-product-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .enhanced-product-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .enhanced-product-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
         }
 
         /* Product Image Enhancements */
@@ -795,6 +1071,16 @@
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
 
+    <!-- Website Logo -->
+    <div class="website-logo">
+        💎 متجر الخصوصية المتطور 💎
+    </div>
+    
+    <!-- Floating Particles Background -->
+    <div class="floating-particles" id="floating-particles">
+        <!-- Particles will be generated by JavaScript -->
+    </div>
+
     <!-- Age Verification Modal -->
     <div id="age-verification" class="age-verification">
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-2xl max-w-md w-full mx-4 text-center">
@@ -927,10 +1213,10 @@
                         كميات كبيرة = أسعار خيالية!
                     </div>
                 </div>
-                <button onclick="showPage('products')" class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors mr-4">
+                <button onclick="navigateToProducts()" class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors mr-4">
                     تسوق الآن
                 </button>
-                <button onclick="showShareModal()" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition-colors">
+                <button onclick="openShareModal()" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition-colors">
                     شارك واربح نقاط
                 </button>
             </div>
@@ -1707,10 +1993,10 @@
             updateAllPrices();
         }
 
-        // Language translations
+        // Language translations - Complete Website Translation
         const translations = {
             'ar': {
-                // Current Arabic content (default)
+                // Navigation and Header
                 'site_title': 'متجر الخصوصية العالمي المتطور - توصيل لجميع أنحاء العالم',
                 'privacy_store': 'متجر الخصوصية',
                 'home': 'الرئيسية',
@@ -1720,6 +2006,10 @@
                 'contact': 'اتصل بنا',
                 'points': 'نقطة',
                 'share': 'شارك',
+                'shopping_cart': 'سلة التسوق',
+                'arabic': 'العربية',
+                
+                // Main Content
                 'main_title': 'متجر الخصوصية المتطور',
                 'company_message': '🌸 شركة أجنبية متخصصة في دعم البنات العربيات 🌸',
                 'mission_title': '💖 رسالتنا للبنات العربيات 💖',
@@ -1740,7 +2030,131 @@
                 'fast_shipping': 'شحن سريع',
                 'delivery_24_48': 'توصيل خلال 24-48 ساعة',
                 'high_quality': 'جودة عالية',
-                'original_guaranteed': 'منتجات أصلية ومضمونة'
+                'original_guaranteed': 'منتجات أصلية ومضمونة',
+                'all_products': 'جميع المنتجات',
+                'age_verification': 'تأكيد العمر',
+                'age_message': 'يجب أن تكون 18 سنة أو أكثر لدخول هذا الموقع',
+                'over_18': 'أكبر من 18 سنة',
+                'under_18': 'أقل من 18 سنة',
+                
+                // Points System
+                'points_rewards': '🎁 نظام النقاط والمكافآت 🎁',
+                'points_subtitle': 'شارك المتجر مع أصدقائك واحصل على منتجات مجانية!',
+                'share_friends': 'شارك مع الأصدقاء',
+                'share_points': 'كل مشاركة صحيحة = 100 نقطة',
+                'collect_points': 'اجمع النقاط',
+                'collect_desc': 'كل 10 مشاركات = 1000 نقطة',
+                'free_product': 'منتج مجاني',
+                'free_desc': '1000 نقطة = منتج مجاني',
+                'current_points': 'نقاطك الحالية:',
+                
+                // Filters
+                'all': 'الكل',
+                'couples': 'للأزواج',
+                'women': 'للنساء',
+                'men': 'للرجال',
+                'accessories': 'الإكسسوارات',
+                
+                // Cart and Payment
+                'subtotal': 'المجموع الفرعي:',
+                'shipping_cost': 'الشحن:',
+                'total': 'المجموع:',
+                'free': 'مجاني',
+                'continue_payment': 'المتابعة للدفع',
+                'complete_order': 'إتمام الطلب',
+                'first_name': 'الاسم الأول',
+                'last_name': 'الاسم الأخير',
+                'phone_number': 'رقم الهاتف',
+                'country': 'الدولة',
+                'select_country': 'اختر الدولة',
+                'province': 'المحافظة/المنطقة',
+                'select_province': 'اختر المحافظة',
+                'city': 'المدينة/المنطقة',
+                'select_city': 'اختر المدينة',
+                'detailed_address': 'العنوان التفصيلي',
+                'postal_code': 'الرمز البريدي',
+                'payment_method': 'طريقة الدفع',
+                'credit_card': 'بطاقة بنكية',
+                'cash_on_delivery': 'الدفع عند الاستلام',
+                'card_number': 'رقم البطاقة',
+                'expiry_date': 'تاريخ الانتهاء',
+                'security_code': 'رمز الأمان',
+                'final_total': 'المجموع النهائي:',
+                'secure_checkout': 'إتمام الطلب بأمان',
+                
+                // Code Entry
+                'enter_secret_code': '🎯 أدخل الكود السري 🎯',
+                'code_subtitle': 'اكتشف العروض المخفية والمنتجات الحصرية!',
+                'exclusive_discounts': 'خصومات حصرية',
+                'up_to_70': 'حتى 70% خصم',
+                'free_products': 'منتجات مجانية',
+                'gifts_every_order': 'هدايا مع كل طلب',
+                'early_access': 'وصول مبكر',
+                'new_products_first': 'منتجات جديدة أولاً',
+                'enter_code': 'أدخل الكود الخاص بك',
+                'code_placeholder': 'أدخل الكود هنا',
+                'activate_code': 'تفعيل الكود',
+                'code_tips': 'نصائح للحصول على الأكواد:',
+                'share_website': 'شارك الموقع مع الأصدقاء',
+                'follow_social': 'تابعنا على وسائل التواصل',
+                'subscribe_newsletter': 'اشترك في النشرة الإخبارية',
+                'seasonal_offers': 'العروض الموسمية والمناسبات',
+                
+                // Contact
+                'contact_info': 'معلومات التواصل',
+                'support_247': 'الدعم متاح 24/7',
+                'customer_service': 'خدمة العملاء',
+                'send_message': 'أرسل رسالة',
+                'name_optional': 'الاسم (اختياري)',
+                'email': 'البريد الإلكتروني',
+                'message': 'الرسالة',
+                'send': 'إرسال الرسالة',
+                
+                // Shipping Information
+                'shipping_info': 'معلومات الشحن',
+                'shipping_rates': 'رسوم الشحن',
+                'within_saudi': 'داخل المملكة العربية السعودية',
+                'gulf_countries': 'دول الخليج العربي',
+                'arab_countries': 'الدول العربية',
+                'international': 'دولي',
+                'free_shipping_300': 'شحن مجاني للطلبات أكثر من 300 ريال!',
+                'delivery_times': 'أوقات التسليم',
+                'riyadh_jeddah_dammam': 'الرياض - جدة - الدمام',
+                'other_saudi_cities': 'باقي مدن المملكة',
+                'gulf_3_5_days': '3-5 أيام',
+                'arab_5_7_days': '5-7 أيام',
+                'approved_carriers': 'شركات الشحن المعتمدة:',
+                'privacy_guarantees': 'ضمانات الخصوصية',
+                'anonymous_packaging': 'تغليف مجهول',
+                'secret_delivery': 'تسليم سري',
+                'data_protection': 'حماية البيانات',
+                'payment_security': 'أمان معلومات الدفع',
+                
+                // Footer
+                'quick_links': 'روابط سريعة',
+                'guarantees': 'ضمانات',
+                'complete_privacy': 'خصوصية تامة',
+                'secret_shipping': 'شحن سري',
+                'guaranteed_quality': 'جودة مضمونة',
+                'competitive_prices': 'أسعار منافسة',
+                'all_rights_reserved': 'جميع الحقوق محفوظة',
+                'adults_only': 'للبالغين فقط - +18',
+                
+                // Sharing
+                'share_earn_points': 'شارك واربح نقاط!',
+                'share_subtitle': 'شارك الموقع مع أصدقائك واربح 100 نقطة لكل مشاركة',
+                'copy_link': 'نسخ الرابط',
+                'close': 'إغلاق',
+                'shares_count': 'عدد مشاركاتك:',
+                'your_points': 'نقاطك:',
+                
+                // Notifications
+                'added_to_cart': 'تم إضافة المنتج للسلة',
+                'message_sent': 'تم إرسال الرسالة بنجاح!',
+                'contact_soon': 'سنتواصل معك قريباً بسرية تامة',
+                'ok': 'حسناً',
+                'cart_empty': 'السلة فارغة',
+                'try_again': 'حاول مرة أخرى'
             },
             'en': {
                 'site_title': 'Advanced Global Privacy Store - Worldwide Delivery',
@@ -1775,6 +2189,7 @@
                 'original_guaranteed': 'Original and guaranteed products'
             },
             'tr': {
+                // Navigasyon ve Başlık
                 'site_title': 'Gelişmiş Küresel Gizlilik Mağazası - Dünya Çapında Teslimat',
                 'privacy_store': 'Gizlilik Mağazası',
                 'home': 'Ana Sayfa',
@@ -1784,6 +2199,10 @@
                 'contact': 'İletişim',
                 'points': 'puan',
                 'share': 'Paylaş',
+                'shopping_cart': 'Alışveriş Sepeti',
+                'arabic': 'Türkçe',
+                
+                // Ana İçerik
                 'main_title': 'Gelişmiş Gizlilik Mağazası',
                 'company_message': '🌸 Arap Kadınlarını Destekleme Konusunda Uzmanlaşmış Uluslararası Şirket 🌸',
                 'mission_title': '💖 Arap Kadınları İçin Misyonumuz 💖',
@@ -1804,7 +2223,131 @@
                 'fast_shipping': 'Hızlı Kargo',
                 'delivery_24_48': '24-48 saat içinde teslimat',
                 'high_quality': 'Yüksek Kalite',
-                'original_guaranteed': 'Orijinal ve garantili ürünler'
+                'original_guaranteed': 'Orijinal ve garantili ürünler',
+                'all_products': 'Tüm Ürünler',
+                'age_verification': 'Yaş Doğrulama',
+                'age_message': 'Bu siteye girmek için 18 yaşından büyük olmalısınız',
+                'over_18': '18\'den büyük',
+                'under_18': '18\'den küçük',
+                
+                // Puan Sistemi
+                'points_rewards': '🎁 Puan ve Ödül Sistemi 🎁',
+                'points_subtitle': 'Mağazayı arkadaşlarınla paylaş ve ücretsiz ürünler kazan!',
+                'share_friends': 'Arkadaşlarla Paylaş',
+                'share_points': 'Her doğru paylaşım = 100 puan',
+                'collect_points': 'Puan Topla',
+                'collect_desc': 'Her 10 paylaşım = 1000 puan',
+                'free_product': 'Ücretsiz Ürün',
+                'free_desc': '1000 puan = ücretsiz ürün',
+                'current_points': 'Mevcut puanınız:',
+                
+                // Filtreler
+                'all': 'Hepsi',
+                'couples': 'Çiftler İçin',
+                'women': 'Kadınlar İçin',
+                'men': 'Erkekler İçin',
+                'accessories': 'Aksesuarlar',
+                
+                // Sepet ve Ödeme
+                'subtotal': 'Ara Toplam:',
+                'shipping_cost': 'Kargo:',
+                'total': 'Toplam:',
+                'free': 'Ücretsiz',
+                'continue_payment': 'Ödemeye Devam',
+                'complete_order': 'Siparişi Tamamla',
+                'first_name': 'Ad',
+                'last_name': 'Soyad',
+                'phone_number': 'Telefon Numarası',
+                'country': 'Ülke',
+                'select_country': 'Ülke Seçin',
+                'province': 'İl/Bölge',
+                'select_province': 'İl Seçin',
+                'city': 'Şehir/İlçe',
+                'select_city': 'Şehir Seçin',
+                'detailed_address': 'Detaylı Adres',
+                'postal_code': 'Posta Kodu',
+                'payment_method': 'Ödeme Yöntemi',
+                'credit_card': 'Kredi Kartı',
+                'cash_on_delivery': 'Kapıda Ödeme',
+                'card_number': 'Kart Numarası',
+                'expiry_date': 'Son Kullanma Tarihi',
+                'security_code': 'Güvenlik Kodu',
+                'final_total': 'Genel Toplam:',
+                'secure_checkout': 'Güvenli Ödeme',
+                
+                // Kod Girişi
+                'enter_secret_code': '🎯 Gizli Kodu Girin 🎯',
+                'code_subtitle': 'Gizli teklifleri ve özel ürünleri keşfedin!',
+                'exclusive_discounts': 'Özel İndirimler',
+                'up_to_70': '%70\'e kadar indirim',
+                'free_products': 'Ücretsiz Ürünler',
+                'gifts_every_order': 'Her siparişte hediye',
+                'early_access': 'Erken Erişim',
+                'new_products_first': 'Yeni ürünlere ilk erişim',
+                'enter_code': 'Kodunuzu Girin',
+                'code_placeholder': 'Kodu buraya girin',
+                'activate_code': 'Kodu Etkinleştir',
+                'code_tips': 'Kod almak için ipuçları:',
+                'share_website': 'Siteyi arkadaşlarla paylaş',
+                'follow_social': 'Sosyal medyada takip et',
+                'subscribe_newsletter': 'Bültene abone ol',
+                'seasonal_offers': 'Mevsimlik teklifler ve etkinlikler',
+                
+                // İletişim
+                'contact_info': 'İletişim Bilgileri',
+                'support_247': 'Destek 7/24 mevcut',
+                'customer_service': 'Müşteri Hizmetleri',
+                'send_message': 'Mesaj Gönder',
+                'name_optional': 'Ad (isteğe bağlı)',
+                'email': 'E-posta',
+                'message': 'Mesaj',
+                'send': 'Mesaj Gönder',
+                
+                // Kargo Bilgileri
+                'shipping_info': 'Kargo Bilgileri',
+                'shipping_rates': 'Kargo Ücretleri',
+                'within_saudi': 'Suudi Arabistan içi',
+                'gulf_countries': 'Körfez Ülkeleri',
+                'arab_countries': 'Arap Ülkeleri',
+                'international': 'Uluslararası',
+                'free_shipping_300': '300 TL üzeri siparişlerde ücretsiz kargo!',
+                'delivery_times': 'Teslimat Süreleri',
+                'riyadh_jeddah_dammam': 'Riyadh - Cidde - Dammam',
+                'other_saudi_cities': 'Diğer Suudi şehirleri',
+                'gulf_3_5_days': '3-5 gün',
+                'arab_5_7_days': '5-7 gün',
+                'approved_carriers': 'Onaylı kargo firmaları:',
+                'privacy_guarantees': 'Gizlilik Garantileri',
+                'anonymous_packaging': 'Anonim paketleme',
+                'secret_delivery': 'Gizli teslimat',
+                'data_protection': 'Veri koruması',
+                'payment_security': 'Ödeme bilgileri güvenliği',
+                
+                // Footer
+                'quick_links': 'Hızlı Bağlantılar',
+                'guarantees': 'Garantiler',
+                'complete_privacy': 'Tam gizlilik',
+                'secret_shipping': 'Gizli kargo',
+                'guaranteed_quality': 'Garantili kalite',
+                'competitive_prices': 'Rekabetçi fiyatlar',
+                'all_rights_reserved': 'Tüm hakları saklıdır',
+                'adults_only': 'Sadece yetişkinler - +18',
+                
+                // Paylaşım
+                'share_earn_points': 'Paylaş ve puan kazan!',
+                'share_subtitle': 'Siteyi arkadaşlarınla paylaş ve her paylaşım için 100 puan kazan',
+                'copy_link': 'Linki Kopyala',
+                'close': 'Kapat',
+                'shares_count': 'Paylaşım sayınız:',
+                'your_points': 'Puanınız:',
+                
+                // Bildirimler
+                'added_to_cart': 'Ürün sepete eklendi',
+                'message_sent': 'Mesaj başarıyla gönderildi!',
+                'contact_soon': 'Yakında sizinle gizli olarak iletişime geçeceğiz',
+                'ok': 'Tamam',
+                'cart_empty': 'Sepet boş',
+                'try_again': 'Tekrar deneyin'
             },
             'fr': {
                 'site_title': 'Magasin de Confidentialité Mondial Avancé - Livraison dans le Monde Entier',
@@ -1816,6 +2359,8 @@
                 'contact': 'Nous Contacter',
                 'points': 'points',
                 'share': 'Partager',
+                'shopping_cart': 'Panier',
+                'arabic': 'Français',
                 'main_title': 'Magasin de Confidentialité Avancé',
                 'company_message': '🌸 Entreprise Internationale Spécialisée dans le Soutien aux Femmes Arabes 🌸',
                 'mission_title': '💖 Notre Mission pour les Femmes Arabes 💖',
@@ -1836,7 +2381,253 @@
                 'fast_shipping': 'Livraison Rapide',
                 'delivery_24_48': 'Livraison sous 24-48 heures',
                 'high_quality': 'Haute Qualité',
-                'original_guaranteed': 'Produits originaux et garantis'
+                'original_guaranteed': 'Produits originaux et garantis',
+                'all_products': 'Tous les Produits',
+                'age_verification': 'Vérification d\'âge',
+                'age_message': 'Vous devez avoir 18 ans ou plus pour accéder à ce site',
+                'over_18': 'Plus de 18 ans',
+                'under_18': 'Moins de 18 ans',
+                'points_rewards': '🎁 Système de Points et Récompenses 🎁',
+                'points_subtitle': 'Partagez le magasin avec vos amis et obtenez des produits gratuits!',
+                'share_friends': 'Partager avec des Amis',
+                'share_points': 'Chaque partage correct = 100 points',
+                'collect_points': 'Collecter des Points',
+                'collect_desc': 'Chaque 10 partages = 1000 points',
+                'free_product': 'Produit Gratuit',
+                'free_desc': '1000 points = produit gratuit',
+                'current_points': 'Vos points actuels:',
+                'all': 'Tous',
+                'couples': 'Pour Couples',
+                'women': 'Pour Femmes',
+                'men': 'Pour Hommes',
+                'accessories': 'Accessoires',
+                'subtotal': 'Sous-total:',
+                'shipping_cost': 'Livraison:',
+                'total': 'Total:',
+                'free': 'Gratuit',
+                'continue_payment': 'Continuer le Paiement',
+                'complete_order': 'Finaliser la Commande',
+                'first_name': 'Prénom',
+                'last_name': 'Nom',
+                'phone_number': 'Numéro de Téléphone',
+                'country': 'Pays',
+                'select_country': 'Choisir le Pays',
+                'province': 'Province/Région',
+                'select_province': 'Choisir la Province',
+                'city': 'Ville/Région',
+                'select_city': 'Choisir la Ville',
+                'detailed_address': 'Adresse Détaillée',
+                'postal_code': 'Code Postal',
+                'payment_method': 'Méthode de Paiement',
+                'credit_card': 'Carte Bancaire',
+                'cash_on_delivery': 'Paiement à la Livraison',
+                'card_number': 'Numéro de Carte',
+                'expiry_date': 'Date d\'Expiration',
+                'security_code': 'Code de Sécurité',
+                'final_total': 'Total Final:',
+                'secure_checkout': 'Paiement Sécurisé',
+                'enter_secret_code': '🎯 Entrer le Code Secret 🎯',
+                'code_subtitle': 'Découvrez les offres cachées et les produits exclusifs!',
+                'exclusive_discounts': 'Réductions Exclusives',
+                'up_to_70': 'Jusqu\'à 70% de réduction',
+                'free_products': 'Produits Gratuits',
+                'gifts_every_order': 'Cadeaux avec chaque commande',
+                'early_access': 'Accès Anticipé',
+                'new_products_first': 'Nouveaux produits en premier',
+                'enter_code': 'Entrez Votre Code',
+                'code_placeholder': 'Entrer le code ici',
+                'activate_code': 'Activer le Code',
+                'code_tips': 'Conseils pour obtenir des codes:',
+                'share_website': 'Partager le site avec des amis',
+                'follow_social': 'Suivez-nous sur les réseaux sociaux',
+                'subscribe_newsletter': 'S\'abonner à la newsletter',
+                'seasonal_offers': 'Offres saisonnières et événements',
+                'contact_info': 'Informations de Contact',
+                'support_247': 'Support disponible 24/7',
+                'customer_service': 'Service Client',
+                'send_message': 'Envoyer un Message',
+                'name_optional': 'Nom (optionnel)',
+                'email': 'E-mail',
+                'message': 'Message',
+                'send': 'Envoyer le Message',
+                'shipping_info': 'Informations de Livraison',
+                'shipping_rates': 'Tarifs de Livraison',
+                'within_saudi': 'En Arabie Saoudite',
+                'gulf_countries': 'Pays du Golfe',
+                'arab_countries': 'Pays Arabes',
+                'international': 'International',
+                'free_shipping_300': 'Livraison gratuite pour les commandes de plus de 300 riyals!',
+                'delivery_times': 'Délais de Livraison',
+                'riyadh_jeddah_dammam': 'Riyadh - Jeddah - Dammam',
+                'other_saudi_cities': 'Autres villes saoudiennes',
+                'gulf_3_5_days': '3-5 jours',
+                'arab_5_7_days': '5-7 jours',
+                'approved_carriers': 'Transporteurs agréés:',
+                'privacy_guarantees': 'Garanties de Confidentialité',
+                'anonymous_packaging': 'Emballage anonyme',
+                'secret_delivery': 'Livraison secrète',
+                'data_protection': 'Protection des données',
+                'payment_security': 'Sécurité des informations de paiement',
+                'quick_links': 'Liens Rapides',
+                'guarantees': 'Garanties',
+                'complete_privacy': 'Confidentialité complète',
+                'secret_shipping': 'Expédition secrète',
+                'guaranteed_quality': 'Qualité garantie',
+                'competitive_prices': 'Prix compétitifs',
+                'all_rights_reserved': 'Tous droits réservés',
+                'adults_only': 'Adultes seulement - +18',
+                'share_earn_points': 'Partagez et gagnez des points!',
+                'share_subtitle': 'Partagez le site avec vos amis et gagnez 100 points par partage',
+                'copy_link': 'Copier le Lien',
+                'close': 'Fermer',
+                'shares_count': 'Nombre de partages:',
+                'your_points': 'Vos points:',
+                'added_to_cart': 'Produit ajouté au panier',
+                'message_sent': 'Message envoyé avec succès!',
+                'contact_soon': 'Nous vous contacterons bientôt de manière confidentielle',
+                'ok': 'OK',
+                'cart_empty': 'Panier vide',
+                'try_again': 'Réessayer'
+            },
+            'en': {
+                'site_title': 'Advanced Global Privacy Store - Worldwide Delivery',
+                'privacy_store': 'Privacy Store',
+                'home': 'Home',
+                'products': 'Products',
+                'enter_code': 'Enter Code',
+                'shipping': 'Shipping',
+                'contact': 'Contact Us',
+                'points': 'points',
+                'share': 'Share',
+                'shopping_cart': 'Shopping Cart',
+                'arabic': 'English',
+                'main_title': 'Advanced Privacy Store',
+                'company_message': '🌸 International Company Specialized in Supporting Arab Women 🌸',
+                'mission_title': '💖 Our Mission for Arab Women 💖',
+                'mission_text1': 'We are an international company with very large quantities of high-quality products',
+                'mission_text2': '🎯 Our Goal: Support Arab women and help them get products that are not fully available',
+                'mission_text3': '✨ That\'s why our prices are very low - we want to be affordable for everyone! ✨',
+                'express_delivery': 'Express delivery within 3 hours in Saudi Arabia and Bahrain',
+                'bulk_prices': 'Large quantities = Amazing prices!',
+                'shop_now': 'Shop Now',
+                'share_earn': 'Share and Earn Points',
+                'add_to_cart': 'Add to Cart',
+                'available_large_qty': 'Available - Large Quantity',
+                'why_best': 'Why Are We The Best?',
+                'total_privacy': 'Complete Privacy',
+                'private_packaging': 'Anonymous packaging and secret shipping',
+                'low_prices': 'Low Prices',
+                'bulk_cheaper': 'Large quantities = Cheaper prices',
+                'fast_shipping': 'Fast Shipping',
+                'delivery_24_48': 'Delivery within 24-48 hours',
+                'high_quality': 'High Quality',
+                'original_guaranteed': 'Original and guaranteed products',
+                'all_products': 'All Products',
+                'age_verification': 'Age Verification',
+                'age_message': 'You must be 18 years or older to enter this site',
+                'over_18': 'Over 18',
+                'under_18': 'Under 18',
+                'points_rewards': '🎁 Points and Rewards System 🎁',
+                'points_subtitle': 'Share the store with your friends and get free products!',
+                'share_friends': 'Share with Friends',
+                'share_points': 'Each correct share = 100 points',
+                'collect_points': 'Collect Points',
+                'collect_desc': 'Every 10 shares = 1000 points',
+                'free_product': 'Free Product',
+                'free_desc': '1000 points = free product',
+                'current_points': 'Your current points:',
+                'all': 'All',
+                'couples': 'For Couples',
+                'women': 'For Women',
+                'men': 'For Men',
+                'accessories': 'Accessories',
+                'subtotal': 'Subtotal:',
+                'shipping_cost': 'Shipping:',
+                'total': 'Total:',
+                'free': 'Free',
+                'continue_payment': 'Continue to Payment',
+                'complete_order': 'Complete Order',
+                'first_name': 'First Name',
+                'last_name': 'Last Name',
+                'phone_number': 'Phone Number',
+                'country': 'Country',
+                'select_country': 'Select Country',
+                'province': 'Province/Region',
+                'select_province': 'Select Province',
+                'city': 'City/Region',
+                'select_city': 'Select City',
+                'detailed_address': 'Detailed Address',
+                'postal_code': 'Postal Code',
+                'payment_method': 'Payment Method',
+                'credit_card': 'Credit Card',
+                'cash_on_delivery': 'Cash on Delivery',
+                'card_number': 'Card Number',
+                'expiry_date': 'Expiry Date',
+                'security_code': 'Security Code',
+                'final_total': 'Final Total:',
+                'secure_checkout': 'Secure Checkout',
+                'enter_secret_code': '🎯 Enter Secret Code 🎯',
+                'code_subtitle': 'Discover hidden offers and exclusive products!',
+                'exclusive_discounts': 'Exclusive Discounts',
+                'up_to_70': 'Up to 70% off',
+                'free_products': 'Free Products',
+                'gifts_every_order': 'Gifts with every order',
+                'early_access': 'Early Access',
+                'new_products_first': 'New products first',
+                'enter_code': 'Enter Your Code',
+                'code_placeholder': 'Enter code here',
+                'activate_code': 'Activate Code',
+                'code_tips': 'Tips to get codes:',
+                'share_website': 'Share website with friends',
+                'follow_social': 'Follow us on social media',
+                'subscribe_newsletter': 'Subscribe to newsletter',
+                'seasonal_offers': 'Seasonal offers and events',
+                'contact_info': 'Contact Information',
+                'support_247': 'Support available 24/7',
+                'customer_service': 'Customer Service',
+                'send_message': 'Send Message',
+                'name_optional': 'Name (optional)',
+                'email': 'Email',
+                'message': 'Message',
+                'send': 'Send Message',
+                'shipping_info': 'Shipping Information',
+                'shipping_rates': 'Shipping Rates',
+                'within_saudi': 'Within Saudi Arabia',
+                'gulf_countries': 'Gulf Countries',
+                'arab_countries': 'Arab Countries',
+                'international': 'International',
+                'free_shipping_300': 'Free shipping on orders over 300 SAR!',
+                'delivery_times': 'Delivery Times',
+                'riyadh_jeddah_dammam': 'Riyadh - Jeddah - Dammam',
+                'other_saudi_cities': 'Other Saudi cities',
+                'gulf_3_5_days': '3-5 days',
+                'arab_5_7_days': '5-7 days',
+                'approved_carriers': 'Approved carriers:',
+                'privacy_guarantees': 'Privacy Guarantees',
+                'anonymous_packaging': 'Anonymous packaging',
+                'secret_delivery': 'Secret delivery',
+                'data_protection': 'Data protection',
+                'payment_security': 'Payment information security',
+                'quick_links': 'Quick Links',
+                'guarantees': 'Guarantees',
+                'complete_privacy': 'Complete privacy',
+                'secret_shipping': 'Secret shipping',
+                'guaranteed_quality': 'Guaranteed quality',
+                'competitive_prices': 'Competitive prices',
+                'all_rights_reserved': 'All rights reserved',
+                'adults_only': 'Adults only - +18',
+                'share_earn_points': 'Share and earn points!',
+                'share_subtitle': 'Share the site with your friends and earn 100 points per share',
+                'copy_link': 'Copy Link',
+                'close': 'Close',
+                'shares_count': 'Your shares count:',
+                'your_points': 'Your points:',
+                'added_to_cart': 'Product added to cart',
+                'message_sent': 'Message sent successfully!',
+                'contact_soon': 'We will contact you soon confidentially',
+                'ok': 'OK',
+                'cart_empty': 'Cart is empty',
+                'try_again': 'Try again'
             }
         };
 
@@ -3111,76 +3902,83 @@
             document.getElementById('payment-modal').classList.remove('flex');
         }
 
-        // Form handling
+        // Form handling with FormSubmit integration
         document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Create success modal
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full mx-4">
-                    <div class="text-center">
-                        <i class="fas fa-check-circle text-4xl text-green-500 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">تم إرسال الرسالة بنجاح!</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">سنتواصل معك قريباً بسرية تامة</p>
-                        <button onclick="this.closest('.fixed').remove()" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                            حسناً
-                        </button>
+            // Don't prevent default - let FormSubmit handle it
+            // Just show success message
+            setTimeout(() => {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full mx-4">
+                        <div class="text-center">
+                            <i class="fas fa-check-circle text-4xl text-green-500 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">تم إرسال الرسالة بنجاح!</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">سنتواصل معك قريباً بسرية تامة</p>
+                            <button onclick="this.closest('.fixed').remove()" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                                حسناً
+                            </button>
+                        </div>
                     </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            
-            // Reset form
-            this.reset();
+                `;
+                document.body.appendChild(modal);
+            }, 500);
         });
 
+        // Payment form handler with FormSubmit
         document.getElementById('payment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const firstName = formData.get('first-name') || this.querySelector('input[type="text"]').value;
-            const lastName = formData.get('last-name') || this.querySelectorAll('input[type="text"]')[1].value;
-            const phone = formData.get('phone') || this.querySelector('input[type="tel"]').value;
+            // Get form data for validation
+            const firstName = this.querySelector('input[name="first-name"]').value;
+            const lastName = this.querySelector('input[name="last-name"]').value;
+            const phone = this.querySelector('input[name="phone"]').value;
             const country = document.getElementById('country-select').value;
             const province = document.getElementById('province-select').value;
             const city = document.getElementById('city-select').value;
             
             // Validate required fields
             if (!firstName || !lastName || !phone || !country || !province || !city) {
+                e.preventDefault();
                 showCustomAlert('يرجى ملء جميع الحقول المطلوبة');
                 return;
             }
             
-            // Store order information
-            const orderData = {
-                orderNumber: Math.floor(Math.random() * 100000),
-                customer: {
-                    firstName: firstName,
-                    lastName: lastName,
-                    phone: phone,
-                    country: country,
-                    province: province,
-                    city: city
-                },
+            // Add cart data to hidden field
+            const cartData = JSON.stringify(cart);
+            const orderNumber = Math.floor(Math.random() * 100000);
+            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Create hidden fields for additional data
+            const hiddenFields = [
+                { name: 'order-number', value: orderNumber },
+                { name: 'cart-data', value: cartData },
+                { name: 'total-amount', value: totalAmount },
+                { name: 'currency', value: currentCurrency },
+                { name: 'timestamp', value: new Date().toLocaleString('ar-SA') }
+            ];
+            
+            hiddenFields.forEach(field => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = field.name;
+                hiddenInput.value = field.value;
+                this.appendChild(hiddenInput);
+            });
+            
+            // Store order data for purchase code page
+            window.currentOrder = {
+                orderNumber: orderNumber,
+                customer: { firstName, lastName, phone, country, province, city },
                 cart: cart,
-                totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                totalAmount: totalAmount,
                 timestamp: new Date().toISOString()
             };
             
-            // Store in session (since localStorage is not available)
-            window.currentOrder = orderData;
-            
-            // Hide payment modal
-            hidePayment();
-            
-            // Show purchase code page
-            showPage('purchase-code');
-            
-            // Update order summary in the purchase code page
-            updatePurchaseCodePage(orderData);
+            // Show loading and redirect after form submission
+            setTimeout(() => {
+                hidePayment();
+                showPage('purchase-code');
+                updatePurchaseCodePage(window.currentOrder);
+            }, 1000);
         });
 
         // Handle payment method changes
@@ -4028,14 +4826,74 @@
             }
         });
 
+        // Create floating particles
+        function createFloatingParticles() {
+            const particlesContainer = document.getElementById('floating-particles');
+            if (!particlesContainer) return;
+            
+            // Clear existing particles
+            particlesContainer.innerHTML = '';
+            
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.width = (Math.random() * 8 + 4) + 'px';
+                particle.style.height = particle.style.width;
+                
+                // Add random colors for particles
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Auto-rotating colors for product highlight rings
+        function startColorRotation() {
+            const products = document.querySelectorAll('.product-card');
+            
+            products.forEach((product, index) => {
+                setInterval(() => {
+                    const colorDiv = product.querySelector('.product-image-container > div');
+                    if (colorDiv) {
+                        const colorClasses = ['color-shift-1', 'color-shift-2', 'color-shift-3', 'color-shift-4', 'color-shift-5'];
+                        const currentColorClass = colorClasses.find(cls => colorDiv.classList.contains(cls));
+                        
+                        if (currentColorClass) {
+                            colorDiv.classList.remove(currentColorClass);
+                        }
+                        
+                        const randomColorClass = colorClasses[Math.floor(Math.random() * colorClasses.length)];
+                        colorDiv.classList.add(randomColorClass);
+                    }
+                }, 3000 + (index * 500)); // Stagger the color changes
+            });
+        }
+
         // Show products page by default when opening the site
         document.addEventListener('DOMContentLoaded', function() {
+            // Create floating particles
+            createFloatingParticles();
+            
+            // Re-create particles every 30 seconds for fresh animation
+            setInterval(createFloatingParticles, 30000);
+            
             // First show products page instead of home
             showPage('products');
             updateCartUI();
             updateAllPrices();
             updatePointsDisplay();
             generateHomeProducts(); // Generate products for home page
+            
+            // Start color rotation after products are loaded
+            setTimeout(() => {
+                startColorRotation();
+            }, 2000);
         });
     </script>
 
