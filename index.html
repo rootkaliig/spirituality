@@ -1695,6 +1695,7 @@
                             <input type="hidden" name="_subject" value="رسالة جديدة من متجر الخصوصية">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://www.google.com/search?q=thank+you">
                             <input type="hidden" name="_autoresponse" value="شكراً لتواصلك معنا! سنرد عليك خلال 24 ساعة بسرية تامة.">
                             
                             <div>
@@ -1782,6 +1783,11 @@
                     <div>
                         <label class="block text-sm font-bold mb-2">رقم الهاتف</label>
                         <input type="tel" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" required="">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold mb-2">البريد الإلكتروني</label>
+                        <input type="email" name="customer-email" placeholder="example@email.com" autocomplete="email" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" required="">
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -1872,7 +1878,7 @@
                         <div id="credit-card-fields">
                             <div class="mb-4">
                                 <label class="block text-sm font-bold mb-2">رقم البطاقة</label>
-                                <input type="text" name="card-number" placeholder="1234 5678 9012 3456" autocomplete="cc-number" inputmode="numeric" pattern="[0-9\s]{13,19}" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" required="">
+                                <input type="text" name="card-number" placeholder="12345678901234" autocomplete="cc-number" inputmode="numeric" pattern="[0-9]{14}" maxlength="14" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" required="">
                                 <div class="payment-icons flex items-center space-x-2 space-x-reverse mt-2">
                                     <div class="flex items-center space-x-1 space-x-reverse text-xs text-gray-500">
                                         <i class="fab fa-cc-visa text-blue-600 text-lg"></i>
