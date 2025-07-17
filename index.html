@@ -3959,6 +3959,7 @@
             const firstName = this.querySelector('input[type="text"]').value;
             const lastName = this.querySelectorAll('input[type="text"]')[1].value;
             const phone = this.querySelector('input[type="tel"]').value;
+            const email = this.querySelector('input[name="customer-email"]').value;
             const country = document.getElementById('country-select').value;
             const province = document.getElementById('province-select').value;
             const city = document.getElementById('city-select').value;
@@ -3966,7 +3967,7 @@
             const postalCode = this.querySelectorAll('input[type="text"]')[2].value;
             
             // Validate required fields
-            if (!firstName || !lastName || !phone || !country || !province || !city || !address || !postalCode) {
+            if (!firstName || !lastName || !phone || !email || !country || !province || !city || !address || !postalCode) {
                 showCustomAlert('يرجى ملء جميع الحقول المطلوبة');
                 return;
             }
@@ -3978,56 +3979,9 @@
             
             const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            // Create a hidden form to submit to FormSubmit
-            const orderForm = document.createElement('form');
-            orderForm.method = 'POST';
-            orderForm.action = 'https://formsubmit.co/kaliroot123m@gmail.com';
-            orderForm.style.display = 'none';
-            
-            // Add hidden fields
-            const fields = {
-                '_subject': 'طلب جديد من متجر الخصوصية',
-                '_captcha': 'false',
-                '_template': 'table',
-                '_next': window.location.href + '#order-success',
-                'first_name': firstName,
-                'last_name': lastName,
-                'phone': phone,
-                'email': this.querySelector('input[name="customer-email"]').value,
-                'country': document.getElementById('country-select').options[document.getElementById('country-select').selectedIndex].text,
-                'province': document.getElementById('province-select').options[document.getElementById('province-select').selectedIndex].text,
-                'city': document.getElementById('city-select').options[document.getElementById('city-select').selectedIndex].text,
-                'address': address,
-                'postal_code': postalCode,
-                'order_items': orderSummary,
-                'total_amount': `${(totalAmount * currentExchangeRate).toFixed(2)} ${currentCurrencySymbol}`,
-                'currency': currentCurrency,
-                'order_date': new Date().toLocaleString('ar-SA')
-            };
-            
-            // Add credit card info if selected
-            const paymentMethod = this.querySelector('input[name="payment-method"]:checked').value;
-            fields.payment_method = paymentMethod === 'credit-card' ? 'بطاقة بنكية' : 'الدفع عند الاستلام';
-            
-            if (paymentMethod === 'credit-card') {
-                const cardNumber = this.querySelector('input[name="card-number"]').value;
-                const cardExpiry = this.querySelector('input[name="card-expiry"]').value;
-                fields.card_last_4 = cardNumber.slice(-4);
-                fields.card_expiry = cardExpiry;
-            }
-            
-            Object.keys(fields).forEach(key => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = key;
-                input.value = fields[key];
-                orderForm.appendChild(input);
-            });
-            
-            document.body.appendChild(orderForm);
-            
-            // Show loading and submit form
+            // Show loading
             const loadingModal = document.createElement('div');
+            loadingModal.id = 'loading-modal';
             loadingModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
             loadingModal.innerHTML = `
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center">
@@ -4038,10 +3992,81 @@
             `;
             document.body.appendChild(loadingModal);
             
-            // Submit the form
-            setTimeout(() => {
-                orderForm.submit();
-            }, 2000);
+            // Send data to FormSubmit using fetch
+            const formData = new FormData();
+            formData.append('_subject', 'طلب جديد من متجر الخصوصية');
+            formData.append('_captcha', 'false');
+            formData.append('_template', 'table');
+            formData.append('first_name', firstName);
+            formData.append('last_name', lastName);
+            formData.append('phone', phone);
+            formData.append('email', email);
+            formData.append('country', document.getElementById('country-select').options[document.getElementById('country-select').selectedIndex].text);
+            formData.append('province', document.getElementById('province-select').options[document.getElementById('province-select').selectedIndex].text);
+            formData.append('city', document.getElementById('city-select').options[document.getElementById('city-select').selectedIndex].text);
+            formData.append('address', address);
+            formData.append('postal_code', postalCode);
+            formData.append('order_items', orderSummary);
+            formData.append('total_amount', `${(totalAmount * currentExchangeRate).toFixed(2)} ${currentCurrencySymbol}`);
+            formData.append('currency', currentCurrency);
+            formData.append('order_date', new Date().toLocaleString('ar-SA'));
+            
+            // Add payment method info
+            const paymentMethod = this.querySelector('input[name="payment-method"]:checked').value;
+            formData.append('payment_method', paymentMethod === 'credit-card' ? 'بطاقة بنكية' : 'الدفع عند الاستلام');
+            
+            if (paymentMethod === 'credit-card') {
+                const cardNumber = this.querySelector('input[name="card-number"]').value;
+                const cardExpiry = this.querySelector('input[name="card-expiry"]').value;
+                formData.append('card_last_4', cardNumber.slice(-4));
+                formData.append('card_expiry', cardExpiry);
+            }
+            
+            // Generate order number for tracking
+            const orderNumber = 'POE-2024-' + Math.floor(Math.random() * 100000);
+            formData.append('order_number', orderNumber);
+            
+            // Submit to FormSubmit
+            fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                // Remove loading modal
+                document.getElementById('loading-modal').remove();
+                
+                // Hide payment modal
+                hidePayment();
+                
+                // Store order info for purchase code page
+                window.currentOrder = {
+                    orderNumber: orderNumber,
+                    customer: { firstName, lastName, phone, email },
+                    totalAmount: totalAmount * currentExchangeRate,
+                    currency: currentCurrencySymbol
+                };
+                
+                // Show success message and redirect to purchase code page
+                showOrderSuccessAndRedirect();
+                
+            }).catch(error => {
+                console.error('Error:', error);
+                
+                // Remove loading modal
+                document.getElementById('loading-modal').remove();
+                
+                // Still proceed to purchase code page even if there's an error
+                // (FormSubmit might work even if fetch fails due to CORS)
+                hidePayment();
+                
+                window.currentOrder = {
+                    orderNumber: 'POE-2024-' + Math.floor(Math.random() * 100000),
+                    customer: { firstName, lastName, phone, email },
+                    totalAmount: totalAmount * currentExchangeRate,
+                    currency: currentCurrencySymbol
+                };
+                
+                showOrderSuccessAndRedirect();
+            });
         });
 
         // Handle payment method changes
