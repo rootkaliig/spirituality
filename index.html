@@ -466,25 +466,6 @@
                         </div>
                     </div>
                     
-                    <!-- سلة التسوق مع تصميم محسن ومصغر -->
-                    <div class="relative group min-w-[70px] md:min-w-[85px]">
-                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-md blur-sm opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
-                        <button onclick="toggleCart()" class="relative bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white px-2 py-2 md:px-2.5 md:py-2.5 rounded-md transition-all hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 shadow-md group-hover:scale-105 transform w-full">
-                            <div class="flex flex-col items-center text-center">
-                                <div class="flex items-center mb-0.5">
-                                    <span class="text-xs md:text-sm mr-0.5 animate-pulse">🛍️</span>
-                                    <i class="fas fa-shopping-bag text-xs text-yellow-300 animate-bounce"></i>
-                                </div>
-                                <div class="w-full">
-                                    <span class="text-xs font-bold block" data-translate="cart_label">🛒 سلة</span>
-                                    <div class="text-xs font-semibold opacity-90 mt-0.5">
-                                        (<span id="cart-count">0</span>)
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-
                     <!-- زر السلة العادي -->
                     <div class="relative group min-w-[70px] md:min-w-[85px]">
                         <div class="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 rounded-md blur-sm opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
@@ -497,7 +478,7 @@
                                 <div class="w-full">
                                     <span class="text-xs font-bold block" data-translate="cart_simple">السلة</span>
                                     <div class="text-xs font-semibold opacity-90 mt-0.5">
-                                        (<span id="cart-count-simple">0</span>)
+                                        (<span id="cart-count">0</span>)
                                     </div>
                                 </div>
                             </div>
@@ -1854,7 +1835,374 @@
             updateCartUI();
         }
 
-        // Enhanced language change function
+        // Complete Translation System
+        const translations = {
+            'ar': {
+                // Navigation
+                'nav_home': '🏠 الرئيسية',
+                'nav_products': '🛍️ المنتجات',
+                'nav_vibrators': '💜 هزاز الجنس',
+                'nav_contact': '📞 اتصل بنا',
+                'share_label': 'مشاركة',
+                'cart_label': '🛒 سلة',
+                'cart_simple': 'السلة',
+                'language_label': '🗣️ لغة',
+                'currency_label': '💰 عملة',
+                
+                // Age Verification
+                'age_verification_title': 'تأكيد العمر',
+                'age_verification_desc': 'يجب أن تكون 18 سنة أو أكثر لدخول هذا الموقع',
+                'age_over_18': 'أكبر من 18 سنة ✓',
+                'age_under_18': 'أقل من 18 سنة ✗',
+                
+                // Hero Section
+                'hero_title': 'متجر الخصوصية',
+                'hero_subtitle': '🌸 شركة أجنبية متخصصة في دعم البنات العربيات 🌸',
+                'mission_title': '💖 رسالتنا للبنات العربيات 💖',
+                'mission_1': '✨ شركة أجنبية عالمية مختصة',
+                'mission_2': '🎯 دعم البنات العربيات حصرياً',
+                'mission_3': '💎 منتجات عالية الجودة حصرية',
+                'mission_4': '🚀 توصيل سريع وآمن',
+                'mission_5': '🔒 خصوصية وسرية تامة',
+                'mission_6': '💰 أسعار منخفضة لدعم الجميع',
+                'pricing_note': '✨ أسعارنا منخفضة لتكون في متناول الجميع! ✨',
+                'shop_now_btn': '🛍️ تسوق الآن',
+                
+                // Products
+                'featured_products': 'منتجاتنا المميزة',
+                'featured_products_desc': 'اكتشف مجموعتنا الحصرية من المنتجات عالية الجودة',
+                'all_products': 'جميع المنتجات',
+                'all_products_desc': 'استكشف مجموعتنا الكاملة من المنتجات الحصرية',
+                
+                // Vibrators Page
+                'vibrators_page_title': '💜 هزاز الجنس 💜',
+                'vibrators_page_desc': 'مجموعة حصرية من المنتجات عالية الجودة للمتعة الشخصية',
+                'why_choose_us': '💎 لماذا تختارنا؟ 💎',
+                'quality_assured': 'جودة مضمونة 100%',
+                'safe_materials': 'مواد آمنة ومعتمدة',
+                'complete_privacy': 'خصوصية تامة',
+                'fast_delivery': 'توصيل سريع ومجاني',
+                'discrete_packaging': 'تغليف سري ومنفصل',
+                'support_247': 'دعم فني 24/7',
+                
+                // Cart
+                'shopping_cart': 'سلة التسوق',
+                'cart_empty': 'السلة فارغة',
+                'subtotal': 'المجموع الفرعي:',
+                'shipping': 'الشحن:',
+                'total': 'المجموع:',
+                'final_total': 'المجموع النهائي:',
+                'proceed_to_payment': 'المتابعة للدفع',
+                
+                // Payment
+                'complete_order': 'إتمام الطلب',
+                'first_name': 'الاسم الأول',
+                'last_name': 'الاسم الأخير',
+                'phone_number': 'رقم الهاتف',
+                'email': 'البريد الإلكتروني',
+                'detailed_address': 'العنوان التفصيلي',
+                'payment_info': 'معلومات الدفع',
+                'supported_cards': 'البطاقات المدعومة:',
+                'ssl_protection': 'جميع معلومات الدفع محمية بتشفير SSL',
+                'card_number': 'رقم البطاقة',
+                'expiry_date': 'الشهر/السنة',
+                'cvv': 'رمز الأمان (CVV)',
+                'cardholder_name': 'اسم حامل البطاقة',
+                
+                // Code Verification
+                'enter_verification_code': '📱 أدخل رمز التأكيد 📱',
+                'enter_code_to_complete': 'أدخل الرمز لإتمام الشراء',
+                'secure_protected': '🔒 آمن ومحمي 100%',
+                'code_sent_to': 'تم إرسال رمز التأكيد إلى',
+                'check_sms': 'تحقق من رسائلك النصية',
+                'enter_sent_code': 'أدخل الرمز المرسل',
+                'didnt_receive_code': 'لم تستلم الرمز؟',
+                'resend_code': 'إعادة إرسال الرمز',
+                'confirm_complete_order': '✅ تأكيد وإتمام الطلب ✅',
+                'secure_encrypted': 'عملية آمنة ومشفرة 100%',
+                'instant_processing': 'معالجة فورية خلال ثوانٍ',
+                
+                // Thank You Page
+                'success_completed': '🎉 تم بنجاح! 🎉',
+                'thank_you_order': 'شكراً لك على طلبك!',
+                'order_details': 'تفاصيل الطلب',
+                'order_number': 'رقم الطلب:',
+                'order_status': 'حالة الطلب:',
+                'confirmed_approved': 'مؤكد ومُعتمد',
+                'payment_method': 'طريقة الدفع:',
+                'credit_card': 'بطاقة ائتمان',
+                'order_date': 'تاريخ الطلب:',
+                'shipping_info': 'معلومات الشحن',
+                'delivery_time': 'وقت التسليم المتوقع:',
+                'delivery_hours': '12-24 ساعة',
+                'shipping_type': 'نوع الشحن:',
+                'free_express': 'شحن سريع مجاني',
+                'tracking_number': 'رقم التتبع:',
+                'will_be_sent': 'سيتم إرساله قريباً',
+                'shipping_company': 'شركة الشحن:',
+                'special_bonus': 'مكافأة خاصة',
+                'bonus_desc': '🎁 تم إضافة خصم 10% إضافي على طلبك القادم + هدية مجانية مفاجئة!',
+                'back_to_home': 'العودة للصفحة الرئيسية',
+                'shop_more': 'تسوق المزيد',
+                'email_confirmation': '📧 سيتم إرسال تأكيد الطلب إلى بريدك الإلكتروني',
+                'sms_tracking': '📱 وسيتم إرسال رقم التتبع عبر رسالة نصية',
+                
+                // Contact
+                'contact_us': 'اتصل بنا',
+                'contact_desc': 'نحن هنا لمساعدتك في أي وقت',
+                'contact_info': 'معلومات التواصل',
+                'whatsapp': 'واتساب',
+                'working_hours': 'ساعات العمل',
+                '24_7_service': '24/7 - خدمة مستمرة',
+                'send_message': 'أرسل رسالة',
+                'name': 'الاسم',
+                'message': 'الرسالة'
+            },
+            'en': {
+                // Navigation
+                'nav_home': '🏠 Home',
+                'nav_products': '🛍️ Products',
+                'nav_vibrators': '💜 Sex Toys',
+                'nav_contact': '📞 Contact',
+                'share_label': 'Share',
+                'cart_label': '🛒 Cart',
+                'cart_simple': 'Cart',
+                'language_label': '🗣️ Language',
+                'currency_label': '💰 Currency',
+                
+                // Age Verification
+                'age_verification_title': 'Age Verification',
+                'age_verification_desc': 'You must be 18 years or older to enter this website',
+                'age_over_18': 'Over 18 years ✓',
+                'age_under_18': 'Under 18 years ✗',
+                
+                // Hero Section
+                'hero_title': 'Privacy Store',
+                'hero_subtitle': '🌸 International Company Specialized in Supporting Arab Girls 🌸',
+                'mission_title': '💖 Our Mission for Arab Girls 💖',
+                'mission_1': '✨ Specialized international global company',
+                'mission_2': '🎯 Supporting Arab girls exclusively',
+                'mission_3': '💎 Exclusive high-quality products',
+                'mission_4': '🚀 Fast and secure delivery',
+                'mission_5': '🔒 Complete privacy and confidentiality',
+                'mission_6': '💰 Low prices to support everyone',
+                'pricing_note': '✨ Our prices are low to be affordable for everyone! ✨',
+                'shop_now_btn': '🛍️ Shop Now',
+                
+                // Products
+                'featured_products': 'Our Featured Products',
+                'featured_products_desc': 'Discover our exclusive collection of high-quality products',
+                'all_products': 'All Products',
+                'all_products_desc': 'Explore our complete range of exclusive products',
+                
+                // Vibrators Page
+                'vibrators_page_title': '💜 Sex Toys 💜',
+                'vibrators_page_desc': 'Exclusive collection of high-quality products for personal pleasure',
+                'why_choose_us': '💎 Why Choose Us? 💎',
+                'quality_assured': '100% Quality Guaranteed',
+                'safe_materials': 'Safe and Certified Materials',
+                'complete_privacy': 'Complete Privacy',
+                'fast_delivery': 'Fast and Free Delivery',
+                'discrete_packaging': 'Discrete and Separate Packaging',
+                'support_247': '24/7 Technical Support',
+                
+                // Cart
+                'shopping_cart': 'Shopping Cart',
+                'cart_empty': 'Cart is empty',
+                'subtotal': 'Subtotal:',
+                'shipping': 'Shipping:',
+                'total': 'Total:',
+                'final_total': 'Final Total:',
+                'proceed_to_payment': 'Proceed to Payment',
+                
+                // Payment
+                'complete_order': 'Complete Order',
+                'first_name': 'First Name',
+                'last_name': 'Last Name',
+                'phone_number': 'Phone Number',
+                'email': 'Email',
+                'detailed_address': 'Detailed Address',
+                'payment_info': 'Payment Information',
+                'supported_cards': 'Supported Cards:',
+                'ssl_protection': 'All payment information is protected with SSL encryption',
+                'card_number': 'Card Number',
+                'expiry_date': 'MM/YY',
+                'cvv': 'Security Code (CVV)',
+                'cardholder_name': 'Cardholder Name',
+                
+                // Code Verification
+                'enter_verification_code': '📱 Enter Verification Code 📱',
+                'enter_code_to_complete': 'Enter the code to complete purchase',
+                'secure_protected': '🔒 100% Secure & Protected',
+                'code_sent_to': 'Verification code sent to',
+                'check_sms': 'Check your text messages',
+                'enter_sent_code': 'Enter the sent code',
+                'didnt_receive_code': 'Didn\'t receive the code?',
+                'resend_code': 'Resend Code',
+                'confirm_complete_order': '✅ Confirm & Complete Order ✅',
+                'secure_encrypted': '100% Secure and Encrypted Process',
+                'instant_processing': 'Instant processing in seconds',
+                
+                // Thank You Page
+                'success_completed': '🎉 Success! 🎉',
+                'thank_you_order': 'Thank you for your order!',
+                'order_details': 'Order Details',
+                'order_number': 'Order Number:',
+                'order_status': 'Order Status:',
+                'confirmed_approved': 'Confirmed & Approved',
+                'payment_method': 'Payment Method:',
+                'credit_card': 'Credit Card',
+                'order_date': 'Order Date:',
+                'shipping_info': 'Shipping Information',
+                'delivery_time': 'Expected Delivery Time:',
+                'delivery_hours': '12-24 hours',
+                'shipping_type': 'Shipping Type:',
+                'free_express': 'Free Express Shipping',
+                'tracking_number': 'Tracking Number:',
+                'will_be_sent': 'Will be sent soon',
+                'shipping_company': 'Shipping Company:',
+                'special_bonus': 'Special Bonus',
+                'bonus_desc': '🎁 Added 10% extra discount on your next order + free surprise gift!',
+                'back_to_home': 'Back to Home',
+                'shop_more': 'Shop More',
+                'email_confirmation': '📧 Order confirmation will be sent to your email',
+                'sms_tracking': '📱 Tracking number will be sent via SMS',
+                
+                // Contact
+                'contact_us': 'Contact Us',
+                'contact_desc': 'We are here to help you anytime',
+                'contact_info': 'Contact Information',
+                'whatsapp': 'WhatsApp',
+                'working_hours': 'Working Hours',
+                '24_7_service': '24/7 - Continuous Service',
+                'send_message': 'Send Message',
+                'name': 'Name',
+                'message': 'Message'
+            },
+            'tr': {
+                // Navigation
+                'nav_home': '🏠 Ana Sayfa',
+                'nav_products': '🛍️ Ürünler',
+                'nav_vibrators': '💜 Seks Oyuncakları',
+                'nav_contact': '📞 İletişim',
+                'share_label': 'Paylaş',
+                'cart_label': '🛒 Sepet',
+                'cart_simple': 'Sepet',
+                'language_label': '🗣️ Dil',
+                'currency_label': '💰 Para Birimi',
+                
+                // Age Verification
+                'age_verification_title': 'Yaş Doğrulama',
+                'age_verification_desc': 'Bu siteye girmek için 18 yaşında veya daha büyük olmalısınız',
+                'age_over_18': '18 yaş üstü ✓',
+                'age_under_18': '18 yaş altı ✗',
+                
+                // Hero Section
+                'hero_title': 'Gizlilik Mağazası',
+                'hero_subtitle': '🌸 Arap Kızlarını Desteklemede Uzmanlaşmış Uluslararası Şirket 🌸',
+                'mission_title': '💖 Arap Kızları İçin Misyonumuz 💖',
+                'mission_1': '✨ Uzman uluslararası küresel şirket',
+                'mission_2': '🎯 Sadece Arap kızlarını destekleme',
+                'mission_3': '💎 Özel yüksek kaliteli ürünler',
+                'mission_4': '🚀 Hızlı ve güvenli teslimat',
+                'mission_5': '🔒 Tam gizlilik ve gizlilik',
+                'mission_6': '💰 Herkesi desteklemek için düşük fiyatlar',
+                'pricing_note': '✨ Fiyatlarımız herkes için uygun fiyatlı olması için düşük! ✨',
+                'shop_now_btn': '🛍️ Şimdi Alışveriş Yap',
+                
+                // Products
+                'featured_products': 'Öne Çıkan Ürünlerimiz',
+                'featured_products_desc': 'Özel yüksek kaliteli ürün koleksiyonumuzu keşfedin',
+                'all_products': 'Tüm Ürünler',
+                'all_products_desc': 'Özel ürünlerimizin tam yelpazesini keşfedin',
+                
+                // Vibrators Page
+                'vibrators_page_title': '💜 Seks Oyuncakları 💜',
+                'vibrators_page_desc': 'Kişisel zevk için özel yüksek kaliteli ürün koleksiyonu',
+                'why_choose_us': '💎 Neden Bizi Seçmelisiniz? 💎',
+                'quality_assured': '%100 Kalite Garantisi',
+                'safe_materials': 'Güvenli ve Sertifikalı Malzemeler',
+                'complete_privacy': 'Tam Gizlilik',
+                'fast_delivery': 'Hızlı ve Ücretsiz Teslimat',
+                'discrete_packaging': 'Gizli ve Ayrı Paketleme',
+                'support_247': '7/24 Teknik Destek',
+                
+                // Cart
+                'shopping_cart': 'Alışveriş Sepeti',
+                'cart_empty': 'Sepet boş',
+                'subtotal': 'Ara Toplam:',
+                'shipping': 'Kargo:',
+                'total': 'Toplam:',
+                'final_total': 'Son Toplam:',
+                'proceed_to_payment': 'Ödemeye Devam Et',
+                
+                // Payment
+                'complete_order': 'Siparişi Tamamla',
+                'first_name': 'Ad',
+                'last_name': 'Soyad',
+                'phone_number': 'Telefon Numarası',
+                'email': 'E-posta',
+                'detailed_address': 'Detaylı Adres',
+                'payment_info': 'Ödeme Bilgileri',
+                'supported_cards': 'Desteklenen Kartlar:',
+                'ssl_protection': 'Tüm ödeme bilgileri SSL şifreleme ile korunmaktadır',
+                'card_number': 'Kart Numarası',
+                'expiry_date': 'AA/YY',
+                'cvv': 'Güvenlik Kodu (CVV)',
+                'cardholder_name': 'Kart Sahibinin Adı',
+                
+                // Code Verification
+                'enter_verification_code': '📱 Doğrulama Kodunu Girin 📱',
+                'enter_code_to_complete': 'Satın almayı tamamlamak için kodu girin',
+                'secure_protected': '🔒 %100 Güvenli ve Korumalı',
+                'code_sent_to': 'Doğrulama kodu gönderildi',
+                'check_sms': 'Metin mesajlarınızı kontrol edin',
+                'enter_sent_code': 'Gönderilen kodu girin',
+                'didnt_receive_code': 'Kodu almadınız mı?',
+                'resend_code': 'Kodu Tekrar Gönder',
+                'confirm_complete_order': '✅ Onayla ve Siparişi Tamamla ✅',
+                'secure_encrypted': '%100 Güvenli ve Şifreli İşlem',
+                'instant_processing': 'Saniyeler içinde anında işleme',
+                
+                // Thank You Page
+                'success_completed': '🎉 Başarılı! 🎉',
+                'thank_you_order': 'Siparişiniz için teşekkürler!',
+                'order_details': 'Sipariş Detayları',
+                'order_number': 'Sipariş Numarası:',
+                'order_status': 'Sipariş Durumu:',
+                'confirmed_approved': 'Onaylandı ve Onaylandı',
+                'payment_method': 'Ödeme Yöntemi:',
+                'credit_card': 'Kredi Kartı',
+                'order_date': 'Sipariş Tarihi:',
+                'shipping_info': 'Kargo Bilgileri',
+                'delivery_time': 'Beklenen Teslimat Süresi:',
+                'delivery_hours': '12-24 saat',
+                'shipping_type': 'Kargo Türü:',
+                'free_express': 'Ücretsiz Hızlı Kargo',
+                'tracking_number': 'Takip Numarası:',
+                'will_be_sent': 'Yakında gönderilecek',
+                'shipping_company': 'Kargo Şirketi:',
+                'special_bonus': 'Özel Bonus',
+                'bonus_desc': '🎁 Bir sonraki siparişinizde %10 ekstra indirim + ücretsiz sürpriz hediye eklendi!',
+                'back_to_home': 'Ana Sayfaya Dön',
+                'shop_more': 'Daha Fazla Alışveriş Yap',
+                'email_confirmation': '📧 Sipariş onayı e-postanıza gönderilecek',
+                'sms_tracking': '📱 Takip numarası SMS ile gönderilecek',
+                
+                // Contact
+                'contact_us': 'İletişim',
+                'contact_desc': 'Her zaman size yardımcı olmak için buradayız',
+                'contact_info': 'İletişim Bilgileri',
+                'whatsapp': 'WhatsApp',
+                'working_hours': 'Çalışma Saatleri',
+                '24_7_service': '7/24 - Sürekli Hizmet',
+                'send_message': 'Mesaj Gönder',
+                'name': 'İsim',
+                'message': 'Mesaj'
+            }
+        };
+
+        // Enhanced language change function with complete translation
         function changeLanguage(newLanguage) {
             currentLanguage = newLanguage;
             
@@ -1875,8 +2223,26 @@
                 document.documentElement.setAttribute('lang', 'ar');
             }
             
+            // Apply translations to all elements with data-translate
+            const elementsToTranslate = document.querySelectorAll('[data-translate]');
+            elementsToTranslate.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[newLanguage] && translations[newLanguage][key]) {
+                    element.textContent = translations[newLanguage][key];
+                }
+            });
+            
+            // Update page title
+            const pageTitles = {
+                'ar': 'متجر الخصوصية العالمي - توصيل لجميع أنحاء العالم',
+                'en': 'Global Privacy Store - Worldwide Delivery',
+                'tr': 'Küresel Gizlilik Mağazası - Dünya Çapında Teslimat'
+            };
+            document.getElementById('page-title').textContent = pageTitles[newLanguage] || pageTitles['ar'];
+            
             // Regenerate products with translated names
             generateProducts();
+            generateVibratorProducts();
         }
 
         // Cart functions
@@ -2316,22 +2682,7 @@
             updateCartUI();
             updateShareCount();
             
-            // Update cart count in both cart buttons
-            const updateBothCartCounts = () => {
-                const cartCount1 = document.getElementById('cart-count');
-                const cartCount2 = document.getElementById('cart-count-simple');
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                
-                if (cartCount1) cartCount1.textContent = totalItems;
-                if (cartCount2) cartCount2.textContent = totalItems;
-            };
-            
-            // Override updateCartUI to also update simple cart count
-            const originalUpdateCartUI = updateCartUI;
-            updateCartUI = function() {
-                originalUpdateCartUI();
-                updateBothCartCounts();
-            };
+
             
             // Check if redirected from payment
             if (window.location.hash === '#code') {
