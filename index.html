@@ -187,336 +187,22 @@
         }
         
         /* صور المنتجات أكبر بشكل واضح */
-        .product-grid .card-hover > div:nth-child(2) {
-            height: 250px !important;
+        .product-image {
+            height: 320px;
         }
         
         @media (min-width: 768px) {
-            .product-grid .card-hover > div:nth-child(2) {
-                height: 350px !important;
+            .product-image {
+                height: 400px;
             }
         }
         
         @media (min-width: 1024px) {
-            .product-grid .card-hover > div:nth-child(2) {
-                height: 400px !important;
+            .product-image {
+                height: 450px;
             }
         }
         
-        /* خلفيات ملونة متدرجة للصفحات */
-        .colorful-bg-1 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .colorful-bg-2 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .colorful-bg-3 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .colorful-bg-4 {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-        
-        .animated-bg {
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe, #43e97b, #38f9d7);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* تأثيرات متقدمة للمنتجات */
-        .product-card-enhanced {
-            position: relative;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            overflow: hidden;
-        }
-        
-        .dark .product-card-enhanced {
-            background: rgba(31, 41, 55, 0.95);
-            border: 1px solid rgba(75, 85, 99, 0.3);
-        }
-        
-        .product-card-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: all 0.6s;
-            z-index: 1;
-        }
-        
-        .product-card-enhanced:hover::before {
-            left: 100%;
-        }
-        
-        .product-card-enhanced:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-            border-color: rgba(93, 92, 222, 0.5);
-        }
-        
-        .product-image-enhanced {
-            position: relative;
-            overflow: hidden;
-            height: 200px;
-            border-radius: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            .product-image-enhanced {
-                height: 180px;
-            }
-        }
-        
-        .product-image-enhanced img {
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .product-card-enhanced:hover .product-image-enhanced img {
-            transform: scale(1.15) rotate(2deg);
-        }
-        
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(93, 92, 222, 0.1), rgba(139, 92, 246, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .product-card-enhanced:hover .image-overlay {
-            opacity: 1;
-        }
-        
-        .floating-discount {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: bold;
-            animation: pulse 2s infinite;
-            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
-            z-index: 2;
-        }
-        
-        .magical-border {
-            position: relative;
-            border-radius: 1.5rem;
-            padding: 2px;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            background-size: 400% 400%;
-            animation: gradientAnimation 8s ease infinite;
-        }
-        
-        .magical-border .inner-content {
-            background: white;
-            border-radius: 1.375rem;
-            padding: 1.5rem;
-        }
-        
-        .dark .magical-border .inner-content {
-            background: #1f2937;
-        }
-        
-        .sparkle-effect {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: #ffd700;
-            border-radius: 50%;
-            animation: sparkle 3s infinite;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1) rotate(180deg); }
-        }
-        
-        .button-glow {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .button-glow::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: all 0.6s;
-        }
-        
-        .button-glow:hover::before {
-            left: 100%;
-        }
-        
-        .mobile-product-card {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .mobile-product-card:hover {
-            border-color: #5D5CDE;
-            transform: translateY(-2px);
-        }
-        
-        .mobile-image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 8px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        
-        .mobile-image-gallery img {
-            width: 100%;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid #e5e7eb;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .mobile-image-gallery img:hover,
-        .mobile-image-gallery img.active {
-            border-color: #5D5CDE;
-            transform: scale(1.05);
-        }
-        
-        .mobile-title {
-            font-size: 1.5rem !important;
-            font-weight: 900 !important;
-            line-height: 1.3 !important;
-            color: #1f2937 !important;
-        }
-        
-        .dark .mobile-title {
-            color: #f9fafb !important;
-        }
-        
-        .mobile-description {
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            line-height: 1.5 !important;
-            color: #374151 !important;
-        }
-        
-        .dark .mobile-description {
-            color: #d1d5db !important;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        
-        .floating-shapes div {
-            position: absolute;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-shapes div:nth-child(1) {
-            top: 10%;
-            left: 20%;
-            animation-delay: 0s;
-        }
-        
-        .floating-shapes div:nth-child(2) {
-            top: 20%;
-            right: 20%;
-            animation-delay: 2s;
-        }
-        
-        .floating-shapes div:nth-child(3) {
-            top: 60%;
-            left: 10%;
-            animation-delay: 4s;
-        }
-        
-        .animated-border {
-            position: relative;
-            background: linear-gradient(45deg, #5D5CDE, #8B5CF6, #EC4899, #5D5CDE);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease infinite;
-            padding: 2px;
-            border-radius: 1rem;
-        }
-        
-        .animated-border .inner {
-            background: white;
-            border-radius: 0.875rem;
-            padding: 1rem;
-        }
-        
-        .dark .animated-border .inner {
-            background: #1f2937;
-        }
-        
-        .form-success {
-            animation: success 0.6s ease-in-out;
-        }
-        
-        .form-error {
-            animation: shake 0.5s ease-in-out;
-            border-color: #EF4444 !important;
-        }
-
-        @media (max-width: 640px) {
-            .code-input {
-                width: 2.5rem !important;
-                height: 2.5rem !important;
-                font-size: 1.25rem !important;
-            }
-            
-            .code-form-container {
-                padding: 0.75rem !important;
-                margin: 0.25rem !important;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem !important;
-            }
-            
-            .nav-mobile {
-                padding: 0.5rem !important;
-            }
-        }
-
         .hover-lift {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -543,6 +229,27 @@
         .transition-direction {
             transition: all 0.5s ease;
         }
+
+        @media (max-width: 640px) {
+            .code-input {
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1.25rem !important;
+            }
+            
+            .code-form-container {
+                padding: 0.75rem !important;
+                margin: 0.25rem !important;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .nav-mobile {
+                padding: 0.5rem !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
@@ -552,10 +259,10 @@
 
     <!-- Age Verification Modal -->
     <div id="age-verification" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-        <div class="glass-effect text-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 text-center animate-scaleIn">
+        <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 text-center animate-scaleIn">
             <div class="text-5xl md:text-6xl mb-6 animate-bounce">🔞</div>
             <h2 class="text-2xl md:text-3xl font-bold mb-4" data-translate="age_verification_title">تأكيد العمر</h2>
-            <p class="text-gray-200 mb-6 md:mb-8 text-base md:text-lg" data-translate="age_verification_desc">
+            <p class="text-gray-600 dark:text-gray-300 mb-6 md:mb-8 text-base md:text-lg" data-translate="age_verification_desc">
                 يجب أن تكون 18 سنة أو أكثر لدخول هذا الموقع
             </p>
             <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
@@ -569,27 +276,9 @@
         </div>
     </div>
 
-    <!-- Enhanced Premium Header with Advanced Effects -->
+    <!-- Enhanced Premium Header -->
     <nav id="main-header" class="bg-gradient-to-r from-purple-900 via-pink-900 to-red-900 dark:from-gray-900 dark:via-purple-900 dark:to-pink-900 shadow-2xl sticky top-0 z-50 transition-all duration-500 backdrop-blur-lg relative overflow-hidden">
-        <!-- خلفية الأشعة والتأثيرات المطورة -->
-        <div class="absolute inset-0 overflow-hidden">
-            <!-- Animated gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-red-600/20 animate-pulse"></div>
-            
-            <!-- Floating particles -->
-            <div class="absolute -top-2 -left-2 w-4 h-4 bg-yellow-400 rounded-full opacity-40 animate-ping"></div>
-            <div class="absolute top-1 right-4 w-3 h-3 bg-pink-400 rounded-full opacity-30 animate-pulse"></div>
-            <div class="absolute -bottom-1 right-2 w-2 h-2 bg-blue-400 rounded-full opacity-40 animate-bounce"></div>
-            <div class="absolute top-2 left-1/4 w-1 h-1 bg-white rounded-full opacity-60 animate-pulse"></div>
-            <div class="absolute bottom-1 left-3/4 w-1.5 h-1.5 bg-yellow-300 rounded-full opacity-50 animate-bounce"></div>
-            
-            <!-- Shooting stars effect -->
-            <div class="absolute top-1 left-10 w-0.5 h-8 bg-gradient-to-b from-white to-transparent opacity-30 animate-pulse"></div>
-            <div class="absolute top-3 right-20 w-0.5 h-6 bg-gradient-to-b from-yellow-300 to-transparent opacity-40 animate-pulse" style="animation-delay: 0.5s;"></div>
-        </div>
-        
         <div class="container mx-auto px-2 md:px-4 relative z-10">
-            <!-- صف واحد بجميع الأزرار والقائمة -->
             <div class="flex items-center justify-between py-2 md:py-3 px-1">
                 <!-- زر القائمة على اليمين -->
                 <button class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-3 md:p-4 rounded-lg shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all hover:scale-105 z-20" onclick="toggleMobileMenu()">
@@ -598,7 +287,7 @@
 
                 <!-- الأزرار في المنتصف -->
                 <div class="flex items-center gap-1 md:gap-2 overflow-x-auto">
-                    <!-- اللغة مع تصميم محسن ومصغر -->
+                    <!-- اللغة -->
                     <div class="relative group min-w-[70px] md:min-w-[85px]">
                         <div class="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 rounded-md blur-sm opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
                         <div class="relative bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 text-white border-0 rounded-md px-2 py-2 md:px-2.5 md:py-2.5 shadow-md hover:from-blue-600 hover:via-cyan-600 hover:to-blue-700 transition-all duration-300 cursor-pointer group-hover:scale-105 transform">
@@ -612,11 +301,6 @@
                                         <option value="ar" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇸🇦 عربي</option>
                                         <option value="en" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇺🇸 EN</option>
                                         <option value="tr" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇹🇷 TR</option>
-                                        <option value="fr" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇫🇷 FR</option>
-                                        <option value="de" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇩🇪 DE</option>
-                                        <option value="es" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇪🇸 ES</option>
-                                        <option value="ru" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇷🇺 RU</option>
-                                        <option value="zh" style="background: #1f2937 !important; color: white !important; font-weight: 700;">🇨🇳 中文</option>
                                     </select>
                                     <span class="text-xs font-semibold opacity-90 block mt-0.5" data-translate="language_label">🗣️ لغة</span>
                                 </div>
@@ -624,7 +308,7 @@
                         </div>
                     </div>
                     
-                    <!-- العملة مع تصميم محسن ومصغر -->
+                    <!-- العملة -->
                     <div class="relative group min-w-[70px] md:min-w-[85px]">
                         <div class="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 rounded-md blur-sm opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
                         <div class="relative bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 text-white border-0 rounded-md px-2 py-2 md:px-2.5 md:py-2.5 shadow-md hover:from-green-600 hover:via-emerald-600 hover:to-green-700 transition-all duration-300 cursor-pointer group-hover:scale-105 transform">
@@ -636,21 +320,6 @@
                                 <div class="w-full">
                                     <select id="currency-selector" class="appearance-none bg-transparent text-white border-0 text-xs font-bold focus:outline-none cursor-pointer w-full text-center" onchange="changeCurrency(this.value)">
                                         <option value="SAR" class="bg-gray-800 text-white font-bold" data-translate="currency_sar">🇸🇦 ريال</option>
-                                        <option value="AED" class="bg-gray-800 text-white font-bold" data-translate="currency_aed">🇦🇪 درهم</option>
-                                        <option value="KWD" class="bg-gray-800 text-white font-bold" data-translate="currency_kwd">🇰🇼 دينار</option>
-                                        <option value="QAR" class="bg-gray-800 text-white font-bold" data-translate="currency_qar">🇶🇦 ريال</option>
-                                        <option value="BHD" class="bg-gray-800 text-white font-bold" data-translate="currency_bhd">🇧🇭 دينار</option>
-                                        <option value="OMR" class="bg-gray-800 text-white font-bold" data-translate="currency_omr">🇴🇲 ريال</option>
-                                        <option value="JOD" class="bg-gray-800 text-white font-bold" data-translate="currency_jod">🇯🇴 دينار</option>
-                                        <option value="LBP" class="bg-gray-800 text-white font-bold" data-translate="currency_lbp">🇱🇧 ليرة</option>
-                                        <option value="SYP" class="bg-gray-800 text-white font-bold" data-translate="currency_syp">🇸🇾 ليرة</option>
-                                        <option value="IQD" class="bg-gray-800 text-white font-bold" data-translate="currency_iqd">🇮🇶 دينار</option>
-                                        <option value="EGP" class="bg-gray-800 text-white font-bold" data-translate="currency_egp">🇪🇬 جنيه</option>
-                                        <option value="MAD" class="bg-gray-800 text-white font-bold" data-translate="currency_mad">🇲🇦 درهم</option>
-                                        <option value="TND" class="bg-gray-800 text-white font-bold" data-translate="currency_tnd">🇹🇳 دينار</option>
-                                        <option value="DZD" class="bg-gray-800 text-white font-bold" data-translate="currency_dzd">🇩🇿 دينار</option>
-                                        <option value="LYD" class="bg-gray-800 text-white font-bold" data-translate="currency_lyd">🇱🇾 دينار</option>
-                                        <option value="SDG" class="bg-gray-800 text-white font-bold" data-translate="currency_sdg">🇸🇩 جنيه</option>
                                         <option value="USD" class="bg-gray-800 text-white font-bold" data-translate="currency_usd">🇺🇸 دولار</option>
                                         <option value="EUR" class="bg-gray-800 text-white font-bold" data-translate="currency_eur">🇪🇺 يورو</option>
                                     </select>
@@ -660,7 +329,7 @@
                         </div>
                     </div>
                     
-                    <!-- زر السلة العادي -->
+                    <!-- زر السلة -->
                     <div class="relative group min-w-[70px] md:min-w-[85px]">
                         <div class="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 rounded-md blur-sm opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
                         <button onclick="toggleCart()" class="relative bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white px-2 py-2 md:px-2.5 md:py-2.5 rounded-md transition-all hover:from-orange-600 hover:via-red-600 hover:to-pink-600 shadow-md group-hover:scale-105 transform w-full">
@@ -703,78 +372,37 @@
                 <div class="w-16"></div>
             </div>
             
-            <!-- Mobile Menu المطور -->
+            <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden pb-2 animate-slideIn">
                 <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-lg mx-2 p-2 border border-white border-opacity-20 shadow-2xl">
                     <div class="grid grid-cols-2 gap-2">
                         <a href="#" class="relative group block py-2 text-white hover:text-yellow-300 transition-colors text-sm text-center rounded-lg hover:bg-white hover:bg-opacity-10" onclick="showPage('home')" data-translate="nav_home">
-                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all"></div>
                             <span class="relative z-10">🏠 الرئيسية</span>
                         </a>
                         <a href="#" class="relative group block py-2 text-white hover:text-yellow-300 transition-colors text-sm text-center rounded-lg hover:bg-white hover:bg-opacity-10" onclick="showPage('products')" data-translate="nav_products">
-                            <div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all"></div>
                             <span class="relative z-10">🛍️ المنتجات</span>
                         </a>
                         <a href="#" class="relative group block py-2 text-white hover:text-yellow-300 transition-colors text-sm text-center rounded-lg hover:bg-white hover:bg-opacity-10" onclick="showPage('vibrators')" data-translate="nav_vibrators">
-                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all"></div>
                             <span class="relative z-10">💜 هزاز الجنس</span>
                         </a>
                         <a href="#" class="relative group block py-2 text-white hover:text-yellow-300 transition-colors text-sm text-center rounded-lg hover:bg-white hover:bg-opacity-10" onclick="showPage('contact')" data-translate="nav_contact">
-                            <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all"></div>
                             <span class="relative z-10">📞 اتصل بنا</span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Bottom glowing line effect -->
-        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-60 animate-pulse"></div>
     </nav>
-
-    <!-- Fixed Navigation Sidebar on Right -->
-    <div id="nav-sidebar" class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
-        <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-2xl border border-white border-opacity-20 p-4">
-            <div class="flex flex-col space-y-4">
-                <button onclick="showPage('home')" class="nav-side-btn group relative bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-4 rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all transform hover:scale-105 shadow-lg" data-page="home">
-                    <i class="fas fa-home text-2xl text-white group-hover:text-yellow-300 transition-colors"></i>
-                    <div class="nav-tooltip absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" data-translate="nav_home">الرئيسية</div>
-                </button>
-                <button onclick="showPage('products')" class="nav-side-btn group relative bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all transform hover:scale-105 shadow-lg" data-page="products">
-                    <i class="fas fa-shopping-bag text-2xl text-white group-hover:text-yellow-300 transition-colors"></i>
-                    <div class="nav-tooltip absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" data-translate="nav_products">المنتجات</div>
-                </button>
-                <button onclick="showPage('vibrators')" class="nav-side-btn group relative bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg" data-page="vibrators">
-                    <i class="fas fa-heart text-2xl text-white group-hover:text-pink-300 transition-colors"></i>
-                    <div class="nav-tooltip absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" data-translate="nav_vibrators">هزاز الجنس</div>
-                </button>
-                <button onclick="shareWebsite()" class="nav-side-btn group relative bg-gradient-to-r from-yellow-400 to-orange-500 text-black p-4 rounded-xl hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg">
-                    <i class="fas fa-share-alt text-2xl text-black group-hover:text-white transition-colors"></i>
-                    <div class="nav-tooltip absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" data-translate="share_label">مشاركة</div>
-                </button>
-                <button onclick="showPage('contact')" class="nav-side-btn group relative bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-4 rounded-xl hover:from-indigo-600 hover:to-purple-600 transition-all transform hover:scale-105 shadow-lg" data-page="contact">
-                    <i class="fas fa-phone text-2xl text-white group-hover:text-blue-300 transition-colors"></i>
-                    <div class="nav-tooltip absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" data-translate="nav_contact">اتصل بنا</div>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Homepage -->
     <div id="home" class="page active">
         <!-- Hero Section -->
         <section class="gradient-bg text-white py-12 md:py-20 relative overflow-hidden">
-            <div class="floating-shapes">
-                <div class="w-16 h-16 md:w-20 md:h-20 bg-white bg-opacity-20 rounded-full"></div>
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-yellow-300 bg-opacity-30 rounded-full"></div>
-                <div class="w-20 h-20 md:w-24 md:h-24 bg-pink-400 bg-opacity-20 rounded-full"></div>
-            </div>
-            
             <div class="container mx-auto px-4 text-center relative z-10">
                 <h1 class="hero-title text-4xl md:text-7xl font-black mb-6 md:mb-8 animate-float" data-translate="hero_title">متجر الخصوصية</h1>
                 <div class="text-lg md:text-3xl mb-4 font-bold" data-translate="hero_subtitle">🌸 شركة أجنبية متخصصة في دعم البنات العربيات 🌸</div>
                 
-                <div class="glass-effect rounded-2xl p-6 md:p-8 mb-6 md:mb-8 text-center max-w-4xl mx-auto animate-fadeInUp">
+                <div class="bg-white bg-opacity-20 rounded-2xl p-6 md:p-8 mb-6 md:mb-8 text-center max-w-4xl mx-auto animate-fadeInUp">
                     <h3 class="text-2xl md:text-3xl font-black mb-4 md:mb-6" data-translate="mission_title">💖 رسالتنا للبنات العربيات 💖</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-base md:text-lg">
                         <div class="space-y-2 md:space-y-3">
@@ -793,23 +421,9 @@
                     </div>
                 </div>
                 
-                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
-                    <button onclick="showPage('products')" class="bg-white text-primary px-6 md:px-10 py-3 md:py-4 rounded-full font-black text-lg md:text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl hover-lift" data-translate="shop_now_btn">
-                        🛍️ تسوق الآن
-                    </button>
-                    <div class="relative group">
-                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg blur-md opacity-30 group-hover:opacity-50 transition-all"></div>
-                        <button onclick="shareWebsite()" class="relative bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 md:px-10 py-3 md:py-4 rounded-full font-black text-lg md:text-xl hover:from-yellow-500 hover:to-orange-600 transition-all group-hover:scale-105 transform shadow-2xl hover-lift">
-                            <div class="flex items-center">
-                                <span class="text-xl md:text-2xl mr-2">📤</span>
-                                <div class="flex flex-col">
-                                    <span class="text-base md:text-xl font-bold" data-translate="share_label">مشاركة</span>
-                                    <div id="share-count-badge" class="text-sm opacity-80">(<span id="share-count-text">0</span>)</div>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
+                <button onclick="showPage('products')" class="bg-white text-primary px-6 md:px-10 py-3 md:py-4 rounded-full font-black text-lg md:text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl hover-lift" data-translate="shop_now_btn">
+                    🛍️ تسوق الآن
+                </button>
             </div>
         </section>
 
@@ -827,10 +441,10 @@
 
     <!-- Products Page -->
     <div id="products" class="page">
-        <section class="py-12 md:py-20 animated-bg relative overflow-hidden">
+        <section class="py-12 md:py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 relative overflow-hidden">
             <div class="container mx-auto px-4">
-                <h1 class="text-4xl md:text-5xl font-black text-center mb-4" data-translate="all_products">جميع المنتجات</h1>
-                <p class="text-lg md:text-xl text-center text-gray-600 dark:text-gray-300 mb-8 md:mb-12" data-translate="all_products_desc">استكشف مجموعتنا الكاملة من المنتجات الحصرية</p>
+                <h1 class="text-4xl md:text-5xl font-black text-center mb-4 text-white" data-translate="all_products">جميع المنتجات</h1>
+                <p class="text-lg md:text-xl text-center text-gray-200 mb-8 md:mb-12" data-translate="all_products_desc">استكشف مجموعتنا الكاملة من المنتجات الحصرية</p>
                 <div id="products-grid" class="product-grid">
                     <!-- Products will be generated by JavaScript -->
                 </div>
@@ -841,13 +455,6 @@
     <!-- Code Verification Page -->
     <div id="code" class="page">
         <section class="py-6 md:py-16 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 min-h-screen relative overflow-hidden">
-            <!-- Animated Background -->
-            <div class="absolute inset-0 overflow-hidden">
-                <div class="absolute -top-40 -right-40 w-60 h-60 md:w-80 md:h-80 bg-green-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute -bottom-40 -left-40 w-72 h-72 md:w-96 md:h-96 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-teal-500 rounded-full opacity-10 animate-spin"></div>
-            </div>
-            
             <div class="container mx-auto px-2 md:px-4 relative z-10">
                 <div class="max-w-4xl mx-auto">
                     <!-- Header Section -->
@@ -868,7 +475,6 @@
 
                     <!-- Code Entry Form -->
                     <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-3xl shadow-2xl p-3 md:p-8 border border-green-400/30 relative overflow-hidden code-form-container">
-                        <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-700"></div>
                         <div class="relative z-10">
                             <!-- Customer Info Display -->
                             <div class="bg-green-100 dark:bg-green-900 p-3 md:p-6 rounded-lg md:rounded-2xl mb-4 md:mb-8 border border-green-300 dark:border-green-700">
@@ -953,123 +559,61 @@
         </section>
     </div>
 
-    <!-- Enhanced Thank You Page -->
+    <!-- Thank You Page -->
     <div id="thank-you" class="page">
         <section class="py-8 md:py-16 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 min-h-screen relative overflow-hidden">
-            <!-- Animated Background -->
-            <div class="absolute inset-0 overflow-hidden">
-                <div class="absolute -top-40 -right-40 w-60 h-60 md:w-80 md:h-80 bg-green-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute -bottom-40 -left-40 w-72 h-72 md:w-96 md:h-96 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-teal-500 rounded-full opacity-10 animate-spin"></div>
-            </div>
-            
             <div class="container mx-auto px-4 relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
-                    <!-- Success Animation -->
                     <div class="inline-flex items-center justify-center w-24 h-24 md:w-40 md:h-40 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full mb-6 md:mb-8 shadow-2xl animate-glow">
                         <i class="fas fa-check-circle text-4xl md:text-8xl text-white animate-bounce"></i>
                     </div>
                     
-                    <h1 class="text-3xl md:text-8xl font-black mb-4 md:mb-6 text-white animate-float" data-translate="success_completed">
+                    <h1 class="text-3xl md:text-8xl font-black mb-4 md:mb-6 text-white animate-float">
                         🎉 تم بنجاح! 🎉
                     </h1>
                     
                     <div class="bg-white dark:bg-gray-800 rounded-2xl md:rounded-3xl shadow-2xl p-6 md:p-8 mb-6 md:mb-8 border border-green-400/30 animate-fadeInUp">
-                        <h2 class="text-2xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-4 md:mb-6" data-translate="thank_you_order">شكراً لك على طلبك!</h2>
+                        <h2 class="text-2xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-4 md:mb-6">شكراً لك على طلبك!</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
                             <div class="bg-green-100 dark:bg-green-900 p-4 md:p-6 rounded-xl md:rounded-2xl border border-green-300 dark:border-green-700">
                                 <h3 class="text-lg md:text-2xl font-bold text-green-800 dark:text-green-200 mb-3 md:mb-4">
                                     <i class="fas fa-clipboard-check mr-2"></i>
-                                    <span data-translate="order_details">تفاصيل الطلب</span>
+                                    تفاصيل الطلب
                                 </h3>
                                 <div class="space-y-2 md:space-y-3 text-green-700 dark:text-green-300 text-sm md:text-lg">
-                                    <p><strong data-translate="order_number">رقم الطلب:</strong> #POE-2024-<span id="final-order-number">----</span></p>
-                                    <p><strong data-translate="order_status">حالة الطلب:</strong> <span data-translate="confirmed_approved">مؤكد ومُعتمد</span> ✅</p>
-                                    <p><strong data-translate="payment_method">طريقة الدفع:</strong> <span data-translate="credit_card">بطاقة ائتمان</span></p>
-                                    <p><strong data-translate="order_date">تاريخ الطلب:</strong> <span id="order-date">----</span></p>
+                                    <p><strong>رقم الطلب:</strong> #POE-2024-<span id="final-order-number">----</span></p>
+                                    <p><strong>حالة الطلب:</strong> مؤكد ومُعتمد ✅</p>
+                                    <p><strong>طريقة الدفع:</strong> بطاقة ائتمان</p>
+                                    <p><strong>تاريخ الطلب:</strong> <span id="order-date">----</span></p>
                                 </div>
                             </div>
                             
                             <div class="bg-blue-100 dark:bg-blue-900 p-4 md:p-6 rounded-xl md:rounded-2xl border border-blue-300 dark:border-blue-700">
                                 <h3 class="text-lg md:text-2xl font-bold text-blue-800 dark:text-blue-200 mb-3 md:mb-4">
                                     <i class="fas fa-shipping-fast mr-2"></i>
-                                    <span data-translate="shipping_info">معلومات الشحن</span>
+                                    معلومات الشحن
                                 </h3>
                                 <div class="space-y-2 md:space-y-3 text-blue-700 dark:text-blue-300 text-sm md:text-lg">
-                                    <p><strong data-translate="delivery_time">وقت التسليم المتوقع:</strong> <span data-translate="delivery_hours">12-24 ساعة</span></p>
-                                    <p><strong data-translate="shipping_type">نوع الشحن:</strong> <span data-translate="free_express">شحن سريع مجاني</span></p>
-                                    <p><strong data-translate="tracking_number">رقم التتبع:</strong> <span data-translate="will_be_sent">سيتم إرساله قريباً</span></p>
-                                    <p><strong data-translate="shipping_company">شركة الشحن:</strong> DHL Express</p>
+                                    <p><strong>وقت التسليم المتوقع:</strong> 12-24 ساعة</p>
+                                    <p><strong>نوع الشحن:</strong> شحن سريع مجاني</p>
+                                    <p><strong>رقم التتبع:</strong> سيتم إرساله قريباً</p>
+                                    <p><strong>شركة الشحن:</strong> DHL Express</p>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="bg-yellow-100 dark:bg-yellow-900 p-4 md:p-6 rounded-xl md:rounded-2xl border border-yellow-300 dark:border-yellow-700 mb-6 md:mb-8">
-                            <h3 class="text-lg md:text-2xl font-bold text-yellow-800 dark:text-yellow-200 mb-3 md:mb-4">
-                                <i class="fas fa-gift mr-2"></i>
-                                <span data-translate="special_bonus">مكافأة خاصة</span>
-                            </h3>
-                            <p class="text-yellow-700 dark:text-yellow-300 text-sm md:text-lg" data-translate="bonus_desc">
-                                🎁 تم إضافة خصم 10% إضافي على طلبك القادم + هدية مجانية مفاجئة!
-                            </p>
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                             <button onclick="showPage('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 md:py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-sm md:text-lg transform hover:scale-105 hover-lift">
                                 <i class="fas fa-home mr-2"></i>
-                                <span data-translate="back_to_home">العودة للصفحة الرئيسية</span>
+                                العودة للصفحة الرئيسية
                             </button>
                             <button onclick="showPage('products')" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 md:py-4 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all font-bold text-sm md:text-lg transform hover:scale-105 hover-lift">
                                 <i class="fas fa-shopping-bag mr-2"></i>
-                                <span data-translate="shop_more">تسوق المزيد</span>
+                                تسوق المزيد
                             </button>
                         </div>
                     </div>
-                    
-                    <div class="text-center space-y-2 md:space-y-4">
-                        <p class="text-white text-base md:text-xl font-bold" data-translate="email_confirmation">
-                            📧 سيتم إرسال تأكيد الطلب إلى بريدك الإلكتروني
-                        </p>
-                        <p class="text-gray-200 text-sm md:text-lg" data-translate="sms_tracking">
-                            📱 وسيتم إرسال رقم التتبع عبر رسالة نصية
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Vibrators Page -->
-    <div id="vibrators" class="page">
-        <section class="py-12 md:py-20 colorful-bg-2 relative overflow-hidden">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-8 md:mb-16">
-                    <div class="inline-flex items-center justify-center w-20 h-20 md:w-32 md:h-32 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mb-6 md:mb-8 shadow-2xl animate-glow">
-                        <i class="fas fa-heart text-2xl md:text-5xl text-white animate-pulse"></i>
-                    </div>
-                    <h1 class="text-4xl md:text-5xl font-black text-center mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent" data-translate="vibrators_page_title">💜 هزاز الجنس 💜</h1>
-                    <p class="text-lg md:text-xl text-center text-gray-600 dark:text-gray-300 mb-8 md:mb-12" data-translate="vibrators_page_desc">مجموعة حصرية من المنتجات عالية الجودة للمتعة الشخصية</p>
-                    
-                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto">
-                        <h3 class="text-2xl md:text-3xl font-black mb-4 md:mb-6 text-purple-800 dark:text-purple-200" data-translate="why_choose_us">💎 لماذا تختارنا؟ 💎</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-base md:text-lg">
-                            <div class="space-y-2 md:space-y-3">
-                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-check-circle mr-2 text-green-500"></i><span data-translate="quality_assured">جودة مضمونة 100%</span></p>
-                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-shield-alt mr-2 text-blue-500"></i><span data-translate="safe_materials">مواد آمنة ومعتمدة</span></p>
-                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-user-secret mr-2 text-gray-500"></i><span data-translate="complete_privacy">خصوصية تامة</span></p>
-                            </div>
-                            <div class="space-y-2 md:space-y-3">
-                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-shipping-fast mr-2 text-orange-500"></i><span data-translate="fast_delivery">توصيل سريع ومجاني</span></p>
-                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-gift mr-2 text-red-500"></i><span data-translate="discrete_packaging">تغليف سري ومنفصل</span></p>
-                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-headset mr-2 text-purple-500"></i><span data-translate="support_247">دعم فني 24/7</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="vibrators-products-grid" class="product-grid">
-                    <!-- Vibrator products will be generated by JavaScript -->
                 </div>
             </div>
         </section>
@@ -1077,40 +621,32 @@
 
     <!-- Contact Page -->
     <div id="contact" class="page">
-        <section class="py-12 md:py-20 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+        <section class="py-12 md:py-16">
             <div class="container mx-auto px-4">
-                <h1 class="text-4xl md:text-5xl font-black text-center mb-4" data-translate="contact_us">اتصل بنا</h1>
-                <p class="text-lg md:text-xl text-center text-gray-600 dark:text-gray-300 mb-12 md:mb-16" data-translate="contact_desc">نحن هنا لمساعدتك في أي وقت</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-center mb-8 md:mb-12">اتصل بنا</h1>
                 <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 card-hover">
-                        <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center" data-translate="contact_info">معلومات التواصل</h2>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">معلومات التواصل</h2>
                         <div class="space-y-4 md:space-y-6">
                             <div class="flex items-center space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover-lift">
                                 <i class="fas fa-envelope text-primary text-xl md:text-2xl"></i>
                                 <div>
-                                    <h3 class="font-bold" data-translate="email">البريد الإلكتروني</h3>
+                                    <h3 class="font-bold">البريد الإلكتروني</h3>
                                     <span class="text-sm md:text-base">support@privacy-store.com</span>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover-lift">
                                 <i class="fab fa-whatsapp text-green-500 text-xl md:text-2xl"></i>
                                 <div>
-                                    <h3 class="font-bold" data-translate="whatsapp">واتساب</h3>
+                                    <h3 class="font-bold">واتساب</h3>
                                     <span class="text-sm md:text-base">+966 50 123 4567</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover-lift">
-                                <i class="fas fa-clock text-blue-500 text-xl md:text-2xl"></i>
-                                <div>
-                                    <h3 class="font-bold" data-translate="working_hours">ساعات العمل</h3>
-                                    <span class="text-sm md:text-base" data-translate="24_7_service">24/7 - خدمة مستمرة</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 card-hover">
-                        <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center" data-translate="send_message">أرسل رسالة</h2>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">أرسل رسالة</h2>
                         <form id="contact-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" target="hidden_iframe" class="space-y-4 md:space-y-6" onsubmit="showNotification('✅ تم إرسال الرسالة بنجاح')">
                             <input type="hidden" name="_subject" value="📧 رسالة جديدة من نموذج الاتصال - متجر الخصوصية">
                             <input type="hidden" name="_captcha" value="false">
@@ -1118,20 +654,20 @@
                             <input type="hidden" name="_next" value="">
                             
                             <div>
-                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3" data-translate="name">الاسم</label>
+                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3">الاسم</label>
                                 <input type="text" name="name" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                             </div>
                             <div>
-                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3" data-translate="email">البريد الإلكتروني</label>
+                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3">البريد الإلكتروني</label>
                                 <input type="email" name="email" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                             </div>
                             <div>
-                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3" data-translate="message">الرسالة</label>
+                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3">الرسالة</label>
                                 <textarea rows="4" name="message" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors resize-none" required=""></textarea>
                             </div>
                             <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 md:py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-base md:text-lg transform hover:scale-105 hover-lift">
                                 <i class="fas fa-paper-plane mr-2"></i>
-                                <span data-translate="send_message">إرسال الرسالة</span>
+                                إرسال الرسالة
                             </button>
                         </form>
                     </div>
@@ -1140,7 +676,7 @@
         </section>
     </div>
 
-    <!-- Enhanced Cart Modal -->
+    <!-- Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-2 md:p-4">
         <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-scaleIn">
             <div class="p-4 md:p-6 border-b dark:border-gray-700">
@@ -1177,9 +713,9 @@
         </div>
     </div>
 
-    <!-- Enhanced Payment Modal with Detailed Locations -->
+    <!-- Payment Modal - مبسط بدون بيانات بطاقة ائتمان -->
     <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-2 md:p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-y-auto shadow-2xl animate-scaleIn">
+        <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl max-w-2xl w-full max-h-[95vh] overflow-y-auto shadow-2xl animate-scaleIn">
             <div class="p-4 md:p-6 border-b dark:border-gray-700">
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl md:text-3xl font-bold" data-translate="complete_order">إتمام الطلب</h2>
@@ -1207,32 +743,9 @@
                         </div>
                     </div>
                     
-                    <!-- Phone with Country Code -->
                     <div>
                         <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="phone_number">رقم الهاتف</label>
-                        <div class="flex">
-                            <select name="country_code" class="px-2 md:px-3 py-2 md:py-3 text-xs md:text-base border-2 border-gray-300 rounded-r-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors border-l-0">
-                                <option value="+966">🇸🇦 +966</option>
-                                <option value="+971">🇦🇪 +971</option>
-                                <option value="+965">🇰🇼 +965</option>
-                                <option value="+974">🇶🇦 +974</option>
-                                <option value="+973">🇧🇭 +973</option>
-                                <option value="+968">🇴🇲 +968</option>
-                                <option value="+962">🇯🇴 +962</option>
-                                <option value="+961">🇱🇧 +961</option>
-                                <option value="+963">🇸🇾 +963</option>
-                                <option value="+964">🇮🇶 +964</option>
-                                <option value="+20">🇪🇬 +20</option>
-                                <option value="+212">🇲🇦 +212</option>
-                                <option value="+216">🇹🇳 +216</option>
-                                <option value="+213">🇩🇿 +213</option>
-                                <option value="+218">🇱🇾 +218</option>
-                                <option value="+249">🇸🇩 +249</option>
-                                <option value="+1">🇺🇸 +1</option>
-                                <option value="+90">🇹🇷 +90</option>
-                            </select>
-                            <input type="tel" name="phone" class="flex-1 px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-l-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors border-r-0" placeholder="5X XXX XXXX" required="">
-                        </div>
+                        <input type="tel" name="phone" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                     </div>
                     
                     <div>
@@ -1243,50 +756,6 @@
                     <div>
                         <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="detailed_address">العنوان التفصيلي</label>
                         <textarea name="address" rows="2" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors resize-none" placeholder="رقم المبنى، الشقة، معالم مميزة..." required=""></textarea>
-                    </div>
-                    
-                    <!-- Payment Information Section -->
-                    <div class="border-t pt-4 md:pt-6 dark:border-gray-700">
-                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="payment_info">معلومات الدفع</h3>
-                        
-                        <!-- Supported Cards Display (Moved Above) -->
-                        <div class="flex items-center justify-center mb-3 md:mb-4 space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
-                            <span class="text-blue-800 dark:text-blue-200 font-bold text-sm md:text-base" data-translate="supported_cards">البطاقات المدعومة:</span>
-                            <i class="fab fa-cc-visa text-blue-600 text-lg md:text-2xl"></i>
-                            <i class="fab fa-cc-mastercard text-red-600 text-lg md:text-2xl"></i>
-                            <i class="fab fa-cc-american-express text-blue-500 text-lg md:text-2xl"></i>
-                            <i class="fab fa-cc-discover text-orange-500 text-lg md:text-2xl"></i>
-                        </div>
-                        
-                        <div class="bg-blue-50 dark:bg-blue-900 p-3 md:p-4 rounded-lg mb-3 md:mb-4">
-                            <p class="text-blue-800 dark:text-blue-200 text-xs md:text-sm">
-                                <i class="fas fa-shield-alt mr-2"></i>
-                                <span data-translate="ssl_protection">جميع معلومات الدفع محمية بتشفير SSL</span>
-                            </p>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 gap-3 md:gap-4">
-                            <div>
-                                <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="card_number">رقم البطاقة</label>
-                                <input type="text" name="card_number" placeholder="1234 5678 9012 3456" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="19" required="">
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-3 md:gap-4">
-                                <div>
-                                    <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="expiry_date">الشهر/السنة</label>
-                                    <input type="text" name="card_expiry" placeholder="MM/YY" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="5" required="">
-                                </div>
-                                <div>
-                                    <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="cvv">رمز الأمان (CVV)</label>
-                                    <input type="text" name="card_cvv" placeholder="123" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="3" required="">
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="cardholder_name">اسم حامل البطاقة</label>
-                                <input type="text" name="card_holder_name" placeholder="كما هو مكتوب على البطاقة" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
-                            </div>
-                        </div>
                     </div>
                     
                     <div class="border-t pt-4 md:pt-6 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 p-3 md:p-4 rounded-xl">
@@ -1335,153 +804,22 @@
         
         // Share System Variables
         let shareCount = parseInt(localStorage.getItem('shareCount') || '0');
-        let shareGoal = 10; // عدد المشاركات المطلوبة للحصول على منتج مجاني
         
-        // Share tracking
-        function updateShareCount() {
-            const shareCountText = document.getElementById('share-count-text');
-            if (shareCountText) {
-                shareCountText.textContent = shareCount;
-            }
-        }
-
-        // Share function
-        function shareWebsite() {
-            const shareData = {
-                title: 'متجر الخصوصية',
-                text: 'اكتشف متجر الخصوصية - منتجات عالية الجودة بأسعار مذهلة!',
-                url: window.location.href
-            };
-
-            if (navigator.share) {
-                navigator.share(shareData).then(() => {
-                    shareCount++;
-                    localStorage.setItem('shareCount', shareCount.toString());
-                    updateShareCount();
-                    
-                    if (shareCount >= shareGoal) {
-                        showRewardModal();
-                    } else {
-                        showNotification(`✅ تم المشاركة! (${shareCount}/${shareGoal})`);
-                    }
-                }).catch(err => console.log('Error sharing:', err));
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                const url = encodeURIComponent(window.location.href);
-                const text = encodeURIComponent(shareData.text);
-                const shareUrl = `https://wa.me/?text=${text}%20${url}`;
-                window.open(shareUrl, '_blank');
-                
-                shareCount++;
-                localStorage.setItem('shareCount', shareCount.toString());
-                updateShareCount();
-                
-                if (shareCount >= shareGoal) {
-                    showRewardModal();
-                } else {
-                    showNotification(`✅ تم المشاركة! (${shareCount}/${shareGoal})`);
-                }
-            }
-        }
-
-        // Show reward modal when 10 shares are reached
-        function showRewardModal() {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 animate-fadeIn';
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 max-w-md w-full mx-4 text-center animate-scaleIn">
-                    <div class="text-6xl mb-4 animate-bounce">🎉</div>
-                    <h2 class="text-2xl font-bold text-green-600 mb-4">تهانينا!</h2>
-                    <p class="text-gray-700 dark:text-gray-300 mb-6">
-                        لقد حققت ${shareGoal} مشاركات! حصلت على منتج مجاني! 🎁
-                    </p>
-                    <div class="bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 p-4 rounded-xl mb-6">
-                        <h3 class="font-bold text-green-800 dark:text-green-200 mb-2">كوبون الخصم:</h3>
-                        <div class="bg-white dark:bg-gray-700 p-3 rounded-lg border-2 border-dashed border-green-500">
-                            <code class="text-lg font-mono text-green-600 dark:text-green-400">FREE${Math.floor(Math.random() * 10000)}</code>
-                        </div>
-                        <p class="text-xs text-green-600 dark:text-green-400 mt-2">استخدم هذا الكوبون للحصول على منتج مجاني</p>
-                    </div>
-                    <button onclick="this.closest('.fixed').remove()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all font-bold">
-                        رائع! 🎉
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            
-            // Reset share count
-            shareCount = 0;
-            localStorage.setItem('shareCount', '0');
-            updateShareCount();
-        }
-
-        // Thank you page function
-        function showThankYouPage() {
-            setTimeout(() => {
-                showPage('thank-you');
-                
-                // Update thank you page with order details
-                const orderNumber = sessionStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
-                const finalOrderNumberEl = document.getElementById('final-order-number');
-                const orderDateEl = document.getElementById('order-date');
-                
-                if (finalOrderNumberEl) {
-                    finalOrderNumberEl.textContent = orderNumber;
-                }
-                
-                if (orderDateEl) {
-                    orderDateEl.textContent = new Date().toLocaleDateString('ar-SA');
-                }
-            }, 1000);
-        }
-
         // Currency exchange rates (relative to SAR)
         const exchangeRates = {
             'SAR': 1,
-            'AED': 0.98,
-            'KWD': 0.123,
-            'QAR': 1.37,
-            'BHD': 0.142,
-            'OMR': 0.145,
-            'JOD': 0.267,
-            'LBP': 564.5,
-            'SYP': 2512,
-            'IQD': 439.37,
-            'EGP': 11.63,
-            'MAD': 3.68,
-            'TND': 1.17,
-            'DZD': 50.67,
-            'LYD': 1.83,
-            'SDG': 226.8,
             'USD': 0.267,
-            'EUR': 0.245,
-            'TRY': 5.2
+            'EUR': 0.245
         };
 
         // Currency symbols
         const currencySymbols = {
             'SAR': 'ريال',
-            'AED': 'درهم',
-            'KWD': 'د.ك',
-            'QAR': 'ريال',
-            'BHD': 'د.ب',
-            'OMR': 'ريال',
-            'JOD': 'دينار',
-            'LBP': 'ل.ل',
-            'SYP': 'ل.س',
-            'IQD': 'دينار',
-            'EGP': 'جنيه',
-            'MAD': 'درهم',
-            'TND': 'دينار',
-            'DZD': 'دينار',
-            'LYD': 'دينار',
-            'SDG': 'جنيه',
             'USD': '$',
-            'EUR': '€',
-            'TRY': '₺'
+            'EUR': '€'
         };
 
-        // Products data - Vibrator products
+        // Products data
         const products = [
             {
                 id: 1,
@@ -1493,86 +831,15 @@
                 category: 'vibrators',
                 price: 120,
                 originalPrice: 480,
-                images: [
-                    'https://pfst.cf2.poecdn.net/base/image/7190e5b13ababa031ff7f07752b4fae47f7f7179216adc41601dbfd1d02e0c6f?w=247&h=247',
-                    'https://pfst.cf2.poecdn.net/base/image/7df2353a0e9616ed34c589d4384bd45603c2e15d9d422f8ad816c9190fcf6b93?w=247&h=247',
-                    'https://pfst.cf2.poecdn.net/base/image/9eec01b0a9d920406c30b9d17340f36fa1f3a62eec3c0fb81a17f3b5c0109f3e?w=247&h=247',
-                    'https://pfst.cf2.poecdn.net/base/image/9e76750af555be56db5eb1ff5f10e3f9a0745bc84bdf42af0b56891abc18635a?w=247&h=247'
-                ],
                 image: 'https://pfst.cf2.poecdn.net/base/image/7190e5b13ababa031ff7f07752b4fae47f7f7179216adc41601dbfd1d02e0c6f?w=247&h=247',
                 discount: 75,
                 description: {
-                    'ar': `قضيب واقعي أسود مهتز بـ 10 وظائف بطول 17 سم
-                    
-• قضيب ضخم متوسط الحجم ذو ملمس لحمي واقعي للغاية
-• 10 أوضاع اهتزاز مختلفة
-• الطول الكامل: 17 سم
-• الطول القابل للاستخدام: 13 سم  
-• السمك: 3.5 سم
-• ملمس الجلد واقعي
-• إمكانية التثبيت على أي سطح بفضل قوة الشفط القوية
-• مادة صديقة للبشرة وسهلة التنظيف
-• بنية القضيب متوسطة الحجم
-• مادة خالية من الفثالات`,
-                    'en': `Realistic Black Vibrating Penis with 10 Functions 17cm Length
-
-• Large medium-sized penis with ultra-realistic fleshy texture
-• 10 different vibration modes
-• Total length: 17 cm
-• Usable length: 13 cm
-• Thickness: 3.5 cm
-• Realistic skin texture
-• Can be mounted on any surface thanks to strong suction
-• Skin-friendly material and easy to clean
-• Medium-sized penis structure
-• Phthalate-free material`,
-                    'tr': `Gerçekçi Siyah Titreşimli Penis 10 Fonksiyon 17cm Uzunluk
-
-• Ultra gerçekçi et dokulu büyük orta boy penis
-• 10 farklı titreşim modu
-• Toplam uzunluk: 17 cm
-• Kullanılabilir uzunluk: 13 cm
-• Kalınlık: 3.5 cm
-• Gerçekçi cilt dokusu
-• Güçlü emme sayesinde herhangi bir yüzeye monte edilebilir
-• Cilde dost malzeme ve temizlemesi kolay
-• Orta boy penis yapısı
-• Ftalat içermeyen malzeme`
+                    'ar': 'قضيب واقعي أسود مهتز بـ 10 وظائف بطول 17 سم',
+                    'en': 'Realistic Black Vibrating Penis with 10 Functions 17cm',
+                    'tr': 'Gerçekçi Siyah Titreşimli Penis 10 Fonksiyon 17cm'
                 },
                 rating: 4.9,
-                reviews: 1856,
-                features: {
-                    'ar': [
-                        '10 أوضاع اهتزاز مختلفة',
-                        'ملمس واقعي للغاية',
-                        'مادة آمنة ومعتمدة',
-                        'قاعدة شفط قوية',
-                        'سهل التنظيف',
-                        'خالي من الفثالات',
-                        'مقاوم للماء',
-                        'شحن USB'
-                    ],
-                    'en': [
-                        '10 different vibration modes',
-                        'Ultra realistic texture',
-                        'Safe and certified material',
-                        'Strong suction base',
-                        'Easy to clean',
-                        'Phthalate-free',
-                        'Waterproof',
-                        'USB charging'
-                    ],
-                    'tr': [
-                        '10 farklı titreşim modu',
-                        'Ultra gerçekçi doku',
-                        'Güvenli ve sertifikalı malzeme',
-                        'Güçlü emme tabanı',
-                        'Temizlemesi kolay',
-                        'Ftalat içermez',
-                        'Su geçirmez',
-                        'USB şarj'
-                    ]
-                }
+                reviews: 1856
             },
             {
                 id: 2,
@@ -1584,98 +851,15 @@
                 category: 'vibrators',
                 price: 95,
                 originalPrice: 380,
-                images: [
-                    'https://pfst.cf2.poecdn.net/base/image/1d302b38f88032f32eb40c03937ac7fc12a124e2a2c9c3d8bd82a48af65ebbb3?w=247&h=247',
-                    'https://pfst.cf2.poecdn.net/base/image/d09cd9719f7470f136bc1ad0cb535b8015052da78902f155b756e3df2a313552?w=247&h=247',
-                    'https://pfst.cf2.poecdn.net/base/image/edba959dfc3cd2cfbd00c23192a40eea11a2120fba31babee1cb1f0ed0cf93cf?w=247&h=247',
-                    'https://pfst.cf2.poecdn.net/base/image/286d53eddaa3af2bc187162ed49ff096cc9f5f1dd33ed6bcf558b969ce7566a7?w=247&h=247'
-                ],
                 image: 'https://pfst.cf2.poecdn.net/base/image/1d302b38f88032f32eb40c03937ac7fc12a124e2a2c9c3d8bd82a48af65ebbb3?w=247&h=247',
                 discount: 75,
                 description: {
-                    'ar': `15 سم واقعية تهتز 360 درجة الدورية رئيس دسار هزاز القضيب
-
-• الطول 15 سم
-• السماكة 3.5 سم
-• جاهز لجذب الأنظار برأسه المتحرك بزاوية 360 درجة وسرعة الاهتزاز القابلة للتعديل!
-• تم إنتاجه من مادة واقعية بشكل لا يصدق.
-• 100٪ لينة عالية الجودة، سطح ناعم وحريري
-• تصل إلى درجة حرارة الجسم أثناء الاستخدام.
-• ملمس بشرة واقعي
-• إمكانية التثبيت على أي أرضية بفضل اللاصقة القوية
-• مادة صديقة للبشرة سهلة التنظيف
-• يمكن استخدامه أيضًا كحزام منفصل.
-• مادة خالية من الفثالات
-• يمكنك استخدامه لسنوات بفضل مظهره الواقعي وملمسه وحساسيته للبشرة`,
-                    'en': `15cm Realistic 360° Rotating Head Vibrating Penis Dildo
-
-• Length: 15 cm
-• Thickness: 3.5 cm
-• Ready to grab attention with its 360-degree rotating head and adjustable vibration speed!
-• Made from incredibly realistic material
-• 100% high-quality soft, smooth and silky surface
-• Reaches body temperature during use
-• Realistic skin texture
-• Can be mounted on any floor thanks to strong adhesive
-• Skin-friendly material, easy to clean
-• Can also be used as a separate strap
-• Phthalate-free material
-• You can use it for years thanks to its realistic appearance, texture and skin sensitivity`,
-                    'tr': `15cm Gerçekçi 360° Dönen Başlı Titreşimli Penis Dildo
-
-• Uzunluk: 15 cm
-• Kalınlık: 3.5 cm
-• 360 derece dönen başı ve ayarlanabilir titreşim hızı ile dikkat çekmeye hazır!
-• İnanılmaz gerçekçi malzemeden üretilmiştir
-• %100 yüksek kaliteli yumuşak, pürüzsüz ve ipeksi yüzey
-• Kullanım sırasında vücut sıcaklığına ulaşır
-• Gerçekçi cilt dokusu
-• Güçlü yapışkan sayesinde herhangi bir zemine monte edilebilir
-• Cilde dost malzeme, temizlemesi kolay
-• Ayrı bir kayış olarak da kullanılabilir
-• Ftalat içermeyen malzeme
-• Gerçekçi görünümü, dokusu ve cilt hassasiyeti sayesinde yıllarca kullanabilirsiniz`
+                    'ar': '15 سم واقعية تهتز 360 درجة الدورية رئيس دسار هزاز القضيب',
+                    'en': '15cm Realistic 360° Rotating Head Vibrating Penis Dildo',
+                    'tr': '15cm Gerçekçi 360° Dönen Başlı Titreşimli Penis Dildo'
                 },
                 rating: 4.8,
-                reviews: 1342,
-                features: {
-                    'ar': [
-                        'رأس دوار 360 درجة',
-                        'سرعة اهتزاز قابلة للتعديل',
-                        'مادة واقعية لا تصدق',
-                        'سطح ناعم وحريري',
-                        'يصل لدرجة حرارة الجسم',
-                        'ملمس بشرة واقعي',
-                        'لاصقة قوية للتثبيت',
-                        'يمكن استخدامه كحزام',
-                        'خالي من الفثالات',
-                        'متانة عالية لسنوات'
-                    ],
-                    'en': [
-                        '360° rotating head',
-                        'Adjustable vibration speed',
-                        'Incredibly realistic material',
-                        'Smooth and silky surface',
-                        'Reaches body temperature',
-                        'Realistic skin texture',
-                        'Strong adhesive mounting',
-                        'Can be used as strap',
-                        'Phthalate-free',
-                        'High durability for years'
-                    ],
-                    'tr': [
-                        '360° dönen baş',
-                        'Ayarlanabilir titreşim hızı',
-                        'İnanılmaz gerçekçi malzeme',
-                        'Pürüzsüz ve ipeksi yüzey',
-                        'Vücut sıcaklığına ulaşır',
-                        'Gerçekçi cilt dokusu',
-                        'Güçlü yapışkan montaj',
-                        'Kayış olarak kullanılabilir',
-                        'Ftalat içermez',
-                        'Yıllarca yüksek dayanıklılık'
-                    ]
-                }
+                reviews: 1342
             },
             {
                 id: 3,
@@ -1687,83 +871,15 @@
                 category: 'vibrators',
                 price: 85,
                 originalPrice: 340,
-                images: [
-                    'https://pfst.cf2.poecdn.net/base/image/3d7a5592daa9296acd9fad68087f0de20a8291f58c610b6c5cad3ee0ccc1f4a5?w=510&h=510'
-                ],
                 image: 'https://pfst.cf2.poecdn.net/base/image/3d7a5592daa9296acd9fad68087f0de20a8291f58c610b6c5cad3ee0ccc1f4a5?w=510&h=510',
                 discount: 75,
                 description: {
-                    'ar': `15 سنتيمتر تهتز شوكة القضيب واقعية
-
-• القضيب متشعب الثنائي
-• أوضاع اهتزاز مختلفة
-• طول 15 سم
-• نظف بالماء الدافئ بعد كل استخدام
-• تصميم شوكة مزدوجة فريد للمتعة المضاعفة
-• مادة واقعية عالية الجودة
-• آمن للاستخدام ومعتمد طبياً
-• سهل التحكم والاستخدام
-• مقاوم للماء للتنظيف السهل
-• تقنية اهتزاز متطورة`,
-                    'en': `15cm Realistic Vibrating Double Fork Penis
-
-• Dual branched penis design
-• Multiple vibration modes
-• 15 cm length
-• Clean with warm water after each use
-• Unique double fork design for enhanced pleasure
-• High-quality realistic material
-• Safe for use and medically approved
-• Easy to control and use
-• Water-resistant for easy cleaning
-• Advanced vibration technology`,
-                    'tr': `15cm Gerçekçi Titreşimli Çift Çatallı Penis
-
-• İkili dallanmış penis tasarımı
-• Çoklu titreşim modları
-• 15 cm uzunluk
-• Her kullanımdan sonra ılık suyla temizleyin
-• Gelişmiş zevk için eşsiz çift çatal tasarımı
-• Yüksek kaliteli gerçekçi malzeme
-• Kullanım için güvenli ve tıbbi olarak onaylı
-• Kontrol etmesi ve kullanması kolay
-• Kolay temizlik için su geçirmez
-• Gelişmiş titreşim teknolojisi`
+                    'ar': '15 سنتيمتر تهتز شوكة القضيب واقعية',
+                    'en': '15cm Realistic Vibrating Double Fork Penis',
+                    'tr': '15cm Gerçekçi Titreşimli Çift Çatallı Penis'
                 },
                 rating: 4.7,
-                reviews: 967,
-                features: {
-                    'ar': [
-                        'تصميم شوكة مزدوجة فريد',
-                        'أوضاع اهتزاز متعددة',
-                        'طول مثالي 15 سم',
-                        'مادة واقعية آمنة',
-                        'سهل التنظيف',
-                        'مقاوم للماء',
-                        'تحكم سهل',
-                        'معتمد طبياً'
-                    ],
-                    'en': [
-                        'Unique double fork design',
-                        'Multiple vibration modes',
-                        'Perfect 15cm length',
-                        'Safe realistic material',
-                        'Easy to clean',
-                        'Water-resistant',
-                        'Easy control',
-                        'Medically approved'
-                    ],
-                    'tr': [
-                        'Eşsiz çift çatal tasarımı',
-                        'Çoklu titreşim modları',
-                        'Mükemmel 15cm uzunluk',
-                        'Güvenli gerçekçi malzeme',
-                        'Temizlemesi kolay',
-                        'Su geçirmez',
-                        'Kolay kontrol',
-                        'Tıbbi olarak onaylı'
-                    ]
-                }
+                reviews: 967
             }
         ];
 
@@ -1789,8 +905,6 @@
             
             if (pageId === 'products') {
                 generateProducts();
-            } else if (pageId === 'vibrators') {
-                generateVibratorProducts();
             }
             
             document.getElementById('mobile-menu').classList.add('hidden');
@@ -1822,162 +936,6 @@
             return stars;
         }
 
-        // Generate vibrator products with simple design like main page
-        function generateVibratorProducts() {
-            const grid = document.getElementById('vibrators-products-grid');
-            
-            if (!grid) return;
-            
-            if (products.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-12">
-                        <div class="text-6xl mb-4">🛍️</div>
-                        <h3 class="text-xl font-bold text-gray-500 dark:text-gray-400 mb-2">لا توجد منتجات حالياً</h3>
-                        <p class="text-gray-400 dark:text-gray-500">قريباً ستتوفر منتجات جديدة</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            const productsHTML = products.map(product => {
-                const convertedPrice = convertPrice(product.price);
-                const convertedOriginalPrice = convertPrice(product.originalPrice);
-                const currencySymbol = currencySymbols[currentCurrency];
-                const productName = product.name[currentLanguage] || product.name['ar'];
-                const productDesc = product.description[currentLanguage] || product.description['ar'];
-                
-                return `
-                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group">
-                    <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
-                    <div class="h-48 md:h-64 overflow-hidden relative">
-                        <img src="${product.image}" alt="${productName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
-                        <div class="flex items-center mb-2 md:mb-3">
-                            <div class="flex text-xs md:text-sm">
-                                ${generateStarRating(product.rating)}
-                            </div>
-                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
-                        </div>
-                        <div class="flex justify-between items-center mb-3">
-                            <div>
-                                <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
-                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <button onclick="showProductDetails(${product.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
-                                <i class="fas fa-eye mr-2"></i>
-                                عرض التفاصيل والصور
-                            </button>
-                            <button onclick="addToCart('${product.id}', '${productName}', ${convertedPrice})" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
-                                <i class="fas fa-cart-plus mr-2"></i>
-                                أضف للسلة
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            }).join('');
-            
-            grid.innerHTML = productsHTML;
-        }
-
-        // Enhanced Product Cards with Advanced Effects
-        function generateProducts() {
-            const grid = document.getElementById('products-grid');
-            const homeGrid = document.getElementById('home-products-grid');
-            
-            const productsHTML = products.map((product, index) => {
-                const convertedPrice = convertPrice(product.price);
-                const convertedOriginalPrice = convertPrice(product.originalPrice);
-                const currencySymbol = currencySymbols[currentCurrency];
-                const productName = product.name[currentLanguage] || product.name['ar'];
-                const productDesc = product.description[currentLanguage] || product.description['ar'];
-                
-                return `
-                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group">
-                    <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
-                    <div class="h-48 md:h-64 overflow-hidden relative">
-                        <img src="${product.image}" alt="${productName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
-                        <div class="flex items-center mb-2 md:mb-3">
-                            <div class="flex text-xs md:text-sm">
-                                ${generateStarRating(product.rating)}
-                            </div>
-                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
-                        </div>
-                        <div class="flex justify-between items-center mb-3">
-                            <div>
-                                <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
-                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <button onclick="showProductDetails(${product.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
-                                <i class="fas fa-eye mr-2"></i>
-                                عرض التفاصيل والصور
-                            </button>
-                            <button onclick="addToCart('${product.id}', '${productName.replace(/'/g, "\\'")}', ${convertedPrice})" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
-                                <i class="fas fa-cart-plus mr-2"></i>
-                                أضف للسلة
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            }).join('');
-            
-            if (grid) grid.innerHTML = productsHTML;
-            if (homeGrid) homeGrid.innerHTML = products.slice(0, 3).map((product, index) => {
-                const convertedPrice = convertPrice(product.price);
-                const convertedOriginalPrice = convertPrice(product.originalPrice);
-                const currencySymbol = currencySymbols[currentCurrency];
-                const productName = product.name[currentLanguage] || product.name['ar'];
-                const productDesc = product.description[currentLanguage] || product.description['ar'];
-                
-                return `
-                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group">
-                    <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
-                    <div class="h-48 md:h-64 overflow-hidden relative">
-                        <img src="${product.image}" alt="${productName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
-                        <div class="flex items-center mb-2 md:mb-3">
-                            <div class="flex text-xs md:text-sm">
-                                ${generateStarRating(product.rating)}
-                            </div>
-                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
-                        </div>
-                        <div class="flex justify-between items-center mb-3">
-                            <div>
-                                <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
-                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <button onclick="showProductDetails(${product.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
-                                <i class="fas fa-eye mr-2"></i>
-                                عرض التفاصيل والصور
-                            </button>
-                            <button onclick="addToCart('${product.id}', '${productName}', ${convertedPrice})" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
-                                <i class="fas fa-cart-plus mr-2"></i>
-                                أضف للسلة
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            }).join('');
-        }
-
         // Currency conversion function
         function convertPrice(price, toCurrency = currentCurrency) {
             const sarPrice = price / exchangeRates['SAR'];
@@ -1998,414 +956,50 @@
             updateCartUI();
         }
 
-        // Complete Translation System
-        const translations = {
-            'ar': {
-                // Navigation
-                'nav_home': '🏠 الرئيسية',
-                'nav_products': '🛍️ المنتجات',
-                'nav_vibrators': '💜 هزاز الجنس',
-                'nav_contact': '📞 اتصل بنا',
-                'share_label': 'مشاركة',
-                'cart_label': '🛒 سلة',
-                'cart_simple': 'السلة',
-                'language_label': '🗣️ لغة',
-                'currency_label': '💰 عملة',
-                
-                // Age Verification
-                'age_verification_title': 'تأكيد العمر',
-                'age_verification_desc': 'يجب أن تكون 18 سنة أو أكثر لدخول هذا الموقع',
-                'age_over_18': 'أكبر من 18 سنة ✓',
-                'age_under_18': 'أقل من 18 سنة ✗',
-                
-                // Hero Section
-                'hero_title': 'متجر الخصوصية',
-                'hero_subtitle': '🌸 شركة أجنبية متخصصة في دعم البنات العربيات 🌸',
-                'mission_title': '💖 رسالتنا للبنات العربيات 💖',
-                'mission_1': '✨ شركة أجنبية عالمية مختصة',
-                'mission_2': '🎯 دعم البنات العربيات حصرياً',
-                'mission_3': '💎 منتجات عالية الجودة حصرية',
-                'mission_4': '🚀 توصيل سريع وآمن',
-                'mission_5': '🔒 خصوصية وسرية تامة',
-                'mission_6': '💰 أسعار منخفضة لدعم الجميع',
-                'pricing_note': '✨ أسعارنا منخفضة لتكون في متناول الجميع! ✨',
-                'shop_now_btn': '🛍️ تسوق الآن',
-                
-                // Products
-                'featured_products': 'منتجاتنا المميزة',
-                'featured_products_desc': 'اكتشف مجموعتنا الحصرية من المنتجات عالية الجودة',
-                'all_products': 'جميع المنتجات',
-                'all_products_desc': 'استكشف مجموعتنا الكاملة من المنتجات الحصرية',
-                
-                // Vibrators Page
-                'vibrators_page_title': '💜 هزاز الجنس 💜',
-                'vibrators_page_desc': 'مجموعة حصرية من المنتجات عالية الجودة للمتعة الشخصية',
-                'why_choose_us': '💎 لماذا تختارنا؟ 💎',
-                'quality_assured': 'جودة مضمونة 100%',
-                'safe_materials': 'مواد آمنة ومعتمدة',
-                'complete_privacy': 'خصوصية تامة',
-                'fast_delivery': 'توصيل سريع ومجاني',
-                'discrete_packaging': 'تغليف سري ومنفصل',
-                'support_247': 'دعم فني 24/7',
-                
-                // Cart
-                'shopping_cart': 'سلة التسوق',
-                'cart_empty': 'السلة فارغة',
-                'subtotal': 'المجموع الفرعي:',
-                'shipping': 'الشحن:',
-                'total': 'المجموع:',
-                'final_total': 'المجموع النهائي:',
-                'proceed_to_payment': 'المتابعة للدفع',
-                
-                // Payment
-                'complete_order': 'إتمام الطلب',
-                'first_name': 'الاسم الأول',
-                'last_name': 'الاسم الأخير',
-                'phone_number': 'رقم الهاتف',
-                'email': 'البريد الإلكتروني',
-                'detailed_address': 'العنوان التفصيلي',
-                'payment_info': 'معلومات الدفع',
-                'supported_cards': 'البطاقات المدعومة:',
-                'ssl_protection': 'جميع معلومات الدفع محمية بتشفير SSL',
-                'card_number': 'رقم البطاقة',
-                'expiry_date': 'الشهر/السنة',
-                'cvv': 'رمز الأمان (CVV)',
-                'cardholder_name': 'اسم حامل البطاقة',
-                
-                // Code Verification
-                'enter_verification_code': '📱 أدخل رمز التأكيد 📱',
-                'enter_code_to_complete': 'أدخل الرمز لإتمام الشراء',
-                'secure_protected': '🔒 آمن ومحمي 100%',
-                'code_sent_to': 'تم إرسال رمز التأكيد إلى',
-                'check_sms': 'تحقق من رسائلك النصية',
-                'enter_sent_code': 'أدخل الرمز المرسل',
-                'didnt_receive_code': 'لم تستلم الرمز؟',
-                'resend_code': 'إعادة إرسال الرمز',
-                'confirm_complete_order': '✅ تأكيد وإتمام الطلب ✅',
-                'secure_encrypted': 'عملية آمنة ومشفرة 100%',
-                'instant_processing': 'معالجة فورية خلال ثوانٍ',
-                
-                // Thank You Page
-                'success_completed': '🎉 تم بنجاح! 🎉',
-                'thank_you_order': 'شكراً لك على طلبك!',
-                'order_details': 'تفاصيل الطلب',
-                'order_number': 'رقم الطلب:',
-                'order_status': 'حالة الطلب:',
-                'confirmed_approved': 'مؤكد ومُعتمد',
-                'payment_method': 'طريقة الدفع:',
-                'credit_card': 'بطاقة ائتمان',
-                'order_date': 'تاريخ الطلب:',
-                'shipping_info': 'معلومات الشحن',
-                'delivery_time': 'وقت التسليم المتوقع:',
-                'delivery_hours': '12-24 ساعة',
-                'shipping_type': 'نوع الشحن:',
-                'free_express': 'شحن سريع مجاني',
-                'tracking_number': 'رقم التتبع:',
-                'will_be_sent': 'سيتم إرساله قريباً',
-                'shipping_company': 'شركة الشحن:',
-                'special_bonus': 'مكافأة خاصة',
-                'bonus_desc': '🎁 تم إضافة خصم 10% إضافي على طلبك القادم + هدية مجانية مفاجئة!',
-                'back_to_home': 'العودة للصفحة الرئيسية',
-                'shop_more': 'تسوق المزيد',
-                'email_confirmation': '📧 سيتم إرسال تأكيد الطلب إلى بريدك الإلكتروني',
-                'sms_tracking': '📱 وسيتم إرسال رقم التتبع عبر رسالة نصية',
-                
-                // Contact
-                'contact_us': 'اتصل بنا',
-                'contact_desc': 'نحن هنا لمساعدتك في أي وقت',
-                'contact_info': 'معلومات التواصل',
-                'whatsapp': 'واتساب',
-                'working_hours': 'ساعات العمل',
-                '24_7_service': '24/7 - خدمة مستمرة',
-                'send_message': 'أرسل رسالة',
-                'name': 'الاسم',
-                'message': 'الرسالة'
-            },
-            'en': {
-                // Navigation
-                'nav_home': '🏠 Home',
-                'nav_products': '🛍️ Products',
-                'nav_vibrators': '💜 Sex Toys',
-                'nav_contact': '📞 Contact',
-                'share_label': 'Share',
-                'cart_label': '🛒 Cart',
-                'cart_simple': 'Cart',
-                'language_label': '🗣️ Language',
-                'currency_label': '💰 Currency',
-                
-                // Age Verification
-                'age_verification_title': 'Age Verification',
-                'age_verification_desc': 'You must be 18 years or older to enter this website',
-                'age_over_18': 'Over 18 years ✓',
-                'age_under_18': 'Under 18 years ✗',
-                
-                // Hero Section
-                'hero_title': 'Privacy Store',
-                'hero_subtitle': '🌸 International Company Specialized in Supporting Arab Girls 🌸',
-                'mission_title': '💖 Our Mission for Arab Girls 💖',
-                'mission_1': '✨ Specialized international global company',
-                'mission_2': '🎯 Supporting Arab girls exclusively',
-                'mission_3': '💎 Exclusive high-quality products',
-                'mission_4': '🚀 Fast and secure delivery',
-                'mission_5': '🔒 Complete privacy and confidentiality',
-                'mission_6': '💰 Low prices to support everyone',
-                'pricing_note': '✨ Our prices are low to be affordable for everyone! ✨',
-                'shop_now_btn': '🛍️ Shop Now',
-                
-                // Products
-                'featured_products': 'Our Featured Products',
-                'featured_products_desc': 'Discover our exclusive collection of high-quality products',
-                'all_products': 'All Products',
-                'all_products_desc': 'Explore our complete range of exclusive products',
-                
-                // Vibrators Page
-                'vibrators_page_title': '💜 Sex Toys 💜',
-                'vibrators_page_desc': 'Exclusive collection of high-quality products for personal pleasure',
-                'why_choose_us': '💎 Why Choose Us? 💎',
-                'quality_assured': '100% Quality Guaranteed',
-                'safe_materials': 'Safe and Certified Materials',
-                'complete_privacy': 'Complete Privacy',
-                'fast_delivery': 'Fast and Free Delivery',
-                'discrete_packaging': 'Discrete and Separate Packaging',
-                'support_247': '24/7 Technical Support',
-                
-                // Cart
-                'shopping_cart': 'Shopping Cart',
-                'cart_empty': 'Cart is empty',
-                'subtotal': 'Subtotal:',
-                'shipping': 'Shipping:',
-                'total': 'Total:',
-                'final_total': 'Final Total:',
-                'proceed_to_payment': 'Proceed to Payment',
-                
-                // Payment
-                'complete_order': 'Complete Order',
-                'first_name': 'First Name',
-                'last_name': 'Last Name',
-                'phone_number': 'Phone Number',
-                'email': 'Email',
-                'detailed_address': 'Detailed Address',
-                'payment_info': 'Payment Information',
-                'supported_cards': 'Supported Cards:',
-                'ssl_protection': 'All payment information is protected with SSL encryption',
-                'card_number': 'Card Number',
-                'expiry_date': 'MM/YY',
-                'cvv': 'Security Code (CVV)',
-                'cardholder_name': 'Cardholder Name',
-                
-                // Code Verification
-                'enter_verification_code': '📱 Enter Verification Code 📱',
-                'enter_code_to_complete': 'Enter the code to complete purchase',
-                'secure_protected': '🔒 100% Secure & Protected',
-                'code_sent_to': 'Verification code sent to',
-                'check_sms': 'Check your text messages',
-                'enter_sent_code': 'Enter the sent code',
-                'didnt_receive_code': 'Didn\'t receive the code?',
-                'resend_code': 'Resend Code',
-                'confirm_complete_order': '✅ Confirm & Complete Order ✅',
-                'secure_encrypted': '100% Secure and Encrypted Process',
-                'instant_processing': 'Instant processing in seconds',
-                
-                // Thank You Page
-                'success_completed': '🎉 Success! 🎉',
-                'thank_you_order': 'Thank you for your order!',
-                'order_details': 'Order Details',
-                'order_number': 'Order Number:',
-                'order_status': 'Order Status:',
-                'confirmed_approved': 'Confirmed & Approved',
-                'payment_method': 'Payment Method:',
-                'credit_card': 'Credit Card',
-                'order_date': 'Order Date:',
-                'shipping_info': 'Shipping Information',
-                'delivery_time': 'Expected Delivery Time:',
-                'delivery_hours': '12-24 hours',
-                'shipping_type': 'Shipping Type:',
-                'free_express': 'Free Express Shipping',
-                'tracking_number': 'Tracking Number:',
-                'will_be_sent': 'Will be sent soon',
-                'shipping_company': 'Shipping Company:',
-                'special_bonus': 'Special Bonus',
-                'bonus_desc': '🎁 Added 10% extra discount on your next order + free surprise gift!',
-                'back_to_home': 'Back to Home',
-                'shop_more': 'Shop More',
-                'email_confirmation': '📧 Order confirmation will be sent to your email',
-                'sms_tracking': '📱 Tracking number will be sent via SMS',
-                
-                // Contact
-                'contact_us': 'Contact Us',
-                'contact_desc': 'We are here to help you anytime',
-                'contact_info': 'Contact Information',
-                'whatsapp': 'WhatsApp',
-                'working_hours': 'Working Hours',
-                '24_7_service': '24/7 - Continuous Service',
-                'send_message': 'Send Message',
-                'name': 'Name',
-                'message': 'Message'
-            },
-            'tr': {
-                // Navigation
-                'nav_home': '🏠 Ana Sayfa',
-                'nav_products': '🛍️ Ürünler',
-                'nav_vibrators': '💜 Seks Oyuncakları',
-                'nav_contact': '📞 İletişim',
-                'share_label': 'Paylaş',
-                'cart_label': '🛒 Sepet',
-                'cart_simple': 'Sepet',
-                'language_label': '🗣️ Dil',
-                'currency_label': '💰 Para Birimi',
-                
-                // Age Verification
-                'age_verification_title': 'Yaş Doğrulama',
-                'age_verification_desc': 'Bu siteye girmek için 18 yaşında veya daha büyük olmalısınız',
-                'age_over_18': '18 yaş üstü ✓',
-                'age_under_18': '18 yaş altı ✗',
-                
-                // Hero Section
-                'hero_title': 'Gizlilik Mağazası',
-                'hero_subtitle': '🌸 Arap Kızlarını Desteklemede Uzmanlaşmış Uluslararası Şirket 🌸',
-                'mission_title': '💖 Arap Kızları İçin Misyonumuz 💖',
-                'mission_1': '✨ Uzman uluslararası küresel şirket',
-                'mission_2': '🎯 Sadece Arap kızlarını destekleme',
-                'mission_3': '💎 Özel yüksek kaliteli ürünler',
-                'mission_4': '🚀 Hızlı ve güvenli teslimat',
-                'mission_5': '🔒 Tam gizlilik ve gizlilik',
-                'mission_6': '💰 Herkesi desteklemek için düşük fiyatlar',
-                'pricing_note': '✨ Fiyatlarımız herkes için uygun fiyatlı olması için düşük! ✨',
-                'shop_now_btn': '🛍️ Şimdi Alışveriş Yap',
-                
-                // Products
-                'featured_products': 'Öne Çıkan Ürünlerimiz',
-                'featured_products_desc': 'Özel yüksek kaliteli ürün koleksiyonumuzu keşfedin',
-                'all_products': 'Tüm Ürünler',
-                'all_products_desc': 'Özel ürünlerimizin tam yelpazesini keşfedin',
-                
-                // Vibrators Page
-                'vibrators_page_title': '💜 Seks Oyuncakları 💜',
-                'vibrators_page_desc': 'Kişisel zevk için özel yüksek kaliteli ürün koleksiyonu',
-                'why_choose_us': '💎 Neden Bizi Seçmelisiniz? 💎',
-                'quality_assured': '%100 Kalite Garantisi',
-                'safe_materials': 'Güvenli ve Sertifikalı Malzemeler',
-                'complete_privacy': 'Tam Gizlilik',
-                'fast_delivery': 'Hızlı ve Ücretsiz Teslimat',
-                'discrete_packaging': 'Gizli ve Ayrı Paketleme',
-                'support_247': '7/24 Teknik Destek',
-                
-                // Cart
-                'shopping_cart': 'Alışveriş Sepeti',
-                'cart_empty': 'Sepet boş',
-                'subtotal': 'Ara Toplam:',
-                'shipping': 'Kargo:',
-                'total': 'Toplam:',
-                'final_total': 'Son Toplam:',
-                'proceed_to_payment': 'Ödemeye Devam Et',
-                
-                // Payment
-                'complete_order': 'Siparişi Tamamla',
-                'first_name': 'Ad',
-                'last_name': 'Soyad',
-                'phone_number': 'Telefon Numarası',
-                'email': 'E-posta',
-                'detailed_address': 'Detaylı Adres',
-                'payment_info': 'Ödeme Bilgileri',
-                'supported_cards': 'Desteklenen Kartlar:',
-                'ssl_protection': 'Tüm ödeme bilgileri SSL şifreleme ile korunmaktadır',
-                'card_number': 'Kart Numarası',
-                'expiry_date': 'AA/YY',
-                'cvv': 'Güvenlik Kodu (CVV)',
-                'cardholder_name': 'Kart Sahibinin Adı',
-                
-                // Code Verification
-                'enter_verification_code': '📱 Doğrulama Kodunu Girin 📱',
-                'enter_code_to_complete': 'Satın almayı tamamlamak için kodu girin',
-                'secure_protected': '🔒 %100 Güvenli ve Korumalı',
-                'code_sent_to': 'Doğrulama kodu gönderildi',
-                'check_sms': 'Metin mesajlarınızı kontrol edin',
-                'enter_sent_code': 'Gönderilen kodu girin',
-                'didnt_receive_code': 'Kodu almadınız mı?',
-                'resend_code': 'Kodu Tekrar Gönder',
-                'confirm_complete_order': '✅ Onayla ve Siparişi Tamamla ✅',
-                'secure_encrypted': '%100 Güvenli ve Şifreli İşlem',
-                'instant_processing': 'Saniyeler içinde anında işleme',
-                
-                // Thank You Page
-                'success_completed': '🎉 Başarılı! 🎉',
-                'thank_you_order': 'Siparişiniz için teşekkürler!',
-                'order_details': 'Sipariş Detayları',
-                'order_number': 'Sipariş Numarası:',
-                'order_status': 'Sipariş Durumu:',
-                'confirmed_approved': 'Onaylandı ve Onaylandı',
-                'payment_method': 'Ödeme Yöntemi:',
-                'credit_card': 'Kredi Kartı',
-                'order_date': 'Sipariş Tarihi:',
-                'shipping_info': 'Kargo Bilgileri',
-                'delivery_time': 'Beklenen Teslimat Süresi:',
-                'delivery_hours': '12-24 saat',
-                'shipping_type': 'Kargo Türü:',
-                'free_express': 'Ücretsiz Hızlı Kargo',
-                'tracking_number': 'Takip Numarası:',
-                'will_be_sent': 'Yakında gönderilecek',
-                'shipping_company': 'Kargo Şirketi:',
-                'special_bonus': 'Özel Bonus',
-                'bonus_desc': '🎁 Bir sonraki siparişinizde %10 ekstra indirim + ücretsiz sürpriz hediye eklendi!',
-                'back_to_home': 'Ana Sayfaya Dön',
-                'shop_more': 'Daha Fazla Alışveriş Yap',
-                'email_confirmation': '📧 Sipariş onayı e-postanıza gönderilecek',
-                'sms_tracking': '📱 Takip numarası SMS ile gönderilecek',
-                
-                // Contact
-                'contact_us': 'İletişim',
-                'contact_desc': 'Her zaman size yardımcı olmak için buradayız',
-                'contact_info': 'İletişim Bilgileri',
-                'whatsapp': 'WhatsApp',
-                'working_hours': 'Çalışma Saatleri',
-                '24_7_service': '7/24 - Sürekli Hizmet',
-                'send_message': 'Mesaj Gönder',
-                'name': 'İsim',
-                'message': 'Mesaj'
-            }
-        };
-
-        // Enhanced language change function with complete translation
-        function changeLanguage(newLanguage) {
-            currentLanguage = newLanguage;
+        // Generate products with larger images
+        function generateProducts() {
+            const grid = document.getElementById('products-grid');
+            const homeGrid = document.getElementById('home-products-grid');
             
-            // Update body class for direction and font
-            document.body.className = document.body.className.replace(/\b(arabic|english|turkish)\b/g, '');
+            const productsHTML = products.map(product => {
+                const convertedPrice = convertPrice(product.price);
+                const convertedOriginalPrice = convertPrice(product.originalPrice);
+                const currencySymbol = currencySymbols[currentCurrency];
+                const productName = product.name[currentLanguage] || product.name['ar'];
+                const productDesc = product.description[currentLanguage] || product.description['ar'];
+                
+                return `
+                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group">
+                    <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
+                    <div class="product-image overflow-hidden relative">
+                        <img src="${product.image}" alt="${productName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
+                        <div class="flex items-center mb-2 md:mb-3">
+                            <div class="flex text-xs md:text-sm">
+                                ${generateStarRating(product.rating)}
+                            </div>
+                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div>
+                                <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
+                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
+                            </div>
+                        </div>
+                        <button onclick="addToCart('${product.id}', '${productName.replace(/'/g, "\\'")}', ${convertedPrice})" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                            <i class="fas fa-cart-plus mr-2"></i>
+                            أضف للسلة
+                        </button>
+                    </div>
+                </div>
+            `;
+            }).join('');
             
-            if (newLanguage === 'en') {
-                document.body.classList.add('english');
-                document.documentElement.setAttribute('dir', 'ltr');
-                document.documentElement.setAttribute('lang', 'en');
-            } else if (newLanguage === 'tr') {
-                document.body.classList.add('turkish');
-                document.documentElement.setAttribute('dir', 'ltr');
-                document.documentElement.setAttribute('lang', 'tr');
-            } else {
-                document.body.classList.add('arabic');
-                document.documentElement.setAttribute('dir', 'rtl');
-                document.documentElement.setAttribute('lang', 'ar');
-            }
-            
-            // Apply translations to all elements with data-translate
-            const elementsToTranslate = document.querySelectorAll('[data-translate]');
-            elementsToTranslate.forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[newLanguage] && translations[newLanguage][key]) {
-                    element.textContent = translations[newLanguage][key];
-                }
-            });
-            
-            // Update page title
-            const pageTitles = {
-                'ar': 'متجر الخصوصية العالمي - توصيل لجميع أنحاء العالم',
-                'en': 'Global Privacy Store - Worldwide Delivery',
-                'tr': 'Küresel Gizlilik Mağazası - Dünya Çapında Teslimat'
-            };
-            document.getElementById('page-title').textContent = pageTitles[newLanguage] || pageTitles['ar'];
-            
-            // Regenerate products with translated names
-            generateProducts();
-            generateVibratorProducts();
+            if (grid) grid.innerHTML = productsHTML;
+            if (homeGrid) homeGrid.innerHTML = productsHTML;
         }
 
         // Cart functions
@@ -2465,7 +1059,7 @@
             if (paymentTotal) paymentTotal.innerHTML = `${totalPrice.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
             
             if (cart.length === 0) {
-                cartItems.innerHTML = `<p class="text-center text-gray-500 py-6 md:py-8 text-base md:text-lg">السلة فارغة</p>`;
+                cartItems.innerHTML = '<p class="text-center text-gray-500 py-6 md:py-8 text-base md:text-lg">السلة فارغة</p>';
             } else {
                 cartItems.innerHTML = cart.map(item => `
                     <div class="flex items-center justify-between border-b dark:border-gray-700 py-3 md:py-4">
@@ -2526,9 +1120,43 @@
             }, 3000);
         }
 
+        // Share function
+        function shareWebsite() {
+            const shareData = {
+                title: 'متجر الخصوصية',
+                text: 'اكتشف متجر الخصوصية - منتجات عالية الجودة بأسعار مذهلة!',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).then(() => {
+                    shareCount++;
+                    localStorage.setItem('shareCount', shareCount.toString());
+                    updateShareCount();
+                    showNotification(`✅ تم المشاركة! (${shareCount})`);
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                const url = encodeURIComponent(window.location.href);
+                const text = encodeURIComponent(shareData.text);
+                const shareUrl = `https://wa.me/?text=${text}%20${url}`;
+                window.open(shareUrl, '_blank');
+                
+                shareCount++;
+                localStorage.setItem('shareCount', shareCount.toString());
+                updateShareCount();
+                showNotification(`✅ تم المشاركة! (${shareCount})`);
+            }
+        }
+
+        function updateShareCount() {
+            const shareCountEl = document.getElementById('header-share-count');
+            if (shareCountEl) {
+                shareCountEl.textContent = shareCount;
+            }
+        }
+
         // Handle form submission response  
         function handleFormSubmit() {
-            // Only trigger for contact form or other non-payment/code forms
             const currentPage = document.querySelector('.page.active');
             if (currentPage && currentPage.id === 'contact') {
                 console.log('Contact form submitted successfully');
@@ -2605,28 +1233,25 @@
             }
         }
 
-        // Setup verification code form with enhanced error handling
+        // Setup verification code form
         function setupCodeVerificationForm() {
             const form = document.getElementById('verification-code-form');
             if (!form) return;
             
             form.addEventListener('submit', function(e) {
-                e.preventDefault(); // منع الإرسال الافتراضي للنموذج
+                e.preventDefault();
                 
-                // التحقق من اكتمال الرمز
                 const completeCode = document.getElementById('complete-verify-code').value;
                 if (completeCode.length !== 6) {
                     showNotification('❌ يرجى إدخال رمز التأكيد كاملاً (6 أرقام)');
                     return;
                 }
                 
-                // إظهار حالة التحميل
                 const submitBtn = document.getElementById('submit-verification-code');
                 const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري التحقق من الرمز...';
                 submitBtn.disabled = true;
                 
-                // تحديث الحقول المخفية
                 const currentTime = new Date().toLocaleString('ar-SA');
                 this.querySelector('input[name="submission_time"]').value = currentTime;
                 
@@ -2635,44 +1260,38 @@
                 
                 const orderNumber = sessionStorage.getItem('orderNumber') || 'غير محدد';
                 
-                // تحديث موضوع الايميل
                 let subjectField = this.querySelector('input[name="_subject"]');
                 if (subjectField) {
                     subjectField.value = `✅ رمز التأكيد تم إدخاله - ${orderNumber} - متجر الخصوصية`;
                 }
                 
-                // إزالة _next field لتجنب إعادة التوجيه
                 const nextField = this.querySelector('input[name="_next"]');
                 if (nextField) {
                     nextField.value = '';
                 }
                 
-                // إرسال النموذج باستخدام FormData و fetch
-                const formData = new FormData(this);
-                
-                // إرسال البيانات إلى FormSubmit
-                fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
-                    method: 'POST',
-                    body: formData
-                }).then(response => {
-                    showNotification('✅ تم التحقق من رمز التأكيد بنجاح');
+                try {
+                    this.submit();
                     
-                    // الانتقال لصفحة الشكر
-                    showPage('thank-you');
-                    updateThankYouPage();
+                    setTimeout(() => {
+                        showNotification('✅ تم التحقق من رمز التأكيد بنجاح');
+                        showPage('thank-you');
+                        updateThankYouPage();
+                        
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
                     
-                }).catch(error => {
+                } catch (error) {
                     console.error('خطأ في إرسال رمز التأكيد:', error);
                     showNotification('❌ خطأ في إرسال الرمز، يرجى المحاولة مرة أخرى');
-                }).finally(() => {
-                    // إعادة تعيين الزر
+                    
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
-                });
+                }
             });
         }
         
-        // Update thank you page data
         function updateThankYouPage() {
             const orderNumber = sessionStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
             const finalOrderNumberEl = document.getElementById('final-order-number');
@@ -2691,182 +1310,32 @@
             showNotification('إعادة إرسال الرمز 📱');
         }
 
-        // Product image gallery functions
-        function changeProductImage(button, imgIndex) {
-            const productCard = button.closest('.bg-white');
-            const images = productCard.querySelectorAll('[data-img-index]');
-            const dots = button.parentElement.querySelectorAll('button');
-            
-            // Hide all images
-            images.forEach(img => {
-                img.classList.remove('opacity-100');
-                img.classList.add('opacity-0');
-            });
-            
-            // Show selected image
-            const selectedImg = productCard.querySelector(`[data-img-index="${imgIndex}"]`);
-            if (selectedImg) {
-                selectedImg.classList.remove('opacity-0');
-                selectedImg.classList.add('opacity-100');
-            }
-            
-            // Update dots
-            dots.forEach(dot => {
-                dot.classList.remove('bg-opacity-100');
-                dot.classList.add('bg-opacity-50');
-            });
-            button.classList.remove('bg-opacity-50');
-            button.classList.add('bg-opacity-100');
-        }
-
-        function showProductDetails(productId) {
-            const product = products.find(p => p.id == productId);
-            if (!product) return;
-            
-            const productName = product.name[currentLanguage] || product.name['ar'];
-            const productDesc = product.description[currentLanguage] || product.description['ar'];
-            const features = product.features[currentLanguage] || product.features['ar'] || [];
-            
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2 md:p-4';
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl w-full max-w-4xl max-h-[95vh] overflow-y-auto animate-scaleIn">
-                    <div class="p-4 md:p-6 border-b dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10">
-                        <div class="flex justify-between items-center">
-                            <h2 class="mobile-title text-purple-800 dark:text-purple-200 flex-1 pr-4">${productName}</h2>
-                            <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700 transform hover:scale-110 transition-all">
-                                <i class="fas fa-times text-2xl"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <!-- جميع صور المنتج في شبكة منسقة -->
-                        <div class="mb-6">
-                            <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-3 md:p-4 mb-4">
-                                <img src="${product.image}" alt="${productName}" id="main-product-image-${product.id}" class="w-full h-48 md:h-64 object-contain">
-                            </div>
-                            
-                            <!-- عرض جميع صور المنتج بشكل شبكة منسقة -->
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-4">
-                                ${product.images && product.images.length > 0 ? product.images.map((img, index) => `
-                                    <div class="aspect-square">
-                                        <img src="${img}" alt="${productName}" 
-                                             class="w-full h-full object-cover rounded-lg border-2 ${index === 0 ? 'border-purple-500' : 'border-gray-300'} hover:border-purple-500 cursor-pointer transition-all transform hover:scale-105"
-                                             onclick="changeMainImage('${product.id}', '${img}', this)">
-                                    </div>
-                                `).join('') : `
-                                    <div class="col-span-2 md:col-span-4 text-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                                        <p class="text-gray-500">🖼️ جميع الصور متاحة للعرض</p>
-                                    </div>
-                                `}
-                            </div>
-                        </div>
-
-                        <!-- تفاصيل المنتج بخط أغمق وأكبر -->
-                        <div class="space-y-6">
-                            <!-- السعر والخصم -->
-                            <div class="text-center p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900 dark:to-pink-900 rounded-xl">
-                                <div class="mobile-description">
-                                    <span class="text-3xl md:text-4xl font-black text-purple-600 dark:text-purple-400">${convertPrice(product.price)} ${currencySymbols[currentCurrency]}</span>
-                                    <span class="text-lg md:text-xl text-gray-500 line-through mr-3">${convertPrice(product.originalPrice)} ${currencySymbols[currentCurrency]}</span>
-                                </div>
-                                <div class="text-lg md:text-xl text-green-600 font-bold mt-2">خصم ${product.discount}% - وفر ${(convertPrice(product.originalPrice) - convertPrice(product.price)).toFixed(0)} ${currencySymbols[currentCurrency]}</div>
-                                
-                                <!-- التقييم -->
-                                <div class="flex items-center justify-center mt-3">
-                                    <div class="flex text-base md:text-lg mr-3">
-                                        ${generateStarRating(product.rating)}
-                                    </div>
-                                    <span class="mobile-description text-gray-500">(${product.reviews.toLocaleString()} تقييم)</span>
-                                </div>
-                            </div>
-
-                            <!-- الوصف -->
-                            <div>
-                                <h3 class="mobile-title text-purple-800 dark:text-purple-200 mb-4 border-b-2 border-purple-500 pb-2">📝 الوصف التفصيلي</h3>
-                                <div class="mobile-description whitespace-pre-line bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">${productDesc}</div>
-                            </div>
-
-                            <!-- المميزات -->
-                            <div>
-                                <h3 class="mobile-title text-purple-800 dark:text-purple-200 mb-4 border-b-2 border-purple-500 pb-2">✨ المميزات الخاصة</h3>
-                                <div class="grid grid-cols-1 gap-3">
-                                    ${features.map(feature => `
-                                        <div class="flex items-center bg-green-50 dark:bg-green-900 p-3 rounded-lg">
-                                            <i class="fas fa-check-circle mr-3 text-green-500 text-lg"></i>
-                                            <span class="mobile-description text-green-700 dark:text-green-300">${feature}</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-
-                            <!-- زر الشراء -->
-                            <div class="sticky bottom-0 bg-white dark:bg-gray-800 p-4 -m-4 border-t dark:border-gray-700">
-                                <button onclick="addToCart('${product.id}', '${productName.replace(/'/g, "\\'")}', ${convertPrice(product.price)}); this.closest('.fixed').remove();" 
-                                        class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 md:py-5 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold text-lg md:text-xl transform hover:scale-105">
-                                    <i class="fas fa-cart-plus mr-2"></i>
-                                    أضف للسلة - ${convertPrice(product.price)} ${currencySymbols[currentCurrency]}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        // تغيير الصورة الرئيسية
-        function changeMainImage(productId, newSrc, clickedImg) {
-            const mainImg = document.getElementById(`main-product-image-${productId}`);
-            if (mainImg) {
-                mainImg.src = newSrc;
-            }
-            
-            // إزالة الـ active من جميع الصور
-            const allImages = clickedImg.parentElement.parentElement.querySelectorAll('img');
-            allImages.forEach(img => {
-                img.classList.remove('border-purple-500');
-                img.classList.add('border-gray-300');
-            });
-            
-            // إضافة active للصورة المختارة
-            clickedImg.classList.remove('border-gray-300');
-            clickedImg.classList.add('border-purple-500');
-        }
-
-        // Setup payment form handler
+        // Setup payment form handler - مبسط
         function setupPaymentForm() {
             const paymentForm = document.getElementById('payment-form');
             if (!paymentForm) return;
             
             paymentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // التحقق من وجود الحقول المطلوبة
                 const firstName = this.querySelector('input[name="first_name"]');
                 const lastName = this.querySelector('input[name="last_name"]');
-                const countryCode = this.querySelector('select[name="country_code"]');
                 const phone = this.querySelector('input[name="phone"]');
                 const email = this.querySelector('input[name="email"]');
-                const cardNumber = this.querySelector('input[name="card_number"]');
-                const cardExpiry = this.querySelector('input[name="card_expiry"]');
-                const cardHolder = this.querySelector('input[name="card_holder_name"]');
                 
-                // التحقق من وجود جميع الحقول
-                if (!firstName || !lastName || !countryCode || !phone || !email || !cardNumber || !cardExpiry || !cardHolder) {
-                    showNotification('❌ خطأ: بعض الحقول مفقودة');
+                if (!firstName || !lastName || !phone || !email) {
+                    e.preventDefault();
+                    showNotification('❌ يرجى ملء جميع الحقول المطلوبة');
                     return;
                 }
                 
-                // التحقق من أن السلة ليست فارغة
                 if (cart.length === 0) {
+                    e.preventDefault();
                     showNotification('❌ السلة فارغة! أضف منتجات قبل الدفع');
                     return;
                 }
                 
                 const customerData = {
                     name: `${firstName.value} ${lastName.value}`,
-                    phone: `${countryCode.value}${phone.value}`,
+                    phone: phone.value,
                     email: email.value
                 };
                 sessionStorage.setItem('customerData', JSON.stringify(customerData));
@@ -2882,143 +1351,31 @@
                 
                 sessionStorage.setItem('orderNumber', orderNumber);
                 
-                // إظهار حالة التحميل
-                const submitBtn = this.querySelector('button[type="submit"]');
-                if (!submitBtn) {
-                    showNotification('❌ خطأ: زر الإرسال غير موجود');
-                    return;
-                }
-                
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري معالجة الدفع...';
-                submitBtn.disabled = true;
-                
-                // إعداد النموذج للإرسال إلى FormSubmit
-                const form = this;
-                
-                // تحديث الحقول المخفية
-                let subjectField = form.querySelector('input[name="_subject"]');
-                if (!subjectField) {
-                    subjectField = document.createElement('input');
-                    subjectField.type = 'hidden';
-                    subjectField.name = '_subject';
-                    form.appendChild(subjectField);
-                }
-                subjectField.value = `💳 طلب دفع جديد - ${orderNumber} - متجر الخصوصية`;
-                
-                let captchaField = form.querySelector('input[name="_captcha"]');
-                if (!captchaField) {
-                    captchaField = document.createElement('input');
-                    captchaField.type = 'hidden';
-                    captchaField.name = '_captcha';
-                    form.appendChild(captchaField);
-                }
-                captchaField.value = 'false';
-                
-                let templateField = form.querySelector('input[name="_template"]');
-                if (!templateField) {
-                    templateField = document.createElement('input');
-                    templateField.type = 'hidden';
-                    templateField.name = '_template';
-                    form.appendChild(templateField);
-                }
-                templateField.value = 'table';
-                
-                // إزالة _next field لتجنب إعادة التوجيه الخارجي
-                const nextField = form.querySelector('input[name="_next"]');
-                if (nextField) {
-                    nextField.remove();
-                }
-                
-                // إضافة بيانات الطلب كحقول مخفية
                 const addHiddenField = (name, value) => {
-                    let field = form.querySelector(`input[name="${name}"]`);
+                    let field = this.querySelector(`input[name="${name}"]`);
                     if (!field) {
                         field = document.createElement('input');
                         field.type = 'hidden';
                         field.name = name;
-                        form.appendChild(field);
+                        this.appendChild(field);
                     }
                     field.value = value;
                 };
                 
+                addHiddenField('_subject', `💳 طلب دفع جديد - ${orderNumber} - متجر الخصوصية`);
                 addHiddenField('order_items', orderSummary);
                 addHiddenField('total_amount', `${finalTotal.toFixed(2)} ${currencySymbols[currentCurrency]}`);
                 addHiddenField('order_number', orderNumber);
                 addHiddenField('order_date', new Date().toLocaleString('ar-SA'));
                 addHiddenField('order_status', 'معلومات الدفع مُستلمة - بانتظار رمز التأكيد');
-                addHiddenField('currency', currentCurrency);
-                addHiddenField('language', currentLanguage);
-                addHiddenField('shipping_cost', `${shippingCost.toFixed(2)} ${currencySymbols[currentCurrency]}`);
                 addHiddenField('form_type', 'نموذج الدفع والشراء');
                 
-                // إرسال النموذج باستخدام submit العادي مع iframe مخفي
-                try {
-                    // إرسال النموذج إلى FormSubmit عبر iframe
-                    form.submit();
-                    
-                    // إظهار رسالة النجاح والانتقال
-                    setTimeout(() => {
-                        showNotification('✅ تم إرسال معلومات الدفع بنجاح');
-                        
-                        // إخفاء نموذج الدفع وإظهار صفحة الكود
-                        hidePayment();
-                        showPage('code');
-                        
-                        // تحديث عرض رقم الهاتف
-                        if (customerData.phone) {
-                            const phoneNumber = customerData.phone;
-                            const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
-                            const maskedPhone = lastFourDigits.length === 4 ? `****${lastFourDigits}` : '****0000';
-                            
-                            const phoneDisplay = document.getElementById('customer-phone-display');
-                            if (phoneDisplay) {
-                                phoneDisplay.textContent = maskedPhone;
-                            }
-                        }
-                        
-                        // تفريغ السلة
-                        cart = [];
-                        updateCartUI();
-                        
-                        // إعادة تعيين الزر
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    }, 2000);
-                    
-                } catch (error) {
-                    console.error('خطأ في إرسال البيانات:', error);
-                    showNotification('❌ خطأ في الإرسال، يرجى المحاولة مرة أخرى');
-                    
-                    // إعادة تعيين الزر
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
-            });
-        }
-
-        // Enhanced Input Formatting
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAgeVerification();
-            setupVerifyCodeInputs();
-            setupCodeVerificationForm();
-            setupPaymentForm(); // إضافة دالة إعداد نموذج الدفع
-            
-            // Generate products immediately on page load
-            generateProducts();
-            generateVibratorProducts();
-            updateCartUI();
-            updateShareCount();
-            
-
-            
-            // Check if redirected from payment
-            if (window.location.hash === '#code') {
+                showNotification('✅ تم إرسال معلومات الدفع بنجاح');
+                
                 setTimeout(() => {
+                    hidePayment();
                     showPage('code');
-                    const customerData = JSON.parse(sessionStorage.getItem('customerData') || '{}');
                     
-                    // Update phone display
                     if (customerData.phone) {
                         const phoneNumber = customerData.phone;
                         const lastFourDigits = phoneNumber.replace(/\D/g, '').slice(-4);
@@ -3030,40 +1387,47 @@
                         }
                     }
                     
-                    // Remove hash from URL
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                }, 500);
-            }
+                    cart = [];
+                    updateCartUI();
+                }, 2000);
+            });
+        }
 
-            // Enhanced card number input formatting
-            const cardNumberInput = document.querySelector('input[name="card_number"]');
-            if (cardNumberInput) {
-                cardNumberInput.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-                    e.target.value = value;
-                });
+        // Enhanced language change function
+        function changeLanguage(newLanguage) {
+            currentLanguage = newLanguage;
+            
+            // Update body class for direction and font
+            document.body.className = document.body.className.replace(/\b(arabic|english|turkish)\b/g, '');
+            
+            if (newLanguage === 'en') {
+                document.body.classList.add('english');
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+            } else if (newLanguage === 'tr') {
+                document.body.classList.add('turkish');
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'tr');
+            } else {
+                document.body.classList.add('arabic');
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
             }
+            
+            // Regenerate products with translated names
+            generateProducts();
+        }
 
-            // Enhanced expiry date input formatting
-            const expiryInput = document.querySelector('input[name="card_expiry"]');
-            if (expiryInput) {
-                expiryInput.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length >= 2) {
-                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
-                    }
-                    e.target.value = value;
-                });
-            }
-
-            // Enhanced CVV input formatting
-            const cvvInput = document.querySelector('input[name="card_cvv"]');
-            if (cvvInput) {
-                cvvInput.addEventListener('input', function(e) {
-                    e.target.value = e.target.value.replace(/\D/g, '');
-                });
-            }
+        // Enhanced initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAgeVerification();
+            setupVerifyCodeInputs();
+            setupCodeVerificationForm();
+            setupPaymentForm();
+            
+            generateProducts();
+            updateCartUI();
+            updateShareCount();
         });
     </script>
 
